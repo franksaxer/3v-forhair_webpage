@@ -42,16 +42,22 @@ export default {
   @import "../node_modules/bulma/bulma";
 
 
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: url('./assets/wallpaper.jpg');
+    background-position: center left;
+    background-repeat:  no-repeat;
+    background-size: cover;
+  }
+
+
   /* The general layout with header, main and footer */
   .layout {
     display: flex;
     min-height: 100vh;
     flex-flow: column;
 
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
 
     header {
       height: $header-height;
