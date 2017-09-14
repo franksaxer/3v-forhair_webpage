@@ -26,6 +26,12 @@
       </main>
 
       <footer>
+        <div class="nav">
+          <div class="nav-center">
+            <i class="fa fa-phone"></i>
+            <span>   030 30104598</span>
+          </div>
+        </div>
       </footer>
     </section>
   </div>
@@ -42,6 +48,7 @@ export default {
 <style lang="scss">
   // Import 3rd party styles
   @import '../node_modules/include-media/dist/include-media';
+  @import '../node_modules/font-awesome/css/font-awesome.css';
 
   // Import own styles
   @import './style/3v-forhair';
@@ -86,7 +93,7 @@ export default {
         $icon-radius: 100px;
 
         h1 {
-          color: $grass-green;
+          color: $primary;
           font-size: calc(#{$header-height * 0.7});
           font-weight: 500;
           font-family: "Times New Roman", Times, serif;
@@ -124,6 +131,13 @@ export default {
       height: $footer-height;
       overflow: hidden; // Force the height, else the cover page will not work.
       background-color: $primary-invert;
+      color: white;
+      white-space: pre; // To force white spaces will not be cut.
+      font-size: calc(#{$footer-height} * 0.6);
+
+      i {
+        margin: auto; // Center the fa icon in relation to the span.
+      }
     }
   }
 
