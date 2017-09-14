@@ -3,6 +3,23 @@
     <!-- general layout with header, main and footer -->
     <section class="layout">
       <header>
+        <div class="nav">
+          <div class="nav-left">
+            <!-- necessary for the structure, else center will not work -->
+          </div>
+
+          <div class="nav-center">
+            <div class="nav-item label-with-icon">
+              <h1>for</h1>
+              <img src="./assets/icon.png" />
+              <h1>  hair</h1>
+            </div>
+          </div>
+
+          <div class="nav-right">
+            <!-- necessary for the structure, else center will not work -->
+          </div>
+        </div>
       </header>
 
       <main>
@@ -65,10 +82,23 @@ export default {
       z-index: 1; // Seems to be necessary, so it is not always to top element.
       background-color: $color-invert;
 
-      .title {
-        color: black;
-        font-size: 1.5em;
-        font-weight: 500;
+      .label-with-icon {
+        $icon-radius: 100px;
+
+        h1 {
+          color: $grass-green;
+          font-size: calc(#{$header-height * 0.7});
+          font-weight: 500;
+          font-family: "Times New Roman", Times, serif;
+          margin: 0 calc(#{$icon-radius} / 2);
+          padding-left: 10px; // Else, the "hair" is more narrow to the icon than the "for".
+        }
+
+        img {
+          position: fixed;
+          top: 5px;
+          min-height: $icon-radius; // Min- is required else, the header shrink it.
+        }
       }
     }
 
@@ -96,4 +126,10 @@ export default {
       background-color: $primary-invert;
     }
   }
+
+
+  .nav {
+    background-color: transparent; // Per default it is white, so background on parent elements doesn't work.
+  }
+
 </style>
