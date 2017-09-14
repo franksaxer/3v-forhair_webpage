@@ -23,6 +23,11 @@
       </header>
 
       <main>
+        <div id="content" class="main-element">
+
+        </div>
+
+        <div id="advertisement" class="main-element"></div>
       </main>
 
       <footer>
@@ -68,7 +73,7 @@ export default {
 
   body {
     margin: 0;
-    overflow: hidden;
+    overflow: hidden; // For the cover page;
     background: url('./assets/wallpaper.jpg');
     background-position: center left;
     background-repeat:  no-repeat;
@@ -79,8 +84,9 @@ export default {
   /* The general layout with header, main and footer */
   .layout {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
     flex-flow: column;
+    overflow: hidden;
 
 
     header {
@@ -111,9 +117,6 @@ export default {
     }
 
     main {
-      display: flex;
-      flex-flow: column;
-
       // Differ the height between mobile and desktop.
       @include media('<desktop') {
         height: calc(100vh - #{$footer-height}); // Take the full height without the footer.
@@ -145,6 +148,47 @@ export default {
 
   .nav {
     background-color: transparent; // Per default it is white, so background on parent elements doesn't work.
+  }
+
+
+  main {
+    .main-element {
+      position: absolute;
+      top: $header-height;
+      bottom: $footer-height;
+      overflow: hidden;
+
+      @include media('<desktop') {
+        // Ignore the footer, cause it is not displayed in this view.
+        bottom: 0;
+      }
+    }
+
+    #content {
+      left: 0;
+      right: $advertisement-width; // Stop before the advertisement on the right side.
+      overflow-y: auto;
+
+      @include media('<desktop') {
+        // Use the whole width on mobile devices, cause the advertisement is missing.
+        right: 0;
+      }
+    }
+
+    #advertisement {
+      left: calc(100% - #{$advertisement-width});
+      right: 0;
+
+      background: url('./assets/advertisement/aveda-example.png');
+      background-position: center left;
+      background-repeat:  no-repeat;
+      background-size: cover;
+
+      @include media('<desktop') {
+        // Hide the advertisement on mobile devices to safe space.
+        display: none;
+      }
+    }
   }
 
 </style>
