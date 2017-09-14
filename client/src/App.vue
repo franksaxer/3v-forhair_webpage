@@ -90,7 +90,7 @@ export default {
       background-color: $color-invert;
 
       .label-with-icon {
-        $icon-radius: 100px;
+        $icon-radius: calc(#{$header-height} * 2);
 
         h1 {
           color: $primary;
@@ -103,6 +103,7 @@ export default {
 
         img {
           position: fixed;
+          left: calc((100vw - #{$icon-radius}) / 2); // Auto centering doesn't work on mobile view.
           top: 5px;
           min-height: $icon-radius; // Min- is required else, the header shrink it.
         }
