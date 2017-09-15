@@ -33,8 +33,15 @@
       <footer>
         <div class="nav">
           <div class="nav-center">
-            <i class="fa fa-phone"></i>
-            <span>   030 30104598</span>
+            <div class="nav-item">
+              <i class="fa fa-phone"></i>
+              <span>{{ contactData.phoneNumber }}</span>
+            </div>
+
+            <div class="nav-item">
+              <i class="fa fa-envelope"></i>
+              <span>{{ contactData.mailAddress }}</span>
+            </div>
           </div>
         </div>
       </footer>
@@ -47,8 +54,18 @@
   // Import other components
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
+  // Import data and configurations
+  import ContactData from './data/ContactData'
+
   export default {
     name: 'app',
+
+    data: function () {
+      return {
+        contactData: ContactData
+      }
+    },
+
     components: {
       'advertisement-banner': AdvertisementBanner
     }
@@ -147,6 +164,10 @@
 
       i {
         margin: auto; // Center the fa icon in relation to the span.
+      }
+
+      span {
+        padding-left: 10px; // Else the icon is directly next to the text.
       }
     }
   }
