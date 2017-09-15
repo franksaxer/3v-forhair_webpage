@@ -1,8 +1,17 @@
-// Colors
+/* Colors */
 $color-base: rgb(27, 63, 27);
 $color-invert: rgba(169, 164, 164, 0.32);
 
-// Layout Shapes
+/* Layout Shapes */
 $header-height: 50px;
 $footer-height: 50px;
 $advertisement-width: 300px;
+
+
+/* Classes */
+.ghost-button {
+  // Use important, cause it is also used for overwriting.
+  border: 0!important;
+  padding: 0!important;
+  background-color: transparent!important;
+}
