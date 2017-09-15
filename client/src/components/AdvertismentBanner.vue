@@ -1,6 +1,7 @@
 <template>
   <div  id="advertisement"
-        :class="{'closed' : closed}">
+        :class="{'closed': closed}"
+        :style="{'background-image': 'url(' + imageSource +')'}">
 
     <button class="ghost-button"
             @click="closed = true">
@@ -14,12 +15,15 @@
 
 
 <script>
+  import generalConfig from '../data/GeneralConfig'
+
   export default {
     name: 'advertisement-banner',
 
     data: function () {
       return {
-        closed: false
+        closed: false,
+        imageSource: generalConfig.advertisementImage
       }
     }
   }
@@ -47,8 +51,7 @@
 
 
     /* Background */
-    background: url('../assets/advertisement/aveda-example.png');
-    background-position: center left;
+    background-position: center center;
     background-repeat:  no-repeat;
     background-size: cover;
 
