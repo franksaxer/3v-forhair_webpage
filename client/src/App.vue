@@ -27,7 +27,7 @@
 
         </div>
 
-        <div id="advertisement" class="main-element"></div>
+        <advertisement-banner class="main-element"></advertisement-banner>
       </main>
 
       <footer>
@@ -44,9 +44,15 @@
 
 
 <script>
-export default {
-  name: 'app'
-}
+  // Import other components
+  import AdvertisementBanner from './components/AdvertismentBanner.vue'
+
+  export default {
+    name: 'app',
+    components: {
+      'advertisement-banner': AdvertisementBanner
+    }
+  }
 </script>
 
 
@@ -172,21 +178,6 @@ export default {
       @include media('<desktop') {
         // Use the whole width on mobile devices, cause the advertisement is missing.
         right: 0;
-      }
-    }
-
-    #advertisement {
-      left: calc(100% - #{$advertisement-width});
-      right: 0;
-
-      background: url('./assets/advertisement/aveda-example.png');
-      background-position: center left;
-      background-repeat:  no-repeat;
-      background-size: cover;
-
-      @include media('<desktop') {
-        // Hide the advertisement on mobile devices to safe space.
-        display: none;
       }
     }
   }
