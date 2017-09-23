@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Koa web-server to deliver the client and provide the RESTful API.",
+  "main": "src/erver.js",
+  "dependencies": {
+    "http": "0.0.0",
+    "koa": "^2.3.0",
+    "koa-static": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/franksaxer/3v-forhair_webpage/server"
+  },
+  "keywords": [
+    "Web-Server",
+    "Koa",
+    "JS",
+    "API",
+    "RESTful",
+    "HTTP2.0",
+    "TLS"
+  ],
+  "author": "Thore Weilbier",
+  "license": "ISC"
+}
