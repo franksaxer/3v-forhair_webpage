@@ -5,6 +5,10 @@ const http      = require('http') // To recieve and send HTTP messages.
 const serve     = require('koa-static') // To deliver static content.
 
 
+/* Load Configurations */
+const general_prop  = require(__dirname + '/config/general_prop.js')
+
+
 /* Initiate Modules */
 // Create the Koa application.
 const app = new koa()
@@ -12,9 +16,9 @@ const app = new koa()
 
 /* Add Middleware */
 // Provide the client content.
-app.use(serve(__dirname + '/../client'))
+app.use(serve(__dirname + general_prop.clientPath))
 
 
 /* Start Server */
-http.createServer(app.callback()).listen(8080)
+http.createServer(app.callback()).listen(general_prop.port)
 
