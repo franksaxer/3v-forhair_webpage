@@ -10,7 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node src/server.js"
+    "dev": "NODE_ENV='development' node src/server.js",
+    "prd": "NDOE_ENV='production' node src/server.js"
   },
   "repository": {
     "type": "git",

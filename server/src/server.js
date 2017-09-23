@@ -4,14 +4,14 @@ const koa       = require('koa') // General Koa package the server base on.
 const http      = require('http') // To recieve and send HTTP messages.
 const serve     = require('koa-static') // To deliver static content.
 
-
-/* Load Configurations */
-const general_prop  = require(__dirname + '/config/general_prop.js')
-
-
 /* Initiate Modules */
 // Create the Koa application.
 const app = new koa()
+
+
+/* Load Configurations */
+// Have to be load after the app initiation, cause else the environment is not defined.
+const general_prop  = require(__dirname + '/config/general_prop.js')(app.env)
 
 
 /* Add Middleware */
