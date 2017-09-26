@@ -7,11 +7,13 @@ const clientPath = '/../client'
 // Overall properties object.
 const props = {
     development: {
-        port: 8080,
+        port_http: 8080,
+	port_https: 8081,
 	clientPath: clientPath
     },
     production: {
-        port: 80,
+        port_http: 80,
+	port_https: 443,
         clientPath: clientPath
     }
 }
