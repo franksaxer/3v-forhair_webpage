@@ -11,6 +11,9 @@ yarn-error.log*
 # Keys & Certificates
 *.pem
 
+# The admin password
+password
+
 # Editor directories and files
 .idea
 *.suo

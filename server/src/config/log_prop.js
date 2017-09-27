@@ -11,9 +11,6 @@ const options_bunyan = {
                 period: '1d',
                 count: 14,
                 path: path_connections
-        },
-        {
-                stream: process.stderr
         }]
 }
 

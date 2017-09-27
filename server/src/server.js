@@ -6,11 +6,12 @@ const https = require('https') // For TLS encryption.
 const sslify = require('koa-sslify') // Force HTTPS connections.
 const serve = require('koa-static') // To deliver static content.i
 const logger_bunyan = require('koa-bunyan-logger') // To logg connections and other content.
+const bodyParser = require('koa-body') // To read the requests bodies.
 
 
 // Own
 const logger = require(__dirname + '/logger.js')
-const exampleRouter = require(__dirname + '/router/example.js')
+const authRouter = require(__dirname + '/router/authentication.js')
 
 
 /* Initiate Modules */
@@ -34,11 +35,14 @@ app.use(logger_bunyan.requestLogger(logger.logger))
 // Force HTTPS connections.
 app.use(sslify(ssl_prop.options_sslify))
 
+// Parse the request body.
+app.use(bodyParser())
+
 // Provide the client content.
 app.use(serve(__dirname + general_prop.clientPath))
 
-// Add the example route API.
-app.use(exampleRouter.routes())
+// Add the authentication router.
+app.use(authRouter.routes())
 
 
 /* Start Server */
