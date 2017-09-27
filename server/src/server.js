@@ -10,6 +10,7 @@ const logger_bunyan = require('koa-bunyan-logger') // To logg connections and ot
 
 // Own
 const logger = require(__dirname + '/logger.js')
+const exampleRouter = require(__dirname + '/router/example.js')
 
 
 /* Initiate Modules */
@@ -35,6 +36,9 @@ app.use(sslify(ssl_prop.options_sslify))
 
 // Provide the client content.
 app.use(serve(__dirname + general_prop.clientPath))
+
+// Add the example route API.
+app.use(exampleRouter.routes())
 
 
 /* Start Server */
