@@ -1,11 +1,11 @@
-// Import all necessary modules
+/* Import all necessary modules */
+// 3rd party
 const readline = require('readline') // To read the users input.
 const bcrypt = require('bcrypt') // To encrypt the password.
 const fs = require('fs'); // To store the enrypred password.
 
-// Paramater & Variables
-const saltRounds = 15  // Define how much rounds the password will be hashed. As higher as more safe, but also as longer.
-const passwordLocation = './src/password'
+// Own
+const password_prop = require(__dirname + '/config/password_prop.js')('script')
 
 
 // Initiate the reader.
@@ -27,7 +27,8 @@ rl.question('New Password: ', async function (input) {
 // Encrypt new password.
 async function encryptPassword (plainPassword) {
     console.log('Encrypting...')
-    return bcrypt.hashSync(plainPassword, saltRounds, (err) => {
+    
+    return bcrypt.hashSync(plainPassword, password_prop.saltRounds, (err) => {
         console.log('Something went wrong while try to hash the password.')
         process.exit(1)
     })
@@ -39,10 +40,10 @@ async function storePassword (encryptedPassword) {
     console.log('Save password...')
    
     // Delete old password to avoid problems with unequal length password hashed.
-    fs.unlink(passwordLocation, (err) => { /* Ignore */ })
+    fs.unlink(password_prop.passwordFilePath, (err) => { /* Ignore */ })
         
     // Store new password.
-    fs.writeFileSync(passwordLocation, encryptedPassword, (err) => {    
+    fs.writeFileSync(password_prop.passwordFilePath, encryptedPassword, {encoding: password_prop.encoding}, (err) => {    
         console.log('Something went wrong while try to store the password!')
         process.exit(1)
     })
