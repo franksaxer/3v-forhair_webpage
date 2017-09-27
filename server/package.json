@@ -4,6 +4,7 @@
   "description": "Koa web-server to deliver the client and provide the RESTful API.",
   "main": "src/erver.js",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "bunyan": "^1.8.12",
     "http": "0.0.0",
     "https": "^1.0.0",
