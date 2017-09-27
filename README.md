@@ -11,3 +11,4 @@ Tutorial and descriptions for different parts of this project can be found [here
 - [Set Up Web Client](https://github.com/franksaxer/3v-forhair_webpage/blob/master/doc/SetUpWebClient.md)
 - [Source Structure](https://github.com/franksaxer/3v-forhair_webpage/blob/master/doc/SourceStructure.md)
 - [SSL Keys & Certificates](https://github.com/franksaxer/3v-forhair_webpage/blob/master/server/src/certificate/README.md)
+- [API Documentation](https://swaggerhub.com/apis/3v-forhair/3v-forhair/1.0.0) (restricted access)
