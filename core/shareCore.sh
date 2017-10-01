@@ -26,9 +26,11 @@ fi
 
 # Copy the core content to the peers.
 # Use the recuirsive and the force option.
+
+# Exclude the script itself. Add wildcards to exclude swap files also.
 echo Share core with client...
-cp -fr . $PATH_CLIENT
+rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' . $PATH_CLIENT
 
 echo Share core with server...
-cp -fr . $PATH_SERVER
+rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' . $PATH_SERVER
 
