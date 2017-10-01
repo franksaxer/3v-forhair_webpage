@@ -27,7 +27,7 @@
 
         </div>
 
-        <advertisement-banner class="main-element"></advertisement-banner>
+        <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
       </main>
 
       <footer>
@@ -59,12 +59,14 @@
 
   // Import enums.
   import DataStoreEnum from './enums/DataStoreEnum'
+  import UrlEnum from './enums/UrlEnum'
 
   export default {
     name: 'app',
 
     data: function () {
       return {
+        adminViewEnabled: false,
         contactData: DataManager.loadData(DataStoreEnum.contact)
       }
     },
@@ -74,7 +76,10 @@
     },
 
     created: function () {
-      console.log(this.contactData)
+      // Check if the admin view is requested.
+      if (window.location.pathname === UrlEnum.admin) {
+        this.adminViewEnabled = true
+      }
     }
   }
 </script>
