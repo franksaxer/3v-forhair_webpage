@@ -12,6 +12,7 @@ const bodyParser = require('koa-body') // To read the requests bodies.
 // Own
 const logger = require(__dirname + '/logger.js')
 const authRouter = require(__dirname + '/router/authentication.js')
+const authView = require(__dirname + '/middleware/adminView.js')
 
 
 /* Initiate Modules */
@@ -37,6 +38,9 @@ app.use(sslify(ssl_prop.options_sslify))
 
 // Parse the request body.
 app.use(bodyParser())
+
+// Rewrite for the admin view.
+app.use(authView)
 
 // Provide the client content.
 app.use(serve(__dirname + general_prop.clientPath))
