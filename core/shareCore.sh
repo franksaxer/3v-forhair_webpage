@@ -29,8 +29,8 @@ fi
 
 # Exclude the script itself. Add wildcards to exclude swap files also.
 echo Share core with client...
-rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' . $PATH_CLIENT
+rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' --exclude='.shareCore.sh.swo' . $PATH_CLIENT
 
 echo Share core with server...
-rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' . $PATH_SERVER
+rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' --exclude='.shareCore.sh.swo' . $PATH_SERVER
 

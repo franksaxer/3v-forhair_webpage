@@ -54,20 +54,27 @@
   // Import other components
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
-  // Import data and configurations
-  import ContactData from './data/ContactData'
+  // Import data manager
+  import DataManager from './DataManager'
+
+  // Import enums.
+  import DataStoreEnum from './enums/DataStoreEnum'
 
   export default {
     name: 'app',
 
     data: function () {
       return {
-        contactData: ContactData
+        contactData: DataManager.loadData(DataStoreEnum.contact)
       }
     },
 
     components: {
       'advertisement-banner': AdvertisementBanner
+    },
+
+    created: function () {
+      console.log(this.contactData)
     }
   }
 </script>
