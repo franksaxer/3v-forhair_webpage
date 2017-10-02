@@ -42,6 +42,10 @@
               <i class="fa fa-envelope"></i>
               <span>{{ contactData.mailAddress }}</span>
             </div>
+
+            <div class="nav-item">
+              <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
+            </div>
           </div>
         </div>
       </footer>
@@ -90,6 +94,7 @@
 
 <script>
   // Import other components
+  import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
   // Import manager and utilities components.
@@ -121,6 +126,8 @@
     },
 
     components: {
+      LanguageSelector,
+      'language-selector': LanguageSelector,
       'advertisement-banner': AdvertisementBanner
     },
 
@@ -142,6 +149,10 @@
           this.authIsLoading = false
           this.authErrorMessage = this.labelStore.authentication_problem[this.language]
         }
+      },
+
+      setLanguage: function (language) {
+        this.language = language
       }
     },
 
