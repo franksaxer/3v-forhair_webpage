@@ -46,6 +46,43 @@
         </div>
       </footer>
     </section>
+
+    <!-- login modal -->
+    <div v-if="authenticationModalOpen"
+         class="modal-background">
+    </div>
+
+    <div id="authentication-modal"
+         class="modal-card"
+         v-if="authenticationModalOpen">
+
+      <header class="modal-card-head">
+        <p class="modal-card-title">Login</p>
+      </header>
+
+      <section class="modal-card-body">
+        <p>Please insert the administration password to access the admin view.</p>
+
+        <input class="input"
+               type="password"
+               placeholder="Administration Password"
+               v-model="password">
+
+        <p v-if="authErrorMessage"
+           class="error-message">
+
+          {{authErrorMessage}}
+        </p>
+      </section>
+
+      <footer class="modal-card-foot">
+        <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                @click="login">
+
+          Login
+        </button>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -69,7 +106,13 @@
 
     data: function () {
       return {
-        adminViewEnabled: false,
+        // Authentication elements
+        authenticationModalOpen: false, // Define if the modal should be shown.
+        adminViewEnabled: false, // Define if the admin view is enabled after authentication.
+        password: '', // Stores the password of the input element.
+        authIsLoading: false, // Set the login button to loading.
+        authErrorMessage: null, // Contains the error message after an invoked login try.
+        // The data objects
         contactData: DataManager.loadData(DataStoreEnum.contact)
       }
     },
@@ -78,18 +121,32 @@
       'advertisement-banner': AdvertisementBanner
     },
 
-    created: async function () {
-      // Check if the admin view is requested.
-      if (window.location.pathname === UrlEnum.admin) {
+    methods: {
+      login: async function () {
         try {
-          const auth = await ApiConnector.authenticate('kekse')
+          this.authErrorMessage = null
+          this.authIsLoading = true
+          const auth = await ApiConnector.authenticate(this.password)
+          this.authIsLoading = false
 
           if (auth) {
             this.adminViewEnabled = true
+            this.authenticationModalOpen = false
+          } else {
+            this.authErrorMessage = 'Incorrect Password!'
           }
         } catch (err) {
-          // TODO
+          this.authIsLoading = false
+          this.authErrorMessage = 'Something went wrong while try to connect to the server!' // TODO: get message from exception
         }
+      }
+    },
+
+    created: async function () {
+      // Check if the admin view is requested.
+      if (window.location.pathname === UrlEnum.admin) {
+        // Open the authentication modal.
+        this.authenticationModalOpen = true
       }
     }
   }
@@ -200,7 +257,6 @@
     background-color: transparent; // Per default it is white, so background on parent elements doesn't work.
   }
 
-
   main {
     .main-element {
       position: absolute;
@@ -222,6 +278,51 @@
       @include media('<desktop') {
         // Use the whole width on mobile devices, cause the advertisement is missing.
         right: 0;
+      }
+    }
+  }
+
+
+  button {
+    // The secondary color of Bulma does not rly work together.
+    color: white!important;
+  }
+
+
+  #authentication-modal {
+    $width: 400px;
+    $height: 330px;
+
+    position: absolute;
+    top: calc(50vh - (#{$height} /2));
+    left: calc(50vw - (#{$width} /2));
+
+    width: $width;
+    height: $height;
+
+
+    .modal-card-head, .modal-card-foot {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      button {
+        width: 100px; // To avoid resizing when loading.
+      }
+    }
+
+    .modal-card-body {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      p {
+        text-align: center;
+        margin-bottom: 20px; // Between this text and the input element.
+
+        &.error-message {
+          color: red!important;
+        }
       }
     }
   }
