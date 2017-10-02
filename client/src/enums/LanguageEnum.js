@@ -1,6 +1,6 @@
 const LanguageEnum = {
-  english: 'english',
-  german: 'german'
+  english: 'EN',
+  german: 'DE'
 }
 
 const DefaultLanguage = LanguageEnum.english

@@ -1,6 +1,8 @@
 <template>
-  <div class="select">
-    <select>
+  <div id="languageSelector"
+       class="select is-primary">
+
+    <select title="LanguageSelection">
       <template v-for="l in languages">
         <option :selected="l === selectedLanguage"
                 @click="setLanguage(l)">
@@ -45,5 +47,23 @@
 
 
 <style lang="scss">
+  // Import own styles
+  @import '../style/3v-forhair';
 
+
+  #languageSelector {
+    $margin: 5px;
+    position: fixed;
+    left: $margin;
+    bottom: $margin;
+    z-index: 10;
+
+    select {
+      border: 4px solid $color-base;
+      color: $color-base;
+      font-weight: bold;
+      background-color: transparent;
+      width: 80px; // Make it a bit more narrow than per default.
+    }
+  }
 </style>

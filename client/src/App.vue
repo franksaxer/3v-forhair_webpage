@@ -42,14 +42,13 @@
               <i class="fa fa-envelope"></i>
               <span>{{ contactData.mailAddress }}</span>
             </div>
-
-            <div class="nav-item">
-              <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
-            </div>
           </div>
         </div>
       </footer>
     </section>
+
+    <!-- language sector -->
+    <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
 
     <!-- login modal -->
     <div v-if="authenticationModalOpen"
