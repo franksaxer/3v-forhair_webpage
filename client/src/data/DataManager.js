@@ -1,8 +1,8 @@
 /* Import Enums */
-import {DataStoreEnum, checkEntry} from './enums/DataStoreEnum'
+import {DataStoreEnum, checkEntry} from '../enums/DataStoreEnum'
 
 /* Import JSON Files */
-import JsonContact from './data/ContactData.json'
+import JsonContact from './json/ContactData.json'
 
 /**
  * Local store where to put in already loaded data objects for faster future access.

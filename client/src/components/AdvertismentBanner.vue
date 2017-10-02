@@ -24,7 +24,7 @@
 
 
 <script>
-  import generalConfig from '../config/GeneralConfig'
+  import generalConfig from '../data/config/GeneralConfig'
 
   export default {
     name: 'advertisement-banner',

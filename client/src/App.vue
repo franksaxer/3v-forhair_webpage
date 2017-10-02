@@ -93,7 +93,7 @@
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
   // Import data manager
-  import DataManager from './DataManager'
+  import DataManager from './data/DataManager'
 
   // Import API connector
   import ApiConnector from './ApiConnector'
