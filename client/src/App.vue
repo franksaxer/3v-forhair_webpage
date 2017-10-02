@@ -57,6 +57,9 @@
   // Import data manager
   import DataManager from './DataManager'
 
+  // Import API connector
+  import ApiConnector from './ApiConnector'
+
   // Import enums.
   import DataStoreEnum from './enums/DataStoreEnum'
   import UrlEnum from './enums/UrlEnum'
@@ -75,10 +78,18 @@
       'advertisement-banner': AdvertisementBanner
     },
 
-    created: function () {
+    created: async function () {
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
-        this.adminViewEnabled = true
+        try {
+          const auth = await ApiConnector.authenticate('kekse')
+
+          if (auth) {
+            this.adminViewEnabled = true
+          }
+        } catch (err) {
+          // TODO
+        }
       }
     }
   }
