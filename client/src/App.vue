@@ -61,12 +61,12 @@
       </header>
 
       <section class="modal-card-body">
-        <p>Please insert the administration password to access the admin view.</p>
+        <p>{{ labelStore.authentication_description[language] }}</p>
 
         <input class="input"
                type="password"
                placeholder="Administration Password"
-               v-model.trim="password"
+               v-model.trim="labelStore.authentication_passwordPlaceholder[language]"
                @keydown.enter="authenticate">
 
         <p v-if="authErrorMessage"
@@ -80,7 +80,7 @@
         <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
                 @click="authenticate">
 
-          Authenticate
+          {{ labelStore.authentication_button[language] }}
         </button>
       </footer>
     </div>
@@ -92,21 +92,23 @@
   // Import other components
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
-  // Import data manager
+  // Import manager and utilities components.
   import DataManager from './data/DataManager'
-
-  // Import API connector
+  import LabelStore from './data/LabelStore'
   import ApiConnector from './ApiConnector'
 
   // Import enums.
   import DataStoreEnum from './enums/DataStoreEnum'
   import UrlEnum from './enums/UrlEnum'
+  import {DefaultLanguage} from './enums/LanguageEnum'
 
   export default {
     name: 'app',
 
     data: function () {
       return {
+        language: DefaultLanguage, // The clients language for the labels,
+        labelStore: LabelStore, // Add here, cause else it is not available for rendering.
         // Authentication elements
         authenticationModalOpen: false, // Define if the modal should be shown.
         adminViewEnabled: false, // Define if the admin view is enabled after authentication.
@@ -134,11 +136,11 @@
             this.adminViewEnabled = true
             this.authenticationModalOpen = false
           } else {
-            this.authErrorMessage = 'Incorrect Password!'
+            this.authErrorMessage = this.labelStore.authentication_invalidPassword[this.language]
           }
         } catch (err) {
           this.authIsLoading = false
-          this.authErrorMessage = 'Something went wrong while try to connect to the server!' // TODO: get message from exception
+          this.authErrorMessage = this.labelStore.authentication_problem[this.language]
         }
       }
     },
