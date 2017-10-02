@@ -66,7 +66,8 @@
         <input class="input"
                type="password"
                placeholder="Administration Password"
-               v-model="password">
+               v-model.trim="password"
+               @keydown.enter="authenticate">
 
         <p v-if="authErrorMessage"
            class="error-message">
@@ -77,9 +78,9 @@
 
       <footer class="modal-card-foot">
         <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                @click="login">
+                @click="authenticate">
 
-          Login
+          Authenticate
         </button>
       </footer>
     </div>
@@ -122,7 +123,7 @@
     },
 
     methods: {
-      login: async function () {
+      authenticate: async function () {
         try {
           this.authErrorMessage = null
           this.authIsLoading = true
@@ -307,7 +308,7 @@
       justify-content: center;
 
       button {
-        width: 100px; // To avoid resizing when loading.
+        width: 150px; // To avoid resizing when loading.
       }
     }
 
