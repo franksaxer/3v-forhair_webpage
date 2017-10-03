@@ -18,6 +18,7 @@ password
 curlRequests
 server/client/
 
+static/
 # Editor directories and files
 .idea
 *.suo
