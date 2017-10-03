@@ -18,6 +18,12 @@
 
           <div class="nav-right">
             <!-- necessary for the structure, else center will not work -->
+            <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                    v-if="adminViewEnabled"
+                    @click="logout">
+
+              {{ labelStore.authentication_logoutButton[language] }}
+            </button>
           </div>
         </div>
       </header>
@@ -68,9 +74,9 @@
 
         <input class="input"
                type="password"
-               placeholder="Administration Password"
-               v-model.trim="labelStore.authentication_passwordPlaceholder[language]"
-               @keydown.enter="authenticate">
+               :placeholder="labelStore.authentication_passwordPlaceholder[language]"
+               v-model.trim="password"
+               @keydown.enter="login">
 
         <p v-if="authErrorMessage"
            class="error-message">
@@ -81,7 +87,7 @@
 
       <footer class="modal-card-foot">
         <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                @click="authenticate">
+                @click="login">
 
           {{ labelStore.authentication_button[language] }}
         </button>
@@ -115,10 +121,10 @@
         labelStore: LabelStore, // Add here, cause else it is not available for rendering.
         // Authentication elements
         authenticationModalOpen: false, // Define if the modal should be shown.
-        adminViewEnabled: false, // Define if the admin view is enabled after authentication.
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
+        sessionKey: null, // The session key when authorized.
         // The data objects
         contactData: DataManager.loadData(DataStoreEnum.contact)
       }
@@ -131,27 +137,46 @@
     },
 
     methods: {
-      authenticate: async function () {
-        try {
-          this.authErrorMessage = null
-          this.authIsLoading = true
-          const auth = await ApiConnector.authenticate(this.password)
-          this.authIsLoading = false
+      login: async function () {
+        this.authErrorMessage = null // Reset the message.
+        this.authIsLoading = true // Show something is happening. Especially in case of false password.
 
-          if (auth) {
-            this.adminViewEnabled = true
-            this.authenticationModalOpen = false
-          } else {
-            this.authErrorMessage = this.labelStore.authentication_invalidPassword[this.language]
-          }
+        try {
+          this.sessionKey = await ApiConnector.login(this.password) // Authenticate to the server.
+          // Authentication successful.
+          this.authenticationModalOpen = false // Close modal.
         } catch (err) {
-          this.authIsLoading = false
-          this.authErrorMessage = this.labelStore.authentication_problem[this.language]
+          // Authentication failed.
+          this.authErrorMessage = err.message
         }
+
+        this.authIsLoading = false  // End loading.
+      },
+
+      logout: async function () {
+        this.authIsLoading = true // Show something is happening.
+
+        try {
+          await ApiConnector.logout(this.sessionKey) // Clear the session on the server.
+          // Logout successful.
+          this.sessionKey = null
+        } catch (err) {
+          console.log(err.message)
+        }
+
+        this.authIsLoading = false  // End loading.
       },
 
       setLanguage: function (language) {
         this.language = language
+      }
+    },
+
+    computed: {
+
+      adminViewEnabled: function () {
+        if (this.sessionKey) return true
+        else return false
       }
     },
 
