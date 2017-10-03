@@ -6,13 +6,21 @@ const bcrypt = require('bcrypt') // To compare the passwords.
 const logger = require(__dirname + '/../logger.js') // To log.
 
 // Own
+const sessionManager = require(__dirname + '/../SessionManager.js')
 const password_prop = require(__dirname + '/../config/password_prop.js')('server')
 
 /* Initialize the router */
-var authRouter = new router();
+const authRouter = new router();
 authRouter.prefix('/api/authentication')
 
 /* Define the methods */
+/**
+ * The login method for administrators.
+ * Connection has to be secure -> 400
+ * Password has to be provided -> 400
+ * A session has to be available -> 403
+ * The password must be correct -> 401
+ */
 authRouter.post('/login', async ctx => {
   const password = await ctx.request.body.password
 
@@ -26,10 +34,22 @@ authRouter.post('/login', async ctx => {
 	ctx.body = 'Missing Password!'
   }
 
+  else if (! await sessionManager.sessionAvailable()) {
+    ctx.status = 403
+    ctx.body = 'No session available!'
+  }
+
   else {
     try {
-      const auth = await checkPassword(password)
-      ctx.body = auth
+      if (await checkPassword(password)) {
+        ctx.status = 200
+        ctx.body = await sessionManager.openSession()
+      }
+
+      else {
+        ctx.status = 401
+        ctx.body = 'Wrong password!'
+      }
     }
 
     catch (err) {
@@ -38,6 +58,26 @@ authRouter.post('/login', async ctx => {
       ctx.body = 'Cause of an internal server error, the authentication is not possible.'
     }
   }
+})
+
+/**
+ * The logout method to clear the session.
+ * The provided session key has to be valid -> 401
+ * An invalid session key force a delay.
+ */
+authRouter.post('/logout', async ctx => {
+    const sessionKey = await ctx.request.body.sessionKey
+
+    // Check if the provided session key is valid.
+    if (await sessionManager.checkSessionKey(sessionKey)) {
+      // Clear the session.
+      sessionManager.clearSession()
+      ctx.status = 200
+    } else {
+      // Invalid session key.
+      ctx.status = 401
+      ctx.body = 'Invalid session key.'
+    }
 })
 
 async function checkPassword (password) {
@@ -65,7 +105,7 @@ async function readStoredPassword () {
     
   catch (err) {
     // Log the error and forward the error.
-    logger.logger.error('The following error occured, while try to read in the stored password.')
+    logger.logger.error('The following error occurred, while try to read in the stored password.')
     logger.logger.error(err)
 	throw err
   }

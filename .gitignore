@@ -14,6 +14,8 @@ yarn-error.log*
 # The admin password
 password
 
+# server/
+curlRequests
 server/client/
 
 # Editor directories and files
