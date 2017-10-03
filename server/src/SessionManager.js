@@ -6,6 +6,7 @@ const random = require('randomstring') // Used to generate the random session ke
 
 // Own
 const logger = require('./logger') // To log fatal errors.
+const general_prop = require(__dirname + '/config/general_prop.js')('production')
 
 /**
  * Stores the current session key.
@@ -16,12 +17,25 @@ const logger = require('./logger') // To log fatal errors.
 let sessionKey = null
 
 /**
+ * Set when a new session has ben open.
+ * Used to expire the session.
+ * @type date {number}
+ */
+let sessionCreateDate = null
+
+/**
+ * The maximum time a session can be open.
+ * @type {number}
+ */
+const sessionMaxDuration = general_prop.sessionTimeout
+
+/**
  * Timeout in seconds the procedure waits, if a wrong session key has been provided.
  * For security reasons to prevent brute force attacks.
  * Value is in milliseconds.
  * @type {number}
  */
-const timeout = 5000
+const timeout = general_prop.securityTimeout
 
 /**
  * Configurations for the random string generator.
@@ -61,8 +75,9 @@ const openSession = async function () {
 
     // Generate a new session key.
     try {
-        sessionKey = random.generate(randomOptions)
-        return sessionKey
+        sessionKey = random.generate(randomOptions) // Generate new session key and store it.
+        sessionCreateDate = new Date() // store the current date.
+        return sessionKey // Return the key.
     } catch (err) {
         logger.logger.err('Error while try to generate a new session key: \n' + err)
         throw new Error('Something went wrong while try to generate a new session key.')
@@ -100,10 +115,32 @@ const clearSession = function () {
     sessionKey = null
 }
 
+/**
+ * Check if the current session is expired and remove it if necessary.
+ * Compare the current date with the session create date.
+ */
+const checkSessionExpired = function () {
+    console.log('expire')
+
+    // Only possible if any session has been already created.
+    if (sessionCreateDate) {
+        // Get the current session duration.
+        const now = new Date();
+        const duration = now - sessionCreateDate
+        console.log(duration)
+
+        // Check if session is expired.
+        if (duration > sessionMaxDuration) {
+            clearSession()
+        }
+    }
+}
+
 // Define what should be exported.
 module.exports = {
     sessionAvailable: sessionAvailable,
     openSession: openSession,
     checkSessionKey: checkSessionKey,
-    clearSession: clearSession
+    clearSession: clearSession,
+    checkSessionExpired: checkSessionExpired
 }
