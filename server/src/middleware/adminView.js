@@ -8,7 +8,7 @@ const ADMIN_VIEW_URL = '/admin'
  * @param   next
  *          Function to forward to the next middleware.
  */
-const responseTime = async function (ctx, next) {
+const rewriteUrl = async function (ctx, next) {
   // Check if the requested URL is the admin view.
   if (ctx.request.url === ADMIN_VIEW_URL) {
     // Rewrite the URL, so the static content could be delivered.
@@ -23,4 +23,4 @@ const responseTime = async function (ctx, next) {
 }
 
 // Define what to export.
-module.exports = responseTime
+module.exports = rewriteUrl
