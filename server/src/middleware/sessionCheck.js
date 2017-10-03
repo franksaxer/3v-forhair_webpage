@@ -14,17 +14,22 @@ const AUTH_API_BASE_URL = '/api/authentication'
  */
 const checkSession = async function (ctx, next) {
   // Check if the requested URL is the admin view.
-  if (ctx.request.url.startsWith(API_BASE_URL)) {
+  if (ctx.request.url.startsWith(API_BASE_URL) && !ctx.request.url.startsWith(AUTH_API_BASE_URL)) {
+    // Get the provided session key.
     const sessionKey = await ctx.request.body.sessionKey
 
+    // Check if a session key is provided.
     if (!sessionKey) {
       ctx.status = 401
       ctx.body = 'Session key missing!'
+      // Do not forward to other middleware.
     }
 
+    // Check if the session key is valid.
     else if (!await sessionManager.checkSessionKey(sessionKey)) {
       ctx.status = 401
       ctx.body = 'Invalid session key!'
+      // Do not forward to other middleware.
     }
   } else {
       // Go to the other middleware.
