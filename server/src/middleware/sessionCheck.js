@@ -6,7 +6,7 @@ const API_BASE_URL = '/api'
 const AUTH_API_BASE_URL = '/api/authentication'
 
 /**
- * Middleware function to rewrite the admin view URL.
+ * Middleware function to check the session key when access API.
  * @param   ctx
  *          The context object from Koa.
  * @param   next
