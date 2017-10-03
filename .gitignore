@@ -14,6 +14,8 @@ yarn-error.log*
 # The admin password
 password
 
+curlRequests
+
 # Editor directories and files
 .idea
 *.suo

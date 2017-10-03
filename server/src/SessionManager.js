@@ -41,7 +41,7 @@ const randomOptions = {
  *          true  - if no session exist
  *          false - else
  */
-const sessionAvailable = function () {
+const sessionAvailable = async function () {
     // Check if the session key variable is set.
     if (sessionKey) return false
     else return true
@@ -53,7 +53,7 @@ const sessionAvailable = function () {
  * @return  key {string}
  *          The generated session key.
  */
-const openSession = function () {
+const openSession = async function () {
     // Check if a session is available.
     if (!sessionAvailable()) {
         throw new Error('Could open session, cause no session is available!')
@@ -80,7 +80,7 @@ const openSession = function () {
  *          false - else
  *
  */
-const checkSessionKey = function (key) {
+const checkSessionKey = async function (key) {
     // Compare the given key to the internal stored one.
     if (sessionKey === key) return true
     else {
