@@ -13,6 +13,9 @@ const AUTH_API_BASE_URL = '/api/authentication'
  *          Function to forward to the next middleware.
  */
 const checkSession = async function (ctx, next) {
+  // Always check first if the current session is expired.
+  await sessionManager.checkSessionExpired()
+
   // Check if the requested URL is the admin view.
   if (ctx.request.url.startsWith(API_BASE_URL) && !ctx.request.url.startsWith(AUTH_API_BASE_URL)) {
     // Get the provided session key.
