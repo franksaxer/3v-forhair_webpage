@@ -186,6 +186,8 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
+
+      window.onbeforeunload = this.logout
     }
   }
 </script>
