@@ -3,10 +3,19 @@
         :class="{'closed': closed}"
         :style="{'background-image': 'url(' + imageSource +')'}">
 
-    <button class="ghost-button"
+    <button class="close-button ghost-button"
             @click="closed = true">
 
       <i class="fa fa-times-circle"
+         aria-hidden="true">
+      </i>
+    </button>
+
+    <button class="edit-button ghost-button"
+            @click="console.log('edit')"
+            v-if="editable">
+
+      <i class="fa fa-pencil-square"
          aria-hidden="true">
       </i>
     </button>
@@ -15,10 +24,17 @@
 
 
 <script>
-  import generalConfig from '../data/GeneralConfig'
+  import generalConfig from '../data/config/GeneralConfig'
 
   export default {
     name: 'advertisement-banner',
+
+    props: {
+      editable: {
+        type: Boolean,
+        default: false // Should only be editable if it is really allowed.
+      }
+    },
 
     data: function () {
       return {
@@ -70,7 +86,7 @@
     }
 
 
-    /* Close Button */
+    /* Close & Edit Button */
     button {
       /* Variables */
       $margin: 5px;
@@ -87,11 +103,17 @@
         color: gray;
       }
 
+    }
 
+    .close-button {
       @include media('>=desktop') {
         // Should be only removable on mobile devices.
         display: none;
       }
+    }
+
+    .edit-button {
+
     }
 
   }

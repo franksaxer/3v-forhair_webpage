@@ -18,6 +18,12 @@
 
           <div class="nav-right">
             <!-- necessary for the structure, else center will not work -->
+            <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                    v-if="adminViewEnabled"
+                    @click="logout">
+
+              {{ labelStore.authentication_logoutButton[language] }}
+            </button>
           </div>
         </div>
       </header>
@@ -27,7 +33,7 @@
 
         </div>
 
-        <advertisement-banner class="main-element"></advertisement-banner>
+        <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
       </main>
 
       <footer>
@@ -46,35 +52,142 @@
         </div>
       </footer>
     </section>
+
+    <!-- language sector -->
+    <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
+
+    <!-- login modal -->
+    <div v-if="authenticationModalOpen"
+         class="modal-background">
+    </div>
+
+    <div id="authentication-modal"
+         class="modal-card"
+         v-if="authenticationModalOpen">
+
+      <header class="modal-card-head">
+        <p class="modal-card-title">Login</p>
+      </header>
+
+      <section class="modal-card-body">
+        <p>{{ labelStore.authentication_description[language] }}</p>
+
+        <input class="input"
+               type="password"
+               :placeholder="labelStore.authentication_passwordPlaceholder[language]"
+               v-model.trim="password"
+               @keydown.enter="login">
+
+        <p v-if="authErrorMessage"
+           class="error-message">
+
+          {{authErrorMessage}}
+        </p>
+      </section>
+
+      <footer class="modal-card-foot">
+        <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                @click="login">
+
+          {{ labelStore.authentication_button[language] }}
+        </button>
+      </footer>
+    </div>
   </div>
 </template>
 
 
 <script>
   // Import other components
+  import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
-  // Import data manager
-  import DataManager from './DataManager'
+  // Import manager and utilities components.
+  import DataManager from './data/DataManager'
+  import LabelStore from './data/LabelStore'
+  import ApiConnector from './ApiConnector'
 
   // Import enums.
   import DataStoreEnum from './enums/DataStoreEnum'
+  import UrlEnum from './enums/UrlEnum'
+  import {DefaultLanguage} from './enums/LanguageEnum'
 
   export default {
     name: 'app',
 
     data: function () {
       return {
+        language: DefaultLanguage, // The clients language for the labels,
+        labelStore: LabelStore, // Add here, cause else it is not available for rendering.
+        // Authentication elements
+        authenticationModalOpen: false, // Define if the modal should be shown.
+        password: '', // Stores the password of the input element.
+        authIsLoading: false, // Set the login button to loading.
+        authErrorMessage: null, // Contains the error message after an invoked login try.
+        sessionKey: null, // The session key when authorized.
+        // The data objects
         contactData: DataManager.loadData(DataStoreEnum.contact)
       }
     },
 
     components: {
+      LanguageSelector,
+      'language-selector': LanguageSelector,
       'advertisement-banner': AdvertisementBanner
     },
 
-    created: function () {
-      console.log(this.contactData)
+    methods: {
+      login: async function () {
+        this.authErrorMessage = null // Reset the message.
+        this.authIsLoading = true // Show something is happening. Especially in case of false password.
+
+        try {
+          this.sessionKey = await ApiConnector.login(this.password) // Authenticate to the server.
+          // Authentication successful.
+          this.authenticationModalOpen = false // Close modal.
+        } catch (err) {
+          // Authentication failed.
+          this.authErrorMessage = err.message
+        }
+
+        this.authIsLoading = false  // End loading.
+      },
+
+      logout: async function () {
+        this.authIsLoading = true // Show something is happening.
+
+        try {
+          await ApiConnector.logout(this.sessionKey) // Clear the session on the server.
+          // Logout successful.
+          this.sessionKey = null
+        } catch (err) {
+          console.log(err.message)
+        }
+
+        this.authIsLoading = false  // End loading.
+      },
+
+      setLanguage: function (language) {
+        this.language = language
+      }
+    },
+
+    computed: {
+
+      adminViewEnabled: function () {
+        if (this.sessionKey) return true
+        else return false
+      }
+    },
+
+    created: async function () {
+      // Check if the admin view is requested.
+      if (window.location.pathname === UrlEnum.admin) {
+        // Open the authentication modal.
+        this.authenticationModalOpen = true
+      }
+
+      window.onbeforeunload = this.logout
     }
   }
 </script>
@@ -184,7 +297,6 @@
     background-color: transparent; // Per default it is white, so background on parent elements doesn't work.
   }
 
-
   main {
     .main-element {
       position: absolute;
@@ -206,6 +318,51 @@
       @include media('<desktop') {
         // Use the whole width on mobile devices, cause the advertisement is missing.
         right: 0;
+      }
+    }
+  }
+
+
+  button {
+    // The secondary color of Bulma does not rly work together.
+    color: white!important;
+  }
+
+
+  #authentication-modal {
+    $width: 400px;
+    $height: 330px;
+
+    position: absolute;
+    top: calc(50vh - (#{$height} /2));
+    left: calc(50vw - (#{$width} /2));
+
+    width: $width;
+    height: $height;
+
+
+    .modal-card-head, .modal-card-foot {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      button {
+        width: 150px; // To avoid resizing when loading.
+      }
+    }
+
+    .modal-card-body {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      p {
+        text-align: center;
+        margin-bottom: 20px; // Between this text and the input element.
+
+        &.error-message {
+          color: red!important;
+        }
       }
     }
   }

@@ -7,7 +7,7 @@ const sslify = require('koa-sslify') // Force HTTPS connections.
 const serve = require('koa-static') // To deliver static content.i
 const logger_bunyan = require('koa-bunyan-logger') // To logg connections and other content.
 const bodyParser = require('koa-body') // To read the requests bodies.
-
+const cors = require('@koa/cors') // To allow cross origin requests in the development mode.
 
 // Own
 const logger = require(__dirname + '/logger.js')
@@ -29,6 +29,11 @@ const ssl_prop = require(__dirname + '/config/ssl_prop.js')(app.env)
 
 /* Add Middleware */
 // The order of the different middle ware compontents is absolutely important!
+
+if (app.env === 'development') {
+  console.log('Enable COR for development usage.')
+  app.use(cors())
+}
 
 // Add logger for the connections.
 app.use(logger_bunyan(logger.logger))
