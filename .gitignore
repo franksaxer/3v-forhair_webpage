@@ -26,3 +26,4 @@ static/
 *.njsproj
 *.sln
 *.swp
+*.swo
