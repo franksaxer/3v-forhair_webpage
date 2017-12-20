@@ -3,6 +3,7 @@ import {DataStoreEnum, checkEntry} from '../enums/DataStoreEnum'
 
 /* Import JSON Files */
 import JsonContact from './json/ContactData.json'
+import JsonGeneralConfig from './json/GeneralConfig.json'
 
 /**
  * Local store where to put in already loaded data objects for faster future access.
@@ -24,7 +25,7 @@ const loadDataObject = function (data) {
   }
 
   // Load JSON if not stored internally from an earlier call.
-  if (!DATA_STORE.data) {
+  if (!DATA_STORE[data]) {
     let json = null
 
     switch (data) {
@@ -32,15 +33,29 @@ const loadDataObject = function (data) {
         json = JsonContact
         break
 
+      case DataStoreEnum.generalConfig:
+        json = JsonGeneralConfig
+        break
+
       default:
         json = null
     }
 
-    DATA_STORE.data = json
+    // Work on the json to make it useable.
+    for (let i in json) {
+      // Check if the property is an URL, related to the 'assets' folder.
+      if (json[i].substring(0, 3) === 'Url') {
+        // Load the source by the relative URL.
+        json[i] = require('../assets/' + json[i].substring(4))
+      }
+    }
+
+    // Put the JSON into the store.
+    DATA_STORE[data] = json
   }
 
   // Return the data object.
-  return DATA_STORE.data
+  return DATA_STORE[data]
 }
 
 // Define what should be exported.

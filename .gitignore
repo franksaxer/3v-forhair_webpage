@@ -17,8 +17,13 @@ password
 # server/
 curlRequests
 server/client/
-
 static/
+server/src/enums/
+
+#client
+client/src/data/json/
+client/src/enums/DataStoreEnum.js
+
 # Editor directories and files
 .idea
 *.suo
@@ -27,3 +32,4 @@ static/
 *.sln
 *.swp
 *.swo
+tags

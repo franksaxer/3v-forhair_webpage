@@ -2,7 +2,8 @@
  * The enumeration object with the keys.
  */
 const DataStoreEnum = {
-  contact: 'LGBNePt?3@Z%!TfV'
+  contact: '2f8a6bf31f3bd67bd2d9720c58b19c9a',
+  generalConfig: 'd2e2a5580481bf00e253a0cc5a4b080c'
 }
 
 /**
