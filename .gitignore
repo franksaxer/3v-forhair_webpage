@@ -19,6 +19,7 @@ curlRequests
 server/client/
 static/
 server/src/enums/
+server/src/data
 
 #client
 client/src/data/json/
