@@ -120,14 +120,11 @@ const clearSession = function () {
  * Compare the current date with the session create date.
  */
 const checkSessionExpired = function () {
-    console.log('expire')
-
     // Only possible if any session has been already created.
     if (sessionCreateDate) {
         // Get the current session duration.
         const now = new Date();
         const duration = now - sessionCreateDate
-        console.log(duration)
 
         // Check if session is expired.
         if (duration > sessionMaxDuration) {
