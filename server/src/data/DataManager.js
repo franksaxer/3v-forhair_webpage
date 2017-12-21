@@ -1,9 +1,4 @@
-/**
- * The enumeration object with the keys.
- */
-const DataStoreEnum = {
-  contact: 'LGBNePt?3@Z%!TfV'
-}
+const DataStoreEnum = require(__dirname + '/json/DataStoreEntries.json')
 
 /**
  * Check if a given entry exist in the enumeration.
@@ -22,8 +17,5 @@ const checkEntry = function (data) {
   return false
 }
 
-// Define what should be exported.
-export {DataStoreEnum, checkEntry}
 
-// Per default only export the enumeration.
-export default DataStoreEnum
+module.exports.checkEntry = checkEntry

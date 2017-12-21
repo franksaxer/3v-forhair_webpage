@@ -1,13 +1,29 @@
-/* Import Enums */
-import {DataStoreEnum, checkEntry} from '../enums/DataStoreEnum'
-
 /* Import JSON Files */
+import DataStoreEnum from './json/DataStoreEntries'
 import JsonContact from './json/ContactData.json'
+import JsonGeneralConfig from './json/GeneralConfig.json'
 
 /**
  * Local store where to put in already loaded data objects for faster future access.
  */
 const DATA_STORE = {}
+
+/**
+ * Check if a given entry exist in the enumeration.
+ * @param  data
+ *         The entry that should be checked if it exist.
+ * @return true - if it exist
+ *              - else
+ */
+const checkEntry = function (data) {
+  for (let key in DataStoreEnum) {
+    if (DataStoreEnum[key] === data) {
+      return true
+    }
+  }
+
+  return false
+}
 
 /**
  * Function to load a data object.
@@ -18,13 +34,14 @@ const DATA_STORE = {}
  * @return  The required data object.
  */
 const loadDataObject = function (data) {
+  console.log(data)
   // Check if it is a valid data store object.
   if (!checkEntry(data)) {
     return null
   }
 
   // Load JSON if not stored internally from an earlier call.
-  if (!DATA_STORE.data) {
+  if (!DATA_STORE[data]) {
     let json = null
 
     switch (data) {
@@ -32,18 +49,31 @@ const loadDataObject = function (data) {
         json = JsonContact
         break
 
+      case DataStoreEnum.generalConfig:
+        json = JsonGeneralConfig
+        break
+
       default:
         json = null
     }
 
-    DATA_STORE.data = json
+    // Work on the json to make it useable.
+    for (let i in json) {
+      console.log(json[i])
+      // Check if the property is an URL, related to the 'assets' folder.
+      if (json[i].substring(0, 3) === 'Url') {
+        // Load the source by the relative URL.
+        json[i] = require('../assets/' + json[i].substring(4))
+      }
+    }
+
+    // Put the JSON into the store.
+    DATA_STORE[data] = json
   }
 
   // Return the data object.
-  return DATA_STORE.data
+  return DATA_STORE[data]
 }
 
 // Define what should be exported.
-export default {
-  loadData: loadDataObject
-}
+export {loadDataObject, DataStoreEnum}

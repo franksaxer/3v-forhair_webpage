@@ -17,11 +17,21 @@ password
 # server/
 curlRequests
 server/client/
-
 static/
+server/src/enums/
+server/src/data/json/
+
+#client
+client/src/data/json/
+client/src/enums/DataStoreEnum.js
+
 # Editor directories and files
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.swp
+*.swo
+tags
+Session.vim
