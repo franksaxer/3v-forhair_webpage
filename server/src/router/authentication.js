@@ -8,6 +8,7 @@ const logger = require(__dirname + '/../logger.js') // To log.
 // Own
 const sessionManager = require(__dirname + '/../SessionManager.js')
 const password_prop = require(__dirname + '/../config/password_prop.js')('server')
+const dataManager = require(__dirname + '/../data/DataManager.js')
 
 /* Initialize the router */
 const authRouter = new router();

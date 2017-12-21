@@ -19,7 +19,7 @@ curlRequests
 server/client/
 static/
 server/src/enums/
-server/src/data
+server/src/data/json/
 
 #client
 client/src/data/json/
@@ -34,3 +34,4 @@ client/src/enums/DataStoreEnum.js
 *.swp
 *.swo
 tags
+Session.vim
