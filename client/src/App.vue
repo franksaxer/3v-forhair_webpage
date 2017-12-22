@@ -103,7 +103,7 @@
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
   // Import manager and utilities components.
-  import {DataStoreEnum, loadDataObject} from './data/DataManager'
+  import {DataStoreEntries, loadDataObject} from './data/DataManager'
   import LabelStore from './data/LabelStore'
   import ApiConnector from './ApiConnector'
 
@@ -125,7 +125,7 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: loadDataObject(DataStoreEnum.contact)
+        contactData: loadDataObject(DataStoreEntries.contact.key)
       }
     },
 

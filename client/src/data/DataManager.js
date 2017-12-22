@@ -1,5 +1,5 @@
 /* Import JSON Files */
-import DataStoreEnum from './json/DataStoreEntries'
+import DataStoreEntries from './json/core/DataStoreEntries.json'
 import JsonContact from './json/ContactData.json'
 import JsonGeneralConfig from './json/GeneralConfig.json'
 
@@ -9,47 +9,56 @@ import JsonGeneralConfig from './json/GeneralConfig.json'
 const DATA_STORE = {}
 
 /**
- * Check if a given entry exist in the enumeration.
- * @param  data
+ * Check if a given key fits to a known entry in the dataset.
+ *
+ * @param  key
  *         The entry that should be checked if it exist.
+ *
  * @return true - if it exist
  *              - else
  */
-const checkEntry = function (data) {
-  for (let key in DataStoreEnum) {
-    if (DataStoreEnum[key] === data) {
+const checkEntry = function (key) {
+  // Go other all entries in the JSON object and compare the key.
+  let entry
+
+  for (let i in DataStoreEntries) {
+    entry = DataStoreEntries[i]
+
+    // Check if the key fits.
+    if (entry.key === key) {
       return true
     }
   }
-
-  return false
 }
 
 /**
- * Function to load a data object.
- * Checks if the data object is known or not. In case it is not, NULL will be returned.
+ * Function to load a entry object.
+ * Checks if the entry object is known or not. In case it is not, NULL will be returned.
  * Load the object from the internal store, if it has been already loaded earlier.
- * @param   data
- *          Based on the DataStoreEnum, used to define which object should be load.
- * @return  The required data object.
+ *
+ * @param   key
+ *          Based on the DataStoreEntries, used to define which object should be load.
+ *
+ * @return  The required key object.
  */
-const loadDataObject = function (data) {
-  console.log(data)
-  // Check if it is a valid data store object.
-  if (!checkEntry(data)) {
+const loadDataObject = function (key) {
+  console.log(key)
+  // Check if it is a valid key of the store object.
+  if (!checkEntry(key)) {
     return null
   }
 
   // Load JSON if not stored internally from an earlier call.
-  if (!DATA_STORE[data]) {
+  if (!DATA_STORE[key]) {
     let json = null
+    console.log('load')
 
-    switch (data) {
-      case DataStoreEnum.contact:
+    switch (key) {
+      case DataStoreEntries.contact.key:
         json = JsonContact
         break
 
-      case DataStoreEnum.generalConfig:
+      case DataStoreEntries.generalConfig.key:
         json = JsonGeneralConfig
         break
 
@@ -68,12 +77,12 @@ const loadDataObject = function (data) {
     }
 
     // Put the JSON into the store.
-    DATA_STORE[data] = json
+    DATA_STORE[key] = json
   }
 
-  // Return the data object.
-  return DATA_STORE[data]
+  // Return the key object.
+  return DATA_STORE[key]
 }
 
 // Define what should be exported.
-export {loadDataObject, DataStoreEnum}
+export {loadDataObject, DataStoreEntries}

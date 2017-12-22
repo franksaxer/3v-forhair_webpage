@@ -24,7 +24,7 @@
 
 
 <script>
-  import {DataStoreEnum, loadDataObject} from '../data/DataManager'
+  import {DataStoreEntries, loadDataObject} from '../data/DataManager'
 
   export default {
     name: 'advertisement-banner',
@@ -39,7 +39,7 @@
     data: function () {
       return {
         closed: false,
-        imageSource: loadDataObject(DataStoreEnum.generalConfig).advertisementImage
+        imageSource: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage
       }
     }
   }

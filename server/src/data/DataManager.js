@@ -1,4 +1,4 @@
-const DataStoreEntries = require(__dirname + '/json/DataStoreEntries.json')
+const DataStoreEntries = require(__dirname + '/json/core/DataStoreEntries.json')
 
 /**
  * Check if a given key fits to a known entry in the dataset.
