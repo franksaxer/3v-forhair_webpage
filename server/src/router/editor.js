@@ -2,7 +2,8 @@
 // 3rd party
 const router = require('koa-router') // The parent object for the router.
 const fs = require('fs') // To write data to files.
-
+const exec = require('child_process').execSync // To run shell command to build the client.
+  
 // Own
 const logger = require(__dirname + '/../logger.js').logger // To log.
 const DataManager = require(__dirname + '/../data/DataManager.js') // To work with the configuration data files.
@@ -24,7 +25,7 @@ editorRouter.prefix('/api/editor')
  * 500 -> error during writing the dataset
  * 200 -> everything went fine
  */
-editorRouter.post('/updateConfig', async ctx => {
+editorRouter.put('/updateConfig', async ctx => {
   console.log('Update');
   const dataKey = ctx.request.body.dataKey
   const dataObject = ctx.request.body.dataObject
@@ -79,6 +80,28 @@ editorRouter.post('/updateConfig', async ctx => {
 
 })
 
+/**
+ * Method to build the client new by its resources.
+ * Will be typically called after several changes.
+ *
+ * 500 -> if the build script throws any error 
+ * 200 -> everythign went fine
+ */
+editorRouter.put('/save', async ctx => {
+  // Executes Webpacks build script.
+  logger.info('Build client new.')
+  
+  try {
+    const stdo = exec('npm run build', {cwd: __dirname + '/../../../client'})
+    ctx.status = 200 
+  }
+
+  catch (e) {
+    logger.error(e)
+    ctx.body = 'The client could not been build new due to the following error: ' + JSON.stringify(e)
+    ctx.status = 500
+  }
+})
 
 // Define what should be exported.
 module.exports = editorRouter
