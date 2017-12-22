@@ -27,3 +27,49 @@ const checkEntry = function (key) {
 }
 
 module.exports.checkEntry = checkEntry
+
+/**
+ * Get an entry of the data store by its key.
+ *
+ * @param key
+ *        The key of the entry that should been returned.
+ *
+ * @return  entry
+ *          The associated entry in the stored.
+ *          Can be NULL if the key does not exist.
+ */
+const getEntry = function (key) {
+  // Do not use the checkEntry() function cause it would lead to a double for-loop.
+
+  // Iterate over all entries till find the correct one.
+  let entry
+
+  for (let i in DataStoreEntries) {
+    entry = DataStoreEntries[i]
+
+    // Check if it is the wanted entry.
+    if (entry.key === key) {
+      return entry
+    }
+  }
+
+  // No entry fcould been found.
+  return null
+}
+
+module.exports.getEntry = getEntry
+
+/**
+ * Get the absolute path of a dataset by its relative path from the data store entry.
+ *
+ * @param   relativePath
+ *          The relative path of the entry.
+ *
+ * @return  absolutePath
+ *          The path to the dataset within the clients source directory.
+ */
+const absolutePath = function(relativePath) {
+  return (__dirname + '/../../../client/src/data/' + relativePath)
+}
+
+module.exports.absolutePath = absolutePath

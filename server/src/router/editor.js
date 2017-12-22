@@ -20,7 +20,9 @@ editorRouter.prefix('/api/editor')
  * Used to get a key, which data set should been updated.
  * Furthermore it expect an JSON object, used to overwrite the current configuration.
  *
- * Invalid data key -> 400
+ * 400 -> invalid data key / missing data object / not existing dataset file
+ * 500 -> error during writing the dataset
+ * 200 -> everything went fine
  */
 editorRouter.post('/updateConfig', async ctx => {
   console.log('Update');
@@ -45,7 +47,34 @@ editorRouter.post('/updateConfig', async ctx => {
   else {
     // Further checks if the object is well structured are not necessary.
     // This will be handled by the body parser module automatically.
-    ctx.status = 200
+
+    // Get the data store entry and the absolute path of the dataset to update.
+    const entry = DataManager.getEntry(dataKey) 
+    const path = DataManager.absolutePath(entry.path)
+
+    // Make sure the file already exist.
+    // Only existing datasets can be updated.
+    if (!fs.existsSync(path)) {
+      const message = 'Defined dataset file does not exist. Create new ones is not allowed!'
+      logger.info(message)
+      ctx.body = message
+      ctx.status = 400
+    }
+
+    // Overwrite the dataset file.
+    else {
+      try {
+        // Overwrite the dataset with the send object.
+        fs.writeFileSync(path, JSON.stringify(dataObject))
+        ctx.status = 200
+      }
+
+      catch (e) {
+        logger.error(e)
+        ctx.body = 'The configuration could not been updated due to the following error: ' + JSON.stringify(e)
+        ctx.status = 500
+      }
+    }
   }
 
 })
