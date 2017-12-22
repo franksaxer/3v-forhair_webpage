@@ -1,7 +1,5 @@
 /* Import JSON Files */
 import DataStoreEntries from './json/core/DataStoreEntries.json'
-import JsonContact from './json/ContactData.json'
-import JsonGeneralConfig from './json/GeneralConfig.json'
 
 /**
  * Local store where to put in already loaded data objects for faster future access.
@@ -29,6 +27,38 @@ const checkEntry = function (key) {
       return true
     }
   }
+
+  // No entry could been found.
+  return false
+}
+
+/**
+ * Get an entry of the data store by its key.
+ *
+ * @param key
+ *        The key of the entry that should been returned.
+ *
+ * @return  entry
+ *          The associated entry in the stored.
+ *          Can be NULL if the key does not exist.
+ */
+const getEntry = function (key) {
+  // Do not use the checkEntry() function cause it would lead to a double for-loop.
+
+  // Iterate over all entries till find the correct one.
+  let entry
+
+  for (let i in DataStoreEntries) {
+    entry = DataStoreEntries[i]
+
+    // Check if it is the wanted entry.
+    if (entry.key === key) {
+      return entry
+    }
+  }
+
+  // No entry fcould been found.
+  return null
 }
 
 /**
@@ -50,21 +80,10 @@ const loadDataObject = function (key) {
 
   // Load JSON if not stored internally from an earlier call.
   if (!DATA_STORE[key]) {
-    let json = null
     console.log('load')
-
-    switch (key) {
-      case DataStoreEntries.contact.key:
-        json = JsonContact
-        break
-
-      case DataStoreEntries.generalConfig.key:
-        json = JsonGeneralConfig
-        break
-
-      default:
-        json = null
-    }
+    // Load the entry and afterwards the associated JSON file.
+    const entry = getEntry(key)
+    const json = require('/' + entry.path)
 
     // Work on the json to make it useable.
     for (let i in json) {
