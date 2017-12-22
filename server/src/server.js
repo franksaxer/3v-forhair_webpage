@@ -12,6 +12,7 @@ const cors = require('@koa/cors') // To allow cross origin requests in the devel
 // Own
 const logger = require(__dirname + '/logger.js')
 const authRouter = require(__dirname + '/router/authentication.js')
+const editorRouter = require(__dirname + '/router/editor.js')
 const authView = require(__dirname + '/middleware/adminView.js')
 const sessionCheck = require(__dirname + '/middleware/sessionCheck.js')
 
@@ -54,8 +55,9 @@ app.use(sessionCheck)
 // Provide the client content.
 app.use(serve(__dirname + general_prop.clientPath))
 
-// Add the authentication router.
+// Add the routers.
 app.use(authRouter.routes())
+app.use(editorRouter.routes())
 
 
 /* Start Server */
