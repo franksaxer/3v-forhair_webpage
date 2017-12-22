@@ -1,6 +1,7 @@
 /* Load all necessary modules */
 // 3rd party
 const router = require('koa-router') // The parent object for the router.
+const fs = require('fs') // To write data to files.
 
 // Own
 const logger = require(__dirname + '/../logger.js').logger // To log.
@@ -42,7 +43,8 @@ editorRouter.post('/updateConfig', async ctx => {
   }
 
   else {
-    console.log(JSON.stringify(dataObject))
+    // Further checks if the object is well structured are not necessary.
+    // This will be handled by the body parser module automatically.
     ctx.status = 200
   }
 
