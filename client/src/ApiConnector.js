@@ -41,7 +41,7 @@ const logout = async function (sessionKey) {
   }
 }
 
-const upload = async function (path, file) {
+const uploadFile = async function (path, file) {
   const data = new FormData()
   data.append('mediaPath', path)
   data.append('mediaFile', file)
@@ -59,8 +59,23 @@ const upload = async function (path, file) {
   }
 }
 
+const save = async function () {
+  try {
+    await Vue.http.put('https://localhost:8081/api/editor/save'). then(response => {
+      // Nothin to do.
+    }, error => {
+      throw new Error(error.bodyText)
+    })
+  } catch (err) {
+    console.log(err)
+    // Just forward the error.
+    throw err
+  }
+}
+
 export default {
   login: login,
   logout: logout,
-  upload: upload
+  upload: uploadFile,
+  save: save
 }
