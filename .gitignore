@@ -14,16 +14,14 @@ yarn-error.log*
 # The admin password
 password
 
-# server/
-curlRequests
+# server
+server/curlRequests
 server/client/
-static/
-server/src/enums/
-server/src/data/json/
+server/static/
+server/src/data/json/core
 
 #client
-client/src/data/json/
-client/src/enums/DataStoreEnum.js
+client/src/data/json/core
 
 # Editor directories and files
 .idea

@@ -9,9 +9,11 @@
 
 
 # Define the peer roots.
-PATH_CLIENT=../client/src
-PATH_SERVER=../server/src
+PATH_CLIENT=../client/src/data/json/core
+PATH_SERVER=../server/src/data/json/core
 
+# Define the core root.
+PATH_SRC=./json
 
 # Check if the pwd is the expected one.
 CURRENT_DIR_NAME="${PWD##*/}"
@@ -29,8 +31,8 @@ fi
 
 # Exclude the script itself. Add wildcards to exclude swap files also.
 echo Share core with client...
-rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' --exclude='.shareCore.sh.swo' . $PATH_CLIENT
+rsync -Iav $PATH_SRC/* $PATH_CLIENT
 
-echo Share core with server...
-rsync -Iav --exclude='shareCore.sh' --exclude='.shareCore.sh.swp' --exclude='.shareCore.sh.swo' . $PATH_SERVER
+echo Share core with servererver...
+rsync -Iav $PATH_SRC/* $PATH_SERVER
 
