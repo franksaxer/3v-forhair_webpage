@@ -68,8 +68,23 @@ module.exports.getEntry = getEntry
  * @return  absolutePath
  *          The path to the dataset within the clients source directory.
  */
-const absolutePath = function(relativePath) {
+const absolutePath_data = function(relativePath) {
   return (__dirname + '/../../../client/src/data/' + relativePath)
 }
 
-module.exports.absolutePath = absolutePath
+module.exports.absolutePath_data = absolutePath_data
+
+/**
+ * Get the absolute path of a media file by its relative path defined by the client.
+ *
+ * @param   relativePath
+ *          The relative path by the client.
+ *
+ * @return  absolutePath
+ *          The path to the mediafile within the clients source directory.
+ */
+const absolutePath_media = function(relativePath) {
+  return (__dirname + '/../../../client/src/assets/' + relativePath)
+}
+
+module.exports.absolutePath_media = absolutePath_media

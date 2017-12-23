@@ -44,7 +44,11 @@ app.use(logger_bunyan.requestLogger(logger.logger))
 app.use(sslify(ssl_prop.options_sslify))
 
 // Parse the request body.
-app.use(bodyParser())
+app.use(bodyParser({
+ formidable: {uploadDir: '/tmp/'},
+ multipart: true
+ // The rest is fine as default.
+}))
 
 // Rewrite for the admin view.
 app.use(authView)

@@ -26,7 +26,6 @@ editorRouter.prefix('/api/editor')
  * 200 -> everything went fine
  */
 editorRouter.put('/updateConfig', async ctx => {
-  console.log('Update');
   const dataKey = ctx.request.body.dataKey
   const dataObject = ctx.request.body.dataObject
 
@@ -51,7 +50,7 @@ editorRouter.put('/updateConfig', async ctx => {
 
     // Get the data store entry and the absolute path of the dataset to update.
     const entry = DataManager.getEntry(dataKey) 
-    const path = DataManager.absolutePath(entry.path)
+    const path = DataManager.absolutePath_data(entry.path)
 
     // Make sure the file already exist.
     // Only existing datasets can be updated.
@@ -78,6 +77,51 @@ editorRouter.put('/updateConfig', async ctx => {
     }
   }
 
+})
+
+editorRouter.put('/uploadFile', async ctx => {
+  const mediaPath = ctx.request.body.fields.mediaPath
+  const mediaFile = ctx.request.body.files.mediaFile
+
+  // Check if necessary parameter exist.
+  if (!mediaPath) {
+    const message = 'Missing media path!'
+    logger.info(message)
+    ctx.body = message
+    ctx.status = 400
+  }
+
+  else if (!mediaFile) {
+    const message = 'Missing media file!'
+    logger.info(message)
+    ctx.body = message
+    ctx.status = 400
+  }
+
+  else {
+    // Get the absolute path and extract the folder where the media file should lie in.
+    const path = DataManager.absolutePath_media(mediaPath)
+    const folder = path.substring(0, path.lastIndexOf('/'))
+
+    // Check if the parent folder exist.
+    if (!fs.existsSync(folder)) {
+      const message = 'The media path have to be in an already existing folder!'
+      logger.info(message)
+      ctx.body = message
+      ctx.status = 400
+    }
+
+    else {
+      // Copy the media file form the temporally folder to the clients source directory.
+      try {
+        exec('mv '+ mediaFile.path + ' ' + path)
+        ctx.status = 200
+      } catch (e) {
+        logger.error(e)
+        ctx.status = 500
+      }
+    }
+  }
 })
 
 /**
