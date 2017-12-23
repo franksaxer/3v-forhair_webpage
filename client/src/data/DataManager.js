@@ -72,7 +72,6 @@ const getEntry = function (key) {
  * @return  The required key object.
  */
 const loadDataObject = function (key) {
-  console.log(key)
   // Check if it is a valid key of the store object.
   if (!checkEntry(key)) {
     return null
@@ -80,14 +79,12 @@ const loadDataObject = function (key) {
 
   // Load JSON if not stored internally from an earlier call.
   if (!DATA_STORE[key]) {
-    console.log('load')
     // Load the entry and afterwards the associated JSON file.
     const entry = getEntry(key)
     const json = require('/' + entry.path)
 
     // Work on the json to make it useable.
     for (let i in json) {
-      console.log(json[i])
       // Check if the property is an URL, related to the 'assets' folder.
       if (json[i].substring(0, 3) === 'Url') {
         // Load the source by the relative URL.

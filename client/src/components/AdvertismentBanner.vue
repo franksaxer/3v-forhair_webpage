@@ -11,20 +11,38 @@
       </i>
     </button>
 
-    <button class="edit-button ghost-button"
-            @click="console.log('edit')"
-            v-if="editable">
+    <div class="upload-area">
+      <label class="upload-button button">
+        <div >
+          <i class="fa fa-upload"
+            aria-hidden="true">
+          </i>
+        </div>
 
-      <i class="fa fa-pencil-square"
-         aria-hidden="true">
-      </i>
-    </button>
+        <input type="file" @change="fileChange"/>
+      </label>
+
+
+      <div class="file-view"
+           v-if="mediaFile">
+        <p>{{ fileName }}</p>
+      </div>
+
+      <div class="save-button button"
+           v-if="mediaFile">
+        <i class="fa fa-floppy-o"
+           aria-hidden="true"
+           @click="execute">
+        </i>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
+  import ApiConnector from '../ApiConnector'
 
   export default {
     name: 'advertisement-banner',
@@ -39,7 +57,26 @@
     data: function () {
       return {
         closed: false,
-        imageSource: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage
+        imageSource: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage,
+        mediaFile: null
+      }
+    },
+
+    methods: {
+      fileChange: function (e) {
+        this.mediaFile = e.target.files[0]
+      },
+
+      execute: async function () {
+        await ApiConnector.upload('advertisement/aveda-example.png', this.mediaFile)
+        await ApiConnector.save()
+      }
+    },
+
+    computed: {
+      fileName: function () {
+        if (!this.mediaFile) return ''
+        else return this.mediaFile.name
       }
     }
   }
@@ -102,7 +139,6 @@
       &:hover {
         color: gray;
       }
-
     }
 
     .close-button {
@@ -112,9 +148,28 @@
       }
     }
 
-    .edit-button {
+    .upload-area {
+      display: flex;
+      flex-flow: row;
 
+      input[type='file'] {
+        display: none;
+      }
+
+
+      $square: 30px;
+
+      .button {
+        width: $square;
+        height: $square;
+      }
+
+      .file-view {
+        $width: calc(100% - 2 * #{$square});
+        min-width: $width;
+        max-width: $width;
+        overflow: hidden;
+      }
     }
-
   }
 </style>
