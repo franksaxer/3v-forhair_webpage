@@ -3,12 +3,14 @@
 // Import modules
 import Vue from 'vue'
 import Resource from 'vue-resource'
+import VDragged from 'v-dragged'
 
 // Import components
 import App from './App'
 
 Vue.config.productionTip = false
 Vue.use(Resource)
+Vue.use(VDragged)
 
 /* eslint-disable no-new */
 new Vue({

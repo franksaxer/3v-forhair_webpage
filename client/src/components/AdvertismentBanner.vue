@@ -1,8 +1,14 @@
 <template>
-  <div  id="advertisement"
-        :class="{'closed': closed}"
-        :style="{'background-image': 'url(' + imageSource +')'}">
+  <div  id="advertisement-banner"
+        :class="[{'closed': closed}, {'dragging': dragging}]"
+        :style="[{'background-image': 'url(' + image.source +')'},
+                 {'background-position': background_position}]"
+        v-dragged="dragImage">
 
+    <div class="warn"
+         v-if="shiftWarn"/>
+
+    <!-- Button to close the banner on mobile devices -->
     <button class="close-button ghost-button"
             @click="closed = true">
 
@@ -11,31 +17,57 @@
       </i>
     </button>
 
-    <div class="upload-area">
-      <label class="upload-button button">
-        <div >
-          <i class="fa fa-upload"
-            aria-hidden="true">
-          </i>
+    <!-- Element group for editing the image -->
+    <div class="edit-area"
+      v-if="editable">
+
+      <!-- Buttons to upload new image -->
+      <div class="upload-area">
+
+        <!-- File to upload selection -->
+        <div class="buttons has-addons">
+          <label class="upload-button button">
+            <div >
+              <i class="fa fa-upload"
+                aria-hidden="true">
+              </i>
+            </div>
+
+            <input type="file" @change="fileChange"/>
+          </label>
+
+          <!-- Save button to make the changes permanent -->
+          <div class="save-button button">
+            <i class="fa fa-floppy-o"
+              aria-hidden="true"
+              @click="execute">
+            </i>
+          </div>
+
+          <!-- Show selected file name area -->
+          <span class="file-view button"
+            v-if="mediaFile">
+            {{ fileName }}
+          </span>
         </div>
-
-        <input type="file" @change="fileChange"/>
-      </label>
-
-
-      <div class="file-view"
-           v-if="mediaFile">
-        <p>{{ fileName }}</p>
       </div>
 
-      <div class="save-button button"
-           v-if="mediaFile">
-        <i class="fa fa-floppy-o"
-           aria-hidden="true"
-           @click="execute">
-        </i>
+      <!-- Buttons to shift the image -->
+      <div class="shift-area buttons has-addons">
+        <span class="button">
+          <i class="fa fa-chevron-left"
+             aria-hidden="true"
+             @click="shiftImage(-1)" />
+        </span>
+        <span class="button">
+          <i class="fa fa-chevron-right"
+             aria-hidden="true"
+             @click="shiftImage(1)" />
+        </span>
       </div>
+
     </div>
+
   </div>
 </template>
 
@@ -57,19 +89,62 @@
     data: function () {
       return {
         closed: false,
-        imageSource: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage,
-        mediaFile: null
+        image: {
+          source: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage,
+          position: 0,
+          size: {
+            width: 0,
+            height: 0
+          }
+        },
+        mediaFile: null,
+        dragging: true,
+        shiftWarn: false
       }
     },
 
     methods: {
       fileChange: function (e) {
         this.mediaFile = e.target.files[0]
+        console.log(this.mediaFile)
       },
 
       execute: async function () {
         await ApiConnector.upload('advertisement/aveda-example.png', this.mediaFile)
         await ApiConnector.save()
+      },
+
+      dragImage: function ({el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last}) {
+        // Set dragging variable to adjust the cursor style based on the additional class.
+        if (first) {
+          this.dragging = true
+        } else if (last) {
+          this.dragging = false
+        } else {
+          this.shiftImage(deltaX)
+        }
+      },
+
+      shiftImage: function (offset) {
+        // Get theoretically new position.
+        let newPos = this.image.position + offset
+
+        // Get the width of the image in realtion to the current height.
+        const width = (this.bannerWidth / this.image.size.height) * this.image.size.width
+
+        // Only set the new position if it is not sifted away from the right or left border.
+        if (newPos <= 0 && (newPos + width) > this.bannerWidth) {
+          this.image.position = newPos
+        } else {
+          // Show warning to user.
+          this.blinkShiftWarn()
+        }
+      },
+
+      blinkShiftWarn: function () {
+        // Show the warning element for a short time.
+        this.shiftWarn = true
+        setTimeout(() => { this.shiftWarn = false }, 100)
       }
     },
 
@@ -77,7 +152,30 @@
       fileName: function () {
         if (!this.mediaFile) return ''
         else return this.mediaFile.name
+      },
+
+      background_position: function () {
+        return this.image.position + 'px 0'
+      },
+
+      bannerWidth: function () {
+        return document.getElementById('advertisement-banner').offsetWidth
       }
+    },
+
+    created: async function () {
+      // Load the background image to get its shape.
+      function loadImage (context) {
+        const img = new Image()
+        img.onload = function () {
+          context.image.size.width = this.width
+          context.image.size.height = this.height
+        }
+
+        img.src = context.image.source
+      }
+
+      loadImage(this)
     }
   }
 </script>
@@ -96,7 +194,7 @@
   $banner-height: 300px;
 
 
-  #advertisement {
+  #advertisement-banner {
     /* Shapes */
     left: calc(100% - #{$advertisement-width});
     right: 0;
@@ -106,7 +204,25 @@
     /* Background */
     background-position: center center;
     background-repeat:  no-repeat;
-    background-size: cover;
+    background-size: auto 100%;
+
+    // Warning when try to shift image over the left or right border.
+    .warn {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+
+    /* Cursor */
+    cursor: grab;
+
+    &.dragging {
+      cursor: grabbing;
+    }
 
 
     /* Mobile Properties */
@@ -139,6 +255,7 @@
       &:hover {
         color: gray;
       }
+
     }
 
     .close-button {
@@ -148,27 +265,44 @@
       }
     }
 
-    .upload-area {
-      display: flex;
-      flex-flow: row;
+    .edit-area {
+      $square: 31px;
 
-      input[type='file'] {
-        display: none;
+      * {
+        margin: 0px;
       }
-
-
-      $square: 30px;
 
       .button {
         width: $square;
-        height: $square;
       }
 
-      .file-view {
-        $width: calc(100% - 2 * #{$square});
-        min-width: $width;
-        max-width: $width;
-        overflow: hidden;
+      .upload-area {
+        display: flex;
+        flex-flow: row;
+
+        .button {
+          height: $square;
+        }
+
+        input[type='file'] {
+          display: none;
+        }
+
+        .file-view {
+          display: flex;
+          justify-content: flex-start;
+          $leftPadding: 5px;
+          $width: calc(100% - 2 * #{$square} - #{$leftPadding});
+          width: $width!important;
+          overflow: hidden;
+          padding-left: $leftPadding;
+        }
+      }
+
+      .shift-area {
+        .button {
+          height: calc(#{$square} * (3/5));
+        }
       }
     }
   }
