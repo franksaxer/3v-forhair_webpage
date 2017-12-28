@@ -1,4 +1,4 @@
-<template>
+erem<template>
   <div  id="advertisement-banner"
         :class="[{'closed': closed}, {'dragging': dragging}]"
         :style="[{'background-image': 'url(' + image.source +')'}]"
@@ -28,7 +28,18 @@
 
         <!-- File to upload selection -->
         <div class="buttons has-addons">
-          <label class="upload-button button">
+
+          <!-- Save button to make the changes permanent -->
+          <div class="save-button button">
+            <i class="fa fa-floppy-o"
+               aria-hidden="true"
+               @click="execute">
+            </i>
+          </div>
+
+          <!-- Upload Button -->
+          <label class="upload-button button"
+            v-if="!image.file">
             <div >
               <i class="fa fa-upload"
                 aria-hidden="true">
@@ -38,11 +49,12 @@
             <input type="file" accept="image/*" @change="fileChange"/>
           </label>
 
-          <!-- Save button to make the changes permanent -->
-          <div class="save-button button">
-            <i class="fa fa-floppy-o"
+          <!-- Remove File Button -->
+          <div class="remove-button button"
+            v-else>
+            <i class="fa fa-times"
               aria-hidden="true"
-              @click="execute">
+              @click="removeFile">
             </i>
           </div>
 
@@ -103,10 +115,11 @@
 
     data: function () {
       return {
+        config: loadDataObject(DataStoreEntries.generalConfig.key),
         closed: false,
         image: {
           file: null,
-          source: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage,
+          source: '', // Have to get this property after created, cause earlier it is not accessable.
           position: {
             left: 0,
             top: 0
@@ -142,6 +155,19 @@
           this.image.position.top = 0
           this.setBackgroundPosition()
         }
+      },
+
+      removeFile: function () {
+        // Reload the original image.
+        this.image.source = this.config.advertisementImage
+
+        // Remove the selected file.
+        this.image.file = null
+
+        // Reset the image position.
+        // TODO: Get real position.
+        this.image.position.left = 0
+        this.image.position.top = 0
       },
 
       // Use 'this' as argument 'context', so it is available in the 'onload' function.
@@ -255,6 +281,9 @@
     },
 
     created: async function () {
+      // Set the image source by the configuration, that is accessable now.
+      this.image.source = this.config.advertisementImage
+
       // Initial set the image shape.
       this.setImageShape(this)
 
