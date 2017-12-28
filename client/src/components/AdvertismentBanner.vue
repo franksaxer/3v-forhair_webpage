@@ -1,12 +1,14 @@
 <template>
   <div  id="advertisement-banner"
         :class="[{'closed': closed}, {'dragging': dragging}]"
-        :style="[{'background-image': 'url(' + image.source +')'},
-                 {'background-position': background_position}]"
+        :style="[{'background-image': 'url(' + image.source +')'}]"
         v-dragged="dragImage">
 
-    <div class="warn"
-         v-if="shiftWarn"/>
+    <!-- Warning panel -->
+    <div :class="['warn',
+                 {'leftWarn': warn.left},
+                 {'topWarn': warn.top}]"
+          v-if="warn.left || warn.top"/>
 
     <!-- Button to close the banner on mobile devices -->
     <button class="close-button ghost-button"
@@ -19,7 +21,7 @@
 
     <!-- Element group for editing the image -->
     <div class="edit-area"
-      v-if="editable">
+      v-if="true">
 
       <!-- Buttons to upload new image -->
       <div class="upload-area">
@@ -33,7 +35,7 @@
               </i>
             </div>
 
-            <input type="file" @change="fileChange"/>
+            <input type="file" accept="image/*" @change="fileChange"/>
           </label>
 
           <!-- Save button to make the changes permanent -->
@@ -46,7 +48,7 @@
 
           <!-- Show selected file name area -->
           <span class="file-view button"
-            v-if="mediaFile">
+            v-if="image.file">
             {{ fileName }}
           </span>
         </div>
@@ -54,15 +56,25 @@
 
       <!-- Buttons to shift the image -->
       <div class="shift-area buttons has-addons">
-        <span class="button">
+        <span class="button desktop">
           <i class="fa fa-chevron-left"
              aria-hidden="true"
-             @click="shiftImage(-1)" />
+             @click="shiftImage(-1, 0)" />
         </span>
-        <span class="button">
+        <span class="button desktop">
           <i class="fa fa-chevron-right"
              aria-hidden="true"
-             @click="shiftImage(1)" />
+             @click="shiftImage(1, 0)" />
+        </span>
+        <span class="button mobile">
+          <i class="fa fa-chevron-up"
+             aria-hidden="true"
+             @click="shiftImage(0, -1)" />
+        </span>
+        <span class="button mobile">
+          <i class="fa fa-chevron-down"
+             aria-hidden="true"
+             @click="shiftImage(0, 1)" />
         </span>
       </div>
 
@@ -75,6 +87,9 @@
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
   import ApiConnector from '../ApiConnector'
+
+  /* Parameter */
+  const cssId = 'css-advertisement-banner-background-position'
 
   export default {
     name: 'advertisement-banner',
@@ -90,27 +105,75 @@
       return {
         closed: false,
         image: {
+          file: null,
           source: loadDataObject(DataStoreEntries.generalConfig.key).advertisementImage,
-          position: 0,
-          size: {
+          position: {
+            left: 0,
+            top: 0
+          },
+          shape: {
             width: 0,
             height: 0
           }
         },
-        mediaFile: null,
         dragging: true,
-        shiftWarn: false
+        warn: {
+          left: false,
+          top: false
+        }
       }
     },
 
     methods: {
       fileChange: function (e) {
-        this.mediaFile = e.target.files[0]
-        console.log(this.mediaFile)
+        // Get the image file from the input.
+        const file = e.target.files[0]
+
+        // Check if file exists.
+        if (file) {
+          // Store file to be able to upload it.
+          this.image.file = file
+
+          // Load the file as new background.
+          this.loadImageFile(this)
+
+          // Reset image position.
+          this.image.position.left = 0
+          this.image.position.top = 0
+          this.setBackgroundPosition()
+        }
+      },
+
+      // Use 'this' as argument 'context', so it is available in the 'onload' function.
+      setImageShape: function (context) {
+        const img = new Image()
+
+        img.onload = function () {
+          // Extract the shape properties.
+          context.image.shape.width = this.width
+          context.image.shape.height = this.height
+        }
+
+        img.src = context.image.source
+      },
+
+      // Use 'this' as argument 'context', so it is available in the 'onloaded' function.
+      loadImageFile: function (context) {
+        const reader = new FileReader()
+
+        reader.onloadend = function () {
+          // Set the file URL as image source.
+          context.image.source = reader.result
+
+          // Reset the image shapes for the new file.
+          context.setImageShape(context)
+        }
+
+        reader.readAsDataURL(context.image.file)
       },
 
       execute: async function () {
-        await ApiConnector.upload('advertisement/aveda-example.png', this.mediaFile)
+        await ApiConnector.upload('advertisement/aveda-example.png', this.image.file)
         await ApiConnector.save()
       },
 
@@ -121,61 +184,86 @@
         } else if (last) {
           this.dragging = false
         } else {
-          this.shiftImage(deltaX)
+          this.shiftImage(deltaX, deltaY)
         }
       },
 
-      shiftImage: function (offset) {
-        // Get theoretically new position.
-        let newPos = this.image.position + offset
+      shiftImage: function (xOffset, yOffset) {
+        // Get theoretically new positions.
+        let xNew = this.image.position.left + xOffset
+        let yNew = this.image.position.top + yOffset
 
-        // Get the width of the image in realtion to the current height.
-        const width = (this.bannerWidth / this.image.size.height) * this.image.size.width
+        // Get the shape of the image in relation to the current full sized parameter
+        const width = (this.bannerHeight / this.image.shape.height) * this.image.shape.width
+        const height = (this.bannerWidth / this.image.shape.width) * this.image.shape.height
 
-        // Only set the new position if it is not sifted away from the right or left border.
-        if (newPos <= 0 && (newPos + width) > this.bannerWidth) {
-          this.image.position = newPos
+        // Only set the new horizontal position if it is not sifted away from the right or left border.
+        if (xNew <= 0 && (xNew + width) > this.bannerWidth) {
+          this.image.position.left = xNew
         } else {
           // Show warning to user.
-          this.blinkShiftWarn()
+          this.blinkShiftWarn(true, false)
         }
+
+        // Only set the new vertical position if it is not sifted away from the top or bottom border.
+        if (yNew <= 0 && (yNew + height) > this.bannerHeight) {
+          this.image.position.top = yNew
+        } else {
+          // Show warning to user.
+          this.blinkShiftWarn(false, true)
+        }
+
+        // Update the position.
+        this.setBackgroundPosition()
       },
 
-      blinkShiftWarn: function () {
+      blinkShiftWarn: function (leftWarn, topWarn) {
         // Show the warning element for a short time.
-        this.shiftWarn = true
-        setTimeout(() => { this.shiftWarn = false }, 100)
+        this.warn.left = leftWarn
+        this.warn.top = topWarn
+
+        setTimeout(() => {
+          this.warn.left = false
+          this.warn.top = false
+        }, 100)
+      },
+
+      setBackgroundPosition: function () {
+        // Update the CSS tag with the background position variables.
+        document.getElementById(cssId).innerHTML = this.backgroundPosition_tag
       }
     },
 
     computed: {
       fileName: function () {
-        if (!this.mediaFile) return ''
-        else return this.mediaFile.name
-      },
-
-      background_position: function () {
-        return this.image.position + 'px 0'
+        if (!this.image.file) return ''
+        else return this.image.file.name
       },
 
       bannerWidth: function () {
         return document.getElementById('advertisement-banner').offsetWidth
+      },
+
+      bannerHeight: function () {
+        return document.getElementById('advertisement-banner').offsetHeight
+      },
+
+      backgroundPosition_tag: function () {
+        // Build a CSS term for this component, including two CSS variables for the background position.
+        return '#advertisement-banner { --advertisement-banner-background-position-left: ' + this.image.position.left + 'px; --advertisement-banner-background-position-top: ' + this.image.position.top + 'px; }'
       }
     },
 
     created: async function () {
-      // Load the background image to get its shape.
-      function loadImage (context) {
-        const img = new Image()
-        img.onload = function () {
-          context.image.size.width = this.width
-          context.image.size.height = this.height
-        }
+      // Initial set the image shape.
+      this.setImageShape(this)
 
-        img.src = context.image.source
-      }
-
-      loadImage(this)
+      // Add CSS variable to define the background image position.
+      const css = document.createElement('style')
+      css.id = cssId
+      css.type = 'text/css'
+      css.innerHTML = this.backgroundPosition_tag
+      document.body.insertBefore(css, document.body.firstChild)
     }
   }
 </script>
@@ -185,13 +273,18 @@
   // Import 3rd party styles
   @import '../../node_modules/include-media/dist/include-media';
   @import '../../node_modules/font-awesome/css/font-awesome.css';
+  @import "../../node_modules/bulma/bulma";
 
   // Import own styles
   @import '../style/3v-forhair';
 
 
   // Define some variables.
-  $banner-height: 300px;
+  $banner-height: 25vh;
+
+  // Load CSS variables set by the component.
+  $backgroundPosition_left: var(--advertisement-banner-background-position-left, 0px);
+  $backgroundPosition_top: var(--advertisement-banner-background-position-top, 0px);
 
 
   #advertisement-banner {
@@ -199,12 +292,6 @@
     left: calc(100% - #{$advertisement-width});
     right: 0;
     // Inherit the top and bottom properties from the upper component.
-
-
-    /* Background */
-    background-position: center center;
-    background-repeat:  no-repeat;
-    background-size: auto 100%;
 
     // Warning when try to shift image over the left or right border.
     .warn {
@@ -215,6 +302,18 @@
       bottom: 0;
       z-index: 10;
       background-color: rgba(255, 0, 0, 0.3);
+
+      &.leftWarn {
+        @include media('<desktop') {
+          display: none;
+        }
+      }
+
+      &.topWarn {
+        @include media('>=desktop') {
+          display: none;
+        }
+      }
     }
 
     /* Cursor */
@@ -225,6 +324,12 @@
     }
 
 
+    /* Background */
+    background-repeat:  no-repeat;
+    background-size: auto 100%;
+    background-position: $backgroundPosition_left 0; // Only set the left position, defined by the configurations.
+
+
     /* Mobile Properties */
     @include media('<desktop') {
       /* Shapes */
@@ -232,6 +337,9 @@
       top: calc(100vh - #{$banner-height});
       right: 0;
       bottom: 0;
+
+      background-size: 100% auto;
+      background-position: 0 $backgroundPosition_top; // Only set the top position, defined by the configuration
 
       &.closed {
         display: none;
@@ -255,7 +363,6 @@
       &:hover {
         color: gray;
       }
-
     }
 
     .close-button {
@@ -268,8 +375,8 @@
     .edit-area {
       $square: 31px;
 
-      * {
-        margin: 0px;
+      > * {
+        margin-bottom: 2px;
       }
 
       .button {
@@ -302,6 +409,18 @@
       .shift-area {
         .button {
           height: calc(#{$square} * (3/5));
+
+          &.desktop {
+            @include media('<desktop') {
+              display: none;
+            }
+          }
+
+          &.mobile {
+            @include media('>=desktop') {
+              display: none;
+            }
+          }
         }
       }
     }
