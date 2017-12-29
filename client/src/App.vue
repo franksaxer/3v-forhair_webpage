@@ -186,7 +186,6 @@
   // Import own styles
   @import './style/3v-forhair';
 
-
   /* Bulma */
   // Import the variables first.
   @import '../node_modules/bulma/sass/utilities/initial-variables';
@@ -312,11 +311,16 @@
 
     #content {
       left: 0;
-      right: $advertisement-width; // Stop before the advertisement on the right side.
       overflow-y: auto;
 
+      // Stop before the advertisement banner on the right side on desktop devices.
+      @include media('>=desktop') {
+        $bannerBorderLeft: var(--advertisement-banner-border-left, 300px);
+        right: $bannerBorderLeft;
+      }
+
+      // Use the whole width on mobile devices, cause the advertisement is missing or can be removed.
       @include media('<desktop') {
-        // Use the whole width on mobile devices, cause the advertisement is missing.
         right: 0;
       }
     }
