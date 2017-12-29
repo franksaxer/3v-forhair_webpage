@@ -5,10 +5,8 @@
         v-dragged="drag">
 
     <!-- Warning panel -->
-    <div :class="['warn',
-                 {'leftWarn': warn.left},
-                 {'topWarn': warn.top}]"
-          v-show="warn.left || warn.top"/>
+    <div class="warn"
+         v-show="warn"/>
 
     <!-- Button to close the banner on mobile devices -->
     <button class="close-button ghost-button"
@@ -164,12 +162,7 @@
         },
 
         // Signal that the movement of the image position or the border is not acceptable.
-        // Differs in two parts, cause desktop and mobile movements always cause an exception to the over part.
-        // Using 'include media' in the styles filters the relevant warning depending on the device.
-        warn: {
-          left: false,
-          top: false
-        },
+        warn: false,
 
         // Signals that the user is dragging. Causes CSS cursor effect.
         dragging: false,
@@ -204,6 +197,7 @@
           // Reset image position.
           this.image.position.left = 0
           this.image.position.top = 0
+
           this.setCssTag()
         }
       },
@@ -319,7 +313,7 @@
           this.shiftImage(xOffset, yOffset)
         } else {
           // Mind that the border shifts the other way around.
-          this.shiftBorder(xOffset * -1, yOffset * -16404)
+          this.shiftBorder(xOffset * -1, yOffset * -1)
         }
       },
 
@@ -331,7 +325,6 @@
        * Have to compare the current image shape, depending on the stretch, to the banners shape.
        * Make the changes visible if the shift motion was acceptable.
        * Activate the warn signal if not so.
-       * For the currently active device type not relevant warning are hided automatically by the style definitions.
        *
        * @param {Number} xOffset
        *        The offset in the x-axis to shift.
@@ -344,22 +337,26 @@
         let newLeftPosition = this.image.position.left + xOffset
         let newTopPosition = this.image.position.top + yOffset
 
-        // Get the shape of the image in relation to the current full sized parameter
-
-        // Only set the new horizontal position if it is not sifted away from the right or left border.
-        if (newLeftPosition <= 0 && (newLeftPosition + this.relativeImageWidth) > this.bannerWidth) {
-          this.image.position.left = newLeftPosition
-        } else {
-          // Show warning to user.
-          this.blinkShiftWarn(true, false)
+        // Vertical shiftig only available on desktop devices.
+        if (this.isDesktop) {
+          // Only set the new horizontal position if it is not sifted away from the right or left border.
+          if (newLeftPosition <= 0 && (newLeftPosition + this.relativeImageWidth) > this.bannerWidth) {
+            this.image.position.left = newLeftPosition
+          } else {
+            // Show warning to user.
+            this.blinkShiftWarn()
+          }
         }
 
-        // Only set the new vertical position if it is not sifted away from the top or bottom border.
-        if (newTopPosition <= 0 && (newTopPosition + this.relativeImageHeight) > this.bannerHeight) {
-          this.image.position.top = newTopPosition
-        } else {
-          // Show warning to user.
-          this.blinkShiftWarn(false, true)
+        // Horizontal shifting is only available on mobile devices.
+        if (this.isMobile) {
+          // Only set the new vertical position if it is not sifted away from the top or bottom border.
+          if (newTopPosition <= 0 && (newTopPosition + this.relativeImageHeight) > this.bannerHeight) {
+            this.image.position.top = newTopPosition
+          } else {
+            // Show warning to user.
+            this.blinkShiftWarn(false, true)
+          }
         }
 
         // Update the position.
@@ -375,7 +372,6 @@
        * Make sure a minimal image pane is visible and the border can not be moved over the window edge.
        * Make the changes visible if the shift motion was acceptable.
        * Activate the warn signal if not so.
-       * For the currently active device type not relevant warning are hided automatically by the style definitions.
        *
        * @param {Number} xOffset
        *        The offset in the x-axis to shift.
@@ -387,20 +383,28 @@
         const newLeftBorder = this.image.border.left + xOffset
         const newTopBorder = this.image.border.top + yOffset
 
-        // Only set the new vertical border if it is not larger than the images width or negative.
-        if (newLeftBorder > minBannerSize && newLeftBorder <= this.relativeImageWidth) {
-          this.image.border.left = newLeftBorder
-        } else {
-          // Show warning to user.
-          this.blinkShiftWarn(true, false)
+        // Vertical shiftig only available on desktop devices.
+        if (this.isDesktop) {
+          // Only set the new vertical border if it is not larger than the images width or negative.
+          // The '-1' is essential to know which device type is active!!!
+          if (newLeftBorder > minBannerSize && newLeftBorder <= (this.relativeImageWidth - 1)) {
+            this.image.border.left = newLeftBorder
+          } else {
+            // Show warning to user.
+            this.blinkShiftWarn(true, false)
+          }
         }
 
-        // Only set the new horizontal border if it is not larger than the images height or negative.
-        if (newTopBorder > minBannerSize && newTopBorder <= this.relativeImageHeight) {
-          this.image.border.top = newTopBorder
-        } else {
-          // Show warning to user.
-          this.blinkShiftWarn(false, true)
+        // Horizontal shifting is only available on mobile devices.
+        if (this.isMobile) {
+          // Only set the new horizontal border if it is not larger than the images height or negative.
+          // The '-1' is essential to know which device type is active!!!
+          if (newTopBorder > minBannerSize && newTopBorder <= (this.relativeImageHeight - 1)) {
+            this.image.border.top = newTopBorder
+          } else {
+            // Show warning to user.
+            this.blinkShiftWarn()
+          }
         }
 
         this.setCssTag()
@@ -410,24 +414,13 @@
        * Called when the user has performed an invalid shift movement.
        * Set the warn signal for a short period.
        * Cause an CSS effect, visible by the user.
-       * Differ between warnings for desktop and mobile devices.
-       *
-       * @param {Boolean} leftWarn
-       *        Warning, that the shift motion was not acceptable due to the left border.
-       *        Only visible on desktop devices.
-       *
-       * @param {Boolean} topWarn
-       *        Warning, that the shift motion was not acceptable due to the top border.
-       *        Only visible on mobile devices.
        */
       blinkShiftWarn (leftWarn, topWarn) {
         // Show the warning element for a short time.
-        this.warn.left = leftWarn
-        this.warn.top = topWarn
+        this.warn = true
 
         setTimeout(() => {
-          this.warn.left = false
-          this.warn.top = false
+          this.warn = false
         }, 100)
       },
 
@@ -452,24 +445,73 @@
         else return this.image.file.name
       },
 
-      // The width of the image relative to the stretched height on desktop devices.
-      relativeImageWidth () {
-        return this.bannerHeight / this.image.shape.height * this.image.shape.width
-      },
-
-      // The height of the image relative to the stretched width on mobile devices.
-      relativeImageHeight () {
-        return this.bannerWidth / this.image.shape.width * this.image.shape.height
-      },
-
       // The actual width of the banner in the window.
       bannerWidth () {
-        return document.getElementById('advertisement-banner').offsetWidth
+        // Get the banner element.
+        const element = document.getElementById('advertisement-banner')
+
+        // In the beginning there is no element.
+        if (element) {
+          return element.offsetWidth
+        } else {
+          return 0
+        }
       },
 
       // The actual height of the banner in the window.
       bannerHeight () {
-        return document.getElementById('advertisement-banner').offsetHeight
+        // Get the banner element.
+        const element = document.getElementById('advertisement-banner')
+
+        // In the beginning there is no element.
+        if (element) {
+          return element.offsetHeight
+        } else {
+          return 0
+        }
+      },
+
+      // The width of the image relative to the stretched height on desktop devices.
+      relativeImageWidth () {
+        // Be aware that this is zero in the beginning.
+        if (this.bannerHeight !== 0) {
+          return this.bannerHeight / this.image.shape.height * this.image.shape.width
+        } else {
+          return 0
+        }
+      },
+
+      // The height of the image relative to the stretched width on mobile devices.
+      relativeImageHeight () {
+        // Be aware that this is zero in the beginning.
+        if (this.bannerWidth !== 0) {
+          return this.bannerWidth / this.image.shape.width * this.image.shape.height
+        } else {
+          return 0
+        }
+      },
+
+      // Mention if working on a desktop device.
+      isDesktop () {
+        // Take the advantage, that it is not allowed have the border on the left wider than the images width.
+        // On mobile devices it takes automatically the whole width.
+        if (this.bannerWidth < this.relativeImageWidth) {
+          return true
+        } else {
+          return false
+        }
+      },
+
+      // Mention if working on a mobile device.
+      isMobile () {
+        // Take the advantage, that it is not allowed have the border on the top heigher than the images height.
+        // On desktop devices it takes automatically the whole height.
+        if (this.bannerHeight < this.relativeImageHeight) {
+          return true
+        } else {
+          return false
+        }
+        // return false
       },
 
       // Composition of the CSS tag by the responsible property values.
@@ -496,6 +538,19 @@
       css.type = 'text/css'
       css.innerHTML = this.cssTag
       document.body.insertBefore(css, document.body.firstChild)
+
+      /* This here is a hack
+         The values of the banner width and hight are computed to zero in the beginning.
+         This is normal, cause at this point the DOM element does not exist.
+         By this all values depending on these values are not useable as well.
+         Unfortuntly the basic values are not computed again, cause they to not depend on depend on other values in Vue.
+         To handle this problem, we use them here.
+         When the 'created' function is called, also the DOM element exists.
+         By this all values depending on the banner shape are calculated again as well.
+      */
+      setTimeout(() => {
+        console.log('Update: ' + this.bannerWidth + this.bannerHeight)
+      }, 1)
     }
   }
 </script>
@@ -594,6 +649,7 @@
     /* Buttons */
     .button {
       font-size: $buttonFontSize;
+      background-color: rgba(255, 255, 255, .7); // Bit transparent, so the background can bee seen.
 
       &.shift-button {
         font-size: $shift-buttonFontSize!important;
@@ -632,22 +688,9 @@
       bottom: 0;
       z-index: 10;
       background-color: rgba(255, 0, 0, 0.3);
-
-      &.leftwarn {
-        @include media('<desktop') {
-          display: none;
-        }
-      }
-
-      &.topwarn {
-        @include media('>=desktop') {
-          display: none;
-        }
-      }
     }
 
     .edit-area {
-
       // All direct childs.
       > * {
         margin-bottom: 2px;
