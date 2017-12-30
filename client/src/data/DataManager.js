@@ -15,7 +15,7 @@ const DATA_STORE = {}
  * @return true - if it exist
  *              - else
  */
-const checkEntry = function (key) {
+const checkEntry = (key) => {
   // Go other all entries in the JSON object and compare the key.
   let entry
 
@@ -42,7 +42,7 @@ const checkEntry = function (key) {
  *          The associated entry in the stored.
  *          Can be NULL if the key does not exist.
  */
-const getEntry = function (key) {
+const getEntry = (key) => {
   // Do not use the checkEntry() function cause it would lead to a double for-loop.
 
   // Iterate over all entries till find the correct one.
@@ -62,6 +62,43 @@ const getEntry = function (key) {
 }
 
 /**
+ * Extend a JSON object with special types.
+ * Such 'special' types is an URL that have to be required, for example.
+ * The method is used recursive.
+ *
+ * @param {Object} json
+ *        The JSON object to extend.
+ *
+ * @return  {Object} extended json
+ *          The extended version of the given JSON object.
+ */
+const extendJson = async (json) => {
+  for (let i in json) {
+    const entry = json[i]
+
+    if (typeof entry === 'object') {
+      try {
+        json[i] = await extendJson(entry)
+      } catch (err) {
+        // Fall back: Leave it as it is.
+        json[i] = entry
+      }
+    }
+
+    if (typeof entry === 'string') {
+      // Check if the property is an URL, related to the 'assets' folder.
+      if (entry.substring(0, 3) === 'Url') {
+        // Load the source by the relative URL.
+        json[i] = require('../assets/' + entry.substring(4))
+      }
+    }
+  }
+
+  // Resolve promise with the edited JSON object.
+  return json
+}
+
+/**
  * Function to load a entry object.
  * Checks if the entry object is known or not. In case it is not, NULL will be returned.
  * Load the object from the internal store, if it has been already loaded earlier.
@@ -71,7 +108,7 @@ const getEntry = function (key) {
  *
  * @return  The required key object.
  */
-const loadDataObject = function (key) {
+const loadDataObject = async (key) => {
   // Check if it is a valid key of the store object.
   if (!checkEntry(key)) {
     return null
@@ -81,16 +118,10 @@ const loadDataObject = function (key) {
   if (!DATA_STORE[key]) {
     // Load the entry and afterwards the associated JSON file.
     const entry = getEntry(key)
-    const json = require('/' + entry.path)
+    let json = require('/' + entry.path)
 
-    // Work on the json to make it useable.
-    for (let i in json) {
-      // Check if the property is an URL, related to the 'assets' folder.
-      if (json[i].substring(0, 3) === 'Url') {
-        // Load the source by the relative URL.
-        json[i] = require('../assets/' + json[i].substring(4))
-      }
-    }
+    // Extend special types in the dataset.
+    json = await extendJson(json)
 
     // Put the JSON into the store.
     DATA_STORE[key] = json

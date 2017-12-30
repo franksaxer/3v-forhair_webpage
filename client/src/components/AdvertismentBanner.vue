@@ -124,7 +124,8 @@
     data () {
       return {
         // The related configuration dataset.
-        config: loadDataObject(DataStoreEntries.generalConfig.key),
+        // Can not be loaded here, cause it is an asynchronous call. Loaded in 'created'.
+        config: null,
 
         // On mobile devices the banner can be closed.
         closed: false,
@@ -135,6 +136,7 @@
 
           // The image source as URL. Per default it will be set to the servers known image.
           // Updated in reference to the .file property if the user select a new image to upload.
+          // Values will be overwritten by the configurations after the component has been created.
           source: '', // Have to get this property after created, cause earlier it is not accessable.
 
           // Describe the position of the image from the left upper corner.
@@ -525,9 +527,14 @@
       }
     },
 
-    created: function () {
-      // Set the image source by the configuration, that is accessable now.
-      this.image.source = this.config.advertisementImage
+    async created () {
+      // Load the configurations.
+      this.config = await loadDataObject(DataStoreEntries.advertisement.key)
+
+      // Overwrite the default values with the configurations.
+      this.image.source = this.config.advertisementbanner.image.source
+      this.image.position = this.config.advertisementbanner.image.position
+      this.image.border = this.config.advertisementbanner.image.border
 
       // Initial set the image shape.
       this.setImageShape(this)

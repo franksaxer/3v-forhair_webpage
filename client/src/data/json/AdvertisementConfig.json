@@ -1,0 +1,15 @@
+{
+  "advertisementbanner": {
+    "image": {
+      "source": "Url:advertisement/aveda-example.png",
+      "position": {
+        "left": 0,
+        "top": 0
+      },
+      "border": {
+        "left": 300,
+        "top": 150
+      }
+    }
+  }
+}
