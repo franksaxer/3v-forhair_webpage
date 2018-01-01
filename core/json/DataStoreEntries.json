@@ -1,0 +1,16 @@
+{
+  "generalConfig": {
+    "key": "d2e2a5580481bf00e253a0cc5a4b080c",
+    "path": "json/GeneralConfig.json"
+  },
+
+  "contact": {
+    "key": "2f8a6bf31f3bd67bd2d9720c58b19c9a",
+    "path": "json/ContactData.json"
+  },
+
+  "advertisement": {
+    "key": "f3334ac9ef26166dedebd319a18f9cc7",
+    "path": "json/AdvertisementConfig.json"
+  }
+}

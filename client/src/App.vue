@@ -1,31 +1,21 @@
 <template>
   <div id="app">
     <!-- general layout with header, main and footer -->
-    <section class="layout">
+    <section id="layout">
       <header>
-        <div class="nav">
-          <div class="nav-left">
-            <!-- necessary for the structure, else center will not work -->
-          </div>
-
-          <div class="nav-center">
-            <div class="nav-item label-with-icon">
-              <h1>for</h1>
-              <img src="./assets/icon.png" />
-              <h1>  hair</h1>
-            </div>
-          </div>
-
-          <div class="nav-right">
-            <!-- necessary for the structure, else center will not work -->
-            <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                    v-if="adminViewEnabled"
-                    @click="logout">
-
-              {{ labelStore.authentication_logoutButton[language] }}
-            </button>
-          </div>
+        <div id="label-with-icon">
+          <h1>for</h1>
+          <img src="./assets/icon.png" />
+          <h1>  hair</h1>
         </div>
+
+        <button id="logout-button"
+                :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                v-if="adminViewEnabled"
+                @click="logout">
+
+          {{ labelStore.authentication_logoutButton[language] }}
+        </button>
       </header>
 
       <main>
@@ -37,18 +27,14 @@
       </main>
 
       <footer>
-        <div class="nav">
-          <div class="nav-center">
-            <div class="nav-item">
-              <i class="fa fa-phone"></i>
-              <span>{{ contactData.phoneNumber }}</span>
-            </div>
+        <div>
+          <i class="fa fa-phone"></i>
+          <span>{{ contactData.phoneNumber }}</span>
+        </div>
 
-            <div class="nav-item">
-              <i class="fa fa-envelope"></i>
-              <span>{{ contactData.mailAddress }}</span>
-            </div>
-          </div>
+        <div>
+          <i class="fa fa-envelope"></i>
+          <span>{{ contactData.mailAddress }}</span>
         </div>
       </footer>
     </section>
@@ -103,7 +89,7 @@
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
 
   // Import manager and utilities components.
-  import {DataStoreEnum, loadDataObject} from './data/DataManager'
+  import {DataStoreEntries, loadDataObject} from './data/DataManager'
   import LabelStore from './data/LabelStore'
   import ApiConnector from './ApiConnector'
 
@@ -125,7 +111,7 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: loadDataObject(DataStoreEnum.contact)
+        contactData: loadDataObject(DataStoreEntries.contact.key)
       }
     },
 
@@ -200,7 +186,6 @@
   // Import own styles
   @import './style/3v-forhair';
 
-
   /* Bulma */
   // Import the variables first.
   @import '../node_modules/bulma/sass/utilities/initial-variables';
@@ -224,7 +209,7 @@
 
 
   /* The general layout with header, main and footer */
-  .layout {
+  #layout {
     display: flex;
     height: 100vh;
     flex-flow: column;
@@ -233,11 +218,16 @@
 
     header {
       height: $header-height;
-      overflow: hidden; // Force the height, else the cover page will not work.
+      //overflow: hidden; // Force the height, else the cover page will not work.
       z-index: 1; // Seems to be necessary, so it is not always to top element.
       background-color: $color-invert;
+      display: flex;
+      flexflow: row;
+      justify-content: center;
 
-      .label-with-icon {
+      #label-with-icon {
+        display: flex;
+        flex-flow: row;
         $icon-radius: calc(#{$header-height} * 2);
 
         h1 {
@@ -245,16 +235,21 @@
           font-size: calc(#{$header-height * 0.7});
           font-weight: 500;
           font-family: "Times New Roman", Times, serif;
-          margin: 0 calc(#{$icon-radius} / 2);
-          padding-left: 10px; // Else, the "hair" is more narrow to the icon than the "for".
+          padding: 0 10px;
         }
 
         img {
-          position: fixed;
-          left: calc((100vw - #{$icon-radius}) / 2); // Auto centering doesn't work on mobile view.
-          top: 5px;
-          min-height: $icon-radius; // Min- is required else, the header shrink it.
+          height: $icon-radius;
         }
+      }
+
+      #logout-button {
+        position: absolute;
+        $margin: calc(0.15 * #{$header-height});
+        top: $margin;
+        right: $margin;
+        height: calc(#{$header-height} - 2 * #{$margin});
+
       }
     }
 
@@ -269,6 +264,10 @@
     }
 
     footer {
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+
       // Only display, on non mobile devices.
       @include media('<desktop') {
         display: none;
@@ -279,21 +278,22 @@
       background-color: $primary-invert;
       color: white;
       white-space: pre; // To force white spaces will not be cut.
-      font-size: calc(#{$footer-height} * 0.6);
 
-      i {
-        margin: auto; // Center the fa icon in relation to the span.
+      $fontSize: calc(#{$footer-height} * 0.4);
+      font-size: $fontSize!important;
+      line-height: $fontSize; // Else the text has space above.
+
+      // All direct childs
+      > * {
+        $top: calc((#{$footer-height} - #{$fontSize}) / 2);
+        margin: $top 10px;
+        padding: 0;
       }
 
       span {
-        padding-left: 10px; // Else the icon is directly next to the text.
+        padding-left: 5px; // Else the icon is directly next to the text.
       }
     }
-  }
-
-
-  .nav {
-    background-color: transparent; // Per default it is white, so background on parent elements doesn't work.
   }
 
   main {
@@ -311,11 +311,16 @@
 
     #content {
       left: 0;
-      right: $advertisement-width; // Stop before the advertisement on the right side.
       overflow-y: auto;
 
+      // Stop before the advertisement banner on the right side on desktop devices.
+      @include media('>=desktop') {
+        $bannerBorderLeft: var(--advertisement-banner-border-left, 300px);
+        right: $bannerBorderLeft;
+      }
+
+      // Use the whole width on mobile devices, cause the advertisement is missing or can be removed.
       @include media('<desktop') {
-        // Use the whole width on mobile devices, cause the advertisement is missing.
         right: 0;
       }
     }

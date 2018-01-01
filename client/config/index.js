@@ -1,11 +1,12 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
+const destination = '../../server/client'
 
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    index: path.resolve(__dirname, destination + '/index.html'),
+    assetsRoot: path.resolve(__dirname, destination),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: true,
