@@ -97,6 +97,7 @@
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
   import ApiConnector from '../ApiConnector'
+  import DeviceDetector from '../DeviceDetector'
 
   /* Components */
   import Switch from './common/Switch'
@@ -340,7 +341,7 @@
         let newTopPosition = this.image.position.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (this.isDesktop) {
+        if (DeviceDetector.isDesktop()) {
           // Only set the new horizontal position if it is not sifted away from the right or left border.
           if (newLeftPosition <= 0 && (newLeftPosition + this.relativeImageWidth) > this.bannerWidth) {
             this.image.position.left = newLeftPosition
@@ -351,7 +352,7 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (this.isMobile) {
+        if (DeviceDetector.isMobile()) {
           // Only set the new vertical position if it is not sifted away from the top or bottom border.
           if (newTopPosition <= 0 && (newTopPosition + this.relativeImageHeight) > this.bannerHeight) {
             this.image.position.top = newTopPosition
@@ -386,10 +387,10 @@
         const newTopBorder = this.image.border.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (this.isDesktop) {
+        if (DeviceDetector.isDesktop()) {
           // Only set the new vertical border if it is not larger than the images width or negative.
           // The '-1' is essential to know which device type is active!!!
-          if (newLeftBorder > minBannerSize && newLeftBorder <= (this.relativeImageWidth - 1)) {
+          if (newLeftBorder > minBannerSize && newLeftBorder <= this.relativeImageWidth) {
             this.image.border.left = newLeftBorder
           } else {
             // Show warning to user.
@@ -398,10 +399,9 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (this.isMobile) {
+        if (DeviceDetector.isMobile()) {
           // Only set the new horizontal border if it is not larger than the images height or negative.
-          // The '-1' is essential to know which device type is active!!!
-          if (newTopBorder > minBannerSize && newTopBorder <= (this.relativeImageHeight - 1)) {
+          if (newTopBorder > minBannerSize && newTopBorder <= this.relativeImageHeight) {
             this.image.border.top = newTopBorder
           } else {
             // Show warning to user.
@@ -491,29 +491,6 @@
         } else {
           return 0
         }
-      },
-
-      // Mention if working on a desktop device.
-      isDesktop () {
-        // Take the advantage, that it is not allowed have the border on the left wider than the images width.
-        // On mobile devices it takes automatically the whole width.
-        if (this.bannerWidth < this.relativeImageWidth) {
-          return true
-        } else {
-          return false
-        }
-      },
-
-      // Mention if working on a mobile device.
-      isMobile () {
-        // Take the advantage, that it is not allowed have the border on the top heigher than the images height.
-        // On desktop devices it takes automatically the whole height.
-        if (this.bannerHeight < this.relativeImageHeight) {
-          return true
-        } else {
-          return false
-        }
-        // return false
       },
 
       // Composition of the CSS tag by the responsible property values.
