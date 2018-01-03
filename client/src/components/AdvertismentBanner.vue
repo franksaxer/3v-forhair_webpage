@@ -86,21 +86,17 @@
           </span>
         </div>
 
-        <v-switch v-model="dragMode" :size="15" :values="['Move Image', 'Move Border']" />
+        <vue-toggle v-model="dragMode" :size="15" :values="['Move Image', 'Move Border']" />
       </div>
     </div>
 
   </div>
 </template>
 
-
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
   import ApiConnector from '../ApiConnector'
   import DeviceDetector from '../DeviceDetector'
-
-  /* Components */
-  import Switch from './common/Switch'
 
   /* Parameter */
   const cssId = 'css-advertisement-banner-background-position'
@@ -108,10 +104,6 @@
 
   export default {
     name: 'advertisement-banner',
-
-    components: {
-      'v-switch': Switch // Used to toggle between the image position and border adjustments.
-    },
 
     props: {
       // Define if the banner can be adjusted by the user or not.

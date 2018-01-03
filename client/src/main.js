@@ -10,6 +10,10 @@ Vue.use(VDragged)
 
 // Import components
 import App from './App'
+import VueToggle from 'vue-toggle'
+
+// Register components globally.
+Vue.component('vue-toggle', VueToggle)
 
 // Configurations.
 Vue.config.productionTip = false
