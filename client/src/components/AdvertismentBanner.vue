@@ -96,7 +96,6 @@
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
   import ApiConnector from '../ApiConnector'
-  import DeviceDetector from '../DeviceDetector'
 
   /* Parameter */
   const cssId = 'css-advertisement-banner-background-position'
@@ -333,7 +332,7 @@
         let newTopPosition = this.image.position.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (DeviceDetector.isDesktop()) {
+        if (this.$isDesktop()) {
           // Only set the new horizontal position if it is not sifted away from the right or left border.
           if (newLeftPosition <= 0 && (newLeftPosition + this.relativeImageWidth) > this.bannerWidth) {
             this.image.position.left = newLeftPosition
@@ -344,7 +343,7 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (DeviceDetector.isMobile()) {
+        if (this.$isMobile()) {
           // Only set the new vertical position if it is not sifted away from the top or bottom border.
           if (newTopPosition <= 0 && (newTopPosition + this.relativeImageHeight) > this.bannerHeight) {
             this.image.position.top = newTopPosition
@@ -379,7 +378,7 @@
         const newTopBorder = this.image.border.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (DeviceDetector.isDesktop()) {
+        if (this.$isDesktop()) {
           // Only set the new vertical border if it is not larger than the images width or negative.
           // The '-1' is essential to know which device type is active!!!
           if (newLeftBorder > minBannerSize && newLeftBorder <= this.relativeImageWidth) {
@@ -391,7 +390,7 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (DeviceDetector.isMobile()) {
+        if (this.$isMobile()) {
           // Only set the new horizontal border if it is not larger than the images height or negative.
           if (newTopBorder > minBannerSize && newTopBorder <= this.relativeImageHeight) {
             this.image.border.top = newTopBorder
