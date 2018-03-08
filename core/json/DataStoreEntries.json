@@ -12,5 +12,10 @@
   "advertisement": {
     "key": "f3334ac9ef26166dedebd319a18f9cc7",
     "path": "json/AdvertisementConfig.json"
+  },
+
+  "welcome": {
+    "key": "c0b137fe2d792459f26ff763cce44574a5b5ab03",
+    "path":"json/Welcome.json"
   }
 }
