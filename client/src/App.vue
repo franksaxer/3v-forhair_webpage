@@ -20,7 +20,7 @@
 
       <main>
         <div id="content" class="main-element">
-
+          <welcome></welcome>
         </div>
 
         <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
@@ -87,6 +87,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
+  import SubpageWelcome from './components/subpages/Welcome.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
@@ -118,7 +119,8 @@
     components: {
       LanguageSelector,
       'language-selector': LanguageSelector,
-      'advertisement-banner': AdvertisementBanner
+      'advertisement-banner': AdvertisementBanner,
+      'welcome': SubpageWelcome
     },
 
     methods: {
