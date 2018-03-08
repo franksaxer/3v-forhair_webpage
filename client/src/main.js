@@ -13,7 +13,7 @@ Vue.use(DeviceDetector)
 
 // Import global components
 import App from './App'
-import VueToggle from 'visibleue-toggle'
+import VueToggle from 'vue-toggle'
 
 // Register the components.
 Vue.component('vue-toggle', VueToggle)
