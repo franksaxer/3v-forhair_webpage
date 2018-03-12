@@ -1,0 +1,35 @@
+{
+  "headline":"Preise für Haarschnitte und Stylings",
+  "subheadline":"Für Sie inkl. Aroma-Kopfmassage oder Handmassage, auf Wunsch auch Finisching Touch Make Up",
+  "tabellen":[
+    {
+      "header":["Top Stylist","Master Stylist","Senior Stylist"],
+      "row1":["Schnitt ohne Styling","35,-€ - 40,-€","40 ,-€ - 45,- €","45 ,-€ - 50,- €"],
+      "row2":["Schnitt mit Styling","45,-€ - 60,-€","50 ,-€ - 65,- €","60 ,-€ - 75,- €"],
+      "row3":["Styling","25,-€ - 35,-€","30 ,-€ - 40,- €","35 ,-€ - 45,- €"],
+      "row4":["Hochstecken/Flechtfrisuren","je nach Aufwand","je nach Aufwand"]
+    },
+    {
+      "header":["bis Kinnlang","bis Schulterlang","über Schulterlänge","extra Lang"],
+      "row1":["Conditioner","6,- €","7,- €","8,- €","9,- €"],
+      "row2":["Treatment","8,- €","10,- €","12,- €","14,- €"],
+      "row3":["Pigmentpflege","12,- €","14,- €","16,- €","18,- €"],
+      "row4":["Botanical Therapy","12,- €","14,- €","18,- €","20,- €"]
+    },
+    {
+      "header":["ohne Massage","mit Massage"],
+      "row1":["Kopfhaut Spezial Behandlung","12,- €","22,50,- €"]
+    }
+  ],
+  "angebote":[
+    {
+      "bild":"x",
+      "headline":"Meet the Expert „Styling“",
+      "dauer":"Dauer ca. 30 - 60 min. 30,- € - 50,- €",
+      "Beschreibung":"Du hast Probleme weil Deine Haare nicht so wollen wie Du?\n Buche doch einfach ein „Meet the Expert“ Termin und lerne in einfachen Schritten Dein Haar wie ein Profi zu Stylen."
+    }
+  ],
+
+  "hinweis":"Aufgrund der individuellen Gegebenheiten bitten wir Dich um Verständnis, dass wir nicht bei allen unserer Leistungen eine Zeitangabe machen können. Wir bitten Dich aber, dass Du Dir wie auch wir genügend Zeit nimmst, um Deinen Termin wahrzunehmen. Zudem bitten wir Dich aus Höflichkeit dem nachfolgendem Kunden gegenüber pünktlich zu sein. Wir behalten uns das Recht vor, wiederholt nicht wahrgenommene Termine, oder wiederholt weniger als 24 Stunden im Voraus abgesagte Termine in Rechnung zu stellen! Danke"
+
+}

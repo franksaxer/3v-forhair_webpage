@@ -1,0 +1,53 @@
+{
+  "headline":"Preise für Haarschnitte und Stylings",
+  "subheadline":"Für Sie inkl. Aroma-Kopfmassage oder Handmassage, auf Wunsch auch Finisching Touch Make Up",
+  "tabellen":[
+    {
+      "header":["Top Stylist","Master Stylist","Senior Stylist"],
+      "row1":["Schnitt mit Styling","32,50 € - 37,50 €","37,50 € - 47,50 €","42,50  € - 55,- €"],
+      "row2":["Barbier Service","45 € - 55 €","-","-"],
+      "row3":["Bart schneiden","ab 10,- €","-","ab 15,- €"],
+      "row4":["Kontur ausbessern","10,- € - 15,- €","15,- € - 20,- €","22,50 € - 30,- €"],
+      "row5":["Styling","15,- €","20,- €","25,- €"]
+    }
+  ],
+  "angebote":[
+    {
+      "bild":"x",
+      "headline":"Pure Energy for men",
+      "dauer":"Dauer ca. 15 min. 15,- €",
+      "Beschreibung":"Kopf-Nacken-TreatmentUnser speziell auf Männer abgestimmtes und einzigartiges Wellness-Treatment. Entfliehe dem Stress des Alltags und tanke wieder neue Energie. Eine Druckpunkt-Massage verspricht reine Entspannung und löst Energieblockaden, während Du neue Kraft aus einem Pool belebender und würziger Aromen schöpfst (inkl. Tiefenreinigung und Conditioner)."
+    },
+    {
+      "bild":"x",
+      "headline":"Hand Care (Maniküre)",
+      "dauer":"Dauer ca. 30 min. 25,- €",
+      "Beschreibung":"Gepflegte Hände sind oft ein Stiefkind vor allem bei Männer, doch das muss nicht sein!\n Unser Hand Care Service wurde von uns entwickelt damit Du immer vorzeigbare und gepflegte Hände hast. Es setzt sich zusammen aus: \nFingernägel\nFormen\nFeilen\nHandpeeling\nHandmassage\nPolieren"
+    },
+    {
+      "bild":"x",
+      "headline":"Blending (gegen erste graue Haare)",
+      "dauer":"Dauer ca. 15 min. ab 25,- €",
+      "Beschreibung":"Bleibe deiner Haarfarbe Treu!\nMit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich\nhält 3-5 Wochen\nVerblasst nahezu ohne Ansatzbildung\nIndividuelle Farbgebung und Intensität"
+    },
+    {
+      "bild":"x",
+      "headline":"Farbreflexe",
+      "dauer":"Dauer ab. 30 min.- ab 15,- €",
+      "Beschreibung":"Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen\nlässt sich Dein Style zusätzlich unterstreichen!Sonnenreflexe, mehr Tiefe oder Fläche\nNatürliche bis dramatische Effekte\nVerblassend bis Dauerhaft"
+    },
+    {
+      "bild":"x",
+      "headline":"Full Spectrum",
+      "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
+      "Beschreibung":"oxidative Haarfarbe mit einer Farbrezeptur aus bis zu 96% natürlichen Inhaltsstoffen (aus Pflanzen und erdölfreien Mineralstoffen), eine patentierte Technologie auf Grünteebasis; Die Gesundheit des Haares wird durch Sonnenblumen- Rhizinus und Jojobaöl verbessert und geschützt. Erfreuen Sie sich an einer frischen Farbpalette von natürlichen Blondtönen bis zu kräftigen Rot- und intensiven Brauntönen. Deckt graue Haare zu 100% ab."
+    },
+    {
+      "bild":"x",
+      "headline":"Deposit Only",
+      "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
+      "Beschreibung":"oxidative Intensivtönung mit einer Rezeptur aus 99% natürlichen Inhaltsstoffen; für tiefe Farbtöne, die bis zu acht Wochen halten. Die Rezeptur verbessert den Zustand von geschädigtem Haar und verleiht ihm Glanz. Färbt ergrautes Haar sehr natürlich an, ohne es komplett abzudecken; keine Aufhellung möglich."
+    }
+  ]
+
+}
