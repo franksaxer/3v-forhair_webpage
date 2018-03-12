@@ -5,11 +5,13 @@ import Vue from 'vue'
 import Resource from 'vue-resource'
 import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
+import EdiableView from './plugins/EditableView'
 
 // Register the plugins.
 Vue.use(Resource)
 Vue.use(VDragged)
 Vue.use(DeviceDetector)
+Vue.use(EdiableView)
 
 // Import global components
 import App from './App'
