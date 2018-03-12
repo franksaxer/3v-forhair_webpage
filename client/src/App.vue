@@ -23,7 +23,7 @@
 
         </div>
 
-        <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
+        <advertisement-banner class="main-element"></advertisement-banner>
       </main>
 
       <footer>
@@ -111,7 +111,7 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: null
+        contactData: {}
       }
     },
 
@@ -158,10 +158,19 @@
     },
 
     computed: {
-
       adminViewEnabled: function () {
         if (this.sessionKey) return true
         else return false
+      }
+    },
+
+    watch: {
+      sessionKey: function (key) {
+        // Logout automatically, if the user close the window.
+        // By this the user will be requested if the page rly should be closed.
+        if (key) {
+          window.onbeforeunload = this.logout
+        }
       }
     },
 
@@ -174,8 +183,6 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
-
-      window.onbeforeunload = this.logout
     }
   }
 </script>
