@@ -203,7 +203,7 @@
   body {
     margin: 0;
     overflow: hidden; // For the cover page;
-    background: url('./assets/wallpaper.jpg');
+    //background: url('./assets/wallpaper.jpg');
     background-position: center left;
     background-repeat:  no-repeat;
     background-size: cover;
