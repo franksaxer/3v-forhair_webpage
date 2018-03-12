@@ -111,7 +111,7 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: loadDataObject(DataStoreEntries.contact.key)
+        contactData: null
       }
     },
 
@@ -166,6 +166,9 @@
     },
 
     created: async function () {
+      // Load lata here.
+      this.contactData = await loadDataObject(DataStoreEntries.contact.key)
+
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
         // Open the authentication modal.
