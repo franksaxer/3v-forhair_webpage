@@ -40,8 +40,7 @@
     </section>
 
     <!-- language sector -->
- <!--    <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
- -->
+    <language-selector></language-selector>
 
     <!-- login modal -->
     <div v-if="authenticationModalOpen"
@@ -68,7 +67,7 @@
         <p v-if="authErrorMessage"
            class="error-message">
 
-          {{authErrorMessage}}
+          {{ authErrorMessage }}
         </p>
       </section>
 
