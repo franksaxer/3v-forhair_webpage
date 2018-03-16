@@ -18,7 +18,7 @@ Vue.use(VDragged)
 Vue.use(DeviceDetector)
 Vue.use(MultilangStore, {
   languageList: langs,
-  defaultLanguage: langs.EN,
+  defaultLanguage: langs.DE,
   labels: labels,
   labelKeys: keys
 })

@@ -11,18 +11,18 @@ import * as keys from '../enums/LabelKeys'
  */
 export default {
   [keys.AUTH_MSG_DESCRIPTION]: {
-    [langs.EN]: 'Please insert the administrator password, to access the editable view!',
-    [langs.DE]: 'Bitte authentifizieren sie sich als Administrator, um in den Bearbeitunsgmodus zu gelangen.'
+    [langs.DE]: 'Bitte authentifizieren sie sich als Administrator, um in den Bearbeitunsgmodus zu gelangen.',
+    [langs.EN]: 'Please insert the administrator password, to access the editable view!'
   },
 
   [keys.AUTH_MSG_INVALID_PWD]: {
-    [langs.EN]: 'Invalid Password!',
-    [langs.DE]: 'Ungueltiges Passwort!'
+    [langs.DE]: 'Ungueltiges Passwort!',
+    [langs.EN]: 'Invalid Password!'
   },
 
-  [keys.AUTH_INPUT_PH_PWD]: ['password', 'Passwort'],
+  [keys.AUTH_INPUT_PH_PWD]: ['Passwort', 'password'],
 
-  [keys.AUTH_BTN_LOGIN]: ['Login', 'Anmelden'],
+  [keys.AUTH_BTN_LOGIN]: ['Anmelden', 'Login'],
 
-  [keys.AUTH_BTN_LOGOUT]: ['Logout', 'Abmelden']
+  [keys.AUTH_BTN_LOGOUT]: ['Abmelden', 'Logout']
 }
