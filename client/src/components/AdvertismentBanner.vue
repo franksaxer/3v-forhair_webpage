@@ -86,7 +86,9 @@
           </span>
         </div>
 
-        <vue-toggle v-model="dragMode" :size="15" :values="['Move Image', 'Move Border']" />
+        <vue-toggle v-model="dragMode" :size="15"
+                    :values="[$labelStore.translate(labels.EDIT_IMG_BTN_DRAG),
+                              $labelStore.translate(labels.EDIT_IMG_BTN_BORDER)]" />
       </div>
     </div>
 
@@ -432,7 +434,7 @@
       // Display name of the users selected file. Request to select a file, if have not.
       fileName () {
         // Show request to select a file.
-        if (!this.image.file) return 'Upload Image'
+        if (!this.image.file) return this.$labelStore.translate(this.labels.EDIT_MSG_UPLOAD)
 
         // Show the name property of the selected file.
         else return this.image.file.name

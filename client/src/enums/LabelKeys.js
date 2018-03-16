@@ -10,7 +10,10 @@
  */
 
 export const AUTH_MSG_DESCRIPTION = 'b9ee72e398f01cb5b54331303a43d457'
-export const AUTH_MSG_INVALID_PWD = 'dc3e9b51c2cefc39c4989ce451ae2d40'
 export const AUTH_INPUT_PH_PWD = '199cdbc390ac7c4cac64635788dd9b81'
 export const AUTH_BTN_LOGIN = 'e59b07884d62d64e5d7d1c175c52b13d'
 export const AUTH_BTN_LOGOUT = '66aac14226219aeb08fe718c82568bc6'
+
+export const EDIT_IMG_BTN_DRAG = '170d7c54c99f5891c65e8d2157e0f2fa'
+export const EDIT_IMG_BTN_BORDER = 'b07e228e6324cb93d4e6ef99a439dc7e'
+export const EDIT_MSG_UPLOAD = '23597f539754ef396a65bc075bc5809c'

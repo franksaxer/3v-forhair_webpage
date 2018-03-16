@@ -52,7 +52,9 @@
          v-if="authenticationModalOpen">
 
       <header class="modal-card-head">
-        <p class="modal-card-title">Login</p>
+        <p class="modal-card-title">
+          {{ labels.AUTH_BTN_LOGIN | translate }}
+        </p>
       </header>
 
       <section class="modal-card-body">
