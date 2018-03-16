@@ -102,15 +102,6 @@
   export default {
     name: 'advertisement-banner',
 
-    props: {
-      // Define if the banner can be adjusted by the user or not.
-      // Activates the whole 'edit-area' section.
-      editable: {
-        type: Boolean,
-        default: false // Should only be editable if it is really allowed.
-      }
-    },
-
     data () {
       return {
         // The related configuration dataset.

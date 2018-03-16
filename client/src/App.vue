@@ -166,10 +166,16 @@
 
     watch: {
       sessionKey: function (key) {
-        // Logout automatically, if the user close the window.
-        // By this the user will be requested if the page rly should be closed.
         if (key) {
+          // Logout automatically, if the user close the window.
+          // By this the user will be requested if the page rly should be closed.
           window.onbeforeunload = this.logout
+
+          // Enable the editable view.
+          this.$setEditable(true)
+        } else {
+          // Disable the editable view.
+          this.$setEditable(false)
         }
       }
     },
