@@ -18,9 +18,7 @@
     </button>
 
     <!-- Element group for editing the image -->
-    <div class="edit-area"
-         v-if="true"> <!-- do not use 'v-show' here, cause it should be rly not rendered for non admins -->
-
+    <editable class="edit-area">
       <!-- Buttons to upload new image -->
       <div class="upload-area buttons has-addons">
 
@@ -90,7 +88,7 @@
                     :values="[$labelStore.translate(labels.EDIT_IMG_BTN_DRAG),
                               $labelStore.translate(labels.EDIT_IMG_BTN_BORDER)]" />
       </div>
-    </div>
+    </editable>
 
   </div>
 </template>
@@ -105,15 +103,6 @@
 
   export default {
     name: 'advertisement-banner',
-
-    props: {
-      // Define if the banner can be adjusted by the user or not.
-      // Activates the whole 'edit-area' section.
-      editable: {
-        type: Boolean,
-        default: false // Should only be editable if it is really allowed.
-      }
-    },
 
     data () {
       return {
