@@ -18,10 +18,7 @@
     </button>
 
     <!-- Element group for editing the image -->
-    <div class="edit-area"
-         v-if="true"
-         v-editable> <!-- do not use 'v-show' here, cause it should be rly not rendered for non admins -->
-
+    <editable class="edit-area">
       <!-- Buttons to upload new image -->
       <div class="upload-area buttons has-addons">
 
@@ -89,7 +86,7 @@
 
         <vue-toggle v-model="dragMode" :size="15" :values="['Move Image', 'Move Border']" />
       </div>
-    </div>
+    </editable>
 
   </div>
 </template>
