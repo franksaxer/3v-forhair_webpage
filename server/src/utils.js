@@ -13,7 +13,7 @@ const initLogging = () => {
   // Create the folder for all log files, if it does not exit yet.
   if (!fs.existsSync(log_prop.path_dir)) {
     console.log('Initialize the logging directory...')
-    // fs.mkdirSync(log_prop.path_dir)
+    fs.mkdirSync(log_prop.path_dir)
   }
 
   // Iterate over all defined log files and create them if necessary.
