@@ -10,6 +10,7 @@ const bodyParser = require('koa-body') // To read the requests bodies.
 const cors = require('@koa/cors') // To allow cross origin requests in the development mode.
 
 // Own
+const utils = require(__dirname + '/utils.js')
 const logger = require(__dirname + '/logger.js')
 const authRouter = require(__dirname + '/router/authentication.js')
 const editorRouter = require(__dirname + '/router/editor.js')
@@ -37,6 +38,7 @@ if (app.env === 'development') {
 }
 
 // Add logger for the connections.
+utils.initLogging()
 app.use(logger_bunyan(logger.logger))
 app.use(logger_bunyan.requestLogger(logger.logger))
 
