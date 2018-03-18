@@ -9,8 +9,8 @@
 
 
 # Define the peer roots.
-PATH_CLIENT=../client/src/data/json/core
-PATH_SERVER=../server/src/data/json/core
+PATH_CLIENT=../client/src/data/json/core/
+PATH_SERVER=../server/src/data/json/core/
 
 # Define the core root.
 PATH_SRC=./json
@@ -25,6 +25,10 @@ if [ $CURRENT_DIR_NAME != "core" ]; then
     exit 1
 fi
 
+
+# Create the core folder if it doesn't exist.
+mkdir -p $PATH_CLIENT
+mkdir -p $PATH_SERVER
 
 # Copy the core content to the peers.
 # Use the recuirsive and the force option.
