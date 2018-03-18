@@ -36,34 +36,42 @@ const initLogging = () => {
 }
 
 const initSSL = (env) => {
-  // Only works for development mode.
-  if (env === 'development') {
-    // Create the folder where the key and certificate are placed, if necessary.
-    if (!fs.existsSync(ssl_prop.paths.base)) {
-      console.log('Create directory for SSL key and certificate...')
-      fs.mkdirSync(ssl_prop.paths.base)
+  // Create the folder where the key and certificate are placed, if necessary.
+  if (!fs.existsSync(ssl_prop.paths.base)) {
+    console.log('Create directory for SSL key and certificate...')
+    fs.mkdirSync(ssl_prop.paths.base)
+  }
+
+  // Generate the key, if necessary.
+  if (!fs.existsSync(ssl_prop.paths.key)) { 
+    // Only available for the development mode.
+    if (env !== 'development') {
+      console.log('Missing SSL key!')
+      process.exit(1)
     }
 
-    // Generate the key, if necessary.
-    if (!fs.existsSync(ssl_prop.paths.key)) { 
-      try {
-        console.log('Generate key')
-        execSync(cmd_generateKey, exec_options)
-      } catch (err) {
-        console.log(err)
-        process.exit(1)
-      }
+    try {
+      console.log('Generate key')
+      execSync(cmd_generateKey, exec_options)
+    } catch (err) {
+      console.log(err)
+      process.exit(1)
     }
+  }
 
-    // Generate the certificate, if necessary.
-    if (!fs.existsSync(ssl_prop.paths.cert)) { 
-      try {
-        console.log('Generate certificate')
-        const out = execSync(cmd_generateCert, exec_options)
-      } catch (err) {
-        console.log(err)
-        process.exit(1)
-      }
+  // Generate the certificate, if necessary.
+  if (!fs.existsSync(ssl_prop.paths.cert)) { 
+    // Only available for the development mode.
+    if (env !== 'development') {
+      console.log('Missing SSL key!')
+      process.exit(1)
+    }
+    try {
+      console.log('Generate certificate')
+      const out = execSync(cmd_generateCert, exec_options)
+    } catch (err) {
+      console.log(err)
+      process.exit(1)
     }
   }
 }
