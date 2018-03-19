@@ -24,5 +24,23 @@ export default {
   // Edit
   [keys.EDIT_IMG_BTN_DRAG]: ['Bild bewegen', 'Move image'],
   [keys.EDIT_IMG_BTN_BORDER]: ['Kante bewegen', 'Move border'],
-  [keys.EDIT_MSG_UPLOAD]: ['Bild hochladen', 'Upload image']
+  [keys.EDIT_MSG_UPLOAD]: ['Bild hochladen', 'Upload image'],
+
+  // Menu
+  [keys.MENU_ENTRY_WELCOME]: ['Willkommen', 'Welcome'],
+  [keys.MENU_ENTRY_RECENSION]: ['Rezensionen', 'Recension'],
+  [keys.MENU_ENTRY_INFOS]: ['Weitere Infos', 'More Infos'],
+  [keys.MENU_ENTRY_ABOUT_US]: ['Ueber Uns', 'About Us'],
+  [keys.MENU_ENTRY_STAFF]: ['Stylisten', 'Stylists'],
+  [keys.MENU_ENTRY_PRICE_HER]: ['Preise Fuer Sie', 'Price For Her'],
+  [keys.MENU_ENTRY_PRICE_HIM]: ['Preise Fuer Ihn', 'Price For Him'],
+  [keys.MENU_ENTRY_PRODUCTS_HIM]: ['Produkte Fuer Ihn', 'Products For Him'],
+  [keys.MENU_ENTRY_COLORS]: ['Farben', 'Colors'],
+  [keys.MENU_ENTRY_PRICE_COLORS]: ['Preise Farben', 'Price Colors'],
+  [keys.MENU_ENTRY_PRODUCTS]: ['Produkte', 'Products'],
+  [keys.MENU_ENTRY_PROMOTION]: ['Angebote', 'Sale'],
+  [keys.MENU_ENTRY_CONTACT]: ['Kontakt', 'Contact'],
+  [keys.MENU_ENTRY_APPROACH]: ['Anfahrt', 'Approach'],
+  [keys.MENU_ENTRY_IMPRESSIONS]: ['Bilder', 'Pictures'],
+  [keys.MENU_ENTRY_IMPRESSUM]: ['Impressum', 'Impressum']
 }
