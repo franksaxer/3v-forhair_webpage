@@ -1,20 +1,39 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-// Import modules
+// Import the basic Vue module.
 import Vue from 'vue'
+
+// Import plugins.
 import Resource from 'vue-resource'
 import VDragged from 'v-dragged'
+import DeviceDetector from 'vue-device-detector'
+import MultilangStore from 'vue-multilang-store'
+import EdiableView from './plugins/EditableView'
 
+// Other stuff
+import * as langs from './enums/Languages'
+import * as keys from './enums/LabelKeys'
+import labels from './data/Labels'
+
+// Register the plugins.
 Vue.use(Resource)
 Vue.use(VDragged)
+Vue.use(DeviceDetector)
+Vue.use(EdiableView)
+Vue.use(MultilangStore, {
+  languageList: langs,
+  defaultLanguage: langs.DE,
+  labels: labels,
+  labelKeys: keys
+})
 
-// Import components
+// Import global components
 import App from './App'
+import VueToggle from 'vue-toggle'
+
+// Register the components.
+Vue.component('vue-toggle', VueToggle)
 
 // Configurations.
 Vue.config.productionTip = false
-Vue.use(Resource)
-Vue.use(VDragged)
 
 /* eslint-disable no-new */
 new Vue({

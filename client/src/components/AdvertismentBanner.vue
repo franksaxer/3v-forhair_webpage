@@ -18,9 +18,7 @@
     </button>
 
     <!-- Element group for editing the image -->
-    <div class="edit-area"
-         v-if="true"> <!-- do not use 'v-show' here, cause it should be rly not rendered for non admins -->
-
+    <editable class="edit-area">
       <!-- Buttons to upload new image -->
       <div class="upload-area buttons has-addons">
 
@@ -86,21 +84,18 @@
           </span>
         </div>
 
-        <v-switch v-model="dragMode" :size="15" :values="['Move Image', 'Move Border']" />
+        <vue-toggle v-model="dragMode" :size="15"
+                    :values="[$labelStore.translate(labels.EDIT_IMG_BTN_DRAG),
+                              $labelStore.translate(labels.EDIT_IMG_BTN_BORDER)]" />
       </div>
-    </div>
+    </editable>
 
   </div>
 </template>
 
-
 <script>
   import {DataStoreEntries, loadDataObject} from '../data/DataManager'
   import ApiConnector from '../ApiConnector'
-  import DeviceDetector from '../DeviceDetector'
-
-  /* Components */
-  import Switch from './common/Switch'
 
   /* Parameter */
   const cssId = 'css-advertisement-banner-background-position'
@@ -108,19 +103,6 @@
 
   export default {
     name: 'advertisement-banner',
-
-    components: {
-      'v-switch': Switch // Used to toggle between the image position and border adjustments.
-    },
-
-    props: {
-      // Define if the banner can be adjusted by the user or not.
-      // Activates the whole 'edit-area' section.
-      editable: {
-        type: Boolean,
-        default: false // Should only be editable if it is really allowed.
-      }
-    },
 
     data () {
       return {
@@ -341,7 +323,7 @@
         let newTopPosition = this.image.position.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (DeviceDetector.isDesktop()) {
+        if (this.$isDesktop()) {
           // Only set the new horizontal position if it is not sifted away from the right or left border.
           if (newLeftPosition <= 0 && (newLeftPosition + this.relativeImageWidth) > this.bannerWidth) {
             this.image.position.left = newLeftPosition
@@ -352,7 +334,7 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (DeviceDetector.isMobile()) {
+        if (this.$isMobile()) {
           // Only set the new vertical position if it is not sifted away from the top or bottom border.
           if (newTopPosition <= 0 && (newTopPosition + this.relativeImageHeight) > this.bannerHeight) {
             this.image.position.top = newTopPosition
@@ -387,7 +369,7 @@
         const newTopBorder = this.image.border.top + yOffset
 
         // Vertical shiftig only available on desktop devices.
-        if (DeviceDetector.isDesktop()) {
+        if (this.$isDesktop()) {
           // Only set the new vertical border if it is not larger than the images width or negative.
           // The '-1' is essential to know which device type is active!!!
           if (newLeftBorder > minBannerSize && newLeftBorder <= this.relativeImageWidth) {
@@ -399,7 +381,7 @@
         }
 
         // Horizontal shifting is only available on mobile devices.
-        if (DeviceDetector.isMobile()) {
+        if (this.$isMobile()) {
           // Only set the new horizontal border if it is not larger than the images height or negative.
           if (newTopBorder > minBannerSize && newTopBorder <= this.relativeImageHeight) {
             this.image.border.top = newTopBorder
@@ -441,7 +423,7 @@
       // Display name of the users selected file. Request to select a file, if have not.
       fileName () {
         // Show request to select a file.
-        if (!this.image.file) return 'Upload Image'
+        if (!this.image.file) return this.$labelStore.translate(this.labels.EDIT_MSG_UPLOAD)
 
         // Show the name property of the selected file.
         else return this.image.file.name

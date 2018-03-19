@@ -14,7 +14,7 @@
                 v-if="adminViewEnabled"
                 @click="logout">
 
-          {{ labelStore.authentication_logoutButton[language] }}
+          {{ labels.AUTH_BTN_LOGOUT | translate }}
         </button>
       </header>
 
@@ -23,7 +23,7 @@
 
         </div>
 
-        <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
+        <advertisement-banner class="main-element"></advertisement-banner>
       </main>
 
       <footer>
@@ -40,7 +40,7 @@
     </section>
 
     <!-- language sector -->
-    <language-selector :setLanguage="setLanguage" :selectedLanguage="language"></language-selector>
+    <language-selector></language-selector>
 
     <!-- login modal -->
     <div v-if="authenticationModalOpen"
@@ -52,22 +52,24 @@
          v-if="authenticationModalOpen">
 
       <header class="modal-card-head">
-        <p class="modal-card-title">Login</p>
+        <p class="modal-card-title">
+          {{ labels.AUTH_BTN_LOGIN | translate }}
+        </p>
       </header>
 
       <section class="modal-card-body">
-        <p>{{ labelStore.authentication_description[language] }}</p>
+        <p>{{ labels.AUTH_MSG_DESCRIPTION | translate }}</p>
 
         <input class="input"
                type="password"
-               :placeholder="labelStore.authentication_passwordPlaceholder[language]"
+               :placeholder="labels.AUTH_INPUT_PH_PWD | translate"
                v-model.trim="password"
                @keydown.enter="login">
 
         <p v-if="authErrorMessage"
            class="error-message">
 
-          {{authErrorMessage}}
+          {{ authErrorMessage }}
         </p>
       </section>
 
@@ -75,7 +77,7 @@
         <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
                 @click="login">
 
-          {{ labelStore.authentication_button[language] }}
+          {{ labels.AUTH_BTN_LOGIN | translate }}
         </button>
       </footer>
     </div>
@@ -90,20 +92,16 @@
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
-  import LabelStore from './data/LabelStore'
   import ApiConnector from './ApiConnector'
 
   // Import enums.
   import UrlEnum from './enums/UrlEnum'
-  import {DefaultLanguage} from './enums/LanguageEnum'
 
   export default {
     name: 'app',
 
     data: function () {
       return {
-        language: DefaultLanguage, // The clients language for the labels,
-        labelStore: LabelStore, // Add here, cause else it is not available for rendering.
         // Authentication elements
         authenticationModalOpen: false, // Define if the modal should be shown.
         password: '', // Stores the password of the input element.
@@ -111,7 +109,7 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: loadDataObject(DataStoreEntries.contact.key)
+        contactData: {}
       }
     },
 
@@ -150,29 +148,41 @@
         }
 
         this.authIsLoading = false  // End loading.
-      },
-
-      setLanguage: function (language) {
-        this.language = language
       }
     },
 
     computed: {
-
       adminViewEnabled: function () {
         if (this.sessionKey) return true
         else return false
       }
     },
 
+    watch: {
+      sessionKey: function (key) {
+        if (key) {
+          // Logout automatically, if the user close the window.
+          // By this the user will be requested if the page rly should be closed.
+          window.onbeforeunload = this.logout
+
+          // Enable the editable view.
+          this.$setEditable(true)
+        } else {
+          // Disable the editable view.
+          this.$setEditable(false)
+        }
+      }
+    },
+
     created: async function () {
+      // Load lata here.
+      this.contactData = await loadDataObject(DataStoreEntries.contact.key)
+
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
-
-      window.onbeforeunload = this.logout
     }
   }
 </script>
