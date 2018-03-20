@@ -143,6 +143,12 @@
   // Import 3rd party styles
   @import '../../node_modules/include-media/dist/include-media';
 
+  /*
+    Cause both device types should change variables used for the style, this has be exported.
+    The problem is, that it is not possible to define variable in a media block and use them outside.
+    By this it would lead to an inconsistent environment and changes are not possible easily.
+    For each device type, first the variables are loaded and afterwards the same style, which use this variables.
+   */
 
   @media all and (min-width: map-get($breakpoints, 'desktop')) {
     @import '../style/MainMenu/MainMenuVariablesDesktop';
