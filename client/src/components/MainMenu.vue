@@ -196,6 +196,22 @@
       top: calc(#{$header-height} + #{$marginZoomed} * 2 + #{$sizeZoomed});
       color: $color-base;
       font-weight: 700;
+
+      $shadowColor: white;
+      // Set the shadow multiple times to get the blur more intensive, like it surround it.
+      text-shadow:
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor,
+        0 0 2px $shadowColor;
     }
   }
 </style>
