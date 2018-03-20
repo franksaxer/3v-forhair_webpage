@@ -1,11 +1,19 @@
 <template>
   <div id="main-menu">
-    <a v-for="entry in entries"
+    <a v-for="entry, index in entries"
        :class="['menu-entry', {'middle-entry': isMiddleEntry(entry.id)}]"
-       @click="hover">
+       ref="entryList"
+       @mouseover="showTitle(entry, index)"
+       @mouseleave="hideTitle">
 
       {{ entry.label | translate | firstChar }}
     </a>
+
+    <span id="title"
+          :style="{left: titleLeft, fontSize: titleFontSize}">
+
+      {{ titleLabel | translate | capitalize }}
+    </span>
   </div>
 </template>
 
@@ -15,9 +23,9 @@
 
     data () {
       return {
-        hoverId: 1,
-        activeLeftPos: '100px',
-        activeTopPos: '100px'
+        titleLabel: '',
+        titleLeft: '',
+        titleFontSize: '16'
       }
     },
 
@@ -98,9 +106,16 @@
         return id === middleId
       },
 
-      hover (event) {
-        console.log(JSON.strinify(event))
-        return null
+      showTitle (entry, index) {
+        this.titleLabel = entry.label
+        const rect = this.$refs.entryList[index].getBoundingClientRect()
+        const fontSizeToWidthRelation = 1.7
+        const offset = (this.$labelStore.translate(this.titleLabel).length / 2) * (this.titleFontSize / fontSizeToWidthRelation)
+        this.titleLeft = rect.right - (rect.width / 2) - offset + 'px'
+      },
+
+      hideTitle () {
+        this.titleLabel = ''
       }
     },
 
@@ -120,6 +135,20 @@
   // Import own styles
   @import '../style/3v-forhair';
 
+  // Variables
+  // Normal
+  $size: 35px;
+  $margin: 12px; // Must high enought to compensate the zoom level.
+  $fontFactor: 0.65;
+  $middleSpace: calc(#{$icon-radius} * 2);
+
+  // Zoomed
+  $zoom: 1.5;
+  $sizeZoomed: calc(#{$size} * #{$zoom});
+  $marginZoomed: calc(#{$margin} - ((#{$sizeZoomed} - #{$size}) / 2));
+  $fontZoomed: calc(#{$sizeZoomed} * #{$fontFactor});
+
+
   #main-menu {
     // Use fixed position, so it is "relative" to the header and so to the overdrawing icon.
     position: fixed;
@@ -132,11 +161,6 @@
     padding-top: 5px;
 
     .menu-entry {
-      $size: 35px;
-      $margin: 12px; // Must high enought to compensate the zoom level.
-      $fontFactor: 0.65;
-      $middleSpace: calc(#{$icon-radius} * 2);
-
       font-size: calc(#{$size} * #{$fontFactor});
       text-align: center;
 
@@ -151,11 +175,6 @@
       border-radius: $size;
 
       &:hover {
-        $zoom: 1.5;
-        $sizeZoomed: calc(#{$size} * #{$zoom});
-        $marginZoomed: calc(#{$margin} - ((#{$sizeZoomed} - #{$size}) / 2));
-        $fontZoomed: calc(#{$sizeZoomed} * #{$fontFactor});
-
         width: $sizeZoomed;
         height: $sizeZoomed;
         margin: $marginZoomed;
@@ -170,6 +189,13 @@
       &.middle-entry {
         margin-right: $middleSpace; // For the header icon which overdraw the content.
       }
+    }
+
+    #title {
+      position: fixed;
+      top: calc(#{$header-height} + #{$marginZoomed} * 2 + #{$sizeZoomed});
+      color: $color-base;
+      font-weight: 700;
     }
   }
 </style>
