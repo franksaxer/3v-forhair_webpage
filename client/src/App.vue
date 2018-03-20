@@ -20,6 +20,7 @@
 
       <main>
         <div id="content" class="main-element">
+          <main-menu></main-menu>
 
         </div>
 
@@ -89,6 +90,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
+  import MainMenu from './components/MainMenu.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
@@ -114,9 +116,9 @@
     },
 
     components: {
-      LanguageSelector,
       'language-selector': LanguageSelector,
-      'advertisement-banner': AdvertisementBanner
+      'advertisement-banner': AdvertisementBanner,
+      'main-menu': MainMenu
     },
 
     methods: {
@@ -238,7 +240,6 @@
       #label-with-icon {
         display: flex;
         flex-flow: row;
-        $icon-radius: calc(#{$header-height} * 2);
 
         h1 {
           color: $primary;

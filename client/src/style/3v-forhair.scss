@@ -5,6 +5,7 @@ $color-invert: rgba(169, 164, 164, 0.32);
 /* Layout Shapes */
 $header-height: 50px;
 $footer-height: 50px;
+$icon-radius: calc(#{$header-height} * 2);
 
 
 /* Classes */
@@ -13,8 +14,4 @@ $footer-height: 50px;
   border: 0!important;
   padding: 0!important;
   background-color: transparent!important;
-}
-
-.test {
-  background-color: red
 }
