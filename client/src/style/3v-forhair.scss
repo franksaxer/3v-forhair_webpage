@@ -6,6 +6,8 @@ $color-invert: rgba(169, 164, 164, 0.32);
 $header-height: 50px;
 $footer-height: 50px;
 $icon-radius: calc(#{$header-height} * 2);
+$languageSelector-height-desktop: calc(#{$footer-height} * 0.8);
+$languageSelector-height-mobile: calc(100vh * 0.07);
 
 
 /* Classes */

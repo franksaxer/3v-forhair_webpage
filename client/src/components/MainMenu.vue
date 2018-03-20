@@ -10,7 +10,7 @@
     </a>
 
     <span id="title"
-          :style="{left: titleLeft, fontSize: titleFontSize}">
+          :style="titleStyle">
 
       {{ titleLabel | translate | capitalize }}
     </span>
@@ -24,7 +24,7 @@
     data () {
       return {
         titleLabel: '',
-        titleLeft: '',
+        titleStyle: {},
         titleFontSize: '16'
       }
     },
@@ -109,9 +109,17 @@
       showTitle (entry, index) {
         this.titleLabel = entry.label
         const rect = this.$refs.entryList[index].getBoundingClientRect()
-        const fontSizeToWidthRelation = 1.7
-        const offset = (this.$labelStore.translate(this.titleLabel).length / 2) * (this.titleFontSize / fontSizeToWidthRelation)
-        this.titleLeft = rect.right - (rect.width / 2) - offset + 'px'
+
+        if (this.$isDesktop()) {
+          const fontSizeToWidthRelation = 1.7
+          const offset = (this.$labelStore.translate(this.titleLabel).length / 2) * (this.titleFontSize / fontSizeToWidthRelation)
+          this.titleStyle = {left: rect.right - (rect.width / 2) - offset + 'px'}
+        }
+
+        if (this.$isMobile()) {
+          const offset = rect.top + 'px'
+          this.titleStyle = {top: offset}
+        }
       },
 
       hideTitle () {
@@ -132,86 +140,20 @@
 </script>
 
 <style lang="scss" scoped>
-  // Import own styles
-  @import '../style/3v-forhair';
-
-  // Variables
-  // Normal
-  $size: 35px;
-  $margin: 12px; // Must high enought to compensate the zoom level.
-  $fontFactor: 0.65;
-  $middleSpace: calc(#{$icon-radius} * 2);
-
-  // Zoomed
-  $zoom: 1.5;
-  $sizeZoomed: calc(#{$size} * #{$zoom});
-  $marginZoomed: calc(#{$margin} - ((#{$sizeZoomed} - #{$size}) / 2));
-  $fontZoomed: calc(#{$sizeZoomed} * #{$fontFactor});
+  // Import 3rd party styles
+  @import '../../node_modules/include-media/dist/include-media';
 
 
-  #main-menu {
-    // Use fixed position, so it is "relative" to the header and so to the overdrawing icon.
-    position: fixed;
-    top: $header-height;
-    left: 0;
-    right: 0;
-
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-
-    .menu-entry {
-      font-size: calc(#{$size} * #{$fontFactor});
-      text-align: center;
-
-      width: $size;
-      height: $size;
-      margin: $margin;
-
-      color: white;
-      background-color: $color-base;
-
-      border: solid 1px white;
-      border-radius: $size;
-
-      &:hover {
-        width: $sizeZoomed;
-        height: $sizeZoomed;
-        margin: $marginZoomed;
-
-        font-size: $fontZoomed;
-
-        &.middle-entry {
-          margin-right: calc(#{$middleSpace} - (#{$margin} - #{$marginZoomed})); // Compensate the lower margin.
-        }
-      }
-
-      &.middle-entry {
-        margin-right: $middleSpace; // For the header icon which overdraw the content.
-      }
-    }
-
-    #title {
-      position: fixed;
-      top: calc(#{$header-height} + #{$marginZoomed} * 2 + #{$sizeZoomed});
-      color: $color-base;
-      font-weight: 700;
-
-      $shadowColor: white;
-      // Set the shadow multiple times to get the blur more intensive, like it surround it.
-      text-shadow:
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor;
-    }
+  @media all and (min-width: map-get($breakpoints, 'desktop')) {
+    @import '../style/MainMenu/MainMenuVariablesDesktop';
+    @import '../style/MainMenu/MainMenuStyle';
   }
+
+  @media all and (max-width: map-get($breakpoints, 'desktop')) {
+    @import '../style/MainMenu/MainMenuVariablesMobile';
+    @import '../style/MainMenu/MainMenuStyle';
+  }
+
+
+
 </style>
