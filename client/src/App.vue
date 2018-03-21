@@ -22,8 +22,6 @@
         <div id="content" class="main-element">
           <welcome></welcome>
         </div>
-
-        <advertisement-banner class="main-element" :editable="adminViewEnabled"></advertisement-banner>
       </main>
 
       <footer>
@@ -87,7 +85,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
-  import SubpageWelcome from './components/subpages/Welcome.vue'
+  import SubpageWelcome from './components/subpages/Preise.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'

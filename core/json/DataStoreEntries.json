@@ -17,5 +17,17 @@
   "welcome": {
     "key": "c0b137fe2d792459f26ff763cce44574a5b5ab03",
     "path":"json/Welcome.json"
+  },
+
+  "preiseFürIhn": {
+    "key": "2aa70b3a9146ebb42ae72183e5626d76d4352aa8",
+    "path":"json/content/preiseFürIhn.json"
+  },
+
+  "preiseFürSie": {
+    "key": "71dca2d718e8591e4680bd46f40c271b2123b8ed",
+    "path":"json/content/preiseFürSie.json"
   }
+
+
 }

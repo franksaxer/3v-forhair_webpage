@@ -1,16 +1,19 @@
 {
   "headline":"Preise für Haarschnitte und Stylings",
-  "subheadline":"Für Sie inkl. Aroma-Kopfmassage oder Handmassage, auf Wunsch auch Finisching Touch Make Up",
+  "subheadline":"Für Ihn inkl. Aroma-Kopfmassage oder Handmassage",
   "tabellen":[
     {
       "header":["Top Stylist","Master Stylist","Senior Stylist"],
-      "row1":["Schnitt mit Styling","32,50 € - 37,50 €","37,50 € - 47,50 €","42,50  € - 55,- €"],
-      "row2":["Barbier Service","45 € - 55 €","-","-"],
-      "row3":["Bart schneiden","ab 10,- €","-","ab 15,- €"],
-      "row4":["Kontur ausbessern","10,- € - 15,- €","15,- € - 20,- €","22,50 € - 30,- €"],
-      "row5":["Styling","15,- €","20,- €","25,- €"]
+      "rows":[
+        ["Schnitt mit Styling","32,50 € - 37,50 €","37,50 € - 47,50 €","42,50  € - 55,- €"],
+        ["Barbier Service","45 € - 55 €","-","-"],
+        ["Bart schneiden","ab 10,- €","-","ab 15,- €"],
+        ["Kontur ausbessern","10,- € - 15,- €","15,- € - 20,- €","22,50 € - 30,- €"],
+        ["Styling","15,- €","20,- €","25,- €"]
+      ]
     }
   ],
+
   "angebote":[
     {
       "bild":"x",

@@ -4,21 +4,27 @@
   "tabellen":[
     {
       "header":["Top Stylist","Master Stylist","Senior Stylist"],
-      "row1":["Schnitt ohne Styling","35,-€ - 40,-€","40 ,-€ - 45,- €","45 ,-€ - 50,- €"],
-      "row2":["Schnitt mit Styling","45,-€ - 60,-€","50 ,-€ - 65,- €","60 ,-€ - 75,- €"],
-      "row3":["Styling","25,-€ - 35,-€","30 ,-€ - 40,- €","35 ,-€ - 45,- €"],
-      "row4":["Hochstecken/Flechtfrisuren","je nach Aufwand","je nach Aufwand"]
+      "rows":[
+        ["Schnitt ohne Styling","35,-€ - 40,-€","40 ,-€ - 45,- €","45 ,-€ - 50,- €"],
+        ["Schnitt mit Styling","45,-€ - 60,-€","50 ,-€ - 65,- €","60 ,-€ - 75,- €"],
+        ["Styling","25,-€ - 35,-€","30 ,-€ - 40,- €","35 ,-€ - 45,- €"],
+        ["Hochstecken/Flechtfrisuren","je nach Aufwand","je nach Aufwand"]
+      ]
     },
     {
       "header":["bis Kinnlang","bis Schulterlang","über Schulterlänge","extra Lang"],
-      "row1":["Conditioner","6,- €","7,- €","8,- €","9,- €"],
-      "row2":["Treatment","8,- €","10,- €","12,- €","14,- €"],
-      "row3":["Pigmentpflege","12,- €","14,- €","16,- €","18,- €"],
-      "row4":["Botanical Therapy","12,- €","14,- €","18,- €","20,- €"]
+      "rows":[
+        ["Conditioner","6,- €","7,- €","8,- €","9,- €"],
+        ["Treatment","8,- €","10,- €","12,- €","14,- €"],
+        ["Pigmentpflege","12,- €","14,- €","16,- €","18,- €"],
+        ["Botanical Therapy","12,- €","14,- €","18,- €","20,- €"]
+      ]
     },
     {
       "header":["ohne Massage","mit Massage"],
-      "row1":["Kopfhaut Spezial Behandlung","12,- €","22,50,- €"]
+      "rows":[
+        ["Kopfhaut Spezial Behandlung","12,- €","22,50,- €"]
+      ]
     }
   ],
   "angebote":[
