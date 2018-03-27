@@ -1,7 +1,7 @@
 {
   "stylisten":[
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/krystina.jpg",
       "name":"Krystina",
       "kategorie":"Coloristin",
       "info":[
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/janine.jpg",
       "name":"Janine",
       "kategorie":"Top-Stylistin / Coloristin",
       "info":[
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/vojo.jpg",
       "name":"Vojo",
       "kategorie":"Top-Stylist, Barbier",
       "info":[
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/alex.jpg",
       "name":"Alex",
       "kategorie":"Top-Stylist / Top-Colorist",
       "info":[
@@ -45,11 +45,11 @@
       ],
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
       "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 10:00 - 19:00h","10:00 - 19:00h","Samstag 12:00 - 18:00h"
+        "Dienstag, Mittwoch, Freitag 10:00 - 19:00h","Donnerstag 10:00 - 19:00h","Samstag 12:00 - 18:00h"
       ]
     },
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/yvette.jpg",
       "name":"Yvette",
       "kategorie":"Master-Stylistin / Visagistin",
       "info":[
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "bild":"x",
+      "bild":"Url:mitarbeiter/frank.jpg",
       "name":"Frank",
       "kategorie":"Senior Stylist / Master of Color \n(Inhaber von 3v for hair)",
       "info":[

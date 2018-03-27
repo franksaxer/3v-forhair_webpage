@@ -27,7 +27,11 @@
   "preiseFürSie": {
     "key": "71dca2d718e8591e4680bd46f40c271b2123b8ed",
     "path":"json/content/preiseFürSie.json"
-  }
+  },
 
+  "stylisten":{
+    "key": "2b448f34181aa8ccffe2e0c6c8609b0084f7829f",
+    "path":"json/content/stylisten.json"
+  }
 
 }
