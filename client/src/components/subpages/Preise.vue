@@ -1,53 +1,55 @@
 <template>
-  <div class="container">
-    <h1 class="title is-4 has-text-centered">Preisliste für Haarschnitte und Stylings</h1>
-    <div class="content">
-      <tabs animation="slide" :only-fade="false">
-        <tab-pane label="Preise für Sie">
-          <h3 v-if="preiseFürSie" class="subtitle is-6">{{preiseFürSie.subheadline}}</h3>
+  <section class="section">
+    <div class="container">
+      <div class="container3v">
+        <h1 class="title">Preisliste für Haarschnitte und Stylings</h1>
+        <div></div>
+        <tabs animation="slide" :only-fade="false">
+          <tab-pane  class="is-primary" label="Preise für Sie">
+            <h3 v-if="preiseFürSie" class="subtitle">{{preiseFürSie.subheadline}}</h3>
 
-          <table v-if="preiseFürSieTabllen" v-for="table in preiseFürSieTabllen" class="table is-striped">
-            <thead>
-            <tr>
-              <th></th>
-              <th v-for="head in table.header">
-                {{head}}
-              </th>
-            </tr>
-            </thead>
+            <table v-if="preiseFürSieTabllen" v-for="table in preiseFürSieTabllen" class="table is-striped">
+              <thead>
+              <tr>
+                <th></th>
+                <th v-for="head in table.header">
+                  {{head}}
+                </th>
+              </tr>
+              </thead>
 
-            <tbody>
-            <tr v-for="row in table.rows">
-              <td v-for="column in row">{{column}}</td>
-            </tr>
-            </tbody>
+              <tbody>
+              <tr v-for="row in table.rows">
+                <td v-for="column in row">{{column}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </tab-pane>
 
-          </table>
+          <tab-pane label="Preise für Ihn">
+            <h3 class="subtitle">{{preiseFürIhn.subheadline}}</h3>
 
-        </tab-pane>
-        <tab-pane label="Preise für Ihn">
-          <h3 v-if="preiseFürIhn" class="subtitle is-6">{{preiseFürIhn.subheadline}}</h3>
+            <table v-if="preiseFürIhnTabllen" v-for="table in preiseFürIhnTabllen" class="table is-striped">
+              <thead>
+              <tr>
+                <th></th>
+                <th v-for="head in table.header">
+                  {{head}}
+                </th>
+              </tr>
+              </thead>
 
-          <table v-if="preiseFürIhnTabllen" v-for="table in preiseFürIhnTabllen" class="table is-striped">
-            <thead>
-            <tr>
-              <th></th>
-              <th v-for="head in table.header">
-                {{head}}
-              </th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr v-for="row in table.rows">
-              <td v-for="column in row">{{column}}</td>
-            </tr>
-            </tbody>
-          </table>
-        </tab-pane>
-      </tabs>
+              <tbody>
+              <tr v-for="row in table.rows">
+                <td v-for="column in row">{{column}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </tab-pane>
+        </tabs>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -68,7 +70,7 @@
 
     data () {
       return {
-        preiseFürIhn: null,
+        preiseFürIhn: {},
         preiseFürSie: null,
         preiseFürSieHeader: null
       }
@@ -96,14 +98,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .container{
-    padding-top: 70px;
-  }
-
-  .content{
-    display: flex;
-    padding-left: 100px;
-  }
+  @import '../../style/subpages';
 
   .item{
     max-width: 50%;

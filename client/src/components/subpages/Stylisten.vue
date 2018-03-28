@@ -1,37 +1,44 @@
 <template>
-  <div class="container">
-      <div class="werbeDiv">
-        test
-      </div>
+  <section class="section">
+    <div class="container">
+      <div class="container3v">
+        <h1 class="title">Unser Team</h1>
+        <h2 class="subtitle">Dich noch schöner zu machen ist unser Ziel</h2>
+        <div class="container3v">
+          <div class="werbeDiv">
+            test
+          </div>
 
-    <div class="stylistenDiv">
-        <div class="content">
-          <div v-if="stylisten" v-for="(stylist,index) in stylisten">
+          <div class="stylistenDiv">
+            <div class="content">
+              <div v-if="stylisten" v-for="(stylist,index) in stylisten">
 
-            <div class="stylist">
-              <div class="stylistImage">
-                <figure class="image is-128x128">
-                  <img v-bind:src="stylist.bild">
-                </figure>
-              </div>
-              <div class="stylistInfo">
-                <h3 class="is-4 title">{{stylist.name}}</h3>
-                <h6 class="is-6 subtitle"style="margin-bottom: 10px "><em>{{stylist.kategorie}}</em></h6>
-                <ul>
-                  <li v-for=" stylistInfo in stylist.info">{{stylistInfo}}</li>
-                </ul>
-                <p>{{stylist.wartezeit}}</p>
-                <h6 class="is-6"><strong>Arbeitszeit</strong></h6>
-                <ul>
-                  <li v-for="arbeitszeit in stylist.arbeitszeiten">{{arbeitszeit}}</li>
-                </ul>
+                <div class="stylist">
+                  <div class="stylistImage">
+                    <figure class="image is-128x128">
+                      <img v-bind:src="stylist.bild">
+                    </figure>
+                  </div>
+                  <div class="stylistInfo">
+                    <h3 class="is-4 title">{{stylist.name}}</h3>
+                    <h6 class="is-6 subtitle"style="margin-bottom: 10px "><em>{{stylist.kategorie}}</em></h6>
+                    <ul>
+                      <li v-for=" stylistInfo in stylist.info">{{stylistInfo}}</li>
+                    </ul>
+                    <p>{{stylist.wartezeit}}</p>
+                    <h6 class="is-6"><strong>Arbeitszeit</strong></h6>
+                    <ul>
+                      <li v-for="arbeitszeit in stylist.arbeitszeiten">{{arbeitszeit}}</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-  </div>
+    </div>
+  </section>
 </template>
 
 
@@ -81,8 +88,7 @@
 
   @import '../../../node_modules/include-media/dist/include-media';
 
-  .container{
-    padding-top: 70px;
+  .content3v{
     @include media('>=desktop') {
       display: flex;
     }

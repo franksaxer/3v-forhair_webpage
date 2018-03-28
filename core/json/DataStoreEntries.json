@@ -32,6 +32,12 @@
   "stylisten":{
     "key": "2b448f34181aa8ccffe2e0c6c8609b0084f7829f",
     "path":"json/content/stylisten.json"
+  },
+
+  "ueberUns":{
+    "key": "92f812b77d7d206f2984011037765f7a7e364c7c67b78f80437f0cbd22f65036",
+    "path":"json/content/überUns.json"
   }
+
 
 }
