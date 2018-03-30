@@ -3,10 +3,9 @@
        class="select is-primary">
 
     <select title="LanguageSelection">
-      <template v-for="l in languages">
-        <option :selected="l === selectedLanguage"
-                @click="setLanguage(l)">
-
+      <template v-for="l in list">
+        <option @click="setLanguage(l)"
+                :selected="l === selected">
           {{ l }}
         </option>
       </template>
@@ -17,29 +16,36 @@
 
 <script>
   // Import enums.
-  import {LanguageEnum, DefaultLanguage} from '../enums/LanguageEnum'
+  import * as langs from '../enums/Languages'
 
   export default {
     name: 'language-selector',
 
-    props: {
-      // Function to change the function in the parent component.
-      setLanguage: {
-        type: Function,
-        required: true
-      },
-      /* Define the current selected language.
-         Necessary for the initialization.
-          Afterwards it lead to a chain reaction, but does not matter */
-      selectedLanguage: {
-        type: String,
-        default: DefaultLanguage
+    data: function () {
+      return {
+        list: [], // The presentative label for each language.
+        selected: '' // The presentative label of the selected language (part of the list).
       }
     },
 
-    data: function () {
-      return {
-        languages: LanguageEnum // Add here, cause else it is not available for rendering.
+    methods: {
+      setLanguage: function (l) {
+        this.$labelStore.setLanguage(langs[l])
+      }
+    },
+
+    created: function () {
+      // Get the initial selected language.
+      const current = this.$labelStore.getLanguage()
+
+      // Fill listwith the representative labels of each language.
+      for (let l in langs) {
+        this.list.push(l)
+
+        // Check and set if it is the selected language.
+        if (langs[l] === current) {
+          this.selected = l
+        }
       }
     }
   }
