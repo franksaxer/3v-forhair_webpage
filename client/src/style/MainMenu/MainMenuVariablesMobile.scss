@@ -10,10 +10,12 @@
 // Normal
 $equalDivided: calc((100vh - #{$header-height}) / 17);
 $size: calc(#{$equalDivided} * 0.8);
-$margin: calc(#{$equalDivided} * 0.2);
+$margin-site: calc(#{$header-height} * 0.25);
+$margin-bounds: 5px;
 $middleSpace: 0;
 
-// Zoomed
-$sizeZoomed: calc(#{$size} * #{$zoom});
-$marginZoomed: calc(#{$margin} - ((#{$sizeZoomed} - #{$size}) / 2));
-$fontZoomed: calc(#{$sizeZoomed} * #{$fontFactor});
+// Zoomed (don't zoom on mobile)
+$sizeZoomed: $size;
+$marginZoomed-site: $margin-site;
+$marginZoomed-bounds: $margin-bounds;
+$fontZoomed: calc(#{$size} * #{$fontFactor});

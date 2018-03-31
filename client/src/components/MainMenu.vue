@@ -1,13 +1,26 @@
 <template>
   <div id="main-menu">
-    <a v-for="entry, index in entries"
-       :class="['menu-entry', {'middle-entry': isMiddleEntry(entry.id)}]"
-       ref="entryList"
-       @mouseover="showTitle(entry, index)"
-       @mouseleave="hideTitle">
+    <button id="menu-button"
+            class="ghost-button is-primary"
+            @click="menuOpen=!menuOpen">
 
-      {{ entry.label | translate | firstChar }}
-    </a>
+      <i  class="fa fa-bars"
+          area-hidden="true">
+      </i>
+    </button>
+
+    <div  id="menu-list"
+          v-if="menuOpen">
+
+      <a v-for="entry, index in entries"
+         :class="['menu-entry', {'middle-entry': isMiddleEntry(entry.id)}]"
+         ref="entryList"
+         @mouseover="showTitle(entry, index)"
+         @mouseleave="hideTitle">
+
+        {{ entry.label | translate | firstChar }}
+      </a>
+    </div>
 
     <span id="title"
           :style="titleStyle">
@@ -25,7 +38,8 @@
       return {
         titleLabel: '',
         titleStyle: {},
-        titleFontSize: '16'
+        titleFontSize: '16',
+        menuOpen: true // Default for desktop
       }
     },
 
@@ -134,6 +148,13 @@
 
       firstChar (value) {
         return value[0]
+      }
+    },
+
+    created () {
+      // Hide the menu per default for mobile version.
+      if (this.$isMobile()) {
+        this.menuOpen = false
       }
     }
   }
