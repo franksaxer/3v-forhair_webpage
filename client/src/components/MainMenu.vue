@@ -1,10 +1,16 @@
 <template>
   <div id="main-menu">
     <button id="menu-button"
-            class="ghost-button is-primary"
+            class="ghost-button"
             @click="menuOpen=!menuOpen">
 
-      <i  class="fa fa-bars"
+      <i  v-if="!menuOpen"
+          class="fa fa-bars"
+          area-hidden="true">
+      </i>
+
+      <i  v-if="menuOpen"
+          class="fa fa-times"
           area-hidden="true">
       </i>
     </button>
