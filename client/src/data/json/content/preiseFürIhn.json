@@ -14,42 +14,44 @@
     }
   ],
 
+  "hintergrund":"Url:background1.jpg",
+
   "angebote":[
     {
-      "bild":"x",
+      "bild":"Url:aktionen/menAktion5.png",
       "headline":"Pure Energy for men",
       "dauer":"Dauer ca. 15 min. 15,- €",
-      "Beschreibung":"Kopf-Nacken-TreatmentUnser speziell auf Männer abgestimmtes und einzigartiges Wellness-Treatment. Entfliehe dem Stress des Alltags und tanke wieder neue Energie. Eine Druckpunkt-Massage verspricht reine Entspannung und löst Energieblockaden, während Du neue Kraft aus einem Pool belebender und würziger Aromen schöpfst (inkl. Tiefenreinigung und Conditioner)."
+      "beschreibung":["Kopf-Nacken-Treatment","Unser speziell auf Männer abgestimmtes und einzigartiges Wellness-Treatment.","Entfliehe dem Stress des Alltags und tanke wieder neue Energie.","Eine Druckpunkt-Massage verspricht reine Entspannung und löst Energieblockaden, während Du neue Kraft aus einem Pool belebender und würziger Aromen schöpfst (inkl. Tiefenreinigung und Conditioner)."]
     },
     {
-      "bild":"x",
+      "bild":"Url:aktionen/menAktion4.jpg",
       "headline":"Hand Care (Maniküre)",
       "dauer":"Dauer ca. 30 min. 25,- €",
-      "Beschreibung":"Gepflegte Hände sind oft ein Stiefkind vor allem bei Männer, doch das muss nicht sein!\n Unser Hand Care Service wurde von uns entwickelt damit Du immer vorzeigbare und gepflegte Hände hast. Es setzt sich zusammen aus: \nFingernägel\nFormen\nFeilen\nHandpeeling\nHandmassage\nPolieren"
+      "beschreibung":["Gepflegte Hände sind oft ein Stiefkind vor allem bei Männer, doch das muss nicht sein!","Unser Hand Care Service wurde von uns entwickelt damit Du immer vorzeigbare und gepflegte Hände hast. Es setzt sich zusammen aus: Fingernägel, Formen, Feilen, Handpeeling, Handmassage, Polieren"]
     },
     {
-      "bild":"x",
+      "bild":"Url:aktionen/menAktion6.jpg",
       "headline":"Blending (gegen erste graue Haare)",
       "dauer":"Dauer ca. 15 min. ab 25,- €",
-      "Beschreibung":"Bleibe deiner Haarfarbe Treu!\nMit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich\nhält 3-5 Wochen\nVerblasst nahezu ohne Ansatzbildung\nIndividuelle Farbgebung und Intensität"
+      "beschreibung":["Bleibe deiner Haarfarbe Treu!","Mit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich","hält 3-5 Wochen","Verblasst nahezu ohne Ansatzbildung","Individuelle Farbgebung und Intensität"]
     },
     {
-      "bild":"x",
+      "bild":"http://via.placeholder.com/350x150",
       "headline":"Farbreflexe",
       "dauer":"Dauer ab. 30 min.- ab 15,- €",
-      "Beschreibung":"Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen\nlässt sich Dein Style zusätzlich unterstreichen!Sonnenreflexe, mehr Tiefe oder Fläche\nNatürliche bis dramatische Effekte\nVerblassend bis Dauerhaft"
+      "beschreibung":["Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen","lässt sich Dein Style zusätzlich unterstreichen! Sonnenreflexe, mehr Tiefe oder Fläche","Natürliche bis dramatische Effekte","Verblassend bis Dauerhaft"]
     },
     {
-      "bild":"x",
+      "bild":"Url:aktionen/menAktion2.png",
       "headline":"Full Spectrum",
       "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
-      "Beschreibung":"oxidative Haarfarbe mit einer Farbrezeptur aus bis zu 96% natürlichen Inhaltsstoffen (aus Pflanzen und erdölfreien Mineralstoffen), eine patentierte Technologie auf Grünteebasis; Die Gesundheit des Haares wird durch Sonnenblumen- Rhizinus und Jojobaöl verbessert und geschützt. Erfreuen Sie sich an einer frischen Farbpalette von natürlichen Blondtönen bis zu kräftigen Rot- und intensiven Brauntönen. Deckt graue Haare zu 100% ab."
+      "beschreibung":["oxidative Haarfarbe mit einer Farbrezeptur aus bis zu 96% natürlichen Inhaltsstoffen (aus Pflanzen und erdölfreien Mineralstoffen), eine patentierte Technologie auf Grünteebasis; Die Gesundheit des Haares wird durch Sonnenblumen- Rhizinus und Jojobaöl verbessert und geschützt. ","Erfreuen Sie sich an einer frischen Farbpalette von natürlichen Blondtönen bis zu kräftigen Rot- und intensiven Brauntönen."," Deckt graue Haare zu 100% ab."]
     },
     {
-      "bild":"x",
+      "bild":"Url:aktionen/menAktion1.jpg",
       "headline":"Deposit Only",
       "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
-      "Beschreibung":"oxidative Intensivtönung mit einer Rezeptur aus 99% natürlichen Inhaltsstoffen; für tiefe Farbtöne, die bis zu acht Wochen halten. Die Rezeptur verbessert den Zustand von geschädigtem Haar und verleiht ihm Glanz. Färbt ergrautes Haar sehr natürlich an, ohne es komplett abzudecken; keine Aufhellung möglich."
+      "beschreibung":["oxidative Intensivtönung mit einer Rezeptur aus 99% natürlichen Inhaltsstoffen; für tiefe Farbtöne, die bis zu acht Wochen halten. ","Die Rezeptur verbessert den Zustand von geschädigtem Haar und verleiht ihm Glanz. ","Färbt ergrautes Haar sehr natürlich an, ohne es komplett abzudecken; keine Aufhellung möglich."]
     }
   ]
 

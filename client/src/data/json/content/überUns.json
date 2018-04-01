@@ -25,5 +25,20 @@
       "beschreibung":[
         "Farbexperte mit über 25 Jahren Berufserfahrung als Colorist."
       ]}
+  ],
+
+  "salonBilder":[
+    {
+      "title":"Bild 1",
+      "url":"http://via.placeholder.com/350x150"
+    },
+    {
+      "title":"Bild 2",
+      "url":"http://via.placeholder.com/350x150"
+    },
+    {
+      "title":"Bild 3",
+      "url":"http://via.placeholder.com/350x150"
+    }
   ]
 }

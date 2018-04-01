@@ -1,19 +1,26 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="container3v">
-        <h1 class="title">Über Uns</h1>
-        <h2 class="subtitle">{{ueberUns.subheadline}}</h2>
-        <div class="container3v">
-          <div class="ueberUnsDiv">
-            <div class="container3v"></div>
-
-          </div>
-
-          <div class="salonDiv">
-            test
-          </div>
-        </div>
+  <section class="section subpage">
+    <h1 class="title">Über Uns</h1>
+    <h3 class="subtitle">{{ueberUns.subheadline}}</h3>
+    <div class="content">
+      <div v-for="kategorie in ueberUns.kategorien" class="kategorie">
+        <span class=""><em>{{kategorie.bezeichnung}}</em></span>
+        <ul class="beschreibungListe">
+          <li v-for="beschreibung in kategorie.beschreibung">{{beschreibung}}</li>
+        </ul>
+      </div>
+      <h3 class="title">Unser Salon</h3>
+      <div class="salon">
+        <carousel :perPage="1">
+          <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder">
+            <div class="bild">
+              <div style="display: flex; flex-direction: column">
+                <img style="" v-bind:src="bild.url">
+                <p style="text-align: center">{{bild.title}}</p>
+              </div>
+            </div>
+          </slide>
+        </carousel>
       </div>
     </div>
   </section>
@@ -22,13 +29,16 @@
 <script>
   import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
   import { Tabs, TabPane } from 'vue-bulma-tabs'
+  import { Carousel, Slide } from 'vue-carousel'
 
   export default {
     name: 'preise',
 
     components: {
       Tabs,
-      TabPane
+      TabPane,
+      Carousel,
+      Slide
     },
 
     props: {
@@ -37,7 +47,7 @@
 
     data () {
       return {
-        ueberUns: null
+        ueberUns: {}
       }
     },
 
@@ -56,39 +66,48 @@
 </script>
 
 <style lang="scss" scoped>
-
   @import '../../../node_modules/include-media/dist/include-media';
+  @import '../../style/subpages';
 
-  .container3v{
-    padding-left: 100px;
-  }
+  .subpage{
+    flex-direction: column;
 
-  .ueberUnsDiv{
-    @include media('>=desktop') {
-      flex-basis: 40%;
-      background: yellow;
-    }
+    .content{
 
-    @include media('<desktop') {
-      background: yellow;
-    }
-  }
-
-  .salonDiv{
-    @include media('>=desktop') {
-      flex-basis: 50%;
-      background: pink;
-    }
-  }
-
-
-  .container3v{
-    @include media('>=desktop') {
+      flex-wrap: wrap;
       display: flex;
-    }
+      flex-direction: row;
 
-    @include media('<desktop') {
-      display: inline-block;
+      .kategorie{
+        @include media('<desktop') {
+          width: 46%;
+        }
+
+        display: flex;
+        flex-direction: column;
+        width: 29%;
+        margin: 10px 2%;
+
+        .beschreibungListe {
+          margin-top: 5px;
+        }
+
+      }
+
+      .salon{
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+
+        .bild{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+      }
     }
   }
+
+
 </style>

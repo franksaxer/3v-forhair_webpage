@@ -89,7 +89,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
-  import SubpageWelcome from './components/subpages/Stylisten.vue'
+  import SubpageWelcome from './components/subpages/Preise.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
@@ -108,7 +108,7 @@
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
-        sessionKey: null, // The session key when authorized.
+        sessionKey: 'HEllo', // The session key when authorized.
         // The data objects
         contactData: {}
       }

@@ -1,4 +1,11 @@
-.container3v{
+
+.container3v {
   padding-left: 100px;
   justify-content: center;
+}
+
+.subpage {
+  @include media('>=desktop'){
+    padding-left: 100px;
+  }
 }
