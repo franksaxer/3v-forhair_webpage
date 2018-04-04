@@ -2,61 +2,73 @@
   {
     "priority": 1,
     "label": "Label:MENU_ENTRY_WELCOME",
-    "icon": "fa-home"
+    "icon": "fa-home",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 2,
     "label": "Label:MENU_ENTRY_RECENSION",
-    "icon": "fa-comments"
+    "icon": "fa-comments",
+    "background": "Url:wallpapers/Stylists.jpg"
   },
   {
     "priority": 3,
     "label": "Label:MENU_ENTRY_INFOS",
-    "icon": "fa-info"
+    "icon": "fa-info",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 4,
     "label": "Label:MENU_ENTRY_ABOUT_US",
-    "icon": "fa-align-center"
+    "icon": "fa-align-center",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 5,
     "label": "Label:MENU_ENTRY_STAFF",
-    "icon": "fa-users"
+    "icon": "fa-users",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 6,
     "label": "Label:MENU_ENTRY_COSTS",
-    "icon": "fa-dollar-sign"
+    "icon": "fa-dollar-sign",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 7,
     "label": "Label:MENU_ENTRY_PRODUCTS",
-    "icon": "fa-cubes"
+    "icon": "fa-cubes",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 8,
     "label": "Label:MENU_ENTRY_COLORS",
-    "icon": "fa-paint-brush"
+    "icon": "fa-paint-brush",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 9,
     "label": "Label:MENU_ENTRY_CONTACT",
-    "icon": "fa-address-book"
+    "icon": "fa-address-book",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 10,
     "label": "Label:MENU_ENTRY_APPROACH",
-    "icon": "fa-map"
+    "icon": "fa-map",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 11,
     "label": "Label:MENU_ENTRY_IMPRESSIONS",
-    "icon": "fa-image"
+    "icon": "fa-image",
+    "background": "Url:wallpapers/Recension.jpg"
   },
   {
     "priority": 12,
     "label": "Label:MENU_ENTRY_IMPRESSUM",
-    "icon": "fa-question"
+    "icon": "fa-question",
+    "background": "Url:wallpapers/Recension.jpg"
   }
 ]

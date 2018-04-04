@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div  id="app"
+        :style="[{'background-image': 'url(' + background +')'}]" >
     <!-- general layout with header, main and footer -->
     <section id="layout">
       <header>
@@ -20,7 +21,7 @@
 
       <main>
         <div id="content" class="main-element">
-          <main-menu></main-menu>
+          <main-menu v-model="background"></main-menu>
 
         </div>
 
@@ -111,7 +112,8 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: {}
+        contactData: {},
+        background: require('./assets/wallpaper.jpg')
       }
     },
 
@@ -213,7 +215,6 @@
   body {
     margin: 0;
     overflow: hidden; // For the cover page;
-    background: url('./assets/wallpaper.jpg');
     background-position: center left;
     background-repeat:  no-repeat;
     background-size: cover;

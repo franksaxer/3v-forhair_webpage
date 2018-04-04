@@ -22,6 +22,7 @@
          :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
          :style="{'order': entry.priority}"
          ref="entryList"
+         @click="switchPage(entry)"
          @mouseover="showTitle(entry, index)"
          @mouseleave="hideTitle">
 
@@ -44,6 +45,15 @@
 
   export default {
     name: 'main-menu',
+
+    model: {
+      prop: 'background', // Rename from default 'value' property.
+      event: 'changeBackground' // Rename from default 'input' event.
+    },
+
+    prop: {
+      background: String
+    },
 
     data () {
       return {
@@ -78,6 +88,10 @@
 
       hideTitle () {
         this.titleLabel = ''
+      },
+
+      switchPage (entry) {
+        this.$emit('changeBackground', entry.background)
       }
     },
 
