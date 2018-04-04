@@ -1,5 +1,5 @@
-/* Import JSON Files */
-import DataStoreEntries from './json/core/DataStoreEntries.json'
+import DataStoreEntries from './json/core/DataStoreEntries.json' // The entries that can be loaded.
+import * as LabelKeys from '../enums/LabelKeys' // Label keys to replace references.
 
 /**
  * Local store where to put in already loaded data objects for faster future access.
@@ -90,6 +90,9 @@ const extendJson = async (json) => {
       if (entry.substring(0, 3) === 'Url') {
         // Load the source by the relative URL.
         json[i] = require('../assets/' + entry.substring(4))
+      } else if (entry.substring(0, 5) === 'Label') {
+        // Replace with the label key.
+        json[i] = LabelKeys[entry.substring(6)]
       }
     }
   }
