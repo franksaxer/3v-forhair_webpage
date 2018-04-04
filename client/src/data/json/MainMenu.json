@@ -1,0 +1,62 @@
+[
+  {
+    "priority": 1,
+    "label": "Label:MENU_ENTRY_WELCOME",
+    "icon": "fa-home"
+  },
+  {
+    "priority": 2,
+    "label": "Label:MENU_ENTRY_RECENSION",
+    "icon": "fa-comments"
+  },
+  {
+    "priority": 3,
+    "label": "Label:MENU_ENTRY_INFOS",
+    "icon": "fa-info"
+  },
+  {
+    "priority": 4,
+    "label": "Label:MENU_ENTRY_ABOUT_US",
+    "icon": "fa-align-center"
+  },
+  {
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_STAFF",
+    "icon": "fa-users"
+  },
+  {
+    "priority": 6,
+    "label": "Label:MENU_ENTRY_COSTS",
+    "icon": "fa-dollar-sign"
+  },
+  {
+    "priority": 7,
+    "label": "Label:MENU_ENTRY_PRODUCTS",
+    "icon": "fa-cubes"
+  },
+  {
+    "priority": 8,
+    "label": "Label:MENU_ENTRY_COLORS",
+    "icon": "fa-paint-brush"
+  },
+  {
+    "priority": 9,
+    "label": "Label:MENU_ENTRY_CONTACT",
+    "icon": "fa-address-book"
+  },
+  {
+    "priority": 10,
+    "label": "Label:MENU_ENTRY_APPROACH",
+    "icon": "fa-map"
+  },
+  {
+    "priority": 11,
+    "label": "Label:MENU_ENTRY_IMPRESSIONS",
+    "icon": "fa-image"
+  },
+  {
+    "priority": 12,
+    "label": "Label:MENU_ENTRY_IMPRESSUM",
+    "icon": "fa-question"
+  }
+]

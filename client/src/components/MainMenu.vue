@@ -40,82 +40,18 @@
 </template>
 
 <script>
+  import {DataStoreEntries, loadDataObject} from '../data/DataManager'
+
   export default {
     name: 'main-menu',
 
     data () {
       return {
+        entries: {}, // Have to be loaded asynchronous.
         titleLabel: '',
         titleStyle: {},
         titleFontSize: '16',
         menuOpen: true // Default for desktop
-      }
-    },
-
-    computed: {
-      entries: function () {
-        return [
-          {
-            priority: 1,
-            label: this.labels.MENU_ENTRY_WELCOME,
-            icon: 'fa-home'
-          },
-          {
-            priority: 2,
-            label: this.labels.MENU_ENTRY_RECENSION,
-            icon: 'fa-comments'
-          },
-          {
-            priority: 3,
-            label: this.labels.MENU_ENTRY_INFOS,
-            icon: 'fa-info'
-          },
-          {
-            priority: 4,
-            label: this.labels.MENU_ENTRY_ABOUT_US,
-            icon: 'fa-align-center'
-          },
-          {
-            priority: 5,
-            label: this.labels.MENU_ENTRY_STAFF,
-            icon: 'fa-users'
-          },
-          {
-            priority: 6,
-            label: this.labels.MENU_ENTRY_COSTS,
-            icon: 'fa-dollar-sign'
-          },
-          {
-            priority: 7,
-            label: this.labels.MENU_ENTRY_PRODUCTS,
-            icon: 'fa-cubes'
-          },
-          {
-            priority: 8,
-            label: this.labels.MENU_ENTRY_COLORS,
-            icon: 'fa-paint-brush'
-          },
-          {
-            priority: 9,
-            label: this.labels.MENU_ENTRY_CONTACT,
-            icon: 'fa-address-book'
-          },
-          {
-            priority: 10,
-            label: this.labels.MENU_ENTRY_APPROACH,
-            icon: 'fa-map'
-          },
-          {
-            priority: 11,
-            label: this.labels.MENU_ENTRY_IMPRESSIONS,
-            icon: 'fa-image'
-          },
-          {
-            priority: 12,
-            label: this.labels.MENU_ENTRY_IMPRESSUM,
-            icon: 'fa-question'
-          }
-        ]
       }
     },
 
@@ -148,18 +84,17 @@
     filters: {
       capitalize (value) {
         return value.toUpperCase()
-      },
-
-      firstChar (value) {
-        return value[0]
       }
     },
 
-    created () {
+    async created () {
       // Hide the menu per default for mobile version.
       if (this.$isMobile()) {
         this.menuOpen = false
       }
+
+      // Load the entries.
+      this.entries = await loadDataObject(DataStoreEntries.mainMenu.key)
     }
   }
 </script>
