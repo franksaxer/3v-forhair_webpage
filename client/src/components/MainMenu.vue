@@ -19,12 +19,15 @@
           v-if="menuOpen">
 
       <a v-for="entry, index in entries"
-         :class="['menu-entry', {'middle-entry': isMiddleEntry(entry.id)}]"
+         :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
+         :style="{'order': entry.priority}"
          ref="entryList"
          @mouseover="showTitle(entry, index)"
          @mouseleave="hideTitle">
 
-        {{ entry.label | translate | firstChar }}
+      <i  :class="['fa', entry.icon]"
+          area-hidden="true">
+      </i>
       </a>
     </div>
 
@@ -53,77 +56,72 @@
       entries: function () {
         return [
           {
-            id: 1,
-            label: this.labels.MENU_ENTRY_WELCOME
+            priority: 1,
+            label: this.labels.MENU_ENTRY_WELCOME,
+            icon: 'fa-home'
           },
           {
-            id: 2,
-            label: this.labels.MENU_ENTRY_RECENSION
+            priority: 2,
+            label: this.labels.MENU_ENTRY_RECENSION,
+            icon: 'fa-comments'
           },
           {
-            id: 3,
-            label: this.labels.MENU_ENTRY_INFOS
+            priority: 3,
+            label: this.labels.MENU_ENTRY_INFOS,
+            icon: 'fa-info'
           },
           {
-            id: 4,
-            label: this.labels.MENU_ENTRY_ABOUT_US
+            priority: 4,
+            label: this.labels.MENU_ENTRY_ABOUT_US,
+            icon: 'fa-align-center'
           },
           {
-            id: 5,
-            label: this.labels.MENU_ENTRY_STAFF
+            priority: 5,
+            label: this.labels.MENU_ENTRY_STAFF,
+            icon: 'fa-users'
           },
           {
-            id: 6,
-            label: this.labels.MENU_ENTRY_PRICE_HER
+            priority: 6,
+            label: this.labels.MENU_ENTRY_COSTS,
+            icon: 'fa-dollar-sign'
           },
           {
-            id: 7,
-            label: this.labels.MENU_ENTRY_PRICE_HIM
+            priority: 7,
+            label: this.labels.MENU_ENTRY_PRODUCTS,
+            icon: 'fa-cubes'
           },
           {
-            id: 8,
-            label: this.labels.MENU_ENTRY_PRODUCTS_HIM
+            priority: 8,
+            label: this.labels.MENU_ENTRY_COLORS,
+            icon: 'fa-paint-brush'
           },
           {
-            id: 9,
-            label: this.labels.MENU_ENTRY_COLORS
+            priority: 9,
+            label: this.labels.MENU_ENTRY_CONTACT,
+            icon: 'fa-address-book'
           },
           {
-            id: 10,
-            label: this.labels.MENU_ENTRY_PRICE_COLORS
+            priority: 10,
+            label: this.labels.MENU_ENTRY_APPROACH,
+            icon: 'fa-map'
           },
           {
-            id: 11,
-            label: this.labels.MENU_ENTRY_PRODUCTS
+            priority: 11,
+            label: this.labels.MENU_ENTRY_IMPRESSIONS,
+            icon: 'fa-image'
           },
           {
-            id: 12,
-            label: this.labels.MENU_ENTRY_PROMOTION
-          },
-          {
-            id: 13,
-            label: this.labels.MENU_ENTRY_CONTACT
-          },
-          {
-            id: 14,
-            label: this.labels.MENU_ENTRY_APPROACH
-          },
-          {
-            id: 15,
-            label: this.labels.MENU_ENTRY_IMPRESSIONS
-          },
-          {
-            id: 16,
-            label: this.labels.MENU_ENTRY_IMPRESSUM
+            priority: 12,
+            label: this.labels.MENU_ENTRY_IMPRESSUM,
+            icon: 'fa-question'
           }
         ]
       }
     },
 
     methods: {
-      isMiddleEntry (id) {
-        const middleId = this.entries[this.entries.length / 2].id - 1
-        return id === middleId
+      isMiddleEntry (index) {
+        return index === this.entries.length / 2 - 1
       },
 
       showTitle (entry, index) {
