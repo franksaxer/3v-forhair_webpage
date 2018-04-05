@@ -61,7 +61,7 @@
         titleLabel: '',
         titleStyle: {},
         titleFontSize: '16',
-        menuOpen: true // Default for desktop
+        menuOpen: this.$isDesktop() // Default for desktop
       }
     },
 
@@ -106,16 +106,10 @@
     },
 
     async created () {
-      // Hide the menu per default for mobile version.
-      if (this.$isMobile()) {
-        this.menuOpen = false
-      }
-
       // Load the entries.
       this.entries = await loadDataObject(DataStoreEntries.mainMenu.key)
 
       // Retrieve last selected entry from the local storage.
-      console.log('ID: ' + localStorage.menuEntryId)
       const id = localStorage.menuEntryId ? localStorage.menuEntryId : this.entries[0].id
       this.switchPage(this.entries.filter(entry => entry.id === id)[0])
 
