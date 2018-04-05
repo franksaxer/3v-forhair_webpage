@@ -91,7 +91,11 @@
       },
 
       switchPage (entry) {
+        // Update parent component.
         this.$emit('switch', entry)
+
+        // Store selection to local storage.
+        localStorage.menuEntryId = entry.id
       }
     },
 
@@ -109,6 +113,14 @@
 
       // Load the entries.
       this.entries = await loadDataObject(DataStoreEntries.mainMenu.key)
+
+      // Retrieve last selected entry from the local storage.
+      console.log('ID: ' + localStorage.menuEntryId)
+      const id = localStorage.menuEntryId ? localStorage.menuEntryId : this.entries[0].id
+      this.switchPage(this.entries.filter(entry => entry.id === id)[0])
+
+      // Delete the selected entry on close the window.
+      window.onclose = () => { delete localStorage.menuEntryId }
     }
   }
 </script>
