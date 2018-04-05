@@ -1,0 +1,98 @@
+[
+  {
+    "id": "7fa08dbb1f49ecd4e3b5a06634317c78",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_WELCOME",
+    "icon": "fa-home",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "9cadf7b6511bb0e3cf6406c4ed28619d",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_RECENSION",
+    "icon": "fa-comments",
+    "background": "Url:wallpapers/Stylists.jpg",
+    "component": "Component:subpages/Stylists"
+  },
+  {
+    "id": "cd71a6845979ae28f8195f585a270c3c",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_INFOS",
+    "icon": "fa-info",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "52e445163911cd462abb1fd3eaebcc0c",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_ABOUT_US",
+    "icon": "fa-align-center",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "ec9ead152c6ab6077c609f537ca790ea",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_STAFF",
+    "icon": "fa-users",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_COSTS",
+    "icon": "fa-dollar-sign",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "76a0fcbddb98d64d80c62412336ff908",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_PRODUCTS",
+    "icon": "fa-cubes",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "f010f65d545a24da16447751d0890e18",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_COLORS",
+    "icon": "fa-paint-brush",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "5f13c6e5162297087f4d03af1169ae38",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_CONTACT",
+    "icon": "fa-address-book",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "c2551a0892802fe5f4b4e6f83ad75e99",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_APPROACH",
+    "icon": "fa-map",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "c6706dbb13daf75edc97ba652df282ef",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_IMPRESSIONS",
+    "icon": "fa-image",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  },
+  {
+    "id": "d9d55700f7e93245537a69dce51b22de",
+    "priority": 5,
+    "label": "Label:MENU_ENTRY_IMPRESSUM",
+    "icon": "fa-question",
+    "background": "Url:wallpapers/Recension.jpg",
+    "component": "Component:subpages/Greeter"
+  }
+]

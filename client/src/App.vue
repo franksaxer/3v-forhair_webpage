@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div  id="app"
+        :style="[{'background-image': 'url(' + entry.background +')'}]" >
     <!-- general layout with header, main and footer -->
     <section id="layout">
       <header>
@@ -20,10 +21,15 @@
 
       <main>
         <div id="content" class="main-element">
-
+          <main-menu v-model="entry"/>
+          <keep-alive>
+            <component :is="entry.component"/>
+          </keep-alive>
         </div>
 
-        <advertisement-banner class="main-element"></advertisement-banner>
+        <!-- Remove this temporally
+          <advertisement-banner class="main-element"></advertisement-banner>
+        -->
       </main>
 
       <footer>
@@ -89,6 +95,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
+  import MainMenu from './components/MainMenu.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
@@ -109,14 +116,18 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: {}
+        contactData: {},
+        entry: { // A fake menu entry just to display something.
+          background: require('./assets/wallpaper.jpg'),
+          componentName: 'greeter'
+        }
       }
     },
 
     components: {
-      LanguageSelector,
       'language-selector': LanguageSelector,
-      'advertisement-banner': AdvertisementBanner
+      'advertisement-banner': AdvertisementBanner,
+      'main-menu': MainMenu
     },
 
     methods: {
@@ -211,8 +222,10 @@
   body {
     margin: 0;
     overflow: hidden; // For the cover page;
-    background: url('./assets/wallpaper.jpg');
-    background-position: center left;
+  }
+
+  #app {
+    background-position: center center;
     background-repeat:  no-repeat;
     background-size: cover;
   }
@@ -238,7 +251,6 @@
       #label-with-icon {
         display: flex;
         flex-flow: row;
-        $icon-radius: calc(#{$header-height} * 2);
 
         h1 {
           color: $primary;
@@ -325,7 +337,7 @@
 
       // Stop before the advertisement banner on the right side on desktop devices.
       @include media('>=desktop') {
-        $bannerBorderLeft: var(--advertisement-banner-border-left, 300px);
+        $bannerBorderLeft: var(--advertisement-banner-border-left, 0);
         right: $bannerBorderLeft;
       }
 

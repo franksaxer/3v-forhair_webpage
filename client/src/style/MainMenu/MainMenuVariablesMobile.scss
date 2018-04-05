@@ -1,0 +1,21 @@
+/*
+  SCSS variables can't be defined in a include media block and then used outside the block.
+  So all variables related to the desktop device are defined here and can be sourced at the required place.
+ */
+
+@import '../3v-forhair.scss';
+@import './MainMenuVariables.scss';
+
+
+// Normal
+$equalDivided: calc((100vh - #{$header-height}) / 17);
+$size: calc(#{$equalDivided} * 0.8);
+$margin-site: calc(#{$header-height} * 0.25);
+$margin-bounds: 5px;
+$middleSpace: 0;
+
+// Zoomed (don't zoom on mobile)
+$sizeZoomed: $size;
+$marginZoomed-site: $margin-site;
+$marginZoomed-bounds: $margin-bounds;
+$fontZoomed: calc(#{$size} * #{$fontFactor});

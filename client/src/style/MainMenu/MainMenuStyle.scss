@@ -1,0 +1,110 @@
+// Import 3rd party styles
+@import '../../../node_modules/include-media/dist/include-media';
+
+// Import own styles
+@import '../3v-forhair';
+
+// Initial variables (will be overwritten)
+#main-menu {
+  #menu-button {
+    position: fixed;
+    z-index: $layout-element-layer;
+    $font-size: calc(#{$header-height} * 0.5);
+    $margin: calc((#{$header-height} - #{$font-size}) / 2);
+    font-size: $font-size;
+    margin: $margin;
+    top: 0;
+    left: 0;
+    color: $color-base!important;
+    line-height: $font-size;
+
+    @include media('>=desktop') {
+      display: None;
+    }
+  }
+
+  #menu-list {
+    // Use fixed position, so it is "relative" to the header and so to the overdrawing icon.
+    position: fixed;
+    left: 0;
+    display: flex;
+
+    @include media('>=desktop') {
+      top: $header-height;
+      right: 0;
+
+      justify-content: center;
+
+      overflow-x: auto;
+    }
+
+    @include media('<desktop') {
+      flex-direction: column;
+      max-height: calc(100vh - #{$header-height} - #{$languageSelector-height-mobile} - 10px);
+      overflow-y: auto;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0px!important;  /* remove scrollbar space */
+    }
+
+    .menu-entry {
+      font-size: calc(#{$size} * #{$fontFactor});
+      text-align: center;
+
+      width: $size;
+      height: $size;
+      margin: $margin-bounds $margin-site;
+
+      color: white;
+      background-color: $color-base;
+
+      border: solid 1px white;
+      border-radius: $size;
+
+      &:hover {
+        width: $sizeZoomed;
+        height: $sizeZoomed;
+        margin: $marginZoomed-bounds $marginZoomed-site;
+
+        font-size: $fontZoomed;
+
+        &.middle-entry {
+          margin-right: calc(#{$middleSpace} - (#{$margin-site} - #{$marginZoomed-site})); // Compensate the lower margin.
+        }
+      }
+
+      &.middle-entry {
+        margin-right: $middleSpace; // For the header icon which overdraw the content.
+      }
+    }
+  }
+
+  #title {
+    position: fixed;
+    top: calc(#{$header-height} + #{$marginZoomed-bounds} * 2 + #{$sizeZoomed}); // Only for desktop.
+    left: calc((#{$marginZoomed-site} * 2 ) + #{$sizeZoomed}); // Only for mobile.
+    color: $color-base;
+    font-weight: 700;
+
+    $shadowColor: white;
+    // Set the shadow multiple times to get the blur more intensive, like it surround it.
+    text-shadow:
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor,
+      0 0 2px $shadowColor;
+
+      @include media('<desktop') {
+        padding-top: calc((#{$sizeZoomed} - #{$fontZoomed}) / 2 - 3px); // Make the title vertically centered to the circle.
+      }
+  }
+}

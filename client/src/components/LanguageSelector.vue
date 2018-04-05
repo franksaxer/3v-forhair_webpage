@@ -53,23 +53,44 @@
 
 
 <style lang="scss">
+  // Import 3rd party styles
+  @import '../../node_modules/include-media/dist/include-media';
+
   // Import own styles
   @import '../style/3v-forhair';
 
 
   #languageSelector {
-    $margin: 5px;
     position: fixed;
-    left: $margin;
-    bottom: $margin;
     z-index: 10;
+
+    @include media('>=desktop') {
+      $margin: calc((#{$footer-height} - #{$languageSelector-height-desktop}) / 2);
+      left: $margin;
+      bottom: $margin;
+    }
+
+    @include media('<desktop') {
+      $margin: 2px;
+      left: $margin;
+      bottom: $margin;
+    }
 
     select {
       border: 4px solid $color-base;
       color: $color-base;
       font-weight: bold;
       background-color: transparent;
-      width: 80px; // Make it a bit more narrow than per default.
+
+      @include media('>=desktop') {
+        height: $languageSelector-height-desktop;
+        width: calc(#{$languageSelector-height-desktop} * 2)!important;
+      }
+
+      @include media('<desktop') {
+        height: $languageSelector-height-mobile;
+        width: calc(#{$languageSelector-height-mobile} * 2)!important;
+      }
     }
   }
 </style>
