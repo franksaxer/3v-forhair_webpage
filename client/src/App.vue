@@ -6,7 +6,13 @@
       <header>
         <div id="label-with-icon">
           <h1>for</h1>
-          <img src="./assets/icon.png" />
+          <img  id="logo"
+                :class="{'lower-position': logoInLowerPosition}"
+                src="./assets/icon.png" />
+
+          <span id="logo-spacer"
+                :class="{'upper-position': !logoInLowerPosition}" />
+
           <h1>  hair</h1>
         </div>
 
@@ -21,7 +27,9 @@
 
       <main>
         <div id="content" class="main-element">
-          <main-menu v-model="entry"/>
+          <main-menu  v-model="entry"
+                      :space="!logoInLowerPosition"/>
+
           <keep-alive>
             <component :is="entry.component"/>
           </keep-alive>
@@ -166,6 +174,11 @@
       adminViewEnabled: function () {
         if (this.sessionKey) return true
         else return false
+      },
+
+      logoInLowerPosition: function () {
+        // Check if current menu entry is a specific one.
+        return this.entry.id === '7fa08dbb1f49ecd4e3b5a06634317c78'
       }
     },
 
@@ -260,8 +273,25 @@
           padding: 0 10px;
         }
 
-        img {
+        #logo {
+          position: fixed;
+          top: 0;
+          left: calc((100vw / 2) - (#{$icon-radius}) / 2);
           height: $icon-radius;
+          transition: $transition;
+
+          &.lower-position {
+            top: calc((100vh / 2) - (#{$icon-radius} / 2))!important; // use !important to get this work over the id.
+          }
+        }
+
+        #logo-spacer {
+          min-width: 0;
+          transition: $transition;
+
+          &.upper-position {
+            min-width: $icon-radius!important; // use !important to get this work over the id.
+          }
         }
       }
 
@@ -271,7 +301,6 @@
         top: $margin;
         right: $margin;
         height: calc(#{$header-height} - 2 * #{$margin});
-
       }
     }
 

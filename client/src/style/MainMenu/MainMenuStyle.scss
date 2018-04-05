@@ -62,6 +62,8 @@
       border: solid 1px white;
       border-radius: $size;
 
+      transition: $transition;
+
       &:hover {
         width: $sizeZoomed;
         height: $sizeZoomed;

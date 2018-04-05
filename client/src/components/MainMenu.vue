@@ -51,8 +51,8 @@
       event: 'switch' // Rename from default 'input' event.
     },
 
-    prop: {
-      background: String
+    props: {
+      space: Number
     },
 
     data () {
@@ -67,7 +67,7 @@
 
     methods: {
       isMiddleEntry (index) {
-        return index === this.entries.length / 2 - 1
+        return this.space ? index === this.entries.length / 2 - 1 : false
       },
 
       showTitle (entry, index) {
