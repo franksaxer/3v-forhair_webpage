@@ -23,7 +23,7 @@
         <div id="content" class="main-element">
           <main-menu v-model="entry"/>
           <keep-alive>
-            <component :is="entry.componentName"/>
+            <component :is="entry.component"/>
           </keep-alive>
         </div>
 
@@ -95,10 +95,6 @@
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
   import MainMenu from './components/MainMenu.vue'
 
-  // Subpages
-  import SubpageGreeter from './components/subpages/Greeter.vue'
-  import SubpageStylists from './components/subpages/Stylists.vue'
-
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
   import ApiConnector from './ApiConnector'
@@ -129,10 +125,7 @@
     components: {
       'language-selector': LanguageSelector,
       'advertisement-banner': AdvertisementBanner,
-      'main-menu': MainMenu,
-      // Subpages
-      'greeter': SubpageGreeter,
-      'stylists': SubpageStylists
+      'main-menu': MainMenu
     },
 
     methods: {

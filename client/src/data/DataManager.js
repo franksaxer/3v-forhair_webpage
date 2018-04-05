@@ -93,6 +93,9 @@ const extendJson = async (json) => {
       } else if (entry.substring(0, 5) === 'Label') {
         // Replace with the label key.
         json[i] = LabelKeys[entry.substring(6)]
+      } else if (entry.substring(0, 9) === 'Component') {
+        // Replace with Vue component object.
+        json[i] = require('../components/' + entry.substring(10) + '.vue')
       }
     }
   }
