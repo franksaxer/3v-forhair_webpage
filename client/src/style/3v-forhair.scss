@@ -10,6 +10,9 @@ $icon-radius: calc(#{$header-height} * 2);
 $languageSelector-height-desktop: calc(#{$footer-height} * 0.8);
 $languageSelector-height-mobile: calc(100vh * 0.07);
 
+/* Transistions */
+$transition: all 1s;
+
 
 /* Classes */
 .ghost-button {
