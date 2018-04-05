@@ -47,8 +47,8 @@
     name: 'main-menu',
 
     model: {
-      prop: 'background', // Rename from default 'value' property.
-      event: 'changeBackground' // Rename from default 'input' event.
+      prop: 'entry', // Rename from default 'value' property.
+      event: 'switch' // Rename from default 'input' event.
     },
 
     prop: {
@@ -91,7 +91,7 @@
       },
 
       switchPage (entry) {
-        this.$emit('changeBackground', entry.background)
+        this.$emit('switch', entry)
       }
     },
 

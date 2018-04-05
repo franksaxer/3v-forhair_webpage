@@ -1,6 +1,6 @@
 <template>
   <div  id="app"
-        :style="[{'background-image': 'url(' + background +')'}]" >
+        :style="[{'background-image': 'url(' + entry.background +')'}]" >
     <!-- general layout with header, main and footer -->
     <section id="layout">
       <header>
@@ -21,8 +21,10 @@
 
       <main>
         <div id="content" class="main-element">
-          <main-menu v-model="background"></main-menu>
-
+          <main-menu v-model="entry"/>
+          <keep-alive>
+            <component :is="entry.componentName"/>
+          </keep-alive>
         </div>
 
         <advertisement-banner class="main-element"></advertisement-banner>
@@ -93,6 +95,10 @@
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
   import MainMenu from './components/MainMenu.vue'
 
+  // Subpages
+  import SubpageGreeter from './components/subpages/Greeter.vue'
+  import SubpageStylists from './components/subpages/Stylists.vue'
+
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
   import ApiConnector from './ApiConnector'
@@ -113,14 +119,20 @@
         sessionKey: null, // The session key when authorized.
         // The data objects
         contactData: {},
-        background: require('./assets/wallpaper.jpg')
+        entry: { // A fake menu entry just to display something.
+          background: require('./assets/wallpaper.jpg'),
+          componentName: 'greeter'
+        }
       }
     },
 
     components: {
       'language-selector': LanguageSelector,
       'advertisement-banner': AdvertisementBanner,
-      'main-menu': MainMenu
+      'main-menu': MainMenu,
+      // Subpages
+      'greeter': SubpageGreeter,
+      'stylists': SubpageStylists
     },
 
     methods: {

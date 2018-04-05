@@ -3,72 +3,84 @@
     "priority": 1,
     "label": "Label:MENU_ENTRY_WELCOME",
     "icon": "fa-home",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 2,
     "label": "Label:MENU_ENTRY_RECENSION",
     "icon": "fa-comments",
-    "background": "Url:wallpapers/Stylists.jpg"
+    "background": "Url:wallpapers/Stylists.jpg",
+    "componentName": "stylists"
   },
   {
     "priority": 3,
     "label": "Label:MENU_ENTRY_INFOS",
     "icon": "fa-info",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 4,
     "label": "Label:MENU_ENTRY_ABOUT_US",
     "icon": "fa-align-center",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 5,
     "label": "Label:MENU_ENTRY_STAFF",
     "icon": "fa-users",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 6,
     "label": "Label:MENU_ENTRY_COSTS",
     "icon": "fa-dollar-sign",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 7,
     "label": "Label:MENU_ENTRY_PRODUCTS",
     "icon": "fa-cubes",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 8,
     "label": "Label:MENU_ENTRY_COLORS",
     "icon": "fa-paint-brush",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 9,
     "label": "Label:MENU_ENTRY_CONTACT",
     "icon": "fa-address-book",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 10,
     "label": "Label:MENU_ENTRY_APPROACH",
     "icon": "fa-map",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 11,
     "label": "Label:MENU_ENTRY_IMPRESSIONS",
     "icon": "fa-image",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   },
   {
     "priority": 12,
     "label": "Label:MENU_ENTRY_IMPRESSUM",
     "icon": "fa-question",
-    "background": "Url:wallpapers/Recension.jpg"
+    "background": "Url:wallpapers/Recension.jpg",
+    "componentName": "greeter"
   }
 ]
