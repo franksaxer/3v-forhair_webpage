@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <div class="image">
+    <div class="image" v-switch-left-effect>
       <img src=../../assets/subpages/greeter/frank.jpg>
     </div>
     <div class="text content">
@@ -83,16 +83,17 @@
       background: $color-invert;
       border-radius: $border-radius;
       padding: $border-radius;
+      overflow-x: auto;
 
       @include media('>=desktop') {
-        width: $width;
         margin-left: $space-desktop;
+        width: $width;
+        max-height: 70vh; // Get along with half screen browsing.
       }
 
       @include media('<desktop') {
         margin-top: $space-mobile;
         max-height: calc(#{$segmentHeight} - #{$space-mobile} + 30px);
-        overflow-x: auto;
       }
 
       h4 {
