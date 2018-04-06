@@ -1,0 +1,8 @@
+.subpage {
+  min-width: 100%; // Take the whole content window width.
+  max-width: 100%; // Fix the width.
+  min-height: 100%;
+  overflow-y: hidden; // Horizontally not scrollable.
+  overflow-x: auto;
+  padding: 60px 5% 0;
+}
