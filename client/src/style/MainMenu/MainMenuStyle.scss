@@ -4,7 +4,6 @@
 // Import own styles
 @import '../3v-forhair';
 
-// Initial variables (will be overwritten)
 #main-menu {
   #menu-button {
     position: fixed;
@@ -56,7 +55,7 @@
       height: $size;
       margin: $margin-bounds $margin-site;
 
-      color: white;
+      color: #ffffffee; // Minimal less intensiv looks better.
       background-color: $color-base;
 
       border: solid 1px white;
