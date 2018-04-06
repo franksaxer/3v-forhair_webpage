@@ -70,6 +70,11 @@
             </carousel>
           </div>
         </tab-pane>
+
+        <tab-pane  class="is-primary" label="Preise für Farbveränderungen">
+
+        </tab-pane>
+
       </tabs>
     </div>
   </section>
@@ -98,6 +103,7 @@
       return {
         preiseFürIhn: {},
         preiseFürSie: null,
+        preiseFürFarbveränderungen: null,
         preiseFürSieHeader: null
       }
     },

@@ -37,6 +37,11 @@
   "ueberUns":{
     "key": "92f812b77d7d206f2984011037765f7a7e364c7c67b78f80437f0cbd22f65036",
     "path":"json/content/überUns.json"
+  },
+  "preiseFürFarbveränderungen":{
+    "key":"791cd3ec22e956174ba155a2d7dc024e6c5b3dc8f40a0ccb0794727025cdd46e",
+    "path":"json/content/preiseFarbveränderungen.json"
+
   }
 
 
