@@ -73,9 +73,10 @@
 
         <tab-pane  class="is-primary" label="Preise für Farbveränderungen">
           <h6 v-if="preiseFürFarbveränderungen" class="subtitle is-6">{{preiseFürFarbveränderungen.subheadline}}</h6>
+          <p class="is-6 linkToFarben">Wollen sie mehr über unsere Farben erfahren? Klicken sie hier.</p>
           <div class="farbveränderung" v-for="tabelle in preiseFürFarbveränderungen.tabellen">
-            <h6 class="title is-6">{{tabelle.tHeadline}}</h6>
-            <h6 class="subtitle is-6">{{tabelle.tSubHeadline}}</h6>
+            <h5 class="title is-5">{{tabelle.tHeadline}}</h5>
+            <h6 class="subtitle is-6"><em>{{tabelle.tSubHeadline}}</em></h6>
 
             <table class="table is-striped" v-for="subtabelle in tabelle.subtabelle">
               <thead>
@@ -174,6 +175,10 @@
 
   .table{
     background-color: rgba( $baseColor, .7 );
+  }
+
+  .linkToFarben{
+    margin-bottom: 24px;
   }
 
   .subpage{

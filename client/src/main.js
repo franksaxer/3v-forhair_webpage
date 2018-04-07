@@ -28,6 +28,9 @@ Vue.use(MultilangStore, {
 // Import global components
 import App from './App'
 import VueToggle from 'vue-toggle'
+import VueYoutube from 'vue-youtube'
+
+Vue.use(VueYoutube)
 
 // Register the components.
 Vue.component('vue-toggle', VueToggle)
