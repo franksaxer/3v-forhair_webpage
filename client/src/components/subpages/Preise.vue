@@ -72,7 +72,28 @@
         </tab-pane>
 
         <tab-pane  class="is-primary" label="Preise für Farbveränderungen">
+          <h6 v-if="preiseFürFarbveränderungen" class="subtitle is-6">{{preiseFürFarbveränderungen.subheadline}}</h6>
+          <div class="farbveränderung" v-for="tabelle in preiseFürFarbveränderungen.tabellen">
+            <h6 class="title is-6">{{tabelle.tHeadline}}</h6>
+            <h6 class="subtitle is-6">{{tabelle.tSubHeadline}}</h6>
 
+            <table class="table is-striped" v-for="subtabelle in tabelle.subtabelle">
+              <thead>
+              <tr>
+                <th v-if="subtabelle.header.length != 0"></th>
+                <th v-if="subtabelle.header.length != 0" v-for="head in subtabelle.header">{{head}}</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr v-for="(row,index) in subtabelle.rows">
+                <td width="50px" v-if="index == 0" v-for="column in row">{{column}}</td>
+                <td v-if="index != 0" v-for="column in row">{{column}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
         </tab-pane>
 
       </tabs>
@@ -131,6 +152,7 @@
     async created () {
       this.preiseFürIhn = await loadDataObject(DataStoreEntries.preiseFürIhn.key)
       this.preiseFürSie = await loadDataObject(DataStoreEntries.preiseFürSie.key)
+      this.preiseFürFarbveränderungen = await loadDataObject(DataStoreEntries.preiseFürFarbveränderungen.key)
       this.preiseFürSieTabllen = this.preiseFürSie.tabellen
       this.preiseFürIhnTabllen = this.preiseFürIhn.tabellen
     }
