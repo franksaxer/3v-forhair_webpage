@@ -3,10 +3,8 @@
     <h1 class="title">{{farbe.headline}}</h1>
 
     <div class="indroduction">
-      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline1}}</h3>
-      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline2}}</h3>
-      <i class="folgePfeil fa fa-arrow-down"></i>
-      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline3}}</h3>
+      <h5 class="subtitle subtitleWithoutMargin is-5">{{farbe.subheadline1}} {{farbe.subheadline2}}</h5>
+      <h5 class="subtitle subtitleWithoutMargin is-5"> <i class=" fa fa-arrow-right"></i> {{farbe.subheadline3}} <i class=" fa fa-arrow-left"></i></h5>
     </div>
     <div class="content">
       <ul>
@@ -16,19 +14,20 @@
         <youtube video-id="D7CEOHZD1qc" />
       </div>
     </div>
-      <h2 class="title">{{farbe.subheadline4}}</h2>
-      <div class="myContainer">
-        <div v-for="möglichkeit in farbe.möglichkeiten" class="myItem">
-          <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{möglichkeit.title}}</h5>
-          <h5 class="subtitle is-5">{{möglichkeit.content}}</h5>
-        </div>
+
+    <h2 class="title">{{farbe.subheadline4}}</h2>
+    <div class="myContainer">
+      <div v-for="möglichkeit in farbe.möglichkeiten" class="myItem">
+        <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{möglichkeit.title}}</h5>
+        <h6 class="subtitle is-6">{{möglichkeit.content}}</h6>
       </div>
+    </div>
 
     <h2 class="title">{{farbe.subheadline5}}</h2>
     <div class="myContainer">
       <div v-for="wirkprinzipien in farbe.wirkprinzipien" class="myItem">
         <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{wirkprinzipien.title}}</h5>
-        <h5 class="subtitle is-5">{{wirkprinzipien.content}}</h5>
+        <h6 class="subtitle is-6">{{wirkprinzipien.content}}</h6>
       </div>
     </div>
 
@@ -101,8 +100,9 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .folgePfeil{
-        margin: 10px;
+      .answer{
+        margin-top: 15px;
+        margin-bottom: 100px;
       }
 
     }
