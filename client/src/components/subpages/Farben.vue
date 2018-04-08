@@ -1,9 +1,13 @@
 <template>
   <section class="section subpage">
     <h1 class="title">{{farbe.headline}}</h1>
-    <h3 class="subtitle" style="margin-bottom: 0px">{{farbe.subheadline1}}</h3>
-    <h3 class="subtitle">{{farbe.subheadline2}}</h3>
-    <h3 class="subtitle">{{farbe.subheadline3}}</h3>
+
+    <div class="indroduction">
+      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline1}}</h3>
+      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline2}}</h3>
+      <i class="folgePfeil fa fa-arrow-down"></i>
+      <h3 class="subtitle subtitleWithoutMargin">{{farbe.subheadline3}}</h3>
+    </div>
     <div class="content">
       <ul>
         <li v-for="li in farbe.faktList">{{li}}</li>
@@ -15,7 +19,7 @@
       <h2 class="title">{{farbe.subheadline4}}</h2>
       <div class="myContainer">
         <div v-for="möglichkeit in farbe.möglichkeiten" class="myItem">
-          <h5 class="title is-5">{{möglichkeit.title}}</h5>
+          <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{möglichkeit.title}}</h5>
           <h5 class="subtitle is-5">{{möglichkeit.content}}</h5>
         </div>
       </div>
@@ -23,13 +27,13 @@
     <h2 class="title">{{farbe.subheadline5}}</h2>
     <div class="myContainer">
       <div v-for="wirkprinzipien in farbe.wirkprinzipien" class="myItem">
-        <h5 class="title is-5">{{wirkprinzipien.title}}</h5>
+        <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{wirkprinzipien.title}}</h5>
         <h5 class="subtitle is-5">{{wirkprinzipien.content}}</h5>
       </div>
     </div>
 
     <h2 class="title">{{farbe.subheadline6}}</h2>
-    <h2 class="subtitle">{{farbe.subheadline7}}</h2>
+    <h2 class="subtitle subtitleWithoutMargin">{{farbe.subheadline7}}</h2>
     <div class="content">
       <ul>
         <li v-for="content in farbe.olaplexContent">{{content}}</li>
@@ -38,7 +42,7 @@
     <div class="myContainer">
       <div v-for="olaplexProdukt in farbe.olaplexProdukte" class="myItem">
         <h5 class="title is-5">{{olaplexProdukt.headline}}</h5>
-        <h6 class="subtitle is-6"><em>{{olaplexProdukt.description}}</em></h6>
+        <h6 class="subtitle is-6 subtitleWithoutMargin"><em>{{olaplexProdukt.description}}</em></h6>
         <div class="content">
           <ul>
             <li v-for="li in olaplexProdukt.preise">{{li}}</li>
@@ -86,9 +90,23 @@
 <style lang="scss" scoped>
   @import '../../../node_modules/include-media/dist/include-media';
   @import '../../style/subpages';
+  @import '../../../node_modules/font-awesome/css/font-awesome.css';
 
   .subpage{
     flex-direction: column;
+
+    .indroduction{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .folgePfeil{
+        margin: 10px;
+      }
+
+    }
+
 
     .content {
       display: flex;
@@ -104,6 +122,10 @@
         justify-content: center;
         align-items: center;
       }
+    }
+
+    .subtitleWithoutMargin{
+      margin-bottom: 0px !important;
     }
 
     .myContainer{
