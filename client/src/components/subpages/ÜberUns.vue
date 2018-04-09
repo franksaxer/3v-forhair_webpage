@@ -11,12 +11,12 @@
       </div>
       <h3 class="title">Unser Salon</h3>
       <div class="salon">
-        <carousel :perPage="1">
+        <carousel :perPage="1" style="width: auto">
           <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder">
             <div class="bild">
               <div style="display: flex; flex-direction: column">
-                <img style="" v-bind:src="bild.url">
-                <p style="text-align: center">{{bild.title}}</p>
+                <img class="img" v-bind:src="bild.url">
+                <p style="text-align: center"><em>{{bild.title}}</em></p>
               </div>
             </div>
           </slide>
@@ -103,6 +103,11 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
+
+          .img{
+            height: 400px;
+            width: auto;
+          }
         }
 
       }
