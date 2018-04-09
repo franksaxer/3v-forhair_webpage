@@ -10,7 +10,7 @@
       </div>
       <div class="kontaktElement">
         <i class="fa fa-envelope fa-3x"></i>
-        <span>{{kontakt.mail.mail}}</span>
+        <a :href="`mailto:${kontakt.mail.mail}`">{{kontakt.mail.mail}}</a>
       </div>
       <div class="kontaktElement">
         <i class="fa fa-location-arrow fa-3x"></i>
