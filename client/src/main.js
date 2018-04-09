@@ -29,8 +29,15 @@ Vue.use(MultilangStore, {
 import App from './App'
 import VueToggle from 'vue-toggle'
 import VueYoutube from 'vue-youtube'
+import VeeValidate from 'vee-validate'
 
 Vue.use(VueYoutube)
+Vue.use(VeeValidate)
+
+VeeValidate.Validator.extend('passphrase', {
+  getMessage: field => 'Sorry dude, wrong pass phrase.',
+  validate: value => value.toUpperCase() === 'Demogorgon'.toUpperCase()
+})
 
 // Register the components.
 Vue.component('vue-toggle', VueToggle)

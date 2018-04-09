@@ -1,4 +1,29 @@
 {
   "headline" : "Kontakt",
-  "subheadline":"Keine Terminvergabe/-absage per E-Mail!"
+  "subheadline":"Keine Terminvergabe/-absage per E-Mail!",
+  "telefon":{
+    "handy":"0151 65192815",
+    "festnetz":"030 30104598"
+  },
+  "mail":{
+    "mail":"info@3v-forhair.de"
+  },
+  "adresse":{
+    "straße":"Rankestraße 24",
+    "ort":"10789 Berlin",
+    "hinweise":[
+      "(5 Kundenparkplätze vorhanden)"
+    ]
+  },
+  "öffnungszeiten":{
+    "tage":[
+      "Dienstag, Mittwoch, Freitag 10-20 Uhr","Donnerstag 10-22 Uhr","Samstag 10-18 uhr"
+    ]
+  },
+
+
+  "emailHeadline":"Ihre Meinung ist uns wichtig.Schreiben Sie uns!",
+  "emailSubheadline":"Um uns eine E-Mail zu schicken nutzen Sie einfach unser Kontaktformular!",
+
+  "hintergrund": "Url:styleBild.jpg"
 }
