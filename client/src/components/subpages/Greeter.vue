@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <div class="image">
+    <div class="image" v-switch-left-effect>
       <img src=../../assets/subpages/greeter/frank.jpg>
     </div>
     <div class="text content">

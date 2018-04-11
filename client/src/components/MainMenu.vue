@@ -52,7 +52,7 @@
     },
 
     props: {
-      space: Number
+      space: Boolean
     },
 
     data () {

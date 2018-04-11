@@ -7,6 +7,7 @@ import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
+import SwitchEffect from './plugins/SwitchEffect'
 
 // Other stuff
 import * as langs from './enums/Languages'
@@ -18,6 +19,7 @@ Vue.use(Resource)
 Vue.use(VDragged)
 Vue.use(DeviceDetector)
 Vue.use(EdiableView)
+Vue.use(SwitchEffect)
 Vue.use(MultilangStore, {
   languageList: langs,
   defaultLanguage: langs.DE,
