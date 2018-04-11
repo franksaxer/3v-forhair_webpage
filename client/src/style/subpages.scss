@@ -19,24 +19,25 @@
 
   .switch-effect {
     $time: .5s;
+    $ease: ease-out;
 
     &.left {
       left: 0; // Neutral position.
-      transition: left $time;
+      transition: left $ease $time;
 
       // Hide the object on the left side.
       &.inactive {
-        left: -100vw!important;
+        left: -10vw!important;
       }
     }
 
     &.right {
-      right: 0; // Neutral position.
-      transition: right $time;
+      left: 0; // Neutral position.
+      transition: right $ease $time;
 
       // Hide the object on the right side.
       &.inactive {
-        right: +100vw!important;
+        left: -10vw!important;
       }
     }
   }

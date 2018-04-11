@@ -3,7 +3,7 @@
     <div class="image" v-switch-left-effect>
       <img src=../../assets/subpages/greeter/frank.jpg>
     </div>
-    <div class="text content">
+    <div class="text content" v-switch-left-effect>
       <h4>
         {{ labels.SUBPAGE_GREETER_HEADER | translate }}
       </h4>
