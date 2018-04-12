@@ -122,7 +122,10 @@
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
         // The data objects
-        contactData: {},
+        contactData: {
+          telefon: {},
+          mail: {}
+        },
         entry: { // A fake menu entry just to display something.
           background: require('./assets/wallpaper.jpg'),
           componentName: 'greeter'
