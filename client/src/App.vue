@@ -30,9 +30,7 @@
           <main-menu  v-model="entry"
                       :space="!logoInLowerPosition"/>
 
-          <keep-alive>
-            <component :is="entry.component"/>
-          </keep-alive>
+          <component :is="entry.component"/>
         </div>
 
         <!-- Remove this temporally
