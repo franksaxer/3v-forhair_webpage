@@ -4,12 +4,12 @@
     <h3 class="subtitle">{{ueberUns.subheadline}}</h3>
     <div class="content">
       <div v-for="kategorie in ueberUns.kategorien" class="kategorie">
-        <span class=""><em>{{kategorie.bezeichnung}}</em></span>
+        <h4 class="is-4"><em>{{kategorie.bezeichnung}}</em></h4>
         <ul class="beschreibungListe">
           <li v-for="beschreibung in kategorie.beschreibung">{{beschreibung}}</li>
         </ul>
       </div>
-      <h3 class="title">Unser Salon</h3>
+      <h1 class="title">Unser Salon</h1>
       <div class="salon">
         <carousel :perPage="1" style="width: auto">
           <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder">

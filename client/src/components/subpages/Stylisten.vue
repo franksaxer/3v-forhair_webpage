@@ -115,8 +115,10 @@
         .stylistImage{
           img {
             width: 100%;
+            height: auto;
           };
           width: 30%;
+          height: auto;
         }
 
       }

@@ -52,11 +52,11 @@
 
 
           <div class="aktionen">
-            <carousel :perPage="1":navigationEnabled="true" style="width: 100%">
+            <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" style="width: 100%">
               <slide v-if="preiseFürIhn" v-for="(aktion,index) in preiseFürIhn.angebote" class="slide">
                 <div class="content">
                   <div class="aktionImage">
-                    <img class="img" v-bind:src="aktion.bild">
+                    <img v-bind:src="aktion.bild">
                   </div>
                   <div class="aktion">
                     <h5 class="is-5 title">{{aktion.headline}}</h5>
@@ -214,10 +214,6 @@
           justify-content: center;
           display: flex;
           width: 40%;
-          .img{
-            max-width: 100%;
-            height: 100%;
-          }
         }
       }
 
