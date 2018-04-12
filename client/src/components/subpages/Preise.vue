@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage section" :style="[{'background-image': 'url(' + background +')'}]">
+  <section class="subpage section">
     <h1 class="title">Preisliste für Haarschnitte und Stylings</h1>
     <div class="preise">
       <tabs animation="slide" :only-fade="false">
@@ -127,16 +127,6 @@
         preiseFürSie: null,
         preiseFürFarbveränderungen: null,
         preiseFürSieHeader: null
-      }
-    },
-
-    computed: {
-      background () {
-        if (this.preiseFürIhn) {
-          return this.preiseFürIhn.hintergrund
-        } else {
-          return ''
-        }
       }
     },
 

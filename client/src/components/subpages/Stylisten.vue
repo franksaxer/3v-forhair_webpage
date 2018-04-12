@@ -1,5 +1,5 @@
 <template>
-  <section class="section subpage" :style="[{'background-image': 'url(' + background +')'}]">
+  <section class="section subpage">
     <h1 class="title">Unser Team</h1>
     <h2 class="subtitle">Dich noch schöner zu machen ist unser Ziel</h2>
     <div class="content">
@@ -45,16 +45,6 @@
       return {
         stylistenJSON: null,
         stylisten: null
-      }
-    },
-
-    computed: {
-      background () {
-        if (this.stylistenJSON) {
-          return this.stylistenJSON.hintergrund
-        } else {
-          return ''
-        }
       }
     },
 

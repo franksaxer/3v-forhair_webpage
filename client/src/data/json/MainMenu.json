@@ -4,7 +4,7 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_WELCOME",
     "icon": "fa-home",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   },
   {
@@ -12,15 +12,15 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_RECENSION",
     "icon": "fa-comments",
-    "background": "Url:wallpapers/Stylists.jpg",
-    "component": "Component:subpages/Stylists"
+    "background": "Url:wallpapers/background6.jpg",
+    "component": "Component:subpages/Greeter"
   },
   {
     "id": "cd71a6845979ae28f8195f585a270c3c",
     "priority": 5,
     "label": "Label:MENU_ENTRY_INFOS",
     "icon": "fa-info",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   },
   {
@@ -28,31 +28,31 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_ABOUT_US",
     "icon": "fa-align-center",
-    "background": "Url:wallpapers/Recension.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background8.jpg",
+    "component": "Component:subpages/ÜberUns"
   },
   {
     "id": "ec9ead152c6ab6077c609f537ca790ea",
     "priority": 5,
     "label": "Label:MENU_ENTRY_STAFF",
     "icon": "fa-users",
-    "background": "Url:wallpapers/Recension.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background4.jpg",
+    "component": "Component:subpages/Stylisten"
   },
   {
     "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
     "priority": 5,
     "label": "Label:MENU_ENTRY_COSTS",
     "icon": "fa-dollar-sign",
-    "background": "Url:wallpapers/Recension.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background2.jpg",
+    "component": "Component:subpages/Preise"
   },
   {
     "id": "76a0fcbddb98d64d80c62412336ff908",
     "priority": 5,
     "label": "Label:MENU_ENTRY_PRODUCTS",
     "icon": "fa-cubes",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   },
   {
@@ -60,23 +60,23 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_COLORS",
     "icon": "fa-paint-brush",
-    "background": "Url:wallpapers/Recension.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background6.jpg",
+    "component": "Component:subpages/Farben"
   },
   {
     "id": "5f13c6e5162297087f4d03af1169ae38",
     "priority": 5,
     "label": "Label:MENU_ENTRY_CONTACT",
     "icon": "fa-address-book",
-    "background": "Url:wallpapers/Recension.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background6.jpg",
+    "component": "Component:footer/Kontakt"
   },
   {
     "id": "c2551a0892802fe5f4b4e6f83ad75e99",
     "priority": 5,
     "label": "Label:MENU_ENTRY_APPROACH",
     "icon": "fa-map",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   },
   {
@@ -84,7 +84,7 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_IMPRESSIONS",
     "icon": "fa-image",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   },
   {
@@ -92,7 +92,7 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_IMPRESSUM",
     "icon": "fa-question",
-    "background": "Url:wallpapers/Recension.jpg",
+    "background": "Url:wallpapers/background6.jpg",
     "component": "Component:subpages/Greeter"
   }
 ]

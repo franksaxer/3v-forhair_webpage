@@ -9,11 +9,16 @@
   overflow-x: auto;
 
   @include media('>=desktop'){
-    padding-left: 100px;
+    padding: 60px 5% 0;
   }
 
   @include media('<desktop') {
     padding: 10px 5% 0;
+  }
+
+  .container3v {
+    padding-left: 100px;
+    justify-content: center;
   }
 
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="section subpage" :style="[{'background-image': 'url(' + background +')'}]">
+  <section class="section subpage">
     <h1 class="title">{{kontakt.headline}}</h1>
     <h3 class="subtitle">{{kontakt.subheadline}}</h3>
     <div class="content">
@@ -90,16 +90,6 @@
       return {
         name: '',
         kontakt: {}
-      }
-    },
-
-    computed: {
-      background () {
-        if (this.kontakt) {
-          return this.kontakt.hintergrund
-        } else {
-          return ''
-        }
       }
     },
 
