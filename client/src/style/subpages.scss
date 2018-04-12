@@ -8,8 +8,8 @@
   overflow-y: hidden; // Horizontally not scrollable.
   overflow-x: auto;
 
-  @include media('>=desktop') {
-    padding: 60px 5% 0;
+  @include media('>=desktop'){
+    padding-left: 100px;
   }
 
   @include media('<desktop') {

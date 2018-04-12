@@ -17,11 +17,15 @@
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "v-dragged": "0.0.5",
+    "vee-validate": "^2.0.6",
     "vue": "^2.3.3",
+    "vue-bulma-tabs": "^1.1.2",
+    "vue-carousel": "^0.6.9",
     "vue-device-detector": "github:weilbith/vue-device-detector",
     "vue-multilang-store": "github:weilbith/vue-multilang-store",
     "vue-resource": "^1.3.4",
-    "vue-toggle": "github:weilbith/vue-toggle"
+    "vue-toggle": "github:weilbith/vue-toggle",
+    "vue-youtube": "^1.2.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

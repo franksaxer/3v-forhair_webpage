@@ -1,0 +1,60 @@
+{
+  "subheadline":"Unsere Stylisten sind je nach Berufserfahrung, Abschluss und Aveda-Schulungen in verschiedene Kategorien gegliedert.",
+  "kategorien":[
+    {"bezeichnung":"Top Stylist:",
+    "beschreibung":[
+      "Frisörgeselle/in mit mindestens drei Jahren Berufserfahrung und div. Aveda-Schulungen."
+    ]},
+    {"bezeichnung":"Master Stylist:",
+      "beschreibung":[
+        "Frisörmeister/in mit mehrjähriger Berufserfahrung und zahlreichen Aveda-Schulungen."
+      ]},
+    {"bezeichnung":"Senior Stylist:",
+      "beschreibung":[
+        "Frisörmeister/in mit mindestens 20 Jahren Berufserfahrung und zahlreichen Aveda-Schulungen."
+      ]},
+    {"bezeichnung":"Colorist:",
+      "beschreibung":[
+        "direkt auf Farbe spezialisierter Frisörgeselle mit div. Farbseminaren und guten Farbkenntnissen."
+      ]},
+    {"bezeichnung":"Top Colorist:",
+      "beschreibung":[
+        "zusätzlich auf Farbe geschulter Frisörgeselle mit zahlreichen Farbseminaren und mehrjährigen Farbkenntnissen."
+      ]},
+    {"bezeichnung":"Master of Color:",
+      "beschreibung":[
+        "Farbexperte mit über 25 Jahren Berufserfahrung als Colorist."
+      ]}
+  ],
+
+  "salonBilder":[
+    {
+      "title":"Verkaufsraum",
+      "url":"Url:salon/Schneideraum.jpg"
+    },
+    {
+      "title":"Verkaufsraum Skin Care, Body Care, Make Up",
+      "url":"Url:salon/Schneide_Färberaum.jpg"
+    },
+    {
+      "title":"Schneideplätze 1 & 2",
+      "url":"Url:salon/Färberaum.jpg"
+    },
+    {
+      "title":"Schneideplätze 3 & 4",
+      "url":"Url:salon/Schneideraum2.jpg"
+    },
+    {
+      "title":"Waschplätze im Schneidebereich",
+      "url":"Url:salon/Liege_Shampooplätze.jpg"
+    },
+    {
+      "title":"Waschplätze mit Liegefunktion im Farbbereich",
+      "url":"Url:salon/Verkaufsraum.jpg"
+    },
+    {
+      "title":"In der Einwirk- und Wartezeit lädt unsere Terrasse zum Verweilen ein",
+      "url":"Url:salon/3v_for_hair_Garten_Terasse.jpg"
+    }
+  ]
+}

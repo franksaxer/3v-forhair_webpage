@@ -233,10 +233,8 @@
   body {
     margin: 0;
     overflow: hidden; // For the cover page;
-  }
-
-  #app {
-    background-position: center center;
+    //background: url('./assets/wallpaper.jpg');
+    background-position: center left;
     background-repeat:  no-repeat;
     background-size: cover;
   }

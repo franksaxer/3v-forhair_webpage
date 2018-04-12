@@ -17,5 +17,45 @@
   "mainMenu": {
     "key": "5e3732f3a271b76aec1e6ab277cfc830",
     "path": "json/MainMenu.json"
+  },
+
+  "welcome": {
+    "key": "c0b137fe2d792459f26ff763cce44574a5b5ab03",
+    "path":"json/Welcome.json"
+  },
+
+  "preiseFürIhn": {
+    "key": "2aa70b3a9146ebb42ae72183e5626d76d4352aa8",
+    "path":"json/content/preiseFürIhn.json"
+  },
+
+  "preiseFürSie": {
+    "key": "71dca2d718e8591e4680bd46f40c271b2123b8ed",
+    "path":"json/content/preiseFürSie.json"
+  },
+
+  "stylisten":{
+    "key": "2b448f34181aa8ccffe2e0c6c8609b0084f7829f",
+    "path":"json/content/stylisten.json"
+  },
+
+  "ueberUns":{
+    "key": "92f812b77d7d206f2984011037765f7a7e364c7c67b78f80437f0cbd22f65036",
+    "path":"json/content/überUns.json"
+  },
+    
+  "preiseFürFarbveränderungen": {
+    "key": "791cd3ec22e956174ba155a2d7dc024e6c5b3dc8f40a0ccb0794727025cdd46e",
+    "path": "json/content/preiseFarbveränderungen.json"
+  },
+    
+  "farbe":{
+    "key":"226e03e00857d13c63d7cc6e571d771e7b9c04f162e69eff743666b345314633",
+    "path":"json/content/farbe.json"
+  },
+    
+  "kontakt":{
+    "key":"c7f588235eb4d781000efad2e6ace6c60b7a63ef",
+    "path":"json/content/kontakt.json"
   }
 }
