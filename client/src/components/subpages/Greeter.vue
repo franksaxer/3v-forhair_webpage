@@ -3,7 +3,7 @@
     <div class="image" v-switch-left-effect>
       <img src=../../assets/subpages/greeter/frank.jpg>
     </div>
-    <div class="text content" v-switch-left-effect>
+    <div class="text content-box" v-switch-left-effect>
       <h4>
         {{ labels.SUBPAGE_GREETER_HEADER | translate }}
       </h4>
@@ -63,8 +63,6 @@
       }
 
       img {
-        border-radius: $border-radius;
-
         @include media('>=desktop') {
           max-width: 250px;
           margin-left: auto; // Align right

@@ -1,8 +1,8 @@
 <template>
   <section class="section subpage">
     <h1 class="title">{{kontakt.headline}}</h1>
-    <h3 class="subtitle">{{kontakt.subheadline}}</h3>
-    <div class="content">
+    <h2 class="subtitle">{{kontakt.subheadline}}</h2>
+    <div class="content content-box">
       <div class="kontaktElement">
           <i class="fa fa-phone fa-3x"></i>
           <span>{{kontakt.telefon.handy}}</span>
@@ -17,20 +17,21 @@
         <span>{{kontakt.adresse.straße}}</span>
         <span>{{kontakt.adresse.ort}}</span>
         <ul>
-          <li v-for="hinweis in kontakt.adresse.hinweise">{{hinweis}}</li>
+          <span v-for="hinweis in kontakt.adresse.hinweise">{{hinweis}}</span>
         </ul>
       </div>
       <div class="kontaktElement">
         <i class="fa fa-clock-o fa-3x"></i>
         <span v-for="tag in kontakt.öffnungszeiten.tage">{{tag}}</span>
       </div>
-
     </div>
 
-    <div class="contentKontakt">
+    <hr>
+
+    <div class="content-box ">
       <div class="contaktItemHeadline">
-        <h1 class="title">{{kontakt.emailHeadline}}</h1>
-        <h3 class="subtitle">{{kontakt.emailSubheadline}}</h3>
+        <h1>{{kontakt.emailHeadline}}</h1>
+        <h3>{{kontakt.emailSubheadline}}</h3>
       </div>
       <div class="contaktItemFormular">
         <form @submit.prevent="validateBeforeSubmit">
@@ -116,19 +117,11 @@
 
   .subpage{
     flex-direction: column;
-    $baseColor: white;
 
-    .title, .subtitle {
-      color:$baseColor;
-    }
-
-    .content{
-      border-radius: 10px;
-      color: black;
+    .content-box{
       margin: 10px 2%;
-      padding: 20px;
       width: auto;
-      background-color: rgba( $baseColor, .7 );
+
 
       margin-bottom: 30px;
 
@@ -148,23 +141,16 @@
         justify-content: center;
         align-items: center;
       }
-    }
 
-    .contentKontakt{
-      border-radius: 10px;
-      color: black;
-      margin: 10px 2%;
-      padding: 20px;
-      width: auto;
-      background-color: rgba( $baseColor, .7 );
-
-      margin-bottom: 30px;
-
-      flex-wrap: wrap;
-      display: flex;
-
-      flex-direction: row;
       .contaktItemHeadline{
+
+
+
+        h1,h3{
+          color:black!important;
+          text-shadow: 0 0 0 white;
+        }
+        text-align: center;
         @include media('<desktop') {
           width: 90%;
         }
@@ -187,8 +173,8 @@
         width: 46%;
         flex-direction: column;
       }
-    }
 
+    }
   }
 
 

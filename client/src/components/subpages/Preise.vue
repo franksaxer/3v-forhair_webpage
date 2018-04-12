@@ -1,10 +1,10 @@
 <template>
   <section class="subpage section">
-    <h1 class="title">Preisliste für Haarschnitte und Stylings</h1>
-    <div class="preise">
+    <h1> Preisliste für Haarschnitte und Stylings</h1>
+    <div class="content-box">
       <tabs animation="slide" :only-fade="false">
         <tab-pane  class="is-primary" label="Preise für Sie">
-          <h6 v-if="preiseFürSie" class="subtitle">{{preiseFürSie.subheadline}}</h6>
+          <p v-if="preiseFürSie">{{preiseFürSie.subheadline}}</p>
 
           <table v-if="preiseFürSieTabllen" v-for="table in preiseFürSieTabllen" class="table is-striped">
             <thead>
@@ -25,7 +25,7 @@
         </tab-pane>
 
         <tab-pane label="Preise für Ihn">
-          <h3 class="subtitle">{{preiseFürIhn.subheadline}}</h3>
+          <p >{{preiseFürIhn.subheadline}}</p>
 
           <table v-if="preiseFürIhnTabllen" v-for="table in preiseFürIhnTabllen" class="table is-striped">
             <thead>
@@ -44,23 +44,21 @@
             </tbody>
           </table>
 
-          <h3 class=" is-3 title">Reine Männersache</h3>
+          <h3>Reine Männersache</h3>
 
-          <h5 class="subtitle is-5">Deinen Typ zu unterstreichen, das ist unser Ziel! <br/>
+          <p>Deinen Typ zu unterstreichen, das ist unser Ziel! <br/>
           Entspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.<br/>
-          Individualität und Wohlbefinden stehen hierbei an erster Stelle.</h5>
+          Individualität und Wohlbefinden stehen hierbei an erster Stelle.</p>
 
 
           <div class="aktionen">
-            <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" style="width: 100%">
+            <carousel :perPage="1" :navigationEnabled="true" style="width: 100%">
               <slide v-if="preiseFürIhn" v-for="(aktion,index) in preiseFürIhn.angebote" class="slide">
-                <div class="content">
-                  <div class="aktionImage">
-                    <img v-bind:src="aktion.bild">
-                  </div>
+                <div class="contentAktionen">
+                  <img class="aktionImage" :src="aktion.bild">
                   <div class="aktion">
-                    <h5 class="is-5 title">{{aktion.headline}}</h5>
-                    <h6 class="subtitle is-6"><em>{{aktion.dauer}}</em></h6>
+                    <h5>{{aktion.headline}}</h5>
+                    <h6><em>{{aktion.dauer}}</em></h6>
                     <ul>
                       <li v-for="be in aktion.beschreibung">{{be}}</li>
                     </ul>
@@ -72,11 +70,11 @@
         </tab-pane>
 
         <tab-pane  class="is-primary" label="Preise für Farbveränderungen">
-          <h6 v-if="preiseFürFarbveränderungen" class="subtitle is-6">{{preiseFürFarbveränderungen.subheadline}}</h6>
-          <p class="is-6 linkToFarben">Wollen sie mehr über unsere Farben erfahren? Klicken sie hier.</p>
+          <p v-if="preiseFürFarbveränderungen">{{preiseFürFarbveränderungen.subheadline}}</p>
+          <p class="linkToFarben">Wollen sie mehr über unsere Farben erfahren? Klicken sie hier.</p>
           <div class="farbveränderung" v-for="tabelle in preiseFürFarbveränderungen.tabellen">
-            <h5 class="title is-5">{{tabelle.tHeadline}}</h5>
-            <h6 class="subtitle is-6"><em>{{tabelle.tSubHeadline}}</em></h6>
+            <h5>{{tabelle.tHeadline}}</h5>
+            <h6><em>{{tabelle.tSubHeadline}}</em></h6>
 
             <table class="table is-striped" v-for="subtabelle in tabelle.subtabelle">
               <thead>
@@ -124,9 +122,9 @@
     data () {
       return {
         preiseFürIhn: {},
-        preiseFürSie: null,
-        preiseFürFarbveränderungen: null,
-        preiseFürSieHeader: null
+        preiseFürSie: {},
+        preiseFürFarbveränderungen: {},
+        preiseFürSieHeader: {}
       }
     },
 
@@ -171,39 +169,41 @@
     margin-bottom: 24px;
   }
 
+    span{
+      font-weight: bold!important;
+  }
+
   .subpage{
     flex-direction: column;
-    background-size: 100% 100%;
 
-    .table{
-      margin-left: 20px;
-    }
-
-    .preise{
-      border-radius: 10px;
-      background-color: rgba( $baseColor, .7 );
+    .content-box{
+      margin-bottom: 40px;
     }
 
     .aktionen{
       margin-top: 20px;
       display: flex;
 
-      .content{
-        flex-wrap: wrap;
+      .contentAktionen{
         display: flex;
         flex-direction: row;
 
-        .aktion{
-          display: flex;
+        @include media("<desktop"){
           flex-direction: column;
-          width: 40%;
-          justify-content: center;
         }
 
         .aktionImage{
-          justify-content: center;
-          display: flex;
-          width: 40%;
+          margin: auto;
+          width: 80%;
+          margin-right: 20px;
+
+          @include media("<desktop"){
+            margin-bottom: 20px;
+          }
+
+          img {
+            display: block;
+          }
         }
       }
 

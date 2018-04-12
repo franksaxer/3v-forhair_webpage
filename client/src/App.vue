@@ -5,7 +5,7 @@
     <section id="layout">
       <header>
         <div id="label-with-icon">
-          <h1>for</h1>
+          <h1 class="title">for</h1>
           <img  id="logo"
                 :class="{'lower-position': logoInLowerPosition}"
                 src="./assets/icon.png" />
@@ -13,7 +13,7 @@
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
 
-          <h1>  hair</h1>
+          <h1 class="title">hair</h1>
         </div>
 
         <button id="logout-button"
@@ -30,7 +30,7 @@
           <main-menu  v-model="entry"
                       :space="!logoInLowerPosition"/>
 
-          <component :is="entry.component"/>
+          <component :is="entry.component" class="is-size-3-touch content"/>
         </div>
 
         <!-- Remove this temporally
@@ -41,12 +41,12 @@
       <footer>
         <div>
           <i class="fa fa-phone"></i>
-          <span>{{ contactData.phoneNumber }}</span>
+          <span>{{ contactData.telefon.festnetz }}</span>
         </div>
 
         <div>
           <i class="fa fa-envelope"></i>
-          <span>{{ contactData.mailAddress }}</span>
+          <span>{{ contactData.mail.mail }}</span>
         </div>
       </footer>
     </section>
@@ -198,7 +198,7 @@
 
     created: async function () {
       // Load lata here.
-      this.contactData = await loadDataObject(DataStoreEntries.contact.key)
+      this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
 
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
@@ -236,7 +236,7 @@
   }
 
   #app{
-    background-position: center left!important;
+    background-position: center center!important;
     background-repeat:  no-repeat!important;
     background-size: cover!important;
   }
@@ -249,6 +249,7 @@
     flex-flow: column;
     overflow: hidden;
 
+    $border: solid 2px rgba(0,0,0,0.1);
 
     header {
       height: $header-height;
@@ -258,6 +259,8 @@
       display: flex;
       flexflow: row;
       justify-content: center;
+
+      border-bottom: $border;
 
       #label-with-icon {
         display: flex;
@@ -316,6 +319,8 @@
       display: flex;
       flex-flow: row;
       justify-content: center;
+
+      border-top: $border;
 
       // Only display, on non mobile devices.
       @include media('<desktop') {

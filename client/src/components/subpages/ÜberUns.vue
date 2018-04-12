@@ -1,28 +1,27 @@
 <template>
   <section class="section subpage">
     <h1 class="title">Über Uns</h1>
-    <h3 class="subtitle">{{ueberUns.subheadline}}</h3>
-    <div class="content">
-      <div v-for="kategorie in ueberUns.kategorien" class="kategorie">
+    <h2 class="subtitle">{{ueberUns.subheadline}}</h2>
+    <div class="contentÜber">
+      <div v-for="kategorie in ueberUns.kategorien" class="kategorie content-box">
         <h4 class="is-4"><em>{{kategorie.bezeichnung}}</em></h4>
         <ul class="beschreibungListe">
           <li v-for="beschreibung in kategorie.beschreibung">{{beschreibung}}</li>
         </ul>
       </div>
+    </div>
+      <hr>
       <h1 class="title">Unser Salon</h1>
       <div class="salon">
-        <carousel :perPage="1" style="width: auto">
+        <carousel :perPage="1">
           <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder">
             <div class="bild">
-              <div style="display: flex; flex-direction: column">
                 <img class="img" v-bind:src="bild.url">
-                <p style="text-align: center"><em>{{bild.title}}</em></p>
-              </div>
+                <h6 style="text-align: center"><em>{{bild.title}}</em></h6>
             </div>
           </slide>
         </carousel>
       </div>
-    </div>
   </section>
 </template>
 
@@ -71,18 +70,13 @@
 
   .subpage{
     flex-direction: column;
-
-    .content{
-
+    justify-content: center;
+    .contentÜber{
       flex-wrap: wrap;
       display: flex;
       flex-direction: row;
 
       .kategorie{
-        @include media('<desktop') {
-          width: 46%;
-        }
-
         display: flex;
         flex-direction: column;
         width: 29%;
@@ -96,17 +90,11 @@
 
       .salon{
         margin-top: 20px;
-        width: 100%;
-        display: flex;
+        width: 200px!important;
 
         .bild{
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-
-          .img{
-            height: 400px;
-            width: auto;
+          @media all and (max-width: 1500px) {
+            width: 80%;
           }
         }
 

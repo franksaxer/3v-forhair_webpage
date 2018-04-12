@@ -16,19 +16,11 @@
     "component": "Component:subpages/Greeter"
   },
   {
-    "id": "cd71a6845979ae28f8195f585a270c3c",
-    "priority": 5,
-    "label": "Label:MENU_ENTRY_INFOS",
-    "icon": "fa-info",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
-  },
-  {
     "id": "52e445163911cd462abb1fd3eaebcc0c",
     "priority": 5,
     "label": "Label:MENU_ENTRY_ABOUT_US",
     "icon": "fa-align-center",
-    "background": "Url:wallpapers/background8.jpg",
+    "background": "Url:wallpapers/background9.jpg",
     "component": "Component:subpages/ÜberUns"
   },
   {
@@ -44,7 +36,7 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_COSTS",
     "icon": "fa-dollar-sign",
-    "background": "Url:wallpapers/background2.jpg",
+    "background": "Url:wallpapers/background10.jpg",
     "component": "Component:subpages/Preise"
   },
   {
@@ -60,7 +52,7 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_COLORS",
     "icon": "fa-paint-brush",
-    "background": "Url:wallpapers/background6.jpg",
+    "background": "Url:wallpapers/background1.jpg",
     "component": "Component:subpages/Farben"
   },
   {
@@ -68,24 +60,8 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_CONTACT",
     "icon": "fa-address-book",
-    "background": "Url:wallpapers/background6.jpg",
+    "background": "Url:wallpapers/background11.jpg",
     "component": "Component:footer/Kontakt"
-  },
-  {
-    "id": "c2551a0892802fe5f4b4e6f83ad75e99",
-    "priority": 5,
-    "label": "Label:MENU_ENTRY_APPROACH",
-    "icon": "fa-map",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
-  },
-  {
-    "id": "c6706dbb13daf75edc97ba652df282ef",
-    "priority": 5,
-    "label": "Label:MENU_ENTRY_IMPRESSIONS",
-    "icon": "fa-image",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
   },
   {
     "id": "d9d55700f7e93245537a69dce51b22de",

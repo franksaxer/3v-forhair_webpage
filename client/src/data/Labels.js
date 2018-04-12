@@ -29,15 +29,12 @@ export default {
   // Menu
   [keys.MENU_ENTRY_WELCOME]: ['Willkommen', 'Welcome'],
   [keys.MENU_ENTRY_RECENSION]: ['Rezensionen', 'Recension'],
-  [keys.MENU_ENTRY_INFOS]: ['Weitere Infos', 'More Infos'],
   [keys.MENU_ENTRY_ABOUT_US]: ['Ueber Uns', 'About Us'],
   [keys.MENU_ENTRY_STAFF]: ['Stylisten', 'Stylists'],
   [keys.MENU_ENTRY_COSTS]: ['Preise', 'Costs'],
   [keys.MENU_ENTRY_COLORS]: ['Farben', 'Colors'],
   [keys.MENU_ENTRY_PRODUCTS]: ['Produkte', 'Products'],
   [keys.MENU_ENTRY_CONTACT]: ['Kontakt', 'Contact'],
-  [keys.MENU_ENTRY_APPROACH]: ['Anfahrt', 'Approach'],
-  [keys.MENU_ENTRY_IMPRESSIONS]: ['Bilder', 'Pictures'],
   [keys.MENU_ENTRY_IMPRESSUM]: ['Impressum', 'Impressum'],
 
   // Subpages

@@ -1,20 +1,20 @@
 <template>
-  <section class="section subpage">
-    <h1 class="title">Unser Team</h1>
+  <section class="section subpage content">
+    <h1 class="title is-size-1-desktop">Unser Team</h1>
     <h2 class="subtitle">Dich noch schöner zu machen ist unser Ziel</h2>
     <div class="content">
-      <div v-if="stylisten" v-for="(stylist,index) in stylisten" class="stylist">
-        <div class=" stylistImage">
+      <div v-if="stylisten" v-for="(stylist,index) in stylisten" class="stylist content-box">
+        <div class="stylistImage">
           <img v-bind:src="stylist.bild">
         </div>
         <div class="stylistInfo">
-          <h3 class="is-4 title">{{stylist.name}}</h3>
-          <h6 class="is-6 subtitle"style="margin-bottom: 10px "><em>{{stylist.kategorie}}</em></h6>
+          <h3 class="title">{{stylist.name}}</h3>
+          <h6 class="subtitle" style="margin-bottom: 10px "><em>{{stylist.kategorie}}</em></h6>
           <ul>
             <li v-for=" stylistInfo in stylist.info">{{stylistInfo}}</li>
           </ul>
-          <p>{{stylist.wartezeit}}</p>
-          <h6 class="is-6"><strong>Arbeitszeit</strong></h6>
+          <p class="wartezeit">{{stylist.wartezeit}}</p>
+          <h4>Arbeitszeit</h4>
           <ul>
             <li v-for="arbeitszeit in stylist.arbeitszeiten">{{arbeitszeit}}</li>
           </ul>
@@ -90,21 +90,41 @@
       display: flex;
       flex-direction: row;
 
+
+
       .stylist{
-        @include media('<desktop') {
-          width: 90%;
+        @include media("<desktop") {
+          flex-direction: column;
+          align-items: center;
+
+          h3,  h4, h6 {
+            text-align: center;
+          }
         }
-        border-radius: 10px;
-        color: black;
+
+        .wartezeit{
+          margin:auto;
+          width: 80%;
+          text-align: center;
+          font-style: italic;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
         margin: 10px 2%;
-        padding:10px;
         display: flex;
         width: 46%;
-        background-color: rgba( $baseColor, .7 );
 
         .stylistImage{
-          width: 30%;
-          padding-right: 10px;
+          @include media(">=desktop") {
+            width: 30%;
+            padding-right: 10px;
+          }
+          @include media("<desktop") {
+            width: 50%;
+            padding: 0px;
+            margin: auto;
+          }
         }
 
       }

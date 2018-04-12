@@ -1,52 +1,52 @@
 <template>
   <section class="section subpage">
-    <h1 class="title">{{farbe.headline}}</h1>
+    <h1>{{farbe.headline}}</h1>
 
     <div class="indroduction">
-      <h5 class="subtitle subtitleWithoutMargin is-5">{{farbe.subheadline1}} {{farbe.subheadline2}}</h5>
-      <h5 class="subtitle subtitleWithoutMargin is-5"> <i class=" fa fa-arrow-right"></i> {{farbe.subheadline3}} <i class=" fa fa-arrow-left"></i></h5>
+      <h2>{{farbe.subheadline1}} {{farbe.subheadline2}}</h2>
+      <h2> <i class=" fa fa-arrow-right"></i> {{farbe.subheadline3}} <i class=" fa fa-arrow-left"></i></h2>
     </div>
-    <div class="content">
+    <div class="content-box">
       <ul>
         <li v-for="li in farbe.faktList">{{li}}</li>
       </ul>
+    </div>
       <div class="youtubeVideo">
         <youtube video-id="D7CEOHZD1qc" />
       </div>
-    </div>
 
-    <h2 class="title">{{farbe.subheadline4}}</h2>
+    <h1>{{farbe.subheadline4}}</h1>
     <div class="myContainer">
-      <div v-for="möglichkeit in farbe.möglichkeiten" class="myItem">
-        <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{möglichkeit.title}}</h5>
-        <h6 class="subtitle is-6">{{möglichkeit.content}}</h6>
+      <div v-for="möglichkeit in farbe.möglichkeiten" class="content-box">
+        <h5><i class="fa fa-angle-right"></i> {{möglichkeit.title}}</h5>
+        <p>{{möglichkeit.content}}</p>
+      </div>
+    </div>
+    <hr>
+    <h1>{{farbe.subheadline5}}</h1>
+    <div class="myContainer">
+      <div v-for="wirkprinzipien in farbe.wirkprinzipien" class="content-box">
+        <h5><i class="fa fa-angle-right"></i> {{wirkprinzipien.title}}</h5>
+        <p>{{wirkprinzipien.content}}</p>
       </div>
     </div>
 
-    <h2 class="title">{{farbe.subheadline5}}</h2>
-    <div class="myContainer">
-      <div v-for="wirkprinzipien in farbe.wirkprinzipien" class="myItem">
-        <h5 class="title is-5"><i class="fa fa-angle-right"></i> {{wirkprinzipien.title}}</h5>
-        <h6 class="subtitle is-6">{{wirkprinzipien.content}}</h6>
-      </div>
-    </div>
+    <hr>
 
-    <h2 class="title">{{farbe.subheadline6}}</h2>
-    <h2 class="subtitle subtitleWithoutMargin">{{farbe.subheadline7}}</h2>
-    <div class="content">
+    <h1>{{farbe.subheadline6}}</h1>
+    <h2 style="margin-bottom: 40px">{{farbe.subheadline7}}</h2>
+    <div class="content-box">
       <ul>
         <li v-for="content in farbe.olaplexContent">{{content}}</li>
       </ul>
     </div>
     <div class="myContainer">
-      <div v-for="olaplexProdukt in farbe.olaplexProdukte" class="myItem">
-        <h5 class="title is-5">{{olaplexProdukt.headline}}</h5>
-        <h6 class="subtitle is-6 subtitleWithoutMargin"><em>{{olaplexProdukt.description}}</em></h6>
-        <div class="content">
-          <ul>
-            <li v-for="li in olaplexProdukt.preise">{{li}}</li>
-          </ul>
-        </div>
+      <div v-for="olaplexProdukt in farbe.olaplexProdukte" class="content-box">
+        <h5>{{olaplexProdukt.headline}}</h5>
+        <p><em>{{olaplexProdukt.description}}</em></p>
+        <ul>
+          <li v-for="li in olaplexProdukt.preise">{{li}}</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -94,38 +94,22 @@
   .subpage{
     flex-direction: column;
 
+    h2{
+      margin:5px 0;
+    }
+
     .indroduction{
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .answer{
-        margin-top: 15px;
-        margin-bottom: 100px;
-      }
+      margin-bottom: 40px;
 
     }
 
-
-    .content {
-      display: flex;
-      flex-wrap: wrap;
-      display: flex;
-      flex-direction: row;
-
-      .youtubeVideo{
-        margin:20px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
-    .subtitleWithoutMargin{
-      margin-bottom: 0px !important;
+    .youtubeVideo{
+      margin: 90px auto 20px;
     }
 
     .myContainer{
@@ -134,12 +118,11 @@
       flex-direction: row;
       margin-bottom: 10px;
 
-      .myItem{
+      .content-box{
         @include media('<desktop') {
           width: 90%;
         }
         margin: 10px 2%;
-        padding:10px;
         width: 46%;
       }
 

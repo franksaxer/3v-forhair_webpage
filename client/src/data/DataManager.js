@@ -86,7 +86,6 @@ const extendJson = async (json) => {
     }
 
     if (typeof entry === 'string') {
-      console.log('Test')
       // Check if the property is an URL, related to the 'assets' folder.
       if (entry.substring(0, 3) === 'Url') {
         // Load the source by the relative URL.
@@ -101,7 +100,6 @@ const extendJson = async (json) => {
     }
   }
 
-  console.log(json)
   // Resolve promise with the edited JSON object.
   return json
 }

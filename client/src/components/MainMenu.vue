@@ -67,7 +67,15 @@
 
     methods: {
       isMiddleEntry (index) {
-        return this.space ? index === this.entries.length / 2 - 1 : false
+        if (!this.space) {
+          return false
+        }
+
+        if (this.entries.length % 2 === 0) {
+          return index === this.entries.length / 2 - 1
+        } else {
+          return index === (this.entries.length - 1) / 2 - 1
+        }
       },
 
       showTitle (entry, index) {

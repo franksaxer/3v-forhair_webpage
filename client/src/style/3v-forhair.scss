@@ -1,6 +1,6 @@
 /* Colors */
 $color-base: rgb(27, 63, 27);
-$color-invert: rgba(169, 164, 164, 0.45);
+$color-invert: rgba(246, 250, 255, 0.6);
 
 /* Layout Shapes */
 $header-height: 50px;
@@ -11,8 +11,12 @@ $languageSelector-height-desktop: calc(#{$footer-height} * 0.8);
 $languageSelector-height-mobile: calc(100vh * 0.07);
 
 /* Transistions */
-$transition: all 1s;
+$transition: all .5s;
 
+hr{
+  display: block;
+  color:white;
+}
 
 /* Classes */
 .ghost-button {
