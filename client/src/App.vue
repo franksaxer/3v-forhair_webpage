@@ -89,7 +89,7 @@
   // Import other components
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
-  import SubpageWelcome from './components/footer/Kontakt.vue'
+  import SubpageWelcome from './components/subpages/Stylisten.vue'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'

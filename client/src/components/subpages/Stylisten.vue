@@ -4,9 +4,9 @@
     <h2 class="subtitle">Dich noch schöner zu machen ist unser Ziel</h2>
     <div class="content">
       <div v-if="stylisten" v-for="(stylist,index) in stylisten" class="stylist">
-        <figure class="image stylistImage">
+        <div class=" stylistImage">
           <img v-bind:src="stylist.bild">
-        </figure>
+        </div>
         <div class="stylistInfo">
           <h3 class="is-4 title">{{stylist.name}}</h3>
           <h6 class="is-6 subtitle"style="margin-bottom: 10px "><em>{{stylist.kategorie}}</em></h6>
@@ -113,12 +113,8 @@
         background-color: rgba( $baseColor, .7 );
 
         .stylistImage{
-          img {
-            width: 100%;
-            height: auto;
-          };
           width: 30%;
-          height: auto;
+          padding-right: 10px;
         }
 
       }
