@@ -53,7 +53,7 @@
 
           <div class="aktionen">
             <carousel :perPage="1" :navigationEnabled="true" style="width: 100%">
-              <slide v-if="preiseFürIhn" v-for="(aktion,index) in preiseFürIhn.angebote" class="slide">
+              <slide v-if="preiseFürIhn" v-for="(aktion,index) in preiseFürIhn.angebote" class="slide" :key="index">
                 <div class="contentAktionen">
                   <img class="aktionImage" :src="aktion.bild">
                   <div class="aktion">

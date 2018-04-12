@@ -14,7 +14,7 @@
       <h1 class="title">Unser Salon</h1>
       <div class="salon">
         <carousel :perPage="1">
-          <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder">
+          <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder" :key="index">
             <div class="bild">
                 <img class="img" v-bind:src="bild.url">
                 <h6 style="text-align: center"><em>{{bild.title}}</em></h6>
