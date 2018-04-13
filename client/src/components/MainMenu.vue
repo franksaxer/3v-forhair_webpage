@@ -129,25 +129,128 @@
 
 <style lang="scss" scoped>
   // Import 3rd party styles
-  @import '../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
 
-  /*
-    Cause both device types should change variables used for the style, this has be exported.
-    The problem is, that it is not possible to define variable in a media block and use them outside.
-    By this it would lead to an inconsistent environment and changes are not possible easily.
-    For each device type, first the variables are loaded and afterwards the same style, which use this variables.
-   */
+  // Import own styles.
+  @import '../style/3v-forhair.scss';
 
-  @media all and (min-width: map-get($breakpoints, 'desktop')) {
-    @import '../style/MainMenu/MainMenuVariablesDesktop';
-    @import '../style/MainMenu/MainMenuStyle';
+
+  @mixin main-menu($size, $fontFactor, $marginTop, $marginLeft, $zoom: 1, $space: 0) {
+    // Calculate some values.
+    $font: calc(#{$size} * #{$fontFactor});
+    $zoomedSize: calc(#{$size} * #{$zoom});
+    $zoomedMarginTop: calc(#{$marginTop} - ((#{$zoomedSize} - #{$size}) /2));
+    $zoomedMarginLeft: calc(#{$marginLeft} - ((#{$zoomedSize} - #{$size}) /2));
+    $zoomedFont: calc(#{$zoomedSize} * #{$fontFactor});
+
+    // Definitions.
+    #main-menu {
+      #menu-button {
+        position: fixed;
+        z-index: $layout-element-layer;
+        font-size: $size;
+        margin: $marginLeft;
+        top: 0;
+        left: 0;
+        color: $color-base!important;
+        line-height: $size;
+
+        @include media('>=desktop') {
+          display: None;
+        }
+      }
+
+      #menu-list {
+        // Use fixed position, so it is "relative" to the header and so to the overdrawing icon.
+        position: fixed;
+        top: $header-height;
+        left: 0;
+        display: flex;
+
+        @include media('>=desktop') {
+          right: 0; // Take the full width.
+          justify-content: center;
+          overflow-x: auto;
+        }
+
+        @include media('<desktop') {
+          flex-direction: column;
+          max-height: calc(100vh - #{$header-height} - #{$languageSelector-height-mobile} - 10px);
+          overflow-y: auto;
+        }
+
+        .menu-entry {
+          font-size: $font;
+          text-align: center;
+
+          width: $size;
+          height: $size;
+          margin: $marginTop $marginLeft;
+
+          color: #ffffffee; // Minimal less intensiv looks better.
+          background-color: $color-base;
+
+          border: solid 1px white;
+          border-radius: $size;
+
+          transition: $transition;
+
+          &:hover {
+            width: $zoomedSize;
+            height: $zoomedSize;
+            margin: $zoomedMarginTop $zoomedMarginLeft;
+
+            font-size: $zoomedFont;
+
+            &.middle-entry {
+              margin-right: calc(#{$space} - $marginLeft - $zoomedMarginLeft); // Compensate the lower margin.
+            }
+          }
+
+          &.middle-entry {
+            margin-right: $space; // For the header icon which overdraw the content.
+          }
+        }
+      }
+
+      #title {
+        position: fixed;
+        top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize}); // Only for desktop (See component style).
+        left: calc((#{$zoomedMarginLeft} * 2 ) + #{$zoomedSize}); // Only for mobile (see component style)$.
+        color: $color-base;
+        font-weight: 700;
+
+        $shadowColor: white;
+        // Set the shadow multiple times to get the blur more intensive, like it surround it.
+        text-shadow:
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor,
+          0 0 2px $shadowColor;
+
+        @include media('<desktop') {
+          padding-top: calc((#{$zoomedSize} - #{$zoomedFont}) / 2 - 3px); // Make the title vertically centered to the circle.
+        }
+      }
+    }
   }
 
-  @media all and (max-width: map-get($breakpoints, 'desktop')) {
-    @import '../style/MainMenu/MainMenuVariablesMobile';
-    @import '../style/MainMenu/MainMenuStyle';
+
+  @include media('>=desktop') {
+    @include main-menu($mainMenu-height, 0.6, 12px, 12px, 1.5, calc(#{$icon-radius} * 2));
   }
 
-
-
+  @include media('<desktop') {
+    $height: calc(#{$header-height} / 1.5);
+    $marginLeft: calc((#{$header-height} - #{$height}) / 2);
+    @include main-menu($height, 0.6, 5px, $marginLeft);
+  }
 </style>
