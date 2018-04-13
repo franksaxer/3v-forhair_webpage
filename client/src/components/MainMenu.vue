@@ -16,28 +16,27 @@
     </button>
 
     <div  id="menu-list"
-          v-if="menuOpen">
+          v-if="$isDesktop() || menuOpen">
 
       <a v-for="entry, index in entries"
          :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
          :style="{'order': entry.priority}"
          ref="entryList"
          @click="switchPage(entry)"
-         @mouseover="showTitle(entry, index)"
-         @mouseleave="hideTitle">
+         @mouseover="hoverId = entry.id"
+         @mouseleave="hoverId = null">
 
-      <i  :class="['fa', entry.icon]"
-          area-hidden="true">
-      </i>
+        <i  :class="['fa', entry.icon]"
+            area-hidden="true">
+        </i>
+
+        <span class="title"
+              :style="getTitleStyle(index)"
+              v-if="($isMobile() && menuOpen) || entry.id === hoverId">
+          {{ entry.label | translate | capitalize }}
+        </span>
       </a>
     </div>
-
-    <span id="title"
-          :style="titleStyle">
-
-      {{ titleLabel | translate | capitalize }}
-    </span>
-
     <div  id="menu-overlay"
           v-if="$isMobile() && menuOpen"/>
   </div>
@@ -61,9 +60,7 @@
     data () {
       return {
         entries: {}, // Have to be loaded asynchronous.
-        titleLabel: '',
-        titleStyle: {},
-        titleFontSize: '16',
+        hoverId: null,
         menuOpen: this.$isDesktop() // Default for desktop
       }
     },
@@ -82,12 +79,11 @@
       },
 
       showTitle (entry, index) {
-        this.titleLabel = entry.label
+        const titleLabel = entry.label
         const rect = this.$refs.entryList[index].getBoundingClientRect()
 
         if (this.$isDesktop()) {
-          const fontSizeToWidthRelation = 1.7
-          const offset = (this.$labelStore.translate(this.titleLabel).length / 2) * (this.titleFontSize / fontSizeToWidthRelation)
+          const offset = (this.$labelStore.translate(titleLabel).length / 2) * 9.4
           this.titleStyle = {left: rect.right - (rect.width / 2) - offset + 'px'}
         }
 
@@ -97,16 +93,24 @@
         }
       },
 
-      hideTitle () {
-        this.titleLabel = ''
-      },
-
       switchPage (entry) {
         // Update parent component.
         this.$emit('switch', entry)
 
         // Store selection to local storage.
         localStorage.menuEntryId = entry.id
+
+        // Close the menu for mobile.
+        this.menuOpen = false
+      },
+
+      getTitleStyle (index) {
+        if (this.$isDesktop()) {
+          const rect = this.$refs.entryList[index].getBoundingClientRect() // The HTML boundaries of the entry.
+          const title = this.$labelStore.translate(this.entries[index].label) // The title for this entry.
+          const left = rect.left - (title.length / 2) * 8 // Take the left border and shift it in relation to the title length.
+          return 'left: ' + left + 'px;'
+        }
       }
     },
 
@@ -217,12 +221,12 @@
         }
       }
 
-      #title {
+      .title {
         position: fixed;
-        top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize}); // Only for desktop (See component style).
-        left: calc((#{$zoomedMarginLeft} * 2 ) + #{$zoomedSize}); // Only for mobile (see component style)$.
+        z-index: $menu-index;
         color: $color-base;
         font-weight: 700;
+        font-size: $font;
 
         $shadowColor: white;
         // Set the shadow multiple times to get the blur more intensive, like it surround it.
@@ -240,8 +244,14 @@
           0 0 2px $shadowColor,
           0 0 2px $shadowColor;
 
+
+        @include media('>=desktop') {
+          top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize});
+        }
+
         @include media('<desktop') {
-          padding-top: calc((#{$zoomedSize} - #{$zoomedFont}) / 2 - 3px); // Make the title vertically centered to the circle.
+          left: calc((#{$zoomedMarginLeft} * 2 ) + #{$zoomedSize}); // Only for mobile (see component style)$.
+          padding-top: calc((#{$zoomedSize} - #{$font}) / 2); // Make the title vertically centered to the circle.
         }
       }
 
