@@ -12,8 +12,8 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_RECENSION",
     "icon": "fa-comments",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
+    "background": "Url:wallpapers/background12.jpg",
+    "component": "Component:subpages/Rezensionen"
   },
   {
     "id": "52e445163911cd462abb1fd3eaebcc0c",

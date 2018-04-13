@@ -57,5 +57,10 @@
   "kontakt":{
     "key":"c7f588235eb4d781000efad2e6ace6c60b7a63ef",
     "path":"json/content/kontakt.json"
+  },
+
+  "rezensionen":{
+    "key":"59377974b3beba7dd651bc92542c43ff9790a7f2",
+    "path":"json/content/rezensionen.json"
   }
 }
