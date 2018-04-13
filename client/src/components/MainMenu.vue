@@ -37,6 +37,9 @@
 
       {{ titleLabel | translate | capitalize }}
     </span>
+
+    <div  id="menu-overlay"
+          v-if="$isMobile() && menuOpen"/>
   </div>
 </template>
 
@@ -166,6 +169,7 @@
         top: $header-height;
         left: 0;
         display: flex;
+        z-index: $menu-index; // To be over the overlay (mobile).
 
         @include media('>=desktop') {
           right: 0; // Take the full width.
@@ -239,6 +243,16 @@
         @include media('<desktop') {
           padding-top: calc((#{$zoomedSize} - #{$zoomedFont}) / 2 - 3px); // Make the title vertically centered to the circle.
         }
+      }
+
+      #menu-overlay {
+        position: fixed;
+        top: $header-height;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: $overlay-index;
+        background-color: rgba(0, 0, 0, 0.6);
       }
     }
   }
