@@ -40,7 +40,7 @@
         <li v-for="content in farbe.olaplexContent">{{content}}</li>
       </ul>
     </div>
-    <div class="myContainer">
+    <div style="margin-top: 10px;" class="myContainer">
       <div v-for="olaplexProdukt in farbe.olaplexProdukte" class="content-box">
         <h5>{{olaplexProdukt.headline}}</h5>
         <p><em>{{olaplexProdukt.description}}</em></p>
@@ -109,7 +109,7 @@
     }
 
     .youtubeVideo{
-      margin: 90px auto 20px;
+      margin: 50px auto 20px;
     }
 
     .myContainer{
