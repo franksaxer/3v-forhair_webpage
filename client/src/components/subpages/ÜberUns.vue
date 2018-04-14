@@ -22,6 +22,17 @@
           </slide>
         </carousel>
       </div>
+
+    <hr>
+
+    <div class="avedaMission">
+      <h1>{{ueberUns.headlineAvedaMisson}}</h1>
+      <span v-for="aveda in ueberUns.contentAvedaMission">
+        {{aveda}}
+      </span>
+
+    </div>
+
   </section>
 </template>
 
@@ -71,6 +82,15 @@
   .subpage{
     flex-direction: column;
     justify-content: center;
+
+    span{
+      display: block;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+
     .contentÜber{
       flex-wrap: wrap;
       display: flex;
@@ -99,6 +119,10 @@
         }
 
       }
+    }
+
+    .avedaMission{
+      margin-bottom: 20px;
     }
   }
 
