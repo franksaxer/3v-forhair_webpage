@@ -57,7 +57,6 @@
 
   .subpage{
     flex-direction: column;
-    justify-content: center;
 
     .impressumBox{
       display: flex;
