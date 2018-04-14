@@ -16,6 +16,7 @@
         <i class="fa fa-location-arrow fa-3x"></i>
         <span>{{kontakt.adresse.straße}}</span>
         <span>{{kontakt.adresse.ort}}</span>
+        <a target="_blank" href="https://www.google.de/maps/dir/52.5335437,13.3441854/3v+for+hair,+Rankestra%C3%9Fe+24,+10789+Berlin/@52.5187527,13.3264526,14z/data=!3m1!4b1!4m16!1m6!3m5!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2s3v+for+hair!8m2!3d52.5017623!4d13.3332985!4m8!1m1!4e1!1m5!1m1!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2m2!1d13.3332985!2d52.5017623" class="button is-outlined is-link">Route</a>
         <ul>
           <span v-for="hinweis in kontakt.adresse.hinweise">{{hinweis}}</span>
         </ul>
@@ -118,6 +119,11 @@
   .subpage{
     flex-direction: column;
 
+    h2{
+      font-weight: bold;
+      font-style: italic;
+    }
+
     .content-box{
       margin: 10px 2%;
       width: auto;
@@ -140,6 +146,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .button{
+          margin: 10px;
+        }
+
       }
 
       .contaktItemHeadline{
@@ -172,6 +183,7 @@
         display: flex;
         width: 46%;
         flex-direction: column;
+
       }
 
     }
