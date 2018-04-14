@@ -35,7 +35,7 @@
     "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
     "priority": 5,
     "label": "Label:MENU_ENTRY_COSTS",
-    "icon": "fa-dollar-sign",
+    "icon": "fa-money-bill-alt",
     "background": "Url:wallpapers/background10.jpg",
     "component": "Component:subpages/Preise"
   },
@@ -67,8 +67,8 @@
     "id": "d9d55700f7e93245537a69dce51b22de",
     "priority": 5,
     "label": "Label:MENU_ENTRY_IMPRESSUM",
-    "icon": "fa-question",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
+    "icon": "fa-university",
+    "background": "Url:wallpapers/background13.jpg",
+    "component": "Component:subpages/Impressum"
   }
 ]

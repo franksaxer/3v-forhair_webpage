@@ -62,5 +62,9 @@
   "rezensionen":{
     "key":"59377974b3beba7dd651bc92542c43ff9790a7f2",
     "path":"json/content/rezensionen.json"
+  },
+  "impressum":{
+    "key":"5c3175413bb7ea1b85e79d9cdf0ad47cd6c5f85c",
+    "path":"json/content/impressum.json"
   }
 }
