@@ -1,15 +1,17 @@
 <template>
-  <div id="languageSelector"
-       class="select is-primary">
-
-    <select title="LanguageSelection">
-      <template v-for="l in list">
-        <option @click="setLanguage(l)"
-                :selected="l === selected">
-          {{ l }}
+  <div  id="language-selector"
+        class="control has-icons-left">
+    <div class="select is-primary is-normal">
+      <select>
+        <option v-for="lang in list"
+                :selected="lang === selected">
+          {{ lang }}
         </option>
-      </template>
-    </select>
+      </select>
+    </div>
+    <span class="icon is-left">
+      <i class="fa fa-globe"></i>
+    </span>
   </div>
 </template>
 
@@ -54,43 +56,44 @@
 
 <style lang="scss">
   // Import 3rd party styles
-  @import '../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
+  @import '~bulma/sass/utilities/initial-variables';
+  @import '~bulma/sass/utilities/derived-variables';
 
   // Import own styles
   @import '../style/3v-forhair';
 
 
-  #languageSelector {
+  #language-selector {
     position: fixed;
-    z-index: 10;
+    z-index: $menu-index;
 
     @include media('>=desktop') {
-      $margin: calc((#{$footer-height} - #{$languageSelector-height-desktop}) / 2);
+      // TODO: Does not work... $margin: calc((#{$footer-height} - #{$size-normal}) / 2);
+      $margin: 7px;
       left: $margin;
       bottom: $margin;
     }
 
     @include media('<desktop') {
-      $margin: 2px;
-      left: $margin;
-      bottom: $margin;
+      // TODO: Does not work... $margin: calc((#{$header-height} - #{$size-normal}) / 2);
+      $margin: 6px;
+      right: $margin;
+      top: $margin;
     }
 
     select {
-      border: 4px solid $color-base;
+      border: solid 2px $color-base;
       color: $color-base;
-      font-weight: bold;
       background-color: transparent;
 
-      @include media('>=desktop') {
-        height: $languageSelector-height-desktop;
-        width: calc(#{$languageSelector-height-desktop} * 2)!important;
-      }
+      // Shrink the selection a bit.
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+    }
 
-      @include media('<desktop') {
-        height: $languageSelector-height-mobile;
-        width: calc(#{$languageSelector-height-mobile} * 2)!important;
-      }
+    .icon {
+      color: $color-base;
     }
   }
 </style>
