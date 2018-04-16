@@ -105,7 +105,7 @@
       }
 
       @include media('<desktop') {
-        margin-top: $space-mobile;
+        margin-top: $space-mobile!important;
         max-height: calc(#{$segmentHeight} - #{$space-mobile} + 30px);
       }
 
