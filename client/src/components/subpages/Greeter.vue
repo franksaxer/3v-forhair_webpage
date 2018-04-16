@@ -91,6 +91,8 @@
       padding: $border-radius;
       overflow-x: auto;
 
+      @include scroll;
+
       @include media('>=desktop') {
         margin-left: $space-desktop;
         width: $width;

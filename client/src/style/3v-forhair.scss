@@ -29,6 +29,21 @@ hr{
   background-color: transparent!important;
 }
 
-.test {
-  background-color: red
+@mixin scroll {
+  $width: 8px;
+  $radius: calc(#{$width} / 2);
+
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $radius;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $radius;
+    background: lighten($color-base, 10%);
+  }
 }

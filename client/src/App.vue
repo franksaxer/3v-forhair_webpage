@@ -328,10 +328,10 @@
       }
 
       height: $footer-height;
-      overflow: hidden; // Force the height, else the cover page will not work.
       background-color: $primary-invert;
       color: white;
       white-space: pre; // To force white spaces will not be cut.
+      overflow: hidden; // Force the height, else the cover page will not work.
 
       $fontSize: calc(#{$footer-height} * 0.4);
       font-size: $fontSize!important;
@@ -356,6 +356,8 @@
       top: $header-height;
       bottom: $footer-height;
       overflow: hidden;
+
+      @include scroll;
 
       @include media('<desktop') {
         // Ignore the footer, cause it is not displayed in this view.
