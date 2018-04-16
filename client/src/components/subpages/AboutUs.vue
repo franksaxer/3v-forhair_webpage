@@ -10,18 +10,18 @@
         </ul>
       </div>
     </div>
-      <hr>
-      <h1 class="title">Unser Salon</h1>
-      <div class="salon">
-        <carousel :perPage="1">
-          <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder" :key="index">
-            <div class="bild">
-                <img class="img" v-bind:src="bild.url">
-                <h6 style="text-align: center"><em>{{bild.title}}</em></h6>
-            </div>
-          </slide>
-        </carousel>
-      </div>
+    <hr>
+    <h1 class="title">Unser Salon</h1>
+    <div class="salon">
+      <carousel :perPage="1">
+        <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder" :key="index">
+          <div class="bild">
+              <img class="img" v-bind:src="bild.url">
+              <h6 style="text-align: center"><em>{{bild.title}}</em></h6>
+          </div>
+        </slide>
+      </carousel>
+    </div>
 
     <hr>
 
@@ -105,20 +105,31 @@
         .beschreibungListe {
           margin-top: 5px;
         }
-
       }
+    }
 
-      .salon{
-        margin-top: 20px;
-        width: 200px!important;
-
-        .bild{
-          @media all and (max-width: 1500px) {
-            width: 80%;
-          }
+    .salon {
+      .bild {
+        @function calcWidth($reference) {
+          @return calc(#{$reference} * 0.8);
         }
 
+        @function calcMargin($reference) {
+          $width: calcWidth($reference);
+          @return calc((100% - #{$width}) / 2);
+        }
+
+        width: calcWidth(100%);
+        margin: 20px calcMargin(100%) 0;
+
+        $threshold: 1000px;
+
+        @media all and (min-width: $threshold) {
+          width: calcWidth($threshold);
+          margin: 20px calcMargin($threshold) 0;
+        }
       }
+
     }
 
     .avedaMission{
