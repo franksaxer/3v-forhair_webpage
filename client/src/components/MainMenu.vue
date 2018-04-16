@@ -21,10 +21,11 @@
       <a v-for="entry, index in entries"
          :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
          :style="{'order': entry.priority}"
+         :key="entry.id"
          ref="entryList"
-         @click="switchPage(entry)"
          @mouseover="hoverId = entry.id"
-         @mouseleave="hoverId = null">
+         @mouseleave="hoverId = null"
+         @click="switchPage(entry.route)">
 
         <i  :class="['fa', entry.icon]"
             area-hidden="true">
@@ -48,11 +49,6 @@
   export default {
     name: 'main-menu',
 
-    model: {
-      prop: 'entry', // Rename from default 'value' property.
-      event: 'switch' // Rename from default 'input' event.
-    },
-
     props: {
       space: Boolean
     },
@@ -66,6 +62,14 @@
     },
 
     methods: {
+      switchPage (routeName) {
+        // Close the menu for mobile devices.
+        this.menuOpen = false
+
+        // Take the route.
+        this.$router.push({name: routeName})
+      },
+
       isMiddleEntry (index) {
         if (!this.space) {
           return false
@@ -93,17 +97,6 @@
         }
       },
 
-      switchPage (entry) {
-        // Update parent component.
-        this.$emit('switch', entry)
-
-        // Store selection to local storage.
-        localStorage.menuEntryId = entry.id
-
-        // Close the menu for mobile.
-        this.menuOpen = false
-      },
-
       getTitleStyle (index) {
         if (this.$isDesktop()) {
           const rect = this.$refs.entryList[index].getBoundingClientRect() // The HTML boundaries of the entry.
@@ -123,10 +116,6 @@
     async created () {
       // Load the entries.
       this.entries = await loadDataObject(DataStoreEntries.mainMenu.key)
-
-      // Retrieve last selected entry from the local storage.
-      const id = localStorage.menuEntryId ? localStorage.menuEntryId : this.entries[0].id
-      this.switchPage(this.entries.filter(entry => entry.id === id)[0])
 
       // Delete the selected entry on close the window.
       window.onclose = () => { delete localStorage.menuEntryId }

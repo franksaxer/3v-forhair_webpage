@@ -1,6 +1,6 @@
 <template>
   <div  id="app"
-        :style="[{'background-image': 'url(' + entry.background +')'}]" >
+        :style="[{'background-image': 'url(' + $route.meta.background +')'}]" >
     <!-- general layout with header, main and footer -->
     <section id="layout">
       <header>
@@ -27,10 +27,9 @@
 
       <main>
         <div id="content" class="main-element">
-          <main-menu  v-model="entry"
-                      :space="!logoInLowerPosition"/>
+          <main-menu :space="!logoInLowerPosition"/>
 
-          <component :is="entry.component" class="is-size-3-touch content"/>
+          <router-view></router-view>
         </div>
 
         <!-- Remove this temporally
@@ -107,8 +106,9 @@
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
   import ApiConnector from './ApiConnector'
 
-  // Import enums.
+  // Import enumerations.
   import UrlEnum from './enums/UrlEnum'
+  import * as RouteNames from './enums/RouteNames'
 
   export default {
     name: 'app',
@@ -121,14 +121,11 @@
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
+        subpages: [],
         // The data objects
         contactData: {
           telefon: {},
           mail: {}
-        },
-        entry: { // A fake menu entry just to display something.
-          background: require('./assets/wallpaper.jpg'),
-          componentName: 'greeter'
         }
       }
     },
@@ -178,8 +175,7 @@
       },
 
       logoInLowerPosition: function () {
-        // Check if current menu entry is a specific one.
-        return this.entry.id === '7fa08dbb1f49ecd4e3b5a06634317c78'
+        return this.$route.name === RouteNames.GREETER
       }
     },
 
@@ -202,6 +198,7 @@
     created: async function () {
       // Load lata here.
       this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
+      this.subpages = await loadDataObject(DataStoreEntries.mainMenu.key)
 
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {

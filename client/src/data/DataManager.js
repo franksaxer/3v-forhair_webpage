@@ -1,5 +1,6 @@
 import DataStoreEntries from './json/core/DataStoreEntries.json' // The entries that can be loaded.
 import * as LabelKeys from '../enums/LabelKeys' // Label keys to replace references.
+import * as RouteNames from '../enums/RouteNames' // Route names to replace references.
 
 /**
  * Local store where to put in already loaded data objects for faster future access.
@@ -96,6 +97,9 @@ const extendJson = async (json) => {
       } else if (entry.substring(0, 9) === 'Component') {
         // Replace with Vue component object.
         json[i] = require('../components/' + entry.substring(10) + '.vue')
+      } else if (entry.substring(0, 5) === 'Route') {
+        // Replace with route name.
+        json[i] = RouteNames[entry.substring(6)]
       }
     }
   }

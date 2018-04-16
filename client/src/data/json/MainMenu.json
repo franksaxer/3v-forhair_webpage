@@ -4,71 +4,62 @@
     "priority": 5,
     "label": "Label:MENU_ENTRY_WELCOME",
     "icon": "fa-home",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
+    "route": "Route:GREETER"
   },
   {
     "id": "9cadf7b6511bb0e3cf6406c4ed28619d",
     "priority": 5,
     "label": "Label:MENU_ENTRY_RECENSION",
     "icon": "fa-comments",
-    "background": "Url:wallpapers/background12.jpg",
-    "component": "Component:subpages/Rezensionen"
+    "route": "Route:RECENSION"
   },
   {
     "id": "52e445163911cd462abb1fd3eaebcc0c",
     "priority": 5,
     "label": "Label:MENU_ENTRY_ABOUT_US",
     "icon": "fa-align-center",
-    "background": "Url:wallpapers/background9.jpg",
-    "component": "Component:subpages/ÜberUns"
+    "route": "Route:ABOUT_US"
   },
   {
     "id": "ec9ead152c6ab6077c609f537ca790ea",
     "priority": 5,
     "label": "Label:MENU_ENTRY_STAFF",
     "icon": "fa-users",
-    "background": "Url:wallpapers/background4.jpg",
-    "component": "Component:subpages/Stylisten"
+    "route": "Route:STAFF"
   },
   {
     "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
     "priority": 5,
     "label": "Label:MENU_ENTRY_COSTS",
     "icon": "fa-dollar-sign",
-    "background": "Url:wallpapers/background10.jpg",
-    "component": "Component:subpages/Preise"
+    "route": "Route:COSTS"
   },
   {
     "id": "76a0fcbddb98d64d80c62412336ff908",
     "priority": 5,
     "label": "Label:MENU_ENTRY_PRODUCTS",
     "icon": "fa-cubes",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
+    "route": "Route:PRODUCTS"
   },
   {
     "id": "f010f65d545a24da16447751d0890e18",
     "priority": 5,
     "label": "Label:MENU_ENTRY_COLORS",
     "icon": "fa-paint-brush",
-    "background": "Url:wallpapers/background1.jpg",
-    "component": "Component:subpages/Farben"
+    "route": "Route:COLORS"
   },
   {
     "id": "5f13c6e5162297087f4d03af1169ae38",
     "priority": 5,
     "label": "Label:MENU_ENTRY_CONTACT",
     "icon": "fa-address-book",
-    "background": "Url:wallpapers/background11.jpg",
-    "component": "Component:footer/Kontakt"
+    "route": "Route:CONTACT"
   },
   {
     "id": "d9d55700f7e93245537a69dce51b22de",
     "priority": 5,
     "label": "Label:MENU_ENTRY_IMPRESSUM",
     "icon": "fa-question",
-    "background": "Url:wallpapers/background6.jpg",
-    "component": "Component:subpages/Greeter"
+    "route": "Route:IMPRESSUM"
   }
 ]

@@ -2,21 +2,28 @@
 import Vue from 'vue'
 
 // Import plugins.
-import Resource from 'vue-resource'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
 import SwitchEffect from './plugins/SwitchEffect'
 
-// Other stuff
+// Import the router configuration
+import router from './Router.js'
+
+// Import the language stuff.
 import * as langs from './enums/Languages'
 import * as keys from './enums/LabelKeys'
 import labels from './data/Labels'
 
 // Register the plugins.
-Vue.use(Resource)
+Vue.use(VueRouter)
+Vue.use(VueResource)
 Vue.use(VDragged)
+Vue.use(VueYoutube)
+Vue.use(VeeValidate)
 Vue.use(DeviceDetector)
 Vue.use(EdiableView)
 Vue.use(SwitchEffect)
@@ -33,9 +40,6 @@ import VueToggle from 'vue-toggle'
 import VueYoutube from 'vue-youtube'
 import VeeValidate from 'vee-validate'
 
-Vue.use(VueYoutube)
-Vue.use(VeeValidate)
-
 VeeValidate.Validator.extend('passphrase', {
   getMessage: field => 'Sorry dude, wrong pass phrase.',
   validate: value => value.toUpperCase() === 'Demogorgon'.toUpperCase()
@@ -49,10 +53,8 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  router,
   el: '#app',
   template: '<App/>',
-  components: { App },
-  http: {
-    // TODO
-  }
+  components: { App }
 })
