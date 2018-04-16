@@ -1,9 +1,9 @@
 <template>
   <div class="subpage">
-    <div class="image" v-switch-left-effect>
-      <img src=../../assets/subpages/greeter/frank.jpg>
+    <div class="image">
+      <img src="../../assets/subpages/greeter/frank.jpg">
     </div>
-    <div class="text content-box" v-switch-left-effect>
+    <div class="text content-box">
       <h4>
         {{ labels.SUBPAGE_GREETER_HEADER | translate }}
       </h4>
@@ -28,6 +28,7 @@
   @import "../../style/3v-forhair";
   @import "../../style/subpages";
 
+
   .subpage {
     display: flex;
     align-items: center;
@@ -47,6 +48,7 @@
     }
 
     $width: 30%; // Use the same width so the mirror line is in the middle.
+    $narrowHeight: calc((100vh - #{$header-height} - #{$footer-height}) * 0.7);
     $space-desktop: $icon-radius; // Leave enough space around the logo.
     $space-mobile: calc(#{$icon-radius} * 0.66);
     $border-radius: 10px;
@@ -68,6 +70,12 @@
           margin-left: auto; // Align right
         }
 
+        // For versions where the image is to height. (desktop window on half top).
+        @media all and (max-height: 600px) {
+          height: $narrowHeight;
+          width: auto!important;
+        }
+
         @include media('<desktop') {
           $height: calc((#{$segmentHeight} - #{$icon-radius}) * 0.9);
           max-height: $height;
@@ -87,6 +95,11 @@
         margin-left: $space-desktop;
         width: $width;
         max-height: 70vh; // Get along with half screen browsing.
+      }
+
+      // For versions where the image is to height. (desktop window on half top).
+      @media all and (max-height: 600px) {
+        height: $narrowHeight;
       }
 
       @include media('<desktop') {
