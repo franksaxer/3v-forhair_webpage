@@ -212,22 +212,22 @@
 
 <style lang="scss">
   // Import 3rd party styles
-  @import '../node_modules/include-media/dist/include-media';
-  @import '../node_modules/font-awesome/css/font-awesome.css';
+  @import '~include-media/dist/include-media';
+  @import '~font-awesome/css/font-awesome.css';
 
   // Import own styles
   @import './style/3v-forhair';
 
   /* Bulma */
   // Import the variables first.
-  @import '../node_modules/bulma/sass/utilities/initial-variables';
+  @import '~bulma/sass/utilities/initial-variables';
 
   // Overwrite Bulma variables.
   $primary: $color-base;
   $primary-invert: $color-invert;
 
   // Import Bulma classes afterwards.
-  @import "../node_modules/bulma/bulma";
+  @import '~bulma/bulma';
 
 
   body {

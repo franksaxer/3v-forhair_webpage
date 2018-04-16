@@ -172,7 +172,7 @@
 
         @include media('<desktop') {
           flex-direction: column;
-          max-height: calc(100vh - #{$header-height} - #{$languageSelector-height-mobile} - 10px);
+          max-height: calc(100vh - #{$header-height} - 10px);
           overflow-y: auto;
         }
 
