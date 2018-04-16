@@ -10,10 +10,10 @@ import SubpageRecension from './components/subpages/Rezensionen.vue'
 import SubpageAboutUs from './components/subpages/AboutUs.vue'
 import SubpageStaff from './components/subpages/Stylisten.vue'
 import SubpageCosts from './components/subpages/Preise.vue'
-// TODO: Products page
+import SubpageProducts from './components/subpages/Produkte.vue'
 import SubpageColors from './components/subpages/Farben.vue'
 import SubpageContact from './components/footer/Kontakt.vue'
-import SubpageImpressum from './components/footer/Impressum.vue'
+import SubpageImpressum from './components/subpages/Impressum.vue'
 
 // Import all background images.
 import WallpaperGreeter from './assets/wallpapers/background6.jpg'
@@ -72,7 +72,7 @@ export default new VueRouter({
     {
       path: '/products',
       name: RouteNames.PRODUCTS,
-      component: SubpageGreeter,
+      component: SubpageProducts,
       meta: {
         background: WallpaperProducts
       }
