@@ -20,7 +20,6 @@
 
       <a v-for="entry, index in entries"
          :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
-         :style="{'order': entry.priority}"
          :key="entry.id"
          ref="entryList"
          @mouseover="hoverId = entry.id"
