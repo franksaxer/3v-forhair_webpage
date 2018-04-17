@@ -8,6 +8,7 @@
           <h1 class="title">for</h1>
           <img  id="logo"
                 :class="{'lower-position': logoInLowerPosition}"
+                @click='goHome()'
                 src="./assets/icon.png" />
 
           <span id="logo-spacer"
@@ -121,7 +122,6 @@
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
         sessionKey: null, // The session key when authorized.
-        subpages: [],
         // The data objects
         contactData: {
           telefon: {},
@@ -165,6 +165,10 @@
         }
 
         this.authIsLoading = false  // End loading.
+      },
+
+      goHome: function () {
+        this.$router.push({name: RouteNames.GREETER})
       }
     },
 
@@ -283,6 +287,12 @@
 
           &.lower-position {
             top: calc((100vh / 2) - (#{$icon-radius} / 2))!important; // use !important to get this work over the id.
+          }
+
+          // Show the user that this is clickable.
+          &:hover {
+            cursor: pointer;
+            transform: scale3d(1.2, 1.2, 1.2);
           }
         }
 
