@@ -45,3 +45,11 @@ hr{
     background: lighten($color-base, 10%);
   }
 }
+
+@function decentShadow($color) {
+  @return 0 0 1px $color, 0 0 1px $color, 0 0 1px $color, 0 0 1px $color
+}
+
+@function intenseShadow($color) {
+  @return 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color
+}

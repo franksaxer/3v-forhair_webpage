@@ -1,6 +1,7 @@
 <template>
   <div  id="language-selector"
-        class="control has-icons-left">
+        class="control has-icons-left"
+        v-if="$isDesktop()">
     <div class="select is-primary is-normal">
       <select>
         <option v-for="lang in list"

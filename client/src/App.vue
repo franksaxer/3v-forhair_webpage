@@ -5,7 +5,7 @@
     <section id="layout">
       <header>
         <div id="label-with-icon">
-          <h1 class="title">for</h1>
+          <h1>for</h1>
           <img  id="logo"
                 :class="{'lower-position': logoInLowerPosition}"
                 @click='goHome()'
@@ -14,7 +14,7 @@
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
 
-          <h1 class="title">hair</h1>
+          <h1>hair</h1>
         </div>
 
         <button id="logout-button"
@@ -267,6 +267,7 @@
       border-bottom: $border;
 
       #label-with-icon {
+        margin-left: 13px; // Else it doesn't seem to fit correctly with the logo image.
         display: flex;
         flex-flow: row;
 
@@ -275,7 +276,7 @@
           font-size: calc(#{$header-height * 0.7});
           font-weight: 500;
           font-family: "Times New Roman", Times, serif;
-          padding: 0 10px;
+          padding: 0;
         }
 
         #logo {
@@ -340,6 +341,7 @@
       height: $footer-height;
       background-color: $primary-invert;
       color: white;
+      text-shadow: decentShadow(black);
       white-space: pre; // To force white spaces will not be cut.
       overflow: hidden; // Force the height, else the cover page will not work.
 

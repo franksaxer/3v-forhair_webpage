@@ -215,23 +215,7 @@
         color: $color-base;
         font-weight: 700;
         font-size: $font;
-
-        $shadowColor: white;
-        // Set the shadow multiple times to get the blur more intensive, like it surround it.
-        text-shadow:
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor;
-
+        text-shadow: intenseShadow(white);
 
         @include media('>=desktop') {
           top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize});
