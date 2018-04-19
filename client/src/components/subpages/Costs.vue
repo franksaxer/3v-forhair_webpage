@@ -8,7 +8,7 @@
             v-if="data.she || data.he || data.colors">
 
         <tab-pane class="is-primary"
-                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_SHE)">
+                  :label="labels.SUBPAGE_COSTS_LABEL_SHE | translate">
 
           <p>{{ data.she.subheadline }}</p>
 
@@ -38,7 +38,7 @@
         </tab-pane>
 
         <tab-pane class="is-primary"
-                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_HE)">
+                  :label="labels.SUBPAGE_COSTS_LABEL_HE | translate">
 
           <p >{{ data.he.subheadline}}</p>
 
@@ -100,7 +100,7 @@
         </tab-pane>
 
         <tab-pane class="is-primary"
-                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_COLORS)">
+                  :label="labels.SUBPAGE_COSTS_LABEL_COLORS | translate">
 
           <p>{{ data.colors.subheadline }}</p>
           <p>
