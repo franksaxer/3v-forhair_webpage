@@ -60,5 +60,9 @@
   "promotation":{
     "key":"e6f1ae77ee31ecaf57ca86022c4c45638bf5f147",
     "path":"json/content/aktionen.json"
+  },
+  "produkte":{
+    "key":"60c1b8f5d39c831696a5d4b983ef9dfa929eba88",
+    "path":"json/content/produkte.json"
   }
 }
