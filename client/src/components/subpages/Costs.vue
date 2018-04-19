@@ -1,66 +1,96 @@
 <template>
-  <section class="subpage section">
-    <h1> Preisliste für Haarschnitte und Stylings</h1>
+  <section class="subpage">
+    <h1>{{ labels.SUBPAGE_COSTS_HEADER | translate }}</h1>
+
     <div class="content-box">
-      <tabs animation="slide" :only-fade="false">
-        <tab-pane  class="is-primary" label="Preise für Sie">
-          <p v-if="preiseFürSie">{{preiseFürSie.subheadline}}</p>
+      <tabs animation="slide"
+            :only-fade="false"
+            v-if="data.she || data.he || data.colors">
 
-          <table v-if="preiseFürSieTabllen" v-for="table in preiseFürSieTabllen" class="table is-striped">
-            <thead>
-            <tr>
-              <th></th>
-              <th v-for="head in table.header">
-                {{head}}
-              </th>
-            </tr>
-            </thead>
+        <tab-pane class="is-primary"
+                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_SHE)">
 
-            <tbody>
-            <tr v-for="row in table.rows">
-              <td v-for="column in row">{{column}}</td>
-            </tr>
-            </tbody>
-          </table>
+          <p>{{ data.she.subheadline }}</p>
+
+          <hr>
+
+          <template v-for="table in data.she.tabellen">
+            <table class="table is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th v-for="head in table.header">
+                    {{ head }}
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr v-for="row in table.rows">
+                  <td v-for="column in row">
+                    {{ column }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+          </template>
         </tab-pane>
 
-        <tab-pane label="Preise für Ihn">
-          <p >{{preiseFürIhn.subheadline}}</p>
+        <tab-pane class="is-primary"
+                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_HE)">
 
-          <table v-if="preiseFürIhnTabllen" v-for="table in preiseFürIhnTabllen" class="table is-striped">
-            <thead>
-            <tr>
-              <th></th>
-              <th v-for="head in table.header">
-                {{head}}
-              </th>
-            </tr>
-            </thead>
+          <p >{{ data.he.subheadline}}</p>
 
-            <tbody>
-            <tr v-for="row in table.rows">
-              <td v-for="column in row">{{column}}</td>
-            </tr>
-            </tbody>
-          </table>
+          <hr>
+
+          <template v-for="table in data.he.tabellen">
+            <table class="table is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th v-for="head in table.header">
+                    {{ head }}
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr v-for="row in table.rows">
+                  <td v-for="column in row">
+                    {{ column }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+          </template>
 
           <h3>Reine Männersache</h3>
+          <p>
+            Deinen Typ zu unterstreichen, das ist unser Ziel!<br/>
+            Entspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.<br/>
+            Individualität und Wohlbefinden stehen hierbei an erster Stelle.
+          </p>
 
-          <p>Deinen Typ zu unterstreichen, das ist unser Ziel! <br/>
-          Entspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.<br/>
-          Individualität und Wohlbefinden stehen hierbei an erster Stelle.</p>
+          <hr>
 
+          <div class="aktionen-list">
+            <carousel :perPage="1"
+                      :navigationEnabled="true">
 
-          <div class="aktionen">
-            <carousel :perPage="1" :navigationEnabled="true" style="width: 100%">
-              <slide v-if="preiseFürIhn" v-for="(aktion,index) in preiseFürIhn.angebote" class="slide" :key="index">
-                <div class="contentAktionen">
-                  <img class="aktionImage" :src="aktion.bild">
-                  <div class="aktion">
-                    <h5>{{aktion.headline}}</h5>
-                    <h6><em>{{aktion.dauer}}</em></h6>
+              <slide  v-for="(aktion,index) in data.he.angebote"
+                      :key="index">
+
+                <div class="aktion">
+                  <img :src="aktion.bild">
+                  <div class="aktion-description">
+                    <h5>{{ aktion.headline }}</h5>
+                    <h6><em>{{ aktion.dauer }}</em></h6>
                     <ul>
-                      <li v-for="be in aktion.beschreibung">{{be}}</li>
+                      <li v-for="be in aktion.beschreibung">
+                        {{ be }}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -69,44 +99,70 @@
           </div>
         </tab-pane>
 
-        <tab-pane  class="is-primary" label="Preise für Farbveränderungen">
-          <p v-if="preiseFürFarbveränderungen">{{preiseFürFarbveränderungen.subheadline}}</p>
-          <p class="linkToFarben">Wollen sie mehr über unsere Farben erfahren? Klicken sie hier.</p>
-          <div class="farbveränderung" v-for="tabelle in preiseFürFarbveränderungen.tabellen">
-            <h5>{{tabelle.tHeadline}}</h5>
-            <h6><em>{{tabelle.tSubHeadline}}</em></h6>
+        <tab-pane class="is-primary"
+                  :label="$labelStore.translate(labels.SUBPAGE_COSTS_LABEL_COLORS)">
 
-            <table class="table is-striped" v-for="subtabelle in tabelle.subtabelle">
+          <p>{{ data.colors.subheadline }}</p>
+          <p>
+            Wollen sie mehr über unsere Farben erfahren?
+            <router-link :to="{ name: colorRoute }">Klicken sie hier</router-link>
+          </p>
+
+          <hr>
+
+          <div v-for="tabelle in data.colors.tabellen">
+            <h5>{{ tabelle.tHeadline }}</h5>
+            <h6><em>{{ tabelle.tSubHeadline }}</em></h6>
+
+            <table  v-for="subtabelle in tabelle.subtabelle"
+                    class="table is-striped is-fullwidth">
+
               <thead>
-              <tr>
-                <th v-if="subtabelle.header.length != 0"></th>
-                <th v-if="subtabelle.header.length != 0" v-for="head in subtabelle.header">{{head}}</th>
-              </tr>
+                <tr>
+                  <th v-if="subtabelle.header.length != 0"></th>
+                  <th v-for="head in subtabelle.header"
+                      v-if="subtabelle.header.length != 0">
+                      {{ head }}
+                  </th>
+                </tr>
               </thead>
 
               <tbody>
-              <tr v-for="(row,index) in subtabelle.rows">
-                <td width="50px" v-if="index == 0" v-for="column in row">{{column}}</td>
-                <td v-if="index != 0" v-for="column in row">{{column}}</td>
-              </tr>
+                <tr v-for="(row,index) in subtabelle.rows">
+                  <td v-for="column in row"
+                      width="50px"
+                      v-if="index == 0">
+
+                    {{ column }}
+                  </td>
+
+                  <td v-for="column in row"
+                      v-if="index != 0">
+
+                    {{ column }}
+                  </td>
+                </tr>
               </tbody>
             </table>
-
+            <hr>
           </div>
         </tab-pane>
-
       </tabs>
     </div>
   </section>
 </template>
 
 <script>
-  import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
+  import * as RouteNames from '../../enums/RouteNames'
   import { Tabs, TabPane } from 'vue-bulma-tabs'
   import { Carousel, Slide } from 'vue-carousel'
 
   export default {
-    name: 'preise',
+    name: 'costs',
+
+    mixins: [Subpage],
 
     components: {
       Tabs,
@@ -115,84 +171,44 @@
       Slide
     },
 
-    props: {
-      name: {type: String}
-    },
-
     data () {
       return {
-        preiseFürIhn: {},
-        preiseFürSie: {},
-        preiseFürFarbveränderungen: {},
-        preiseFürSieHeader: {}
+        dataKey: DataStoreEntries.costs.key,
+        colorRoute: RouteNames.COLORS
       }
-    },
-
-    methods: {
-      einkaufen: function () {
-        this.affe = 'Heinz'
-      },
-
-      async created () {
-        this.preise = await loadDataObject(DataStoreEntries.contact.key)
-      }
-    },
-
-    async created () {
-      this.preiseFürIhn = await loadDataObject(DataStoreEntries.preiseFürIhn.key)
-      this.preiseFürSie = await loadDataObject(DataStoreEntries.preiseFürSie.key)
-      this.preiseFürFarbveränderungen = await loadDataObject(DataStoreEntries.preiseFürFarbveränderungen.key)
-      this.preiseFürSieTabllen = this.preiseFürSie.tabellen
-      this.preiseFürIhnTabllen = this.preiseFürIhn.tabellen
     }
-
   }
-
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
   @import '../../style/subpages';
 
-  $baseColor: white;
-  $table-background-color: rgba( $baseColor, .7 );
-
-  .title{
-    color:$baseColor;
-  }
-
-  .table{
-    background-color: rgba( $baseColor, .7 );
-  }
-
-  .linkToFarben{
-    margin-bottom: 24px;
-  }
-
-    span{
-      font-weight: bold!important;
-  }
-
   .subpage{
-    flex-direction: column;
-
-    .content-box{
-      margin-bottom: 40px;
+    h1 {
+      margin-bottom: 30px;
     }
 
-    .aktionen{
-      margin-top: 20px;
-      display: flex;
+    table {
+      margin-top: 10px;
+      overflow: auto;
+    }
 
-      .contentAktionen{
+    p {
+      margin-bottom: 10px;
+    }
+
+    .aktionen-list {
+      margin-top: 40px;
+
+      .aktion {
         display: flex;
-        flex-direction: row;
 
         @include media("<desktop"){
           flex-direction: column;
         }
 
-        .aktionImage{
+        img {
           margin: auto;
           width: 80%;
           margin-right: 20px;
@@ -200,20 +216,20 @@
           @include media("<desktop"){
             margin-bottom: 20px;
           }
+        }
 
-          img {
-            display: block;
+        .aktion-description {
+          margin: auto;
+
+          @include media('<desktop') {
+            text-align: justify;
+
+            h5, h6 {
+              text-align: center;
+            }
           }
         }
       }
-
-
-      .slide{
-        padding: 0px 20px;
-      }
-
     }
-
-
   }
 </style>

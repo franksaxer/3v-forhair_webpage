@@ -1,108 +1,68 @@
 <template>
-  <section class="section subpage">
-    <h1>{{impressum.headline}}</h1>
-    <div class="impressumBox">
-      <div class="contentImpressum">
-        <span  class="spanImpressum" v-for="contentImpress in impressum.contentImpressum">
-          {{contentImpress}}
+  <section class="subpage">
+    <h1>{{ data.headline }}</h1>
+
+    <div class="impressum-box">
+      <div class="left">
+        <span v-for="contentImpress in data.contentImpressum">
+          {{ contentImpress }}
         </span>
       </div>
-      <div class="contentCopyRight">
-        <span  class="spanCopyRight" v-for="contentCopyRight in impressum.contentCopyright">
-          {{contentCopyRight}}
+
+      <div class="right">
+        <span v-for="contentCopyRight in data.contentCopyright">
+          {{ contentCopyRight }}
         </span>
       </div>
-    </div>
-
-    <div>
-
     </div>
   </section>
 </template>
 
 <script>
-  import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
 
   export default {
     name: 'impressum',
 
-    components: {
-    },
-
-    props: {
-      name: {type: String}
-    },
+    mixins: [Subpage],
 
     data () {
       return {
-        impressum: {}
+        dataKey: DataStoreEntries.impressum.key
       }
-    },
-
-    methods: {
-
-    },
-
-    async created () {
-      this.impressum = await loadDataObject(DataStoreEntries.impressum.key)
     }
-
   }
-
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
   @import '../../style/subpages';
 
   .subpage{
-    flex-direction: column;
-
-    .impressumBox{
+    .impressum-box {
       display: flex;
       flex-direction: row;
 
-      .contentImpressum{
-          width: 50%;
-          padding-right: 2%;
-          .spanImpressum {
-            display: block;
-            color: white;
-            $shadowColor: black;
-            text-shadow: 0 0 2px $shadowColor,
-            0 0 2px $shadowColor,
-            0 0 2px $shadowColor,
-            0 0 2px $shadowColor,
-            0 0 2px $shadowColor,
-            0 0 2px $shadowColor;
-            font-weight: bold;
-            text-align: right;
-          }
-
+      span {
+        display: block;
+        color: white;
+        font-weight: bold;
+        text-shadow: intenseShadow(black);
       }
 
-      .contentCopyRight{
-        display: flex;
-        flex-direction: column;
+      .left, .right {
         width: 50%;
-        padding-left: 2%;
+        padding: 0 2%;
+      }
 
-        .spanCopyRight{
-          color: white;
-          $shadowColor: black;
-          text-shadow: 0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor;
-          font-weight: bold;
-          text-align: left;
-        }
+      .left {
+        text-align: right;
+      }
 
+      .right {
+        text-align: left;
       }
     }
   }
-
-
 </style>

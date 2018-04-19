@@ -1,5 +1,4 @@
 {
-  "headline":"AVEDA Haarfarben",
   "subheadline1":"Was steckt in Deiner Haarfarbe?",
   "subheadline2":"Ist es Dir wichtig zu wissen was auf Deinen Kopf kommt?",
   "subheadline3":"Full Spectrum Haarfarbe ist aus bis zu 96% natürlich gewonnenen Inhaltsstoffen.",
@@ -8,7 +7,6 @@
   ],
   "videoID":"D7CEOHZD1qc",
 
-  "subheadline4":"Entdecke die Möglichkeiten",
   "möglichkeiten":[
     {
       "title":"Full Spectrum / Full Spectrum Deep",
@@ -29,7 +27,6 @@
 
   ],
 
-  "subheadline5":"Die Wirkprinzipien",
   "wirkprinzipien":[
     {
       "title":"Physikalische Haarfarben",
@@ -45,7 +42,6 @@
     }
   ],
 
-  "subheadline6":"Olaplex",
   "subheadline7":"Ein Wirkstoff, der die Haarwelt verändert!",
   "olaplexContent":[
     "OLAPLEX ist eine schwach chemisch wirkende Behandlung, die einen umkehrenden, positiven Einfluss auf haarschädigende Maßnahmen hat! Es repariert die beschädigten Doppelschwefelbrücken im Haar inneren, welche für Substanz, Sprungkraft, Elastizität und Reißfestigkeit des Haares verantwortlich sind.",
@@ -83,7 +79,4 @@
       ]
     }
   ]
-
-
-
 }

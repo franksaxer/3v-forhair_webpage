@@ -1,23 +1,35 @@
 <template>
-  <section class="section subpage">
-    <h1 class="title">Über Uns</h1>
-    <h2 class="subtitle">{{ueberUns.subheadline}}</h2>
-    <div class="contentÜber">
-      <div v-for="kategorie in ueberUns.kategorien" class="kategorie content-box">
-        <h4 class="is-4"><em>{{kategorie.bezeichnung}}</em></h4>
+  <section class="subpage">
+    <h1>{{ labels.SUBPAGE_ABOUT_US_HEADER | translate }}</h1>
+
+    <div class="kategorie-list">
+      <h2>{{ data.subheadline }}</h2>
+      <div  v-for="kategorie in data.kategorien"
+            class="kategorie content-box">
+
+        <h4><em>{{ kategorie.bezeichnung }}</em></h4>
         <ul class="beschreibungListe">
-          <li v-for="beschreibung in kategorie.beschreibung">{{beschreibung}}</li>
+          <li v-for="beschreibung in kategorie.beschreibung">
+            {{ beschreibung }}
+          </li>
         </ul>
       </div>
     </div>
+
     <hr>
-    <h1 class="title">Unser Salon</h1>
+
     <div class="salon">
+      <h1>{{ labels.SUBPAGE_ABOUT_US_SALON_HEADER | translate }}</h1>
       <carousel :perPage="1">
-        <slide v-if="ueberUns" v-for="(bild,index) in ueberUns.salonBilder" :key="index">
+        <slide  v-for="(bild,index) in data.salonBilder"
+                :key="index"
+                v-if="data">
+
           <div class="bild">
-              <img class="img" v-bind:src="bild.url">
-              <h6 style="text-align: center"><em>{{bild.title}}</em></h6>
+            <img :src="bild.url">
+            <h6 class="caption">
+              {{ bild.title }}
+            </h6>
           </div>
         </slide>
       </carousel>
@@ -25,82 +37,55 @@
 
     <hr>
 
-    <div class="avedaMission">
-      <h1>{{ueberUns.headlineAvedaMisson}}</h1>
-      <span v-for="aveda in ueberUns.contentAvedaMission">
-        {{aveda}}
+    <div class="aveda-mission">
+      <h1>{{ labels.SUBPAGE_ABOUT_US_AVEDA_HEADER | translate }}</h1>
+      <span v-for="aveda in data.contentAvedaMission">
+        {{ aveda }}
       </span>
-
     </div>
-
   </section>
 </template>
 
 <script>
-  import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
-  import { Tabs, TabPane } from 'vue-bulma-tabs'
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
   import { Carousel, Slide } from 'vue-carousel'
 
   export default {
-    name: 'preise',
+    name: 'aboutus',
+
+    mixins: [Subpage],
 
     components: {
-      Tabs,
-      TabPane,
       Carousel,
       Slide
     },
 
-    props: {
-      name: {type: String}
-    },
-
     data () {
       return {
-        ueberUns: {}
+        dataKey: DataStoreEntries.ueberUns.key
       }
-    },
-
-    methods: {
-      einkaufen: function () {
-        this.affe = 'Heinz'
-      }
-    },
-
-    async created () {
-      this.ueberUns = await loadDataObject(DataStoreEntries.ueberUns.key)
     }
-
   }
 
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
   @import '../../style/subpages';
 
   .subpage{
-    flex-direction: column;
-    justify-content: center;
-
-    span{
-      display: block;
-      text-align: center;
-      color: white;
-      font-weight: bold;
-    }
-
-
-    .contentÜber{
-      flex-wrap: wrap;
+    .kategorie-list {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
 
-      .kategorie{
-        display: flex;
-        flex-direction: column;
-        width: 29%;
+      .kategorie {
         margin: 10px 2%;
+
+        @include media('>=desktop') {
+          width: 29%;
+        }
 
         .beschreibungListe {
           margin-top: 5px;
@@ -109,6 +94,11 @@
     }
 
     .salon {
+      .caption {
+        text-align: center;
+        font-style: italic;
+      }
+
       .bild {
         @function calcWidth($reference) {
           @return calc(#{$reference} * 0.8);
@@ -129,13 +119,13 @@
           margin: 20px calcMargin($threshold) 0;
         }
       }
-
     }
 
-    .avedaMission{
-      margin-bottom: 20px;
+    .aveda-mission {
+      display: block;
+      text-align: center;
+      color: white;
+      font-weight: bold;
     }
   }
-
-
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div  id="app"
         :style="[{'background-image': 'url(' + $route.meta.background +')'}]" >
+
     <!-- general layout with header, main and footer -->
     <section id="layout">
       <header>
@@ -27,9 +28,10 @@
       </header>
 
       <main>
-        <div id="content" class="main-element">
-          <main-menu :space="!logoInLowerPosition"/>
+        <div  id="content"
+              class="main-element content">
 
+          <main-menu :space="!logoInLowerPosition"/>
           <router-view></router-view>
         </div>
 
@@ -229,6 +231,8 @@
   // Overwrite Bulma variables.
   $primary: $color-base;
   $primary-invert: $color-invert;
+  $link: lighten($primary, 10%);
+  $table-background-color: rgba(white, 0.9);
 
   // Import Bulma classes afterwards.
   @import '~bulma/bulma';
@@ -276,7 +280,7 @@
           font-size: calc(#{$header-height * 0.7});
           font-weight: 500;
           font-family: "Times New Roman", Times, serif;
-          padding: 0;
+          padding: 0 5px;
         }
 
         #logo {

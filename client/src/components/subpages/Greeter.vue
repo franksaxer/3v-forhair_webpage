@@ -3,13 +3,10 @@
     <div class="image">
       <img src="../../assets/subpages/greeter/frank.jpg">
     </div>
-    <div class="text content-box">
-      <h4>
-        {{ labels.SUBPAGE_GREETER_HEADER | translate }}
-      </h4>
-      <p>
-        {{ labels.SUBPAGE_GREETER_CONTENT | translate }}
-      </p>
+
+    <div class="content-box">
+      <h4>{{ labels.SUBPAGE_GREETER_HEADER | translate }}</h4>
+      <p>{{ labels.SUBPAGE_GREETER_CONTENT | translate }}</p>
     </div>
   </div>
 </template>
@@ -31,6 +28,7 @@
 
   .subpage {
     display: flex;
+    flex-direction: row;
     align-items: center;
     padding-top: 0!important; // Makes calculations easier.
     max-height: 100%; // Have a cover page.
@@ -47,7 +45,7 @@
       flex-direction: column;
     }
 
-    $width: 30%; // Use the same width so the mirror line is in the middle.
+    $width: 40%; // Use the same width so the mirror line is in the middle.
     $narrowHeight: calc((100vh - #{$header-height} - #{$footer-height}) * 0.7);
     $space-desktop: $icon-radius; // Leave enough space around the logo.
     $space-mobile: calc(#{$icon-radius} * 0.66);
@@ -84,14 +82,13 @@
       }
     }
 
-    .text {
+    .content-box {
       color: $color-base;
       background: $color-invert;
       border-radius: $border-radius;
       padding: $border-radius;
       overflow-x: auto;
-
-      @include scroll;
+      margin: 0; // Overwrite .content-box defaults.
 
       @include media('>=desktop') {
         margin-left: $space-desktop;
@@ -105,7 +102,7 @@
       }
 
       @include media('<desktop') {
-        margin-top: $space-mobile!important;
+        margin-top: $space-mobile;
         max-height: calc(#{$segmentHeight} - #{$space-mobile} + 30px);
       }
 

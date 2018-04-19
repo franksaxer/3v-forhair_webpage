@@ -39,6 +39,32 @@ export default {
   [keys.MENU_ENTRY_STAFF]: ['Stylisten', 'Stylists'],
 
   // Subpages
+  // About Us
+  [keys.SUBPAGE_ABOUT_US_HEADER]: ['Über Uns', 'About Us'],
+  [keys.SUBPAGE_ABOUT_US_SALON_HEADER]: ['Unser Salon', 'The Parlor'],
+  [keys.SUBPAGE_ABOUT_US_AVEDA_HEADER]: ['Aveda Mission'],
+
+  // Colors
+  [keys.SUBPAGE_COLORS_HEADER]: ['AVEDA Haarfarben', 'AVEDA Colors'],
+  [keys.SUBPAGE_COLORS_POSSIBILITIES_HEADER]: ['Entdecke die Möglichkeiten', 'Discover the Potential'],
+  [keys.SUBPAGE_COLORS_IMPACT_HEADER]: ['Die Wirkungsweise', 'How It Works'],
+  [keys.SUBPAGE_COLORS_OLAPLEX_HEADER]: ['Olaplex'],
+
+  // Contact
+  [keys.SUBPAGE_CONTACT_HEADER]: ['Kontakt', 'Contact'],
+  [keys.SUBPAGE_CONTACT_BTN_MAP]: ['Karte', 'Map'],
+  [keys.SUBPAGE_CONTACT_BTN_SEND]: ['Abschicken', 'Map'],
+  [keys.SUBPAGE_CONTACT_PH_NAME]: ['Name', 'name'],
+  [keys.SUBPAGE_CONTACT_PH_MAIL]: ['E-Mail', 'e-mail'],
+  [keys.SUBPAGE_CONTACT_PH_PHONE]: ['Telefonnummer', 'phone number'],
+  [keys.SUBPAGE_CONTACT_PH_MESSAGE]: ['Nachricht', 'message'],
+
+  // Costs
+  [keys.SUBPAGE_COSTS_HEADER]: ['Preisliste für Haarschnitte und Stylings', 'Prices for Haircuts and Styling'],
+  [keys.SUBPAGE_COSTS_LABEL_SHE]: ['Preise für Sie', 'Prices for her'],
+  [keys.SUBPAGE_COSTS_LABEL_HE]: ['Preise für Ihn', 'Prices for him'],
+  [keys.SUBPAGE_COSTS_LABEL_COLORS]: ['Preise für Farbveränderungen', 'Prices for colors'],
+
   // Greeter
   [keys.SUBPAGE_GREETER_HEADER]: {
     [langs.DE]: 'Genieße eine Sinnesreise auf dem Pfad deines ayurvedischen Elements.',
@@ -48,5 +74,19 @@ export default {
   [keys.SUBPAGE_GREETER_CONTENT]: {
     [langs.DE]: 'Vergesse den Stress des Alltags bei einer "Anti-Stress"-Kopfmassage oder entspanne bei einer "Hands-on"-Handmassage. Dich noch schöner zu machen, deine Individualität zu betonen und dir dabei den Aufenthalt so angenehm wie möglich zu gestalten, das ist unser Ziel. Wir nehmen uns noch Zeit für dich und beraten dich gerne. Am Ende entscheidest du selbst, mit welchem neuen Look und/oder welcher Haarfarbe du dein neues Ich erfährst. Wir haben uns ganz gezielt für die Produkte von Aveda entschieden, weil wir auf höchstem Niveau arbeiten und uns unserer umweltpolitischen Verantwortung bewusst sind. Die Produkte von Aveda verbinden höchsten Anspruch und neueste Entwicklungen mit altbewährten Traditionen von Naturvölkern unterschiedlichster Herkunft. Die fast ausschließlich pflanzlichen Rohstoffe werden weitestgehend ökologisch angebaut und schonend verarbeitet. Dies geschieht zum Wohle von Mensch, Tier und Natur. Doch erfahre es selbst und buche noch heute deinen Termin.',
     [langs.EN]: 'TBD'
-  }
+  },
+
+  // Impressum
+  [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],
+
+  // Recension
+  [keys.SUBPAGE_RECENSION_HEADER]: ['Das denken Kunden über uns:', 'What people say about us:'],
+
+  // Staff
+  [keys.SUBPAGE_STAFF_HEADER]: ['Unser Team', 'The Team'],
+  [keys.SUBPAGE_STAFF_SUBHEADER]: {
+    [langs.DE]: 'Dich noch schöner zu machen ist unser Ziel!',
+    [langs.EN]: 'Make you even more pretty is our goal!'
+  },
+  [keys.SUBPAGE_STAFF_HOURS]: ['Arbeitszeit', 'Working Hours']
 }

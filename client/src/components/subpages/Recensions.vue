@@ -1,92 +1,86 @@
 <template>
   <section class="section subpage">
-    <h1 style="margin-bottom: 40px;">{{rezensionen.headline}}</h1>
-    <div class="rezensionen">
-      <div  class="renzensionBlock" v-for="rezension in rezensionen.rezensionen">
-        <h1><i class="fa fa-angle-right"></i> {{rezension.headline}} <i class="fa fa-angle-left"></i></h1>
-        <ul>
-          <p class="contentRezension" v-for="content in rezension.content">{{content}}</p>
-        </ul>
-        <p class="contentRezension">{{rezension.offer}}</p>
-      </div>
-      <p class="linkText">{{rezensionen.linkText}}<span><a href="">hier!</a></span></p>
+    <h1>{{ labels.SUBPAGE_RECENSION_HEADER | translate }}</h1>
+
+    <div  v-for="rezension in data.rezensionen"
+          class="renzension">
+
+      <h2>
+        <i class="fa fa-angle-right"></i>
+        {{ rezension.headline }}
+        <i class="fa fa-angle-left"></i>
+      </h2>
+
+      <ul>
+        <p v-for="content in rezension.content"
+           class="content">
+          {{ content }}
+        </p>
+      </ul>
+
+      <p class="content">
+        {{ rezension.offer }}
+      </p>
     </div>
+
+    <p class="linkText">
+      {{ data.linkText }}
+      <span>
+        <a href="">hier!</a>
+      </span>
+    </p>
   </section>
 </template>
 
 <script>
-  import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
 
   export default {
     name: 'rezensionen',
 
-    components: {
-    },
-
-    props: {
-      name: {type: String}
-    },
+    mixins: [Subpage],
 
     data () {
       return {
-        rezensionen: {}
+        dataKey: DataStoreEntries.rezensionen.key
       }
-    },
-
-    methods: {
-
-    },
-
-    async created () {
-      this.rezensionen = await loadDataObject(DataStoreEntries.rezensionen.key)
     }
-
   }
-
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
+  @import '../../style/3v-forhair';
   @import '../../style/subpages';
 
   .subpage{
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: white  ;
 
-    .linkText{
-      text-align: center;
-      font-weight: bold;
-      color: white  ;
-      $shadowColor:black;
-      text-shadow:
-        0 0 2px $shadowColor,
-        0 0 2px $shadowColor,
-
+    h1 {
+      margin-bottom: 40px;
     }
 
-    h1{
+    h2 {
       margin-bottom: 20px;
       font-style: italic;
     }
 
-
-    .renzensionBlock{
+    .renzension{
       margin-bottom: 20px;
 
-      .contentRezension{
-        text-align: center;
-        font-weight: bold;
+      .content {
         margin-bottom: 0;
-        color: rgb(250,250,210)  ;
-        $shadowColor:black;
-        text-shadow:
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor,
-
+        color: rgb(250, 250, 210)  ;
+        text-shadow: decentShadow(black);
       }
     }
 
+    .linkText{
+      margin-top: 40px;
+      text-shadow: decentShadow(black);
+    }
   }
-
-
 </style>

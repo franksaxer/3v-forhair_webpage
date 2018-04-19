@@ -24,14 +24,9 @@
     "path":"json/Welcome.json"
   },
 
-  "preiseFürIhn": {
-    "key": "2aa70b3a9146ebb42ae72183e5626d76d4352aa8",
-    "path":"json/content/preiseFürIhn.json"
-  },
-
-  "preiseFürSie": {
-    "key": "71dca2d718e8591e4680bd46f40c271b2123b8ed",
-    "path":"json/content/preiseFürSie.json"
+  "costs": {
+    "key": "1796e5783f994ac176b7ff71c8452b1b",
+    "path": "json/content/costs.json"
   },
 
   "stylisten":{
@@ -42,11 +37,6 @@
   "ueberUns":{
     "key": "92f812b77d7d206f2984011037765f7a7e364c7c67b78f80437f0cbd22f65036",
     "path":"json/content/überUns.json"
-  },
-    
-  "preiseFürFarbveränderungen": {
-    "key": "791cd3ec22e956174ba155a2d7dc024e6c5b3dc8f40a0ccb0794727025cdd46e",
-    "path": "json/content/preiseFarbveränderungen.json"
   },
     
   "farbe":{
