@@ -56,5 +56,9 @@
   "impressum":{
     "key":"5c3175413bb7ea1b85e79d9cdf0ad47cd6c5f85c",
     "path":"json/content/impressum.json"
+  },
+  "promotation":{
+    "key":"e6f1ae77ee31ecaf57ca86022c4c45638bf5f147",
+    "path":"json/content/aktionen.json"
   }
 }

@@ -1,0 +1,53 @@
+{
+  "headline":"Aktionen",
+  "aktionen":[
+    {
+      "headline":"Membershipkarte",
+      "subheadline":null,
+      "beschreibung":"Für unserer Stammkunden bieten wir die Möglichkeit einer „Mitgliedschaft“. Diese kostet 50,-€ für eine Person. Die Mitgliedschaft läuft automatisch nach 12 Monaten aus und kann auf Wunsch erneuert werden. Die Vorteile der Mitgliedschaft sind folgende:",
+      "bild":"Url:aktionen/aktion1.png",
+      "unterAktionen":[
+        {
+          "headline":"Basic Membership 50,-€",
+          "beschreibung":[
+            "10% Nachlass auf alle Friseurdienstleistungen","Kostenloses Pony/Kontur schneiden bis max. 5 Min."
+          ]
+        },
+        {
+          "headline":"Premium Membership 75,- €",
+          "beschreibung":[
+            "10% Nachlass auf alle Friseurdienstleistungen","10% Nachlass auf alle regulären Aveda Produktpreise","20% Nachlass auf alle Produkt wieder Auffüllungen","Kostenloses Pony/Kontur schneiden bis max. 5 Min."
+          ]
+        }
+      ]
+    },
+    {
+      "headline":"Erstbesuchsrabatt",
+      "subheadline":"Drucke Dir den nebenstehenden Flyer aus und bekomme somit 10% Nachlass auf die Dienstleistung Deines ersten Besuches bei uns.",
+      "beschreibung":null,
+      "bild":"Url:aktionen/aktion2.png",
+      "unterAktionen":[
+        {
+          "headline":"Bring a Friend",
+          "beschreibung":[
+            "Wenn Du Dienstags in Begleitung einer Freundin oder eines Freund kommst und Ihr Beide eine oder mehrere Dienstleistungen ab 25,- € in Anspruch nehmt, bekommt Ihr Beide 10% Nachlass auf die Dienstleistung."
+          ]
+        }
+      ]
+    },
+    {
+      "headline":"Geschenke Gutschein",
+      "subheadline":"Schenke Freude, schenke Farbe, Schenke Aveda!",
+      "beschreibung":null,
+      "bild":"Url:aktionen/aktion3.jpg",
+      "unterAktionen":[
+        {
+          "headline":null,
+          "beschreibung":[
+            "Du möchtest Deiner Freundin oder Freund, Deiner Mutter oder Deinem Vater und sonst wem eine Freude machen ? Dann schenke ihm / ihr einen Besuch bei uns. Wir nehmen uns gerne Deiner Lieben an und verwöhnen Sie nach Strich und Faden! Frage einfach nach unseren 3v Geschenke Gutschein.","Ab einem Wert von 25,- €"
+          ]
+        }
+      ]
+    }
+  ]
+}
