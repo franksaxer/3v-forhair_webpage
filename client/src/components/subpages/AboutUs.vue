@@ -1,4 +1,4 @@
-<template>
+d<template>
   <section class="subpage">
     <h1>{{ labels.SUBPAGE_ABOUT_US_HEADER | translate }}</h1>
 
