@@ -17,6 +17,10 @@
       </header>
 
       <section class="modal-card-body">
+        <ul v-for="hint in hints">
+          <i>{{ hint | translate }}</i>
+        </ul>
+
         <textarea class="textarea control"
                   v-model="internalContent"/>
       </section>
@@ -33,6 +37,8 @@
 </template>
 
 <script>
+  import * as labels from '../enums/LabelKeys'
+
   export default {
     props: {
       content: {
@@ -43,7 +49,11 @@
     data: function () {
       return {
         internalContent: this.content, // Internal state of the property.
-        backup: '' // Will be set after creation.
+        backup: '', // Will be set after creation.
+        hints: [
+          labels.EDIT_WINDOW_HINT_ABORT,
+          labels.EDIT_WINDOW_HINT_MULTILINE
+        ]
       }
     },
 
@@ -75,5 +85,9 @@
 
 <style lang="scss" scoped>
   @import '../style/3v-forhair';
+
+  ul {
+    margin-bottom: 20px;
+  }
 
 </style>
