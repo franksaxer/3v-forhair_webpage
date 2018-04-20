@@ -25,7 +25,6 @@
   @import "../../style/3v-forhair";
   @import "../../style/subpages";
 
-
   .subpage {
     display: flex;
     flex-direction: row;

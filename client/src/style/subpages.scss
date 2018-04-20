@@ -31,8 +31,6 @@
   }
 
 
-  $border-radius: 10px;
-
   img{
     border-radius: $border-radius;
   }
@@ -74,32 +72,6 @@
     @include media('>=desktop') {
       margin: auto;
       padding: 20px;
-    }
-  }
-
-
-  .switch-effect {
-    $time: .5s;
-    $ease: ease-out;
-
-    &.left {
-      left: 0; // Neutral position.
-      transition: left $ease $time;
-
-      // Hide the object on the left side.
-      &.inactive {
-        left: -10vw!important;
-      }
-    }
-
-    &.right {
-      left: 0; // Neutral position.
-      transition: right $ease $time;
-
-      // Hide the object on the right side.
-      &.inactive {
-        left: -10vw!important;
-      }
     }
   }
 }

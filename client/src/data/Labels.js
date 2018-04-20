@@ -26,6 +26,10 @@ export default {
   [keys.EDIT_IMG_BTN_BORDER]: ['Kante bewegen', 'Move border'],
   [keys.EDIT_MSG_UPLOAD]: ['Bild hochladen', 'Upload image'],
 
+  // Edit Window
+  [keys.EDIT_WINDOW_TITLE]: ['Bearbeiten', 'Edit'],
+  [keys.EDIT_WINDOW_BTN_OK]: ['OK'],
+
   // Menu
   [keys.MENU_ENTRY_ABOUT_US]: ['Ueber Uns', 'About Us'],
   [keys.MENU_ENTRY_COLORS]: ['Farben', 'Colors'],

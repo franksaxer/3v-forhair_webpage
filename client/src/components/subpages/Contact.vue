@@ -3,10 +3,12 @@
     <h1>{{ labels.SUBPAGE_CONTACT_HEADER | translate }}</h1>
     <h2>{{ data.subheadline }}</h2>
 
-    <div class="info content-box">
+    <div class="info content-box"
+         v-if="data.telefon">
+
       <div class="kontakt-element">
           <i class="fa fa-phone fa-3x"></i>
-          <span>{{ data.telefon.handy }}</span>
+          <span @click="editText(data.telefon, 'handy')">{{ data.telefon.handy }}</span>
           <span>{{ data.telefon.festnetz }}</span>
       </div>
 
@@ -45,7 +47,7 @@
 
     <hr>
 
-    <div class="form content-box ">
+    <div class="form content-box">
       <div class="headline">
         <h1>{{ data.emailHeadline }}</h1>
         <h3>{{ data.emailSubheadline }}</h3>
@@ -57,7 +59,7 @@
             <div class="control">
               <input  class="input"
                       type="text"
-                      :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_NAME)">
+                      :placeholder="labels.SUBPAGE_CONTACT_PH_NAME | translate">
             </div>
           </div>
 
