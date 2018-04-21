@@ -78,15 +78,6 @@ export default {
   [keys.SUBPAGE_COSTS_LABEL_COLORS]: ['Preise für Farbveränderungen', 'Prices for colors'],
 
   // Greeter
-  [keys.SUBPAGE_GREETER_HEADER]: {
-    [langs.DE]: 'Genieße eine Sinnesreise auf dem Pfad deines ayurvedischen Elements.',
-    [langs.EN]: 'TBD'
-  },
-
-  [keys.SUBPAGE_GREETER_CONTENT]: {
-    [langs.DE]: 'Vergesse den Stress des Alltags bei einer "Anti-Stress"-Kopfmassage oder entspanne bei einer "Hands-on"-Handmassage. Dich noch schöner zu machen, deine Individualität zu betonen und dir dabei den Aufenthalt so angenehm wie möglich zu gestalten, das ist unser Ziel. Wir nehmen uns noch Zeit für dich und beraten dich gerne. Am Ende entscheidest du selbst, mit welchem neuen Look und/oder welcher Haarfarbe du dein neues Ich erfährst. Wir haben uns ganz gezielt für die Produkte von Aveda entschieden, weil wir auf höchstem Niveau arbeiten und uns unserer umweltpolitischen Verantwortung bewusst sind. Die Produkte von Aveda verbinden höchsten Anspruch und neueste Entwicklungen mit altbewährten Traditionen von Naturvölkern unterschiedlichster Herkunft. Die fast ausschließlich pflanzlichen Rohstoffe werden weitestgehend ökologisch angebaut und schonend verarbeitet. Dies geschieht zum Wohle von Mensch, Tier und Natur. Doch erfahre es selbst und buche noch heute deinen Termin.',
-    [langs.EN]: 'TBD'
-  },
 
   // Impressum
   [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],

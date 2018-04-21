@@ -5,15 +5,29 @@
     </div>
 
     <div class="content-box">
-      <h4>{{ labels.SUBPAGE_GREETER_HEADER | translate }}</h4>
-      <p>{{ labels.SUBPAGE_GREETER_CONTENT | translate }}</p>
+      <h4 @click="editText(data, 'header')">
+        {{ data.header }}
+      </h4>
+
+      <p @click="editText(data, 'content')">{{ data.content }}</p>
     </div>
   </div>
 </template>
 
 <script>
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
+
   export default {
-    name: 'subpage-greeter'
+    name: 'subpage-greeter',
+
+    mixins: [Subpage],
+
+    data () {
+      return {
+        dataKey: DataStoreEntries.greeter.key
+      }
+    }
   }
 </script>
 
@@ -82,17 +96,13 @@
     }
 
     .content-box {
-      color: $color-base;
-      background: $color-invert;
-      border-radius: $border-radius;
-      padding: $border-radius;
       overflow-x: auto;
       margin: 0; // Overwrite .content-box defaults.
 
       @include media('>=desktop') {
         margin-left: $space-desktop;
         width: $width;
-        max-height: 70vh; // Get along with half screen browsing.
+        max-height: 60vh; // Get along with half screen browsing.
       }
 
       // For versions where the image is to height. (desktop window on half top).

@@ -4,9 +4,9 @@
     "path": "json/GeneralConfig.json"
   },
 
-  "contact": {
-    "key": "2f8a6bf31f3bd67bd2d9720c58b19c9a",
-    "path": "json/ContactData.json"
+  "greeter": {
+    "key": "f8baee1460d37baacdbb12784ec19d31",
+    "path": "json/content/Greeter"
   },
 
   "advertisement": {
