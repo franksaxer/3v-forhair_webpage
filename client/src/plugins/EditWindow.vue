@@ -48,7 +48,7 @@
 
     data: function () {
       return {
-        internalContent: this.content, // Internal state of the property.
+        internalContent: this.parseContent(this.content), // Internal state of the property.
         backup: '', // Will be set after creation.
         hints: [
           labels.EDIT_WINDOW_HINT_ABORT,
@@ -57,13 +57,21 @@
       }
     },
 
-    watch: {
-      internalContent (value) {
-        this.$emit('change', value)
-      }
-    },
-
     methods: {
+      contentIsArray () {
+        // Unfortuntely working with a computed property doesn't work.
+        return Array.isArray(this.content)
+      },
+
+      parseContent (content) {
+        // Convert the given content object to a string.
+        if (this.contentIsArray) {
+          return content.reduce((a, b) => { return a + ',' + b })
+        } else {
+          return content
+        }
+      },
+
       finish () {
         // Simply close this component.
         this.$emit('destroy')
@@ -73,6 +81,23 @@
         // Reset the content value to the backup.
         this.$emit('change', this.backup)
         this.$emit('destroy')
+      }
+    },
+
+    computed: {
+      // Convert the content as string back to the original content type.
+      realContent () {
+        if (this.contentIsArray()) {
+          return this.internalContent.split(',')
+        } else {
+          return this.internalContent
+        }
+      }
+    },
+
+    watch: {
+      realContent (value) {
+        this.$emit('change', value)
       }
     },
 
