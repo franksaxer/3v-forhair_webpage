@@ -192,6 +192,7 @@
     table {
       margin-top: 10px;
       overflow: auto;
+      border-radius: 10px;
     }
 
     p {

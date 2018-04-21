@@ -64,13 +64,13 @@
       width: 70%;
       display: flex;
       margin-bottom: 20px;
+      background-color: rgba(27, 63, 27,.4);
 
-      h1, h3,h4,h5,p,ul{
-        color:black;
+      h1, h3,h4,h5,ul,p{
+        color:white;
         line-height: 1.4;
-        $shadowColor:white;
+        $shadowColor:black;
         text-shadow:
-          0 0 2px $shadowColor,
           0 0 2px $shadowColor,
           0 0 2px $shadowColor
       }

@@ -59,6 +59,10 @@ export default {
   [keys.SUBPAGE_CONTACT_PH_PHONE]: ['Telefonnummer', 'phone number'],
   [keys.SUBPAGE_CONTACT_PH_MESSAGE]: ['Nachricht', 'message'],
 
+  // Products
+  [keys.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL]: ['Allgemeine Produkte', 'General Products'],
+  [keys.SUPPAGE_PRODUCTS_PRODUCTS_HIM]: ['Produkte für Ihn', 'Products for him'],
+
   // Costs
   [keys.SUBPAGE_COSTS_HEADER]: ['Preisliste für Haarschnitte und Stylings', 'Prices for Haircuts and Styling'],
   [keys.SUBPAGE_COSTS_LABEL_SHE]: ['Preise für Sie', 'Prices for her'],

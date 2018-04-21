@@ -45,7 +45,7 @@
     <h1>{{ labels.SUBPAGE_COLORS_IMPACT_HEADER | translate }}</h1>
     <div class="subsection">
       <div  v-for="wirkprinzipien in data.wirkprinzipien"
-            class="content-box">
+              class="content-box">
 
         <h5>
           <i class="fa fa-angle-right"></i>
