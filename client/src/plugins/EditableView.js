@@ -37,6 +37,16 @@ const EditableView = {
 
     Vue.mixin({
       methods: {
+        stringToList (text) {
+          // Make working on a string object.
+          if (typeof text !== 'string') {
+            throw new Error('Can only split strings into lists!')
+          }
+
+          // Split the string by the newline character.
+          return text.split('\n')
+        },
+
         editText (object, prop) {
           // Root where to add the DOM element,
           const root = document.getElementById('app')
