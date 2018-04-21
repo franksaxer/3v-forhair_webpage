@@ -39,6 +39,8 @@
 <script>
   import * as labels from '../enums/LabelKeys'
 
+  const ArraySeparator = ','
+
   export default {
     props: {
       content: {
@@ -66,7 +68,7 @@
       parseContent (content) {
         // Convert the given content object to a string.
         if (this.contentIsArray) {
-          return content.reduce((a, b) => { return a + ',' + b })
+          return content.reduce((a, b) => { return a + ArraySeparator + b })
         } else {
           return content
         }
@@ -88,7 +90,7 @@
       // Convert the content as string back to the original content type.
       realContent () {
         if (this.contentIsArray()) {
-          return this.internalContent.split(',')
+          return this.internalContent.split(ArraySeparator)
         } else {
           return this.internalContent
         }
