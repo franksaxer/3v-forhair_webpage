@@ -2,26 +2,20 @@
   "rezensionen":[
     {
       "headline":"Alltagsoase",
-      "content":[
-        "Vollkommend entspannend & sehr freundlich.","Kleine Oase für den Alltag!"
-      ],
+      "content": "Vollkommend entspannend & sehr freundlich.\nKleine Oase für den Alltag!",
       "offer":"D.K. Berlin"
     },
     {
       "headline":"Ein schöner Ort",
-      "content":[
-        "Die Beratung ist individuell, kompetent und sehr freundlich.","Mit meinen Haaren bin ich hier in besten Händen und an einem schönen Ort(Garten und Salon)."
-      ],
+      "content": "Die Beratung ist individuell, kompetent und sehr freundlich.\nMit meinen Haaren bin ich hier in besten Händen und an einem schönen Ort(Garten und Salon).",
       "offer":"N. F., Berlin 10625"
     },
     {
       "headline":"Entspannen in gemütlicher Atmosphäre",
-      "content":[
-          "Nachdem mein Friseur nach 20 Jahren kundentreue in den verdienten Ruhestand ging,"," habe ich 3v gefunden und komme jederzeit gerne wieder."
-      ],
+      "content": "Nachdem mein Friseur nach 20 Jahren kundentreue in den verdienten Ruhestand ging,\nhabe ich 3v gefunden und komme jederzeit gerne wieder.",
       "offer":"S. M., Berlin 10789"
     }
   ],
-  "linkText":"....und viele Bewertungen mehr finden Sie: ",
-  "link":"https://www.kennstdueinen.de/friseur-berlin-3v-for-hair-aveda-concept-salon-d99442.html"
+  "linkText": "....und viele Bewertungen mehr finden Sie:",
+  "link": "https://www.kennstdueinen.de/friseur-berlin-3v-for-hair-aveda-concept-salon-d99442.html"
 }

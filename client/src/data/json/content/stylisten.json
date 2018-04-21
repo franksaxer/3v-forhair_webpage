@@ -4,73 +4,49 @@
       "bild":"Url:mitarbeiter/krystina.jpg",
       "name":"Krystina",
       "kategorie":"Coloristin",
-      "info":[
-        "2008 - 2011 Ausbildung zur Frisörin bei 3v for hair, Berlin (Aveda)","2011 - 2014 Young Coloristin","Seit 09.2014 Coloristin"
-      ],
+      "info": "2008 - 2011 Ausbildung zur Frisörin bei 3v for hair, Berlin (Aveda)\n2011 - 2014 Young Coloristin\nSeit 09.2014 Coloristin",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 11:00 - 20:00h","Donnerstag 13:00 - 22:00h","Samstag 12:00 - 18:00 Uhr"
-      ]
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nDonnerstag 13:00 - 22:00h\nSamstag 12:00 - 18:00 Uhr"
     },
     {
       "bild":"Url:mitarbeiter/janine.jpg",
       "name":"Janine",
       "kategorie":"Top-Stylistin / Coloristin",
-      "info":[
-        "2008 - 2011 Ausbildung zur Frisörin bei 3v for hair, Berlin (Aveda)","2011 - 2014 Young Stylistin /Young Coloristin","Seit 09.2014 Top Stylistin / Coloristin"
-      ],
+      "info": "2008 - 2011 Ausbildung zur Frisörin bei 3v for hair, Berlin (Aveda)\n2011 - 2014 Young Stylistin /Young Coloristin\nSeit 09.2014 Top Stylistin / Coloristin",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 10:00 - 19:00h","Donnerstag 10:00 - 19:00h","Samstag 10:00 - 16:00h"
-      ]
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00h\nDonnerstag 10:00 - 19:00h\nSamstag 10:00 - 16:00h"
     },
     {
       "bild":"Url:mitarbeiter/vojo.jpg",
       "name":"Vojo",
       "kategorie":"Top-Stylist, Barbier",
-      "info":[
-        "Seit 2012 Top Stylist 3v for hair, Berlin (Aveda)"
-      ],
+      "info": "Seit 2012 Top Stylist 3v for hair, Berlin (Aveda)",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 11:00 - 20:00h","Donnerstag 13:00 - 22:00h","Samstag 10:00 - 16:00h"
-      ]
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nDonnerstag 13:00 - 22:00h\nSamstag 10:00 - 16:00h"
     },
     {
       "bild":"Url:mitarbeiter/alex.jpg",
       "name":"Alex",
       "kategorie":"Top-Stylist / Top-Colorist",
-      "info":[
-        "2004 - 2006 Ausbildung zum Frisör bei 3v for hair, Berlin (Aveda) ","2006 - 2008  Young-Stylist bei 3v for hair, Berlin (Aveda)","Seit 2008 Top-Stylist bei 3v for hair, Berlin (Aveda) "
-      ],
+      "info": "2004 - 2006 Ausbildung zum Frisör bei 3v for hair, Berlin (Aveda)\n2006 - 2008  Young-Stylist bei 3v for hair, Berlin (Aveda)\nSeit 2008 Top-Stylist bei 3v for hair, Berlin (Aveda)",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 10:00 - 19:00h","Donnerstag 10:00 - 19:00h","Samstag 12:00 - 18:00h"
-      ]
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00h\nDonnerstag 10:00 - 19:00h\nSamstag 12:00 - 18:00h"
     },
     {
       "bild":"Url:mitarbeiter/yvette.jpg",
       "name":"Yvette",
       "kategorie":"Master-Stylistin / Visagistin",
-      "info":[
-        "Seit 2007 Master-Stylistin  / Visagistin bei 3v for hair, Berlin (Aveda) "
-      ],
+      "info": "Seit 2007 Master-Stylistin  / Visagistin bei 3v for hair, Berlin (Aveda)",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten":[
-        "Dienstag, Mittwoch, Freitag 10:00- 19:00h","Donnerstag 10:00- 19:00h","Samstag 10:00- 16:00h"
-      ]
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00- 19:00h\nDonnerstag 10:00- 19:00h\nSamstag 10:00- 16:00h"
     },
     {
       "bild":"Url:mitarbeiter/frank.jpg",
       "name":"Frank",
       "kategorie":"Senior Stylist / Master of Color \n(Inhaber von 3v for hair)",
-      "info":[
-        "2003 Gründung von 3v for hair, Berlin (Aveda)"
-      ],
+      "info": "2003 Gründung von 3v for hair, Berlin (Aveda)",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
-      "arbeitszeiten":[
-        "Mittwoch 10:00- 19:00","Donnerstag 17:00 - 22:00h","Freitag 11:00 - 20:00 Uhr","Samstag 12:00 - 18:00 Uhr"
-      ]
+      "arbeitszeiten": "Mittwoch 10:00- 19:00\nDonnerstag 17:00 - 22:00h\nFreitag 11:00 - 20:00 Uhr\nSamstag 12:00 - 18:00 Uhr"
     }
   ]
 }

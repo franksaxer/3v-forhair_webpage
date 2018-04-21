@@ -40,7 +40,7 @@ const EditableView = {
         stringToList (text) {
           // Make working on a string object.
           if (typeof text !== 'string') {
-            throw new Error('Can only split strings into lists!')
+            throw new Error('Can only split strings into lists! (is ' + typeof text + ')')
           }
 
           // Split the string by the newline character.

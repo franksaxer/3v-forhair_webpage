@@ -17,8 +17,10 @@
       </header>
 
       <section class="modal-card-body">
-        <ul v-for="hint in hints">
-          <i>{{ hint | translate }}</i>
+        <ul>
+          <li v-for="hint in hints">
+            {{ hint | translate }}
+          </li>
         </ul>
 
         <textarea class="textarea control"
@@ -108,8 +110,14 @@
 <style lang="scss" scoped>
   @import '../style/3v-forhair';
 
-  ul {
-    margin-bottom: 20px;
+  #edit-window {
+    .modal-card {
+      width: 70%;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
   }
 
 </style>

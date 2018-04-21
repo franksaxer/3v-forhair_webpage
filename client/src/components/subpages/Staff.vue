@@ -13,22 +13,30 @@
         </div>
 
         <div class="stylistInfo">
-          <h3>{{ stylist.name }}</h3>
-          <h6><em>{{ stylist.kategorie }}</em></h6>
-          <ul>
-            <li v-for="stylistInfo in stylist.info">
+          <h3 @click="editText(stylist, 'name')">
+            {{ stylist.name }}
+          </h3>
+
+          <h6 @click="editText(stylist, 'kategorie')">
+            <em>{{ stylist.kategorie }}</em>
+          </h6>
+
+          <ul @click="editText(stylist, 'info')">
+            <li v-for="stylistInfo in stringToList(stylist.info)">
               {{ stylistInfo }}
             </li>
           </ul>
 
-          <p class="wartezeit">
+          <p  class="wartezeit"
+              @click="editText(stylist, 'wartezeit')">
+
             {{ stylist.wartezeit }}
           </p>
 
           <h4>{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
-          <ul>
-            <li v-for="arbeitszeit in stylist.arbeitszeiten">
-              {{arbeitszeit}}
+          <ul @click="editText(stylist, 'arbeitszeiten')">
+            <li v-for="arbeitszeit in stringToList(stylist.arbeitszeiten)">
+              {{ arbeitszeit }}
             </li>
           </ul>
         </div>

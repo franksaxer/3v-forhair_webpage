@@ -1,16 +1,22 @@
 <template>
   <section class="subpage">
-    <h1>{{ data.headline }}</h1>
+    <h1>{{ labels.SUBPAGE_IMPRESSUM_HEADER | translate }}</h1>
 
     <div class="impressum-box">
-      <div class="left">
-        <span v-for="contentImpress in data.contentImpressum">
+      <div class="left"
+           v-if="data.contentImpressum"
+           @click="editText(data, 'contentImpressum')">
+
+        <span v-for="contentImpress in stringToList(data.contentImpressum)">
           {{ contentImpress }}
         </span>
       </div>
 
-      <div class="right">
-        <span v-for="contentCopyRight in data.contentCopyright">
+      <div  class="right"
+            v-if="data.contentCopyright"
+            @click="editText(data, 'contentCopyright')">
+
+        <span v-for="contentCopyRight in stringToList(data.contentCopyright)">
           {{ contentCopyRight }}
         </span>
       </div>

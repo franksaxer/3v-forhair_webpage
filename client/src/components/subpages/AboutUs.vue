@@ -3,15 +3,21 @@
     <h1>{{ labels.SUBPAGE_ABOUT_US_HEADER | translate }}</h1>
 
     <div class="kategorie-list">
-      <h2>{{ data.subheadline }}</h2>
+      <h2 @click="editText(data, 'subheadline')">
+        {{ data.subheadline }}
+      </h2>
+
       <div  v-for="kategorie in data.kategorien"
             class="kategorie content-box">
 
-        <h4><em>{{ kategorie.bezeichnung }}</em></h4>
-        <ul class="beschreibungListe">
-          <li v-for="beschreibung in kategorie.beschreibung">
-            {{ beschreibung }}
-          </li>
+        <h4 @click="editText(kategorie, 'bezeichnung')">
+          <em>{{ kategorie.bezeichnung }}</em>
+        </h4>
+        <ul class="beschreibungListe"
+            v-for="beschreibung in stringToList(kategorie.beschreibung)"
+            @click="editText(kategorie, 'beschreibung')">
+
+          <li>{{ beschreibung }}</li>
         </ul>
       </div>
     </div>
@@ -27,7 +33,8 @@
 
           <div class="bild">
             <img :src="bild.url">
-            <h6 class="caption">
+            <h6 class="caption"
+                @click="editText(bild, 'title')">
               {{ bild.title }}
             </h6>
           </div>
@@ -37,11 +44,10 @@
 
     <hr>
 
-    <div class="aveda-mission">
+    <div class="aveda-mission"
+         v-if="data.contentAvedaMission">
       <h1>{{ labels.SUBPAGE_ABOUT_US_AVEDA_HEADER | translate }}</h1>
-      <span v-for="aveda in data.contentAvedaMission">
-        {{ aveda }}
-      </span>
+      <p @click="editText(data, 'contentAvedaMission')">{{ data.contentAvedaMission }}</p>
     </div>
   </section>
 </template>

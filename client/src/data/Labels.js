@@ -91,6 +91,9 @@ export default {
   // Impressum
   [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],
 
+  // Promotion
+  [keys.SUBPAGE_PROMOTION_HEADER]: ['Angebote', 'Promotion'],
+
   // Recension
   [keys.SUBPAGE_RECENSION_HEADER]: ['Das denken Kunden über uns:', 'What people say about us:'],
 

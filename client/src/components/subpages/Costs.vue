@@ -10,7 +10,7 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_SHE | translate">
 
-          <p>{{ data.she.subheadline }}</p>
+          <p @click="editText(data.she, 'subheadline')">{{ data.she.subheadline }}</p>
 
           <hr>
 
@@ -19,14 +19,16 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th v-for="head in table.header">
+                  <th v-for="head in table.header"
+                      @click="editText(table, 'header')">
                     {{ head }}
                   </th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr v-for="row in table.rows">
+                <tr v-for="(row, index) in table.rows"
+                    @click="editText(table.rows, index)">
                   <td v-for="column in row">
                     {{ column }}
                   </td>
@@ -40,7 +42,7 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_HE | translate">
 
-          <p >{{ data.he.subheadline}}</p>
+          <p @click="editText(data.she, 'subheadline')">{{ data.he.subheadline}}</p>
 
           <hr>
 
@@ -49,14 +51,16 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th v-for="head in table.header">
+                  <th v-for="head in table.header"
+                      @click="editText(table.header)">
                     {{ head }}
                   </th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr v-for="row in table.rows">
+                <tr v-for="(row, index) in table.rows"
+                    @click="editText(table.rows, index)">
                   <td v-for="column in row">
                     {{ column }}
                   </td>
@@ -67,11 +71,7 @@
           </template>
 
           <h3>Reine Männersache</h3>
-          <p>
-            Deinen Typ zu unterstreichen, das ist unser Ziel!<br/>
-            Entspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.<br/>
-            Individualität und Wohlbefinden stehen hierbei an erster Stelle.
-          </p>
+          <p @click="editText(data.he, 'content')">{{ data.he.content }}</p>
 
           <hr>
 
@@ -85,10 +85,16 @@
                 <div class="aktion">
                   <img :src="aktion.bild">
                   <div class="aktion-description">
-                    <h5>{{ aktion.headline }}</h5>
-                    <h6><em>{{ aktion.dauer }}</em></h6>
-                    <ul>
-                      <li v-for="be in aktion.beschreibung">
+                    <h5 @click="editText(aktion, 'headline')">
+                      {{ aktion.headline }}
+                    </h5>
+
+                    <h6 @click="editText(aktion, 'dauer')">
+                      <em>{{ aktion.dauer }}</em>
+                    </h6>
+
+                    <ul @click="editText(aktion, 'beschreibung')">
+                      <li v-for="be in stringToList(aktion.beschreibung)">
                         {{ be }}
                       </li>
                     </ul>
@@ -102,33 +108,40 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_COLORS | translate">
 
-          <p>{{ data.colors.subheadline }}</p>
-          <p>
-            Wollen sie mehr über unsere Farben erfahren?
-            <router-link :to="{ name: colorRoute }">Klicken sie hier</router-link>
+          <p @click="editText(data.colors, 'subheadline')">{{ data.colors.subheadline }}</p>
+
+          <p @click="editText(data.colors, 'link')">{{ data.colors.link }} <router-link :to="{ name: colorRoute }">Hier</router-link>
           </p>
 
           <hr>
 
-          <div v-for="tabelle in data.colors.tabellen">
-            <h5>{{ tabelle.tHeadline }}</h5>
-            <h6><em>{{ tabelle.tSubHeadline }}</em></h6>
+          <div v-for="table in data.colors.tabellen">
+            <h5 @click="editText(table, 'tHeadline')">
+              {{ table.tHeadline }}
+            </h5>
 
-            <table  v-for="subtabelle in tabelle.subtabelle"
+            <h6 @click="editText(table, 'tSubHeadline')">
+              <em>{{ table.tSubHeadline }}</em>
+            </h6>
+
+            <table  v-for="subtable in table.subtabelle"
                     class="table is-striped is-fullwidth">
 
               <thead>
                 <tr>
-                  <th v-if="subtabelle.header.length != 0"></th>
-                  <th v-for="head in subtabelle.header"
-                      v-if="subtabelle.header.length != 0">
+                  <th v-if="subtable.header.length != 0"></th>
+                  <th v-for="head in subtable.header"
+                      v-if="subtable.header.length != 0"
+                      @click="editText(subtable, 'header')">
                       {{ head }}
                   </th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr v-for="(row,index) in subtabelle.rows">
+                <tr v-for="(row, index) in subtable.rows"
+                    @click="editText(subtable.rows, index)">
+
                   <td v-for="column in row"
                       width="50px"
                       v-if="index == 0">

@@ -43,12 +43,12 @@
       <footer>
         <div>
           <i class="fa fa-phone"></i>
-          <span>{{ contactData.telefon.festnetz }}</span>
+          <span @click="editText(contactData.telefon, 'festnetz')">{{ contactData.telefon.festnetz }}</span>
         </div>
 
         <div>
           <i class="fa fa-envelope"></i>
-          <span>{{ contactData.mail.mail }}</span>
+          <span @click="editText(contactData.mail, 'mail')">{{ contactData.mail.mail }}</span>
         </div>
       </footer>
     </section>
