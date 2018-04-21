@@ -60,14 +60,9 @@
     },
 
     methods: {
-      contentIsArray () {
-        // Unfortuntely working with a computed property doesn't work.
-        return Array.isArray(this.content)
-      },
-
       parseContent (content) {
         // Convert the given content object to a string.
-        if (this.contentIsArray) {
+        if (Array.isArray(this.content)) {
           return content.reduce((a, b) => { return a + ArraySeparator + b })
         } else {
           return content
@@ -89,7 +84,7 @@
     computed: {
       // Convert the content as string back to the original content type.
       realContent () {
-        if (this.contentIsArray()) {
+        if (Array.isArray(this.content)) {
           return this.internalContent.split(ArraySeparator)
         } else {
           return this.internalContent
