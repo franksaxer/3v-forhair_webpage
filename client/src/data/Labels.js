@@ -26,6 +26,18 @@ export default {
   [keys.EDIT_IMG_BTN_BORDER]: ['Kante bewegen', 'Move border'],
   [keys.EDIT_MSG_UPLOAD]: ['Bild hochladen', 'Upload image'],
 
+  // Edit Window
+  [keys.EDIT_WINDOW_TITLE]: ['Bearbeiten', 'Edit'],
+  [keys.EDIT_WINDOW_BTN_OK]: ['OK'],
+  [keys.EDIT_WINDOW_HINT_MULTILINE]: {
+    [langs.DE]: 'Das Eroeffnen einer Zeile erscheint ebenfalls im Orginal.',
+    [langs.EN]: 'Start a new line will also be displayed in the original.'
+  },
+  [keys.EDIT_WINDOW_HINT_ABORT]: {
+    [langs.DE]: 'Alle Aenderungen koennen zurueckgesetzt werden durch Klicken des Schliessbuttons or ausserhalb des Fensters.',
+    [langs.EN]: 'All changes can be reset by click the close button or outsite of the window.'
+  },
+
   // Menu
   [keys.MENU_ENTRY_ABOUT_US]: ['Ueber Uns', 'About Us'],
   [keys.MENU_ENTRY_COLORS]: ['Farben', 'Colors'],
@@ -70,18 +82,12 @@ export default {
   [keys.SUBPAGE_COSTS_LABEL_COLORS]: ['Preise für Farbveränderungen', 'Prices for colors'],
 
   // Greeter
-  [keys.SUBPAGE_GREETER_HEADER]: {
-    [langs.DE]: 'Genieße eine Sinnesreise auf dem Pfad deines ayurvedischen Elements.',
-    [langs.EN]: 'TBD'
-  },
-
-  [keys.SUBPAGE_GREETER_CONTENT]: {
-    [langs.DE]: 'Vergesse den Stress des Alltags bei einer "Anti-Stress"-Kopfmassage oder entspanne bei einer "Hands-on"-Handmassage. Dich noch schöner zu machen, deine Individualität zu betonen und dir dabei den Aufenthalt so angenehm wie möglich zu gestalten, das ist unser Ziel. Wir nehmen uns noch Zeit für dich und beraten dich gerne. Am Ende entscheidest du selbst, mit welchem neuen Look und/oder welcher Haarfarbe du dein neues Ich erfährst. Wir haben uns ganz gezielt für die Produkte von Aveda entschieden, weil wir auf höchstem Niveau arbeiten und uns unserer umweltpolitischen Verantwortung bewusst sind. Die Produkte von Aveda verbinden höchsten Anspruch und neueste Entwicklungen mit altbewährten Traditionen von Naturvölkern unterschiedlichster Herkunft. Die fast ausschließlich pflanzlichen Rohstoffe werden weitestgehend ökologisch angebaut und schonend verarbeitet. Dies geschieht zum Wohle von Mensch, Tier und Natur. Doch erfahre es selbst und buche noch heute deinen Termin.',
-    [langs.EN]: 'TBD'
-  },
 
   // Impressum
   [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],
+
+  // Promotion
+  [keys.SUBPAGE_PROMOTION_HEADER]: ['Angebote', 'Promotion'],
 
   // Recension
   [keys.SUBPAGE_RECENSION_HEADER]: ['Das denken Kunden über uns:', 'What people say about us:'],

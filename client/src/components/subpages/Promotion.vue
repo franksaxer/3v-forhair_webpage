@@ -1,114 +1,95 @@
 <template>
-  <section class="section subpage content">
-    <h1>{{promotation.headline}}</h1>
-    <div v-for="aktion in promotation.aktionen" class="content-box">
-      <div class="contentAktion">
-        <h3>{{aktion.headline}}</h3>
-        <h4 v-if="aktion.subheadline">{{aktion.subheadline}}</h4>
-        <h5 v-if="aktion.beschreibung">{{aktion.beschreibung}}</h5>
+  <section class="subpage">
+    <h1>{{ labels.SUBPAGE_PROMOTION_HEADER | translate }}</h1>
+
+    <div  v-for="aktion in data.aktionen"
+          class="content-box"
+          v-if="data.aktionen">
+
+      <div>
+        <img v-bind:src="aktion.bild">
+      </div>
+
+      <div class="description">
+        <h3 @click="editText(aktion, 'headline')">
+          {{ aktion.headline }}
+        </h3>
+
+        <h5 @click="editText(aktion, 'subheadline')">
+          {{ aktion.subheadline }}
+        </h5>
+
+        <p @click="editText(aktion, 'beschreibung')">{{ aktion.beschreibung }}</p>
+
         <div v-for="unterAktion in aktion.unterAktionen">
-          <h5 v-if="unterAktion.headline">{{unterAktion.headline}}</h5>
-          <ul>
-            <li v-for="beschreibung in unterAktion.beschreibung">{{beschreibung}}</li>
+          <h5 @click="editText(unterAktion, 'headline')">
+            {{ unterAktion.headline }}
+          </h5>
+
+          <ul @click="editText(unterAktion, 'beschreibung')">
+            <li v-for="beschreibung in stringToList(unterAktion.beschreibung)">
+              {{ beschreibung }}
+            </li>
           </ul>
         </div>
-      </div>
-      <div class="contentImage">
-        <img v-bind:src="aktion.bild">
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  import {DataStoreEntries, loadDataObject} from '../../data/DataManager'
+  import Subpage from '../../plugins/SubpageMixin'
+  import { DataStoreEntries } from '../../data/DataManager'
 
   export default {
-    name: 'promotation',
+    name: 'promotion',
 
-    components: {
-    },
-
-    props: {
-      name: {type: String}
-    },
+    mixins: [Subpage],
 
     data () {
       return {
-        promotation: {}
+        dataKey: DataStoreEntries.promotion.key
       }
-    },
-
-    methods: {
-
-    },
-
-    async created () {
-      this.promotation = await loadDataObject(DataStoreEntries.promotation.key)
     }
-
   }
 
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../node_modules/include-media/dist/include-media';
+  @import '~include-media/dist/include-media';
   @import '../../style/subpages';
 
   .subpage{
-    flex-direction: column;
-    align-items: center;
-
     .content-box{
-      padding: 20px;
-      width: 70%;
       display: flex;
+      flex-direction: row;
       margin-bottom: 20px;
       background-color: rgba(27, 63, 27,.4);
-
-      h1, h3,h4,h5,ul,p{
-        color:white;
-        line-height: 1.4;
-        $shadowColor:black;
-        text-shadow:
-          0 0 2px $shadowColor,
-          0 0 2px $shadowColor
-      }
-
-      p {
-        line-height: 1.6;
-      }
 
       @include media("<desktop") {
         flex-direction: column;
         align-items: center;
 
-        h3,  h4, h6 {
+        h3, h5 {
           text-align: center;
         }
       }
 
-      .contentAktion {
+      .description {
         @include media(">=desktop") {
           width: 70%;
-          padding-right: 10px;
+          margin-left: 20px;
         }
+
         @include media("<desktop") {
-          width: 90%;
-          padding: 0px;
-          margin: auto;
+          padding: 5px;
+          margin-top: 20px;
         }
       }
 
-      ul{
-        margin-bottom: 30px;
+      ul {
+        margin-bottom: 20px;
       }
-
     }
-
-
-
   }
-
-
 </style>

@@ -1,3 +1,6 @@
+// Import the edit window component.
+import EditWindow from './EditWindow'
+
 // The plugin itself.
 const EditableView = {
   install: function (Vue, options) {
@@ -29,6 +32,47 @@ const EditableView = {
       // Catch the event to show the slots content.
       created () {
         window.editableViewBus.$on('setEditable', enable => { this.enabled = enable })
+      }
+    })
+
+    Vue.mixin({
+      methods: {
+        stringToList (text) {
+          // Make working on a string object.
+          if (typeof text !== 'string') {
+            throw new Error('Can only split strings into lists! (is ' + typeof text + ')')
+          }
+
+          // Split the string by the newline character.
+          return text.split('\n')
+        },
+
+        editText (object, prop) {
+          // Root where to add the DOM element,
+          const root = document.getElementById('app')
+
+          // Create a new instance of the component.
+          const Component = Vue.extend(EditWindow)
+          const instance = new Component({
+            propsData: { content: object[prop] }
+          })
+
+          // Fetch changes to the model property.
+          instance.$on('change', value => {
+            object[prop] = value
+          })
+
+          // Fetch destroy event.
+          instance.$on('destroy', () => {
+            // Destroy the Vue instance and remove the DOM element.
+            instance.$destroy()
+            root.removeChild(instance.$el)
+          })
+
+          // Mount and insert the instance to the DOM.
+          instance.$mount()
+          root.appendChild(instance.$el)
+        }
       }
     })
   }

@@ -6,17 +6,50 @@ $color-invert: rgba(246, 250, 255, 0.6);
 $header-height: 50px;
 $footer-height: 50px;
 $mainMenu-height: 35px;
+$icon-radius: calc(#{$header-height} * 2);
+
+/* Index */
 $layout-element-layer: 10;
 $overlay-index: calc(#{$layout-element-layer} + 1);
 $menu-index: calc(#{$overlay-index} + 1);
-$icon-radius: calc(#{$header-height} * 2);
 
 /* Transistions */
 $transition: all .5s;
 
-hr{
+/* Other */
+$border-radius: 10px;
+
+
+/* Bulma */
+// Import the variables first.
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+
+// Overwrite Bulma variables.
+// Colors
+$primary: $color-base;
+$primary-invert: $color-invert;
+$link: lighten($primary, 10%);
+
+// Table
+$table-background-color: rgba(white, 0.9);
+
+// Modal
+$modal-z: calc(#{$menu-index} + 1);
+$modal-content-width: 400px;
+$modal-card-spacing: 40px;
+$modal-card-head-radius: $border-radius;
+$modal-card-foot-radius: $border-radius;
+
+// Import Bulma classes afterwards.
+@import '../../node_modules/bulma/bulma';
+
+hr {
   display: block;
   color:white;
+}
+
+p {
+  white-space: pre-line;
 }
 
 /* Classes */
@@ -52,4 +85,33 @@ hr{
 
 @function intenseShadow($color) {
   @return 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color
+}
+
+
+.modal {
+  .modal-card-head, .modal-card-foot {
+    text-align: center;
+  }
+
+  .modal-card-foot {
+    button {
+      width: 150px; // To avoid resizing when loading.
+      margin: auto; // Centralize the button or equal divide the space.
+    }
+  }
+
+  .modal-card-body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    p {
+      text-align: center;
+      margin-bottom: 20px; // Between this text and the input element.
+
+      &.error-message {
+        color: red!important;
+      }
+    }
+  }
 }

@@ -43,12 +43,12 @@
       <footer>
         <div>
           <i class="fa fa-phone"></i>
-          <span>{{ contactData.telefon.festnetz }}</span>
+          <span @click="editText(contactData.telefon, 'festnetz')">{{ contactData.telefon.festnetz }}</span>
         </div>
 
         <div>
           <i class="fa fa-envelope"></i>
-          <span>{{ contactData.mail.mail }}</span>
+          <span @click="editText(contactData.mail, 'mail')">{{ contactData.mail.mail }}</span>
         </div>
       </footer>
     </section>
@@ -61,8 +61,7 @@
          class="modal-background">
     </div>
 
-    <div id="authentication-modal"
-         class="modal-card"
+    <div class="modal-card"
          v-if="authenticationModalOpen">
 
       <header class="modal-card-head">
@@ -223,19 +222,6 @@
 
   // Import own styles
   @import './style/3v-forhair';
-
-  /* Bulma */
-  // Import the variables first.
-  @import '~bulma/sass/utilities/initial-variables';
-
-  // Overwrite Bulma variables.
-  $primary: $color-base;
-  $primary-invert: $color-invert;
-  $link: lighten($primary, 10%);
-  $table-background-color: rgba(white, 0.9);
-
-  // Import Bulma classes afterwards.
-  @import '~bulma/bulma';
 
 
   body {
@@ -403,44 +389,4 @@
     // The secondary color of Bulma does not rly work together.
     color: white!important;
   }
-
-
-  #authentication-modal {
-    $width: 400px;
-    $height: 330px;
-
-    position: absolute;
-    top: calc(50vh - (#{$height} /2));
-    left: calc(50vw - (#{$width} /2));
-
-    width: $width;
-    height: $height;
-
-
-    .modal-card-head, .modal-card-foot {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-
-      button {
-        width: 150px; // To avoid resizing when loading.
-      }
-    }
-
-    .modal-card-body {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-
-      p {
-        text-align: center;
-        margin-bottom: 20px; // Between this text and the input element.
-
-        &.error-message {
-          color: red!important;
-        }
-      }
-    }
-  }
-
 </style>

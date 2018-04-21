@@ -1,30 +1,30 @@
 {
   "subheadline":"Unsere Stylisten sind je nach Berufserfahrung, Abschluss und Aveda-Schulungen in verschiedene Kategorien gegliedert.",
   "kategorien":[
-    {"bezeichnung":"Top Stylist:",
-    "beschreibung":[
-      "Frisörgeselle/in mit mindestens drei Jahren Berufserfahrung und div. Aveda-Schulungen."
-    ]},
-    {"bezeichnung":"Master Stylist:",
-      "beschreibung":[
-        "Frisörmeister/in mit mehrjähriger Berufserfahrung und zahlreichen Aveda-Schulungen."
-      ]},
-    {"bezeichnung":"Senior Stylist:",
-      "beschreibung":[
-        "Frisörmeister/in mit mindestens 20 Jahren Berufserfahrung und zahlreichen Aveda-Schulungen."
-      ]},
-    {"bezeichnung":"Colorist:",
-      "beschreibung":[
-        "direkt auf Farbe spezialisierter Frisörgeselle mit div. Farbseminaren und guten Farbkenntnissen."
-      ]},
-    {"bezeichnung":"Top Colorist:",
-      "beschreibung":[
-        "zusätzlich auf Farbe geschulter Frisörgeselle mit zahlreichen Farbseminaren und mehrjährigen Farbkenntnissen."
-      ]},
-    {"bezeichnung":"Master of Color:",
-      "beschreibung":[
-        "Farbexperte mit über 25 Jahren Berufserfahrung als Colorist."
-      ]}
+    {
+      "bezeichnung": "Top Stylist:",
+      "beschreibung": "Frisörgeselle/in mit mindestens drei Jahren Berufserfahrung und div. Aveda-Schulungen."
+    },
+    {
+      "bezeichnung": "Master Stylist:",
+      "beschreibung": "Frisörmeister/in mit mehrjähriger Berufserfahrung und zahlreichen Aveda-Schulungen."
+    },
+    {
+      "bezeichnung": "Senior Stylist:",
+      "beschreibung": "Frisörmeister/in mit mindestens 20 Jahren Berufserfahrung und zahlreichen Aveda-Schulungen."
+    },
+    {
+      "bezeichnung": "Colorist:",
+      "beschreibung": "direkt auf Farbe spezialisierter Frisörgeselle mit div. Farbseminaren und guten Farbkenntnissen."
+    },
+    {
+      "bezeichnung": "Top Colorist:",
+      "beschreibung": "zusätzlich auf Farbe geschulter Frisörgeselle mit zahlreichen Farbseminaren und mehrjährigen Farbkenntnissen."
+    },
+    {
+      "bezeichnung": "Master of Color:",
+      "beschreibung": "Farbexperte mit über 25 Jahren Berufserfahrung als Colorist."
+    }
   ],
 
   "salonBilder":[
@@ -54,9 +54,5 @@
     }
   ],
 
-  "contentAvedaMission":[
-    "Aveda hat sich zum Ziel gesetzt, sorgsam und respektvoll mit der Umwelt umzugehen.",
-    "Diese Philosophie kommt sowohl in unseren Produkten als auch in unserem Bemühen um das Wohlergehen der Mitmenschen zum Ausdruck.",
-    "Aveda will im Verantwortungsbewussten Umgang mit der Natur und ihren Ressourcen eine Führungsrolle übernehmen - nicht nur in der Welt der Kosmetik, sondern auch zugunsten der Welt in der wir leben."
-  ]
+  "contentAvedaMission": "Aveda hat sich zum Ziel gesetzt, sorgsam und respektvoll mit der Umwelt umzugehen.\nDiese Philosophie kommt sowohl in unseren Produkten als auch in unserem Bemühen um das Wohlergehen der Mitmenschen zum Ausdruck.\nAveda will im Verantwortungsbewussten Umgang mit der Natur und ihren Ressourcen eine Führungsrolle übernehmen - nicht nur in der Welt der Kosmetik, sondern auch zugunsten der Welt in der wir leben."
 }

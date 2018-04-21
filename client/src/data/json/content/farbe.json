@@ -1,10 +1,7 @@
 {
-  "subheadline1":"Was steckt in Deiner Haarfarbe?",
-  "subheadline2":"Ist es Dir wichtig zu wissen was auf Deinen Kopf kommt?",
-  "subheadline3":"Full Spectrum Haarfarbe ist aus bis zu 96% natürlich gewonnenen Inhaltsstoffen.",
-  "faktList":[
-    "Unsere innovativen, lang anhaltenden Farbformulierungen beinhalten natürlich gewonnene Inhaltsstoffe und UV Filter.","Rizinus-, Jojoba-, Kokosnuss,- und Babassu-Öle pflegen das Haar während der Farbbehandlung und verleihen außergewöhnlichen Glanz - für einzigartig haarschonende Farbergebnisse.","Das kraftvoll Antioxidans Rooibos-Tee schützt unsere Haarfarbformulierungen; der patentierte Grüntee-Extrakt kreiert eine umfassende Farbpalette."
-  ],
+  "subheadline":"Was steckt in Deiner Haarfarbe?\nIst es Dir wichtig zu wissen was auf Deinen Kopf kommt?",
+  "subheadline2":"Full Spectrum Haarfarbe ist aus bis zu 96% natürlich gewonnenen Inhaltsstoffen.",
+  "faktList": "Unsere innovativen, lang anhaltenden Farbformulierungen beinhalten natürlich gewonnene Inhaltsstoffe und UV Filter.\nRizinus-, Jojoba-, Kokosnuss,- und Babassu-Öle pflegen das Haar während der Farbbehandlung und verleihen außergewöhnlichen Glanz - für einzigartig haarschonende Farbergebnisse.\nDas kraftvoll Antioxidans Rooibos-Tee schützt unsere Haarfarbformulierungen; der patentierte Grüntee-Extrakt kreiert eine umfassende Farbpalette.",
   "videoID":"D7CEOHZD1qc",
 
   "möglichkeiten":[
@@ -42,41 +39,31 @@
     }
   ],
 
-  "subheadline7":"Ein Wirkstoff, der die Haarwelt verändert!",
-  "olaplexContent":[
-    "OLAPLEX ist eine schwach chemisch wirkende Behandlung, die einen umkehrenden, positiven Einfluss auf haarschädigende Maßnahmen hat! Es repariert die beschädigten Doppelschwefelbrücken im Haar inneren, welche für Substanz, Sprungkraft, Elastizität und Reißfestigkeit des Haares verantwortlich sind.",
-    "OLAPLEX stellt gebrochene Doppelschwefelbrücken im Haar wieder her, die während thermalen, mechanischen und chemischen Anwendungen sowie im Alltag beschädigt werden und ermöglicht somit intensivere, extremere und langanhaltendere Farbergebnisse.",
-    "OLAPLEX ist frei von Silikonen, Sulfaten, Phthalaten, DEA, Aldehyden und ist zudem ohne Tierversuche! In erster Linie dient OLAPLEX beim Färben und Blondieren als Haar- und bei Allergikern als Kopfhautschutz und verbessert die Struktur während des Färbeprozesses erheblich."
-  ],
+  "olaplex": {
+    "healine":"Ein Wirkstoff, der die Haarwelt verändert!",
+    "content": "OLAPLEX ist eine schwach chemisch wirkende Behandlung, die einen umkehrenden, positiven Einfluss auf haarschädigende Maßnahmen hat! Es repariert die beschädigten Doppelschwefelbrücken im Haar inneren, welche für Substanz, Sprungkraft, Elastizität und Reißfestigkeit des Haares verantwortlich sind.\nOLAPLEX stellt gebrochene Doppelschwefelbrücken im Haar wieder her, die während thermalen, mechanischen und chemischen Anwendungen sowie im Alltag beschädigt werden und ermöglicht somit intensivere, extremere und langanhaltendere Farbergebnisse.\nOLAPLEX ist frei von Silikonen, Sulfaten, Phthalaten, DEA, Aldehyden und ist zudem ohne Tierversuche! In erster Linie dient OLAPLEX beim Färben und Blondieren als Haar- und bei Allergikern als Kopfhautschutz und verbessert die Struktur während des Färbeprozesses erheblich.",
 
-  "olaplexProdukte":[
-    {
-      "headline":"OLAPLEX No.1",
-      "description":"Dient als 'Color In' und wird der Haarfarbe zugemischt und verringert so die Haarschädigung schon beim Haare färben um bis zu 90%.",
-      "preise":[
-        "Ansatzfarbe 5,- €","Neufärbung 10,- €","bei Strähnen von 10,-€ bis 15,-€","Blondierungen von 7,50 € bis 17,50 €"
-      ]
-    },
-    {
-      "headline":"OLAPLEX No.2",
-      "description":"Dient als „COLOR / BLEACH FINISH“ und wird zum Abschluss einer Farb / Strähnen Behandlung angewandt und repariert geschädigte Doppelschwefelbrücken.",
-      "preise":[
-        "Kurzes schon ab 10,-€ ","langes Haar 25,-€"
-      ]
-    },
-    {
-      "headline":"OLAPLEX REBUILD",
-      "description":"Dient als Aufbaubehandlung geschädigter Haare, oder zum Aufbau der Haar Haare vor extremer Farbbehandlungen. ",
-      "preise":[
-        "Kurzes schon ab 20,-€ ","langes Haar 35,-€"
-      ]
-    },
-    {
-      "headline":"OLAPLEX No.3 (100ml) ",
-      "description":"Dient zur Weiterbehandlung für Zuhause und sollte je nach Haarschäden und Stylingverhalten 1 - 4 mal im Monat Zuhause angewandt werden.",
-      "preise":[
-        "Preis 49,50€"
-      ]
-    }
-  ]
+    "produkte":[
+      {
+        "headline":"OLAPLEX No.1",
+        "description":"Dient als 'Color In' und wird der Haarfarbe zugemischt und verringert so die Haarschädigung schon beim Haare färben um bis zu 90%.",
+        "preise": "Ansatzfarbe 5,- €\nNeufärbung 10,- €\nbei Strähnen von 10,-€ bis 15,-€\nBlondierungen von 7,50 € bis 17,50 €"
+      },
+      {
+        "headline":"OLAPLEX No.2",
+        "description":"Dient als „COLOR / BLEACH FINISH“ und wird zum Abschluss einer Farb / Strähnen Behandlung angewandt und repariert geschädigte Doppelschwefelbrücken.",
+        "preise": "Kurzes schon ab 10,-€\nlanges Haar 25,-€"
+      },
+      {
+        "headline":"OLAPLEX REBUILD",
+        "description":"Dient als Aufbaubehandlung geschädigter Haare, oder zum Aufbau der Haar Haare vor extremer Farbbehandlungen. ",
+        "preise": "Kurzes schon ab 20,-€\nlanges Haar 35,-€"
+      },
+      {
+        "headline":"OLAPLEX No.3 (100ml)",
+        "description":"Dient zur Weiterbehandlung für Zuhause und sollte je nach Haarschäden und Stylingverhalten 1 - 4 mal im Monat Zuhause angewandt werden.",
+        "preise": "Preis 49,50€"
+      }
+    ]
+  }
 }

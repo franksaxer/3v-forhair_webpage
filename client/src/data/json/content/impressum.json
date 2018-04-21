@@ -1,16 +1,5 @@
 {
   "headline":"Impressum",
-  "contentImpressum":[
-    "3v for hair / Friseurmeister Frank Saxer,",
-    "Rankestr. 24 10789 Berlin",
-    "Tel. 030-30104598",
-    "Steuernummer: 13/505/62030",
-    "Zuständige Handwerkskammer Berlin,",
-    "Blücherstr. 68 Berlin",
-    "Tel.030-95903-01"
-  ],
-  "contentCopyright":[
-    "Fotos dieser Homepage unterliegen unter anderem den Copyrights von 3v photography / Frank Saxer oder Aveda. ",
-    "Nutzung jeglicher Art bedürfen einer schriftlichen Genehmigung!"
-  ]
+  "contentImpressum": "3v for hair / Friseurmeister Frank Saxer\nRankestr. 24 10789 Berlin\nTel. 030-30104598\nSteuernummer: 13/505/62030\nZuständige Handwerkskammer Berlin\nBlücherstr. 68 Berlin\nTel.030-95903-01",
+  "contentCopyright": "Fotos dieser Homepage unterliegen unter anderem den Copyrights von 3v photography / Frank Saxer oder Aveda.\nNutzung jeglicher Art bedürfen einer schriftlichen Genehmigung!"
 }

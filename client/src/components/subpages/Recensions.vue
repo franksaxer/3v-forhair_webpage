@@ -5,22 +5,17 @@
     <div  v-for="rezension in data.rezensionen"
           class="renzension">
 
-      <h2>
+      <h2 @click="editText(rezension, 'headline')">
         <i class="fa fa-angle-right"></i>
         {{ rezension.headline }}
         <i class="fa fa-angle-left"></i>
       </h2>
 
-      <ul>
-        <p v-for="content in rezension.content"
-           class="content">
-          {{ content }}
-        </p>
-      </ul>
+      <p  class="content"
+          @click="editText(rezension, 'content')">{{ rezension.content }}</p>
 
-      <p class="content">
-        {{ rezension.offer }}
-      </p>
+      <p class="offer"
+          @click="editText(rezension, 'offer')">{{ rezension.offer }}</p>
     </div>
 
     <p class="linkText">
@@ -69,12 +64,16 @@
     }
 
     .renzension{
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      text-shadow: decentShadow(black);
 
       .content {
-        margin-bottom: 0;
         color: rgb(250, 250, 210)  ;
-        text-shadow: decentShadow(black);
+        margin-bottom: 5px;
+      }
+
+      .offer {
+        font-style: italic;
       }
     }
 

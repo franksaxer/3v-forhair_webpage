@@ -16,7 +16,6 @@
   </div>
 </template>
 
-
 <script>
   // Import enums.
   import * as langs from '../enums/Languages'
@@ -54,13 +53,10 @@
   }
 </script>
 
-
 <style lang="scss">
   // Import 3rd party styles
   @import '~include-media/dist/include-media';
-  @import '~bulma/sass/utilities/initial-variables';
-  @import '~bulma/sass/utilities/derived-variables';
-
+  @import '~bulma/bulma';
   // Import own styles
   @import '../style/3v-forhair';
 

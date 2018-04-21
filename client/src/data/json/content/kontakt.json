@@ -11,19 +11,16 @@
   },
 
   "adresse":{
-    "straße":"Rankestraße 24",
-    "ort":"10789 Berlin",
+    "anschrift":"Rankestraße 24\n10789 Berlin",
     "hinweise":[
       "(5 Kundenparkplätze vorhanden)"
     ]
   },
 
   "öffnungszeiten":{
-    "tage":[
-      "Dienstag, Mittwoch, Freitag 10-20 Uhr","Donnerstag 10-22 Uhr","Samstag 10-18 uhr"
-    ]
+    "tage": "Dienstag, Mittwoch, Freitag 10-20 Uhr\nDonnerstag 10-22 Uhr\nSamstag 10-18 uhr"
   },
 
-  "emailHeadline":"Ihre Meinung ist uns wichtig.Schreiben Sie uns!",
+  "emailHeadline":"Ihre Meinung ist uns wichtig. Schreiben Sie uns!",
   "emailSubheadline":"Um uns eine E-Mail zu schicken nutzen Sie einfach unser Kontaktformular!"
 }
