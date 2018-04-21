@@ -43,9 +43,13 @@ $modal-card-foot-radius: $border-radius;
 // Import Bulma classes afterwards.
 @import '../../node_modules/bulma/bulma';
 
-hr{
+hr {
   display: block;
   color:white;
+}
+
+p {
+  white-space: pre-line;
 }
 
 /* Classes */
