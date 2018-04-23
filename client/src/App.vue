@@ -34,7 +34,7 @@
         </button>
       </header>
 
-      <main class="">
+      <main class="content">
         <main-menu :space="!logoInLowerPosition"/>
         <router-view></router-view>
       </main>
@@ -122,7 +122,7 @@
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
-        sessionKey: null, // The session key when authorized.
+        sessionKey: 'ahhl', // The session key when authorized.
         // The data objects
         contactData: {
           telefon: {},
@@ -205,7 +205,7 @@
       // Load lata here.
       this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
       this.subpages = await loadDataObject(DataStoreEntries.mainMenu.key)
-
+      // this.$setEditable()
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
         // Open the authentication modal.
