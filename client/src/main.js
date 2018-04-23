@@ -8,7 +8,6 @@ import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
-import SwitchEffect from './plugins/SwitchEffect'
 
 // Import the router configuration
 import router from './Router.js'
@@ -26,7 +25,6 @@ Vue.use(VueYoutube)
 Vue.use(VeeValidate)
 Vue.use(DeviceDetector)
 Vue.use(EdiableView)
-Vue.use(SwitchEffect)
 Vue.use(MultilangStore, {
   languageList: langs,
   defaultLanguage: langs.DE,
