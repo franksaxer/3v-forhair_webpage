@@ -37,7 +37,7 @@ Vue.use(MultilangStore, {
 // Import global components
 import App from './App'
 import VueToggle from 'vue-toggle'
-import VueYoutube from 'vue-youtube'
+import VueYoutube from 'vue-youtube-embed'
 import VeeValidate from 'vee-validate'
 
 VeeValidate.Validator.extend('passphrase', {
