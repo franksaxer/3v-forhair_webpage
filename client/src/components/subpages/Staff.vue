@@ -17,21 +17,17 @@
             {{ stylist.name }}
           </h3>
 
-          <h6 @click="editText(stylist, 'kategorie')">
-            <em>{{ stylist.kategorie }}</em>
-          </h6>
+            <router-link :to="{ name: routes.ABOUT_US }"><h6 @click="editText(stylist, 'kategorie')"><em>{{ stylist.kategorie }}</em></h6></router-link>
 
           <ul @click="editText(stylist, 'info')">
             <li v-for="stylistInfo in stringToList(stylist.info)">
               {{ stylistInfo }}
             </li>
           </ul>
+          <p @click="editText(stylist,'urlaub')"
+             v-if="$editable || stylist.urlaub" class="urlaub">Im Urlaub: {{ stylist.urlaub }}</p>
 
-          <p  class="wartezeit"
-              @click="editText(stylist, 'wartezeit')">
-
-            {{ stylist.wartezeit }}
-          </p>
+          <p  class="wartezeit" @click="editText(stylist, 'wartezeit')">{{ stylist.wartezeit }}</p>
 
           <h4>{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
           <ul @click="editText(stylist, 'arbeitszeiten')">
@@ -49,6 +45,7 @@
 <script>
   import Subpage from '../../plugins/SubpageMixin'
   import { DataStoreEntries } from '../../data/DataManager'
+  import * as routeNames from '../../enums/RouteNames'
 
   export default {
     name: 'staff',
@@ -57,7 +54,8 @@
 
     data () {
       return {
-        dataKey: DataStoreEntries.stylisten.key
+        dataKey: DataStoreEntries.stylisten.key,
+        routes: routeNames
       }
     }
   }
@@ -88,6 +86,11 @@
         margin: 10px 2%;
         display: flex;
         width: 46%;
+        padding-bottom: 20px;
+
+        h6{
+          text-decoration: underline;
+        }
 
         @include media("<desktop") {
           flex-direction: column;
@@ -108,8 +111,15 @@
           @include media("<desktop") {
             width: 50%;
             padding-top: 10px;
-            margin: auto;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 20px;
           }
+        }
+        .urlaub{
+          font-weight: bold;
+          color:rgb(204,51,51);
+          text-align: center;
         }
 
         .wartezeit{

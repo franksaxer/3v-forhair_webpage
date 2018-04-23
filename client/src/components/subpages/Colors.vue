@@ -156,11 +156,16 @@
       margin-bottom: 30px;
 
       h2 {
-        margin: 10px 0;
+        margin-top: 0;
+        margin: 30px 0!important;
       }
 
       h5 {
         margin: 0 0 5px;
+      }
+
+      p{
+        padding-left: 10px;
       }
 
       .content-box{

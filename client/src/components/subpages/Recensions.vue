@@ -21,20 +21,31 @@
     <p class="linkText">
       {{ data.linkText }}
       <span>
-        <a href="">hier!</a>
+        <a target="_blank" href="https://www.kennstdueinen.de/friseur-berlin-3v-for-hair-aveda-concept-salon-d99442.html">hier!</a>
       </span>
     </p>
+
+    <vue-goodshare-facebook
+      page_url="https://www.facebook.com/pg/3v-for-hair-229943350464141/reviews/"
+      title_social="Facebook"
+      has_counter
+      has_icon/>
   </div>
 </template>
 
 <script>
   import Subpage from '../../plugins/SubpageMixin'
   import { DataStoreEntries } from '../../data/DataManager'
+  import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue'
 
   export default {
     name: 'rezensionen',
 
     mixins: [Subpage],
+
+    components: {
+      VueGoodshareFacebook
+    },
 
     data () {
       return {

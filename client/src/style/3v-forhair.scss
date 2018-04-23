@@ -19,7 +19,7 @@ $transition: all .5s;
 /* Other */
 $border-radius: 10px;
 
-
+@import '../../node_modules/include-media/dist/include-media';
 /* Bulma */
 // Import the variables first.
 @import '../../node_modules/bulma/sass/utilities/initial-variables';
@@ -42,6 +42,16 @@ $modal-card-foot-radius: $border-radius;
 
 // Import Bulma classes afterwards.
 @import '../../node_modules/bulma/bulma';
+
+
+body{
+  @include media('<desktop'){
+    font-size: 35px;
+  }
+  @include media('>=desktop'){
+    font-size: 15px;
+  }
+}
 
 hr {
   display: block;

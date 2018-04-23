@@ -8,6 +8,7 @@ import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
+import VueParticles from 'vue-particles'
 
 // Import the router configuration
 import router from './Router.js'
@@ -18,6 +19,7 @@ import * as keys from './enums/LabelKeys'
 import labels from './data/Labels'
 
 // Register the plugins.
+Vue.use(VueParticles)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(VDragged)
