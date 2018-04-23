@@ -6,7 +6,12 @@
     <section id="layout">
       <header>
         <div id="label-with-icon">
-          <h1>for</h1>
+          <vue-typer text='for'
+                     :repeat="0"
+                     :initialAction="typing"
+                     :pre-type-delay="1000"
+                     :typeDelay="200"/>
+
           <img  id="logo"
                 :class="{'lower-position': logoInLowerPosition}"
                 @click='goHome()'
@@ -15,7 +20,11 @@
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
 
-          <h1>hair</h1>
+          <vue-typer text='hair'
+                     :repeat="0"
+                     :initialAction="typing"
+                     :pre-type-delay="1600"
+                     :typeDelay="200"/>
         </div>
 
         <button id="logout-button"
@@ -103,6 +112,7 @@
   import LanguageSelector from './components/LanguageSelector.vue'
   import AdvertisementBanner from './components/AdvertismentBanner.vue'
   import MainMenu from './components/MainMenu.vue'
+  import { VueTyper } from 'vue-typer'
 
   // Import manager and utilities components.
   import {DataStoreEntries, loadDataObject} from './data/DataManager'
@@ -134,7 +144,8 @@
     components: {
       'language-selector': LanguageSelector,
       'advertisement-banner': AdvertisementBanner,
-      'main-menu': MainMenu
+      'main-menu': MainMenu,
+      VueTyper
     },
 
     methods: {
@@ -261,12 +272,12 @@
         display: flex;
         flex-flow: row;
 
-        h1 {
+        .vue-typer {
+          padding: 0 5px;
           color: $primary;
           font-size: calc(#{$header-height * 0.7});
           font-weight: 500;
           font-family: "Times New Roman", Times, serif;
-          padding: 0 5px;
         }
 
         #logo {
