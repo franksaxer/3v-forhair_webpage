@@ -26,12 +26,10 @@
               {{ stylistInfo }}
             </li>
           </ul>
+          <p @click="editText(stylist,'urlaub')"
+             v-if="$editable || stylist.urlaub" class="urlaub">Im Urlaub: {{ stylist.urlaub }}</p>
 
-          <p  class="wartezeit"
-              @click="editText(stylist, 'wartezeit')">
-
-            {{ stylist.wartezeit }}
-          </p>
+          <p  class="wartezeit" @click="editText(stylist, 'wartezeit')">{{ stylist.wartezeit }}</p>
 
           <h4>{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
           <ul @click="editText(stylist, 'arbeitszeiten')">
@@ -114,7 +112,11 @@
             padding-bottom: 20px;
           }
         }
-
+        .urlaub{
+          font-weight: bold;
+          color:rgb(204,51,51);
+          text-align: center;
+        }
 
         .wartezeit{
           margin:auto;

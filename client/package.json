@@ -22,10 +22,12 @@
     "vue-bulma-tabs": "^1.1.2",
     "vue-carousel": "^0.6.9",
     "vue-device-detector": "github:weilbith/vue-device-detector",
+    "vue-goodshare": "^0.9.3",
     "vue-multilang-store": "github:weilbith/vue-multilang-store",
     "vue-resource": "^1.3.4",
     "vue-router": "^3.0.1",
-    "vue-toggle": "github:weilbith/vue-toggle"
+    "vue-toggle": "github:weilbith/vue-toggle",
+    "vue-youtube-embed": "^2.1.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

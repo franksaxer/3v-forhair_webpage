@@ -8,7 +8,6 @@ import VDragged from 'v-dragged'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
-import SwitchEffect from './plugins/SwitchEffect'
 import VueParticles from 'vue-particles'
 
 // Import the router configuration
