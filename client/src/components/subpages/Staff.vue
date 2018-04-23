@@ -88,6 +88,7 @@
         margin: 10px 2%;
         display: flex;
         width: 46%;
+        padding-bottom: 20px;
 
         @include media("<desktop") {
           flex-direction: column;
@@ -108,9 +109,12 @@
           @include media("<desktop") {
             width: 50%;
             padding-top: 10px;
-            margin: auto;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 20px;
           }
         }
+
 
         .wartezeit{
           margin:auto;
