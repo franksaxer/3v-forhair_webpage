@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_PROMOTION_HEADER | translate }}</h1>
 
     <div  v-for="aktion in data.aktionen"
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

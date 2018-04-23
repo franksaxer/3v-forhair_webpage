@@ -1,5 +1,5 @@
 <template>
-  <section class="section subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_RECENSION_HEADER | translate }}</h1>
 
     <div  v-for="rezension in data.rezensionen"
@@ -24,7 +24,7 @@
         <a href="">hier!</a>
       </span>
     </p>
-  </section>
+  </div>
 </template>
 
 <script>

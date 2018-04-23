@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_CONTACT_HEADER | translate }}</h1>
     <h2 @click="editText(data, 'subheadline')">
       {{ data.subheadline }}
@@ -108,7 +108,7 @@
         </form>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

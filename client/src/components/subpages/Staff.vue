@@ -1,5 +1,5 @@
 <template>
-  <section class="section subpage content">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_STAFF_HEADER | translate }}</h1>
     <h2>{{ labels.SUBPAGE_STAFF_SUBHEADER | translate }}</h2>
 
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 

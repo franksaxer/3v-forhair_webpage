@@ -8,7 +8,6 @@
         <div id="label-with-icon">
           <vue-typer text='for'
                      :repeat="0"
-                     :initialAction="typing"
                      :pre-type-delay="1000"
                      :typeDelay="200"/>
 
@@ -22,8 +21,7 @@
 
           <vue-typer text='hair'
                      :repeat="0"
-                     :initialAction="typing"
-                     :pre-type-delay="1600"
+                     :pre-type-delay="2200"
                      :typeDelay="200"/>
         </div>
 
@@ -36,17 +34,9 @@
         </button>
       </header>
 
-      <main>
-        <div  id="content"
-              class="main-element content">
-
-          <main-menu :space="!logoInLowerPosition"/>
-          <router-view></router-view>
-        </div>
-
-        <!-- Remove this temporally
-          <advertisement-banner class="main-element"></advertisement-banner>
-        -->
+      <main class="">
+        <main-menu :space="!logoInLowerPosition"/>
+        <router-view></router-view>
       </main>
 
       <footer>
@@ -249,23 +239,21 @@
 
   /* The general layout with header, main and footer */
   #layout {
-    display: flex;
     height: 100vh;
-    flex-flow: column;
-    overflow: hidden;
 
     $border: solid 2px rgba(0,0,0,0.1);
 
     header {
+      top: 0;
+      left: 0;
+      right: 0;
       height: $header-height;
-      //overflow: hidden; // Force the height, else the cover page will not work.
       z-index: 1; // Seems to be necessary, so it is not always to top element.
-      background-color: $color-invert;
       display: flex;
       flexflow: row;
       justify-content: center;
-
       border-bottom: $border;
+      background-color: $color-invert;
 
       #label-with-icon {
         margin-left: 13px; // Else it doesn't seem to fit correctly with the logo image.
@@ -318,16 +306,26 @@
     }
 
     main {
+      top: $header-height;
+      bottom: $footer-height;
+      left: 0;
+      right: 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: calc(100vh - #{$header-height} - #{$footer-height}); // For some unkown reasong this is necessary.
+      margin: 0!important; // Overwrite bulmas content class.
+
       // Differ the height between mobile and desktop.
       @include media('<desktop') {
-        height: calc(100vh - #{$footer-height}); // Take the full height without the footer.
+        bottom: 0; // No footer.
       }
-
-      height: calc(100vh - #{$header-height} - #{$footer-height});
-      overflow: auto; // Necessary if someone switch his mobile device into the horizontal view.
     }
 
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       display: flex;
       flex-flow: row;
       justify-content: center;
@@ -362,39 +360,6 @@
       }
     }
   }
-
-  main {
-    .main-element {
-      position: absolute;
-      top: $header-height;
-      bottom: $footer-height;
-      overflow: hidden;
-
-      @include scroll;
-
-      @include media('<desktop') {
-        // Ignore the footer, cause it is not displayed in this view.
-        bottom: 0;
-      }
-    }
-
-    #content {
-      left: 0;
-      overflow-y: auto;
-
-      // Stop before the advertisement banner on the right side on desktop devices.
-      @include media('>=desktop') {
-        $bannerBorderLeft: var(--advertisement-banner-border-left, 0);
-        right: $bannerBorderLeft;
-      }
-
-      // Use the whole width on mobile devices, cause the advertisement is missing or can be removed.
-      @include media('<desktop') {
-        right: 0;
-      }
-    }
-  }
-
 
   button {
     // The secondary color of Bulma does not rly work together.

@@ -31,7 +31,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   // 3rd party styles.
   @import '../../../node_modules/include-media/dist/include-media';
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_COLORS_HEADER | translate }}</h1>
 
     <div class="subsection">
@@ -101,7 +101,7 @@
         </div>
       </div>
     </template>
-  </section>
+  </div>
 </template>
 
 <script>

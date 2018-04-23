@@ -1,5 +1,5 @@
-d<template>
-  <section class="subpage">
+<template>
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_ABOUT_US_HEADER | translate }}</h1>
 
     <div class="kategorie-list">
@@ -24,23 +24,23 @@ d<template>
 
     <hr>
 
-    <div class="salon">
-      <h1>{{ labels.SUBPAGE_ABOUT_US_SALON_HEADER | translate }}</h1>
-      <carousel :perPage="1">
-        <slide  v-for="(bild,index) in data.salonBilder"
-                :key="index"
-                v-if="data">
-
-          <div class="bild">
-            <img :src="bild.url">
-            <h6 class="caption"
-                @click="editText(bild, 'title')">
-              {{ bild.title }}
-            </h6>
-          </div>
-        </slide>
-      </carousel>
-    </div>
+    <!-- <div class="salon"> -->
+      <!-- <h1>{{ labels.SUBPAGE_ABOUT_US_SALON_HEADER | translate }}</h1> -->
+      <!-- <carousel :perPage="1"> -->
+        <!-- <slide  v-for="(bild,index) in data.salonBilder" -->
+                <!-- :key="index" -->
+                <!-- v-if="data"> -->
+<!--  -->
+          <!-- <div class="bild"> -->
+            <!-- <img :src="bild.url"> -->
+            <!-- <h6 class="caption" -->
+                <!-- @click="editText(bild, 'title')"> -->
+              <!-- {{ bild.title }} -->
+            <!-- </h6> -->
+          <!-- </div> -->
+        <!-- </slide> -->
+      <!-- </carousel> -->
+    <!-- </div> -->
 
     <hr>
 
@@ -49,7 +49,7 @@ d<template>
       <h1>{{ labels.SUBPAGE_ABOUT_US_AVEDA_HEADER | translate }}</h1>
       <p @click="editText(data, 'contentAvedaMission')">{{ data.contentAvedaMission }}</p>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

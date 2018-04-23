@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_IMPRESSUM_HEADER | translate }}</h1>
 
     <div class="impressum-box">
@@ -21,7 +21,7 @@
         </span>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

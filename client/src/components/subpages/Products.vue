@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ data.headline }}</h1>
     <div class="content-box">
       <tabs animation="slide"
@@ -31,11 +31,8 @@
           </div>
         </tab-pane>
       </tabs>
-
-
     </div>
-
-  </section>
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="subpage">
+  <div class="subpage">
     <h1>{{ labels.SUBPAGE_COSTS_HEADER | translate }}</h1>
 
     <div class="content-box">
@@ -162,7 +162,7 @@
         </tab-pane>
       </tabs>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

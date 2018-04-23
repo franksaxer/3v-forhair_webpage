@@ -7,16 +7,14 @@
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  width: 100%;
   min-height: 100%;
-  overflow-y: hidden; // Horizontally not scrollable.
-  overflow-x: auto;
   margin: auto; // Center the content.
   padding-bottom: 40px;
 
   @include scroll;
 
   @include media('>=desktop'){
-    width: 100%;
     padding-top: 90px;
 
     // Don't overreach a width (looks ugly on large displays).
@@ -27,7 +25,6 @@
 
   @include media('<desktop') {
     padding: 60px 5% 5%;
-    width: 100%;
   }
 
 
