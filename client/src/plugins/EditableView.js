@@ -7,10 +7,14 @@ const EditableView = {
     // Define a communication bus for the editable view.
     window.editableViewBus = new Vue()
 
+    // Global variable to mark if the page is editable or not.
+    Vue.prototype.$editable = false
+
     /**
      * Function that allows to en- or disable the editable view.
      */
     Vue.prototype.$setEditable = function (enable = true) {
+      Vue.prototype.$editable = enable
       window.editableViewBus.$emit('setEditable', enable)
     }
 
@@ -48,30 +52,32 @@ const EditableView = {
         },
 
         editText (object, prop) {
-          // Root where to add the DOM element,
-          const root = document.getElementById('app')
+          if (Vue.prototype.$editable) {
+            // Root where to add the DOM element,
+            const root = document.getElementById('app')
 
-          // Create a new instance of the component.
-          const Component = Vue.extend(EditWindow)
-          const instance = new Component({
-            propsData: { content: object[prop] }
-          })
+            // Create a new instance of the component.
+            const Component = Vue.extend(EditWindow)
+            const instance = new Component({
+              propsData: { content: object[prop] }
+            })
 
-          // Fetch changes to the model property.
-          instance.$on('change', value => {
-            object[prop] = value
-          })
+            // Fetch changes to the model property.
+            instance.$on('change', value => {
+              object[prop] = value
+            })
 
-          // Fetch destroy event.
-          instance.$on('destroy', () => {
-            // Destroy the Vue instance and remove the DOM element.
-            instance.$destroy()
-            root.removeChild(instance.$el)
-          })
+            // Fetch destroy event.
+            instance.$on('destroy', () => {
+              // Destroy the Vue instance and remove the DOM element.
+              instance.$destroy()
+              root.removeChild(instance.$el)
+            })
 
-          // Mount and insert the instance to the DOM.
-          instance.$mount()
-          root.appendChild(instance.$el)
+            // Mount and insert the instance to the DOM.
+            instance.$mount()
+            root.appendChild(instance.$el)
+          }
         }
       }
     })
