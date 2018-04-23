@@ -80,6 +80,7 @@ editorRouter.put('/updateConfig', async ctx => {
 })
 
 editorRouter.put('/uploadFile', async ctx => {
+  console.log('Upload')
   const mediaPath = ctx.request.body.fields.mediaPath
   const mediaFile = ctx.request.body.files.mediaFile
 
@@ -132,6 +133,7 @@ editorRouter.put('/uploadFile', async ctx => {
  * 200 -> everythign went fine
  */
 editorRouter.put('/save', async ctx => {
+  console.log('save')
   // Executes Webpacks build script.
   logger.info('Build client new.')
   

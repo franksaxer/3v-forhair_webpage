@@ -19,26 +19,34 @@ const checkSession = async function (ctx, next) {
   // Check if the requested URL is the admin view.
   if (ctx.request.url.startsWith(API_BASE_URL) && !ctx.request.url.startsWith(AUTH_API_BASE_URL)) {
     // Get the provided session key.
-    const sessionKey = await ctx.request.body.sessionKey
+    // Depending on the request it could be in the data or form object.
+    let sessionKey
 
-    // Check if a session key is provided.
-    if (!sessionKey) {
+    if (ctx.request.body.sessionKey) {
+      sessionKey = ctx.request.body.sessionKey    
+    } else if (ctx.body.fields.sessionKey) {
+      sessionKey = ctx.request.body.fields.sessionKey    
+    } else {
       ctx.status = 401
       ctx.body = 'Session key missing!'
       // Do not forward to other middleware.
     }
 
     // Check if the session key is valid.
-    else if (!await sessionManager.checkSessionKey(sessionKey)) {
+    if (!await sessionManager.checkSessionKey(sessionKey)) {
       ctx.status = 401
       ctx.body = 'Invalid session key!'
       // Do not forward to other middleware.
     }
+    
+    // Everything is fine.
+    await next()
+    // Do nothing on the way back.
   } else {
-      // Go to the other middleware.
-      await next()
+    // Go to the next middleware.
+    await next()
 
-      // Do nothing on the way back.
+    // Do nothing on the way back.
   }
 
 }

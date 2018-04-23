@@ -26,7 +26,9 @@
     </div>
 
     <div class="youtube-video">
-      <youtube video-id="D7CEOHZD1qc" />
+      <youtube video-id="D7CEOHZD1qc"
+              :player-width="videoShape.width"
+              :player-height="videoShape.height"/>
     </div>
 
     <hr>
@@ -114,6 +116,27 @@
     data () {
       return {
         dataKey: DataStoreEntries.farbe.key
+      }
+    },
+
+    computed: {
+      videoShape () {
+        const current = window.innerWidth * 0.9 // The window width with a small padding.
+        let width = 800 // Set to the maximum allowed width.
+
+        // Make sure the video fits into the window width.
+        if (current < width) {
+          width = current
+        }
+
+        // Define the height in relation to the width.
+        const height = width * 0.6
+
+        // Build and return the shape object.
+        return {
+          width: width,
+          height: height
+        }
       }
     }
   }
