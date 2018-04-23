@@ -7,32 +7,16 @@ const general_prop = require(__dirname + '/general_prop.js')
 
 
 /* Parameter & Variables */
-const path_base = '/../certificate'
-const path_dev = path_base + '/dev/'
-const path_prd = path_base + '/prd/' 
-const key_fileName = 'key.pem'
-const cert_fileName = 'cert.pem'
-
-
-// Define the locations for the key and cert for all environments.
-const locations = {
-  development: {
-    key: path_dev + key_fileName,
-    cert: path_dev + cert_fileName,
-  },
-
-  production: {
-    key: path_prd + key_fileName,
-    cert: path_prd + cert_fileName,
-  }
-}
+const path_base = __dirname + '/../../certificate/'
+const path_key = path_base + 'key.pem'
+const path_cert = path_base + 'cert.pem'
 
 
 // Load the key and cert from the file system.
-function options_https(env) {
+function options_https() {
   return {
-      key: fs.readFileSync(__dirname + locations[env].key),
-      cert: fs.readFileSync(__dirname + locations[env].cert)
+    key: fs.readFileSync(path_key),
+    cert: fs.readFileSync(path_cert)
   }
 }
 
@@ -46,10 +30,13 @@ function options_sslify(env) {
 
 
 // Define what will be exported. 
-module.exports = function(env) {
-  return {
-    options_https: options_https(env),
-    options_sslify: options_sslify(env)
+module.exports = {
+  options_https: options_https,
+  options_sslify: options_sslify,
+  paths: {
+    base: path_base,
+    key: path_key,
+    cert: path_cert
   }
 }
 

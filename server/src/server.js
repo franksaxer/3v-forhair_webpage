@@ -10,6 +10,7 @@ const bodyParser = require('koa-body') // To read the requests bodies.
 const cors = require('@koa/cors') // To allow cross origin requests in the development mode.
 
 // Own
+const utils = require(__dirname + '/utils.js')
 const logger = require(__dirname + '/logger.js')
 const authRouter = require(__dirname + '/router/authentication.js')
 const editorRouter = require(__dirname + '/router/editor.js')
@@ -25,7 +26,7 @@ const app = new koa()
 /* Load Configurations */
 // Have to be load after the app initiation, cause else the environment is not defined.
 const general_prop = require(__dirname + '/config/general_prop.js')(app.env)
-const ssl_prop = require(__dirname + '/config/ssl_prop.js')(app.env)
+const ssl_prop = require(__dirname + '/config/ssl_prop.js')
 
 
 /* Add Middleware */
@@ -37,11 +38,13 @@ if (app.env === 'development') {
 }
 
 // Add logger for the connections.
+utils.initLogging()
 app.use(logger_bunyan(logger.logger))
 app.use(logger_bunyan.requestLogger(logger.logger))
 
 // Force HTTPS connections.
-app.use(sslify(ssl_prop.options_sslify))
+utils.initSSL(app.env)
+app.use(sslify(ssl_prop.options_sslify(app.env)))
 
 // Parse the request body.
 app.use(bodyParser({
@@ -66,7 +69,11 @@ app.use(editorRouter.routes())
 
 /* Start Server */
 http.createServer(app.callback()).listen(general_prop.port_http)
-logger.logger.info('HTTP server has started and is listening on port %d', general_prop.port_http)
+const msg_http = 'HTTP server has started and is listening on port ' + general_prop.port_http
+logger.logger.info(msg_http)
+console.log(msg_http)
 
-https.createServer(ssl_prop.options_https, app.callback()).listen(general_prop.port_https)
-logger.logger.info('HTTPS server has started and is listening on port %d', general_prop.port_https)
+https.createServer(ssl_prop.options_https(), app.callback()).listen(general_prop.port_https)
+const msg_https = 'HTTPS server has started and is listening on port ' + general_prop.port_https
+logger.logger.info(msg_https)
+console.log(msg_https)
