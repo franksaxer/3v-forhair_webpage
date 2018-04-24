@@ -11,22 +11,22 @@
       </div>
 
       <div class="description">
-        <h3 @click="editText(aktion, 'headline')">
+        <h3 @click="editText(aktion, 'headline')" v-editable>
           {{ aktion.headline }}
         </h3>
 
-        <h5 @click="editText(aktion, 'subheadline')">
+        <h5 @click="editText(aktion, 'subheadline')" v-editable>
           {{ aktion.subheadline }}
         </h5>
 
-        <p @click="editText(aktion, 'beschreibung')">{{ aktion.beschreibung }}</p>
+        <p @click="editText(aktion, 'beschreibung')" v-editable>{{ aktion.beschreibung }}</p>
 
         <div v-for="unterAktion in aktion.unterAktionen">
-          <h5 @click="editText(unterAktion, 'headline')">
+          <h5 @click="editText(unterAktion, 'headline')" v-editable>
             {{ unterAktion.headline }}
           </h5>
 
-          <ul @click="editText(unterAktion, 'beschreibung')">
+          <ul @click="editText(unterAktion, 'beschreibung')" v-editable>
             <li v-for="beschreibung in stringToList(unterAktion.beschreibung)">
               {{ beschreibung }}
             </li>

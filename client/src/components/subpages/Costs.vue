@@ -10,7 +10,7 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_SHE | translate">
 
-          <p @click="editText(data.she, 'subheadline')">{{ data.she.subheadline }}</p>
+          <p @click="editText(data.she, 'subheadline')" v-editable>{{ data.she.subheadline }}</p>
 
           <hr>
 
@@ -20,7 +20,7 @@
                 <tr>
                   <th></th>
                   <th v-for="head in table.header"
-                      @click="editText(table, 'header')">
+                      @click="editText(table, 'header')" v-editable>
                     {{ head }}
                   </th>
                 </tr>
@@ -28,7 +28,7 @@
 
               <tbody>
                 <tr v-for="(row, index) in table.rows"
-                    @click="editText(table.rows, index)">
+                    @click="editText(table.rows, index)" v-editable>
                   <td v-for="column in row">
                     {{ column }}
                   </td>
@@ -42,7 +42,7 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_HE | translate">
 
-          <p @click="editText(data.she, 'subheadline')">{{ data.he.subheadline}}</p>
+          <p @click="editText(data.she, 'subheadline')" v-editable>{{ data.he.subheadline}}</p>
 
           <hr>
 
@@ -52,7 +52,7 @@
                 <tr>
                   <th></th>
                   <th v-for="head in table.header"
-                      @click="editText(table.header)">
+                      @click="editText(table.header)" v-editable>
                     {{ head }}
                   </th>
                 </tr>
@@ -60,7 +60,7 @@
 
               <tbody>
                 <tr v-for="(row, index) in table.rows"
-                    @click="editText(table.rows, index)">
+                    @click="editText(table.rows, index)" v-editable>
                   <td v-for="column in row">
                     {{ column }}
                   </td>
@@ -71,7 +71,7 @@
           </template>
 
           <h3>Reine Männersache</h3>
-          <p @click="editText(data.he, 'content')">{{ data.he.content }}</p>
+          <p @click="editText(data.he, 'content')" v-editable>{{ data.he.content }}</p>
 
           <hr>
 
@@ -85,15 +85,15 @@
                 <div class="aktion">
                   <img :src="aktion.bild">
                   <div class="aktion-description">
-                    <h5 @click="editText(aktion, 'headline')">
+                    <h5 @click="editText(aktion, 'headline')" v-editable>
                       {{ aktion.headline }}
                     </h5>
 
-                    <h6 @click="editText(aktion, 'dauer')">
+                    <h6 @click="editText(aktion, 'dauer')" v-editable>
                       <em>{{ aktion.dauer }}</em>
                     </h6>
 
-                    <ul @click="editText(aktion, 'beschreibung')">
+                    <ul @click="editText(aktion, 'beschreibung')" v-editable>
                       <li v-for="be in stringToList(aktion.beschreibung)">
                         {{ be }}
                       </li>
@@ -108,19 +108,19 @@
         <tab-pane class="is-primary"
                   :label="labels.SUBPAGE_COSTS_LABEL_COLORS | translate">
 
-          <p @click="editText(data.colors, 'subheadline')">{{ data.colors.subheadline }}</p>
+          <p @click="editText(data.colors, 'subheadline')" v-editable>{{ data.colors.subheadline }}</p>
 
-          <p @click="editText(data.colors, 'link')">{{ data.colors.link }} <router-link :to="{ name: colorRoute }">Hier</router-link>
+          <p @click="editText(data.colors, 'link')" v-editable>{{ data.colors.link }} <router-link :to="{ name: colorRoute }">Hier</router-link>
           </p>
 
           <hr>
 
           <div v-for="table in data.colors.tabellen">
-            <h5 @click="editText(table, 'tHeadline')">
+            <h5 @click="editText(table, 'tHeadline')" v-editable>
               {{ table.tHeadline }}
             </h5>
 
-            <h6 @click="editText(table, 'tSubHeadline')">
+            <h6 @click="editText(table, 'tSubHeadline')" v-editable>
               <em>{{ table.tSubHeadline }}</em>
             </h6>
 
@@ -132,7 +132,7 @@
                   <th v-if="subtable.header.length != 0"></th>
                   <th v-for="head in subtable.header"
                       v-if="subtable.header.length != 0"
-                      @click="editText(subtable, 'header')">
+                      @click="editText(subtable, 'header')" v-editable>
                       {{ head }}
                   </th>
                 </tr>
@@ -140,7 +140,7 @@
 
               <tbody>
                 <tr v-for="(row, index) in subtable.rows"
-                    @click="editText(subtable.rows, index)">
+                    @click="editText(subtable.rows, index)" v-editable>
 
                   <td v-for="column in row"
                       width="50px"

@@ -5,17 +5,17 @@
     <div  v-for="rezension in data.rezensionen"
           class="renzension">
 
-      <h2 @click="editText(rezension, 'headline')">
+      <h2 @click="editText(rezension, 'headline')" v-editable>
         <i class="fa fa-angle-right"></i>
         {{ rezension.headline }}
         <i class="fa fa-angle-left"></i>
       </h2>
 
       <p  class="content"
-          @click="editText(rezension, 'content')">{{ rezension.content }}</p>
+          @click="editText(rezension, 'content')" v-editable>{{ rezension.content }}</p>
 
       <p class="offer"
-          @click="editText(rezension, 'offer')">{{ rezension.offer }}</p>
+          @click="editText(rezension, 'offer')" v-editable>{{ rezension.offer }}</p>
     </div>
 
     <p class="linkText">

@@ -5,7 +5,7 @@
     <div class="impressum-box">
       <div class="left"
            v-if="data.contentImpressum"
-           @click="editText(data, 'contentImpressum')">
+           @click="editText(data, 'contentImpressum')" v-editable>
 
         <span v-for="contentImpress in stringToList(data.contentImpressum)">
           {{ contentImpress }}
@@ -14,7 +14,7 @@
 
       <div  class="right"
             v-if="data.contentCopyright"
-            @click="editText(data, 'contentCopyright')">
+            @click="editText(data, 'contentCopyright')" v-editable>
 
         <span v-for="contentCopyRight in stringToList(data.contentCopyright)">
           {{ contentCopyRight }}

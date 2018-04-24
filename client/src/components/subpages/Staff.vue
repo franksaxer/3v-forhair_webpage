@@ -17,20 +17,20 @@
             {{ stylist.name }}
           </h3>
 
-            <router-link :to="{ name: routes.ABOUT_US }"><h6 @click="editText(stylist, 'kategorie')"><em>{{ stylist.kategorie }}</em></h6></router-link>
+            <router-link :to="{ name: routes.ABOUT_US }"><h6 @click="editText(stylist, 'kategorie')" v-editable><em>{{ stylist.kategorie }}</em></h6></router-link>
 
-          <ul @click="editText(stylist, 'info')">
+          <ul @click="editText(stylist, 'info')" v-editable>
             <li v-for="stylistInfo in stringToList(stylist.info)">
               {{ stylistInfo }}
             </li>
           </ul>
-          <p @click="editText(stylist,'urlaub')"
+          <p @click="editText(stylist,'urlaub')" v-editable
              v-if="$editable || stylist.urlaub" class="urlaub">Im Urlaub: {{ stylist.urlaub }}</p>
 
-          <p  class="wartezeit" @click="editText(stylist, 'wartezeit')">{{ stylist.wartezeit }}</p>
+          <p  class="wartezeit" @click="editText(stylist, 'wartezeit')" v-editable>{{ stylist.wartezeit }}</p>
 
           <h4>{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
-          <ul @click="editText(stylist, 'arbeitszeiten')">
+          <ul @click="editText(stylist, 'arbeitszeiten')" v-editable>
             <li v-for="arbeitszeit in stringToList(stylist.arbeitszeiten)">
               {{ arbeitszeit }}
             </li>

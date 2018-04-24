@@ -1,7 +1,8 @@
 <template>
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_CONTACT_HEADER | translate }}</h1>
-    <h2 @click="editText(data, 'subheadline')">
+
+    <h2 @click="editText(data, 'subheadline')" v-editable>
       {{ data.subheadline }}
     </h2>
 
@@ -10,14 +11,14 @@
 
       <div class="kontakt-element">
           <i class="fa fa-phone fa-3x"></i>
-          <span @click="editText(data.telefon, 'handy')">{{ data.telefon.handy }}</span>
-          <span @click="editText(data.telefon, 'festnetz')">{{ data.telefon.festnetz }}</span>
+          <span @click="editText(data.telefon, 'handy')" v-editable>{{ data.telefon.handy }}</span>
+          <span @click="editText(data.telefon, 'festnetz')" v-editable>{{ data.telefon.festnetz }}</span>
       </div>
 
       <div class="kontakt-element">
         <i class="fa fa-envelope fa-3x"></i>
         <a :href="`mailto:${data.mail.mail}`"
-           @click="editText(data.mail, 'mail')">
+           @click="editText(data.mail, 'mail')" v-editable>
 
           {{ data.mail.mail }}
         </a>
@@ -25,7 +26,7 @@
 
       <div class="kontakt-element">
         <i class="fa fa-location-arrow fa-3x"></i>
-        <p @click="editText(data.adresse, 'anschrift')">{{ data.adresse.anschrift }}</p>
+        <p @click="editText(data.adresse, 'anschrift')" v-editable>{{ data.adresse.anschrift }}</p>
 
         <a  target="_blank" href="https://www.google.de/maps/dir/52.5335437,13.3441854/3v+for+hair,+Rankestra%C3%9Fe+24,+10789+Berlin/@52.5187527,13.3264526,14z/data=!3m1!4b1!4m16!1m6!3m5!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2s3v+for+hair!8m2!3d52.5017623!4d13.3332985!4m8!1m1!4e1!1m5!1m1!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2m2!1d13.3332985!2d52.5017623"
             class="button is-outlined is-primary">
@@ -33,7 +34,7 @@
           {{ labels.SUBPAGE_CONTACT_BTN_MAP | translate }}
         </a>
 
-        <ul @click="editText(data.adresse, 'hinweise')">
+        <ul @click="editText(data.adresse, 'hinweise')" v-editable>
           <i v-for="hinweis in data.adresse.hinweise">
             {{ hinweis }}
           </i>
@@ -42,7 +43,7 @@
 
       <div class="kontakt-element">
         <i class="fa fa-clock-o fa-3x"></i>
-        <p @click="editText(data.öffnungszeiten, 'tage')">{{ data.öffnungszeiten.tage }}</p>
+        <p @click="editText(data.öffnungszeiten, 'tage')" v-editable>{{ data.öffnungszeiten.tage }}</p>
       </div>
     </div>
 
@@ -50,11 +51,11 @@
 
     <div class="form content-box">
       <div class="headline">
-        <h1 @click="editText(data, 'emailHeadline')">
+        <h1 @click="editText(data, 'emailHeadline')" v-editable>
           {{ data.emailHeadline }}
         </h1>
 
-        <h3 @click="editText(data, 'emailSubheadline')">
+        <h3 @click="editText(data, 'emailSubheadline')" v-editable>
           {{ data.emailSubheadline }}
         </h3>
       </div>

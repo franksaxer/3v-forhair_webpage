@@ -4,11 +4,11 @@
 
     <div class="subsection">
 
-      <h2 @click="editText(data, 'subheadline')">
+      <h2 @click="editText(data, 'subheadline')" v-editable>
         {{ data.subheadline }}
       </h2>
 
-      <h2 @click="editText(data, 'subheadline2')">
+      <h2 @click="editText(data, 'subheadline2')" v-editable>
         <i class="fa fa-arrow-right"></i>
         {{ data.subheadline2 }}
         <i class="fa fa-arrow-left"></i>
@@ -18,7 +18,7 @@
     <div class="content-box"
          v-if="data.faktList">
 
-      <ul @click="editText(data, 'data.faktList')">
+      <ul @click="editText(data, 'data.faktList')" v-editable>
         <li v-for="fakt in stringToList(data.faktList)">
           {{ fakt }}
         </li>
@@ -40,12 +40,12 @@
       <div  v-for="möglichkeit in data.möglichkeiten"
             class="content-box">
 
-        <h5 @click="editText(möglichkeit, 'title')">
+        <h5 @click="editText(möglichkeit, 'title')" v-editable>
           <i class="fa fa-angle-right"></i>
           {{ möglichkeit.title }}
         </h5>
 
-        <p @click="editText(möglichkeit, 'content')">{{ möglichkeit.content }}</p>
+        <p @click="editText(möglichkeit, 'content')" v-editable>{{ möglichkeit.content }}</p>
       </div>
     </div>
 
@@ -58,12 +58,12 @@
       <div  v-for="wirkprinzipien in data.wirkprinzipien"
               class="content-box">
 
-        <h5 @click="editText(wirkprinzipien, 'title')">
+        <h5 @click="editText(wirkprinzipien, 'title')" v-editable>
           <i class="fa fa-angle-right"></i>
           {{ wirkprinzipien.title }}
         </h5>
 
-        <p @click="editText(wirkprinzipien, 'content')">{{ wirkprinzipien.content }}</p>
+        <p @click="editText(wirkprinzipien, 'content')" v-editable>{{ wirkprinzipien.content }}</p>
       </div>
     </div>
 
@@ -71,12 +71,12 @@
 
     <template v-if="data.olaplex">
       <h1>{{ labels.SUBPAGE_COLORS_OLAPLEX_HEADER | translate }}</h1>
-      <h2 @click="editText(data.olaplex, 'headline')">
+      <h2 @click="editText(data.olaplex, 'headline')" v-editable>
         {{ data.olaplex.headline }}
       </h2>
 
       <div class="content-box">
-        <ul @click="editText(data.olaplex, 'content')">
+        <ul @click="editText(data.olaplex, 'content')" v-editable>
           <li v-for="content in stringToList(data.olaplex.content)">
             {{ content }}
           </li>
@@ -87,13 +87,13 @@
         <div  v-for="produkt in data.olaplex.produkte"
               class="content-box">
 
-          <h5 @click="editText(produkt, 'headline')">
+          <h5 @click="editText(produkt, 'headline')" v-editable>
             {{ produkt.headline }}
           </h5>
 
-          <p @click="editText(produkt, 'description')"><em>{{ produkt.description }}</em></p>
+          <p @click="editText(produkt, 'description')" v-editable><em>{{ produkt.description }}</em></p>
 
-          <ul @click="editText(produkt, 'preise')">
+          <ul @click="editText(produkt, 'preise')" v-editable>
             <li v-for="preis in stringToList(produkt.preise)">
               {{ preis }}
             </li>

@@ -1,5 +1,4 @@
 {
-  "headline":"Produkte",
   "produkteAllgemein":[
     {
       "name":"Invati (gegen vorzeitigen Haarverlust)",
@@ -64,57 +63,23 @@
     "produkte": [
       {
         "headline": "Haare",
-        "produkte": [
-          "Shampoo: Pure Formance Shampoo, Pure Formance Exfoliating Shampoo",
-          "Conditioner: Pure Formance Conditioner",
-          "Treatment: je nach Haarstruktur",
-          "Festiger: Phomollient, Voluminizing Tonic",
-          "Haarspray: je nach gewünschtem Halt, alle möglich",
-          "Frisiercreme/Gel: Pure Formance ",
-          "Groominh Creram / flexibler mittlerer Halt, spendet leichtes Volumen, Matt",
-          "Grooming Clay/ flexibler starker Halt, spendet mittleres Volumen, extra Matt",
-          "Pomade / flexibler mittlerer Halt, Glanz",
-          "Liquid Pomade / leichter bis mittlerer Halt, natürlicher Glanz",
-          "Firm Hold Gel / starker Halt"
-        ]
+        "produkte": "Shampoo: Pure Formance Shampoo, Pure Formance Exfoliating Shampoo\nConditioner: Pure Formance Conditioner\nTreatment: je nach Haarstruktur\nFestiger: Phomollient, Voluminizing Tonic\nHaarspray: je nach gewünschtem Halt, alle möglich\nFrisiercreme/Gel: Pure Formance\nGroominh Creram / flexibler mittlerer Halt, spendet leichtes Volumen, Matt\nGrooming Clay/ flexibler starker Halt, spendet mittleres Volumen, extra Matt\nPomade / flexibler mittlerer Halt, Glanz\nLiquid Pomade / leichter bis mittlerer Halt, natürlicher Glanz\nFirm Hold Gel / starker Halt"
       },
       {
         "headline": "Rasur",
-        "produkte": [
-          "Rasiercreme: Dual Active Shaving Creme (ohne Rasierbrand)",
-          "Aftershave: Dual Active Aftershave"
-        ]
+        "produkte": "Rasiercreme: Dual Active Shaving Creme (ohne Rasierbrand)\nAftershave: Dual Active Aftershave"
       },
       {
         "headline": "Gesichtspflege",
-        "produkte": [
-          "normal - fettig: Gel Cleanser, Toning Agent, Exfoliant, Hydrating Lotion",
-          "Maske: evtl. Deep Cleansing Herbal Masque",
-          "unreine Haut: Outer peace Foaming Cleanser, Blemish Relief Pads, Spot Relief, Blemish Relief Lotion",
-          "Maske: Outer Peace Masque",
-          "trocken: Cream Cleanser, Skin Firming Agent, Exfoliant, Botanical Kinetics Rich Creme",
-          "Maske: evtl. Intensive Hydrating Masque"
-        ]
+        "produkte": "normal - fettig: Gel Cleanser, Toning Agent, Exfoliant, Hydrating Lotion\nMaske: evtl. Deep Cleansing Herbal Masque\nunreine Haut: Outer peace Foaming Cleanser, Blemish Relief Pads, Spot Relief, Blemish Relief Lotion\nMaske: Outer Peace Masque\ntrocken: Cream Cleanser, Skin Firming Agent, Exfoliant, Botanical Kinetics Rich Creme\nMaske: evtl. Intensive Hydrating Masque"
       },
       {
         "headline": "Körperpflege",
-        "produkte": [
-          "Duschgel: Energizing, Calming, Rosemary Mint / Shampure Hand and Body Wash",
-          "Körperöl: Pure Formance Composition, Energizing / Beautifying Compositoin",
-          "Bodylotion: Replenishing Body Moisturzier, Rosemary Mint / Shampure Bodylotion",
-          "Hände: Hand Relief, Hand Relief Renewal Serum",
-          "Füße: Foot Relief"
-        ]
+        "produkte": "Duschgel: Energizing, Calming, Rosemary Mint / Shampure Hand and Body Wash\nKörperöl: Pure Formance Composition, Energizing / Beautifying Compositoin\nBodylotion: Replenishing Body Moisturzier, Rosemary Mint / Shampure Bodylotion\nHände: Hand Relief, Hand Relief Renewal Serum\nFüße: Foot Relief"
       },
       {
         "headline": "Lifestyle",
-        "produkte": [
-          "Blue Oil Rollerball: Wirkt bei: Muskelkater, Erkältungen und Kopfschmerzen",
-          "Stress Fix Rollerball: Wirkt Stress entgegen und besänftigt",
-          "Aveda Comforting Tea: Pfefferminz-Süßholz Tee, Lose oder im Beutel",
-          "Fill-ables: Leerbehälter im Kulturbeutel zur Selbstbefüllung auf Reisen",
-          "Nasen-/Ohrenhaar / Augenbrauen Schneider: Zur Korrektur lästiger Härchen"
-        ]
+        "produkte": "Blue Oil Rollerball: Wirkt bei: Muskelkater, Erkältungen und Kopfschmerzen\nStress Fix Rollerball: Wirkt Stress entgegen und besänftigt\nAveda Comforting Tea: Pfefferminz-Süßholz Tee, Lose oder im Beutel\nFill-ables: Leerbehälter im Kulturbeutel zur Selbstbefüllung auf Reisen\nNasen-/Ohrenhaar / Augenbrauen Schneider: Zur Korrektur lästiger Härchen"
       }
     ]
   }

@@ -1,17 +1,17 @@
 <template>
   <div class="subpage">
-    <vue-particles class="particles" color="#dedede" :linesDistance="300" :particlesNumber="40">
-    </vue-particles>
+    <vue-particles class="particles" color="#dedede" :linesDistance="300" :particlesNumber="40"/>
+
     <div class="image">
       <img src="../../assets/subpages/greeter/frank.jpg">
     </div>
 
     <div class="content-box">
-      <h4 @click="editText(data, 'header')">
+      <h4 @click="editText(data, 'header')" v-editable>
         {{ data.header }}
       </h4>
 
-      <p @click="editText(data, 'content')">{{ data.content }}</p>
+      <p @click="editText(data, 'content')" v-editable>{{ data.content }}</p>
     </div>
   </div>
 </template>
