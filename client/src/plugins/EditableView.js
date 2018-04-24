@@ -1,8 +1,9 @@
 // Import the edit window component.
 import EditWindow from './EditWindow'
 
-// Import the data manager function.
-import { loadDataObject } from '../data/DataManager'
+// Import from the data manager and api connector.
+import { loadDataObject, convertNewData } from '../data/DataManager'
+import ApiConnector from '../ApiConnector'
 
 // The plugin itself.
 const EditableView = {
@@ -12,6 +13,9 @@ const EditableView = {
 
     // Global variable to mark if the page is editable or not.
     Vue.prototype.$editable = false
+
+    // Global variable to mark if the save process is working.
+    Vue.prototype.$saving = false
 
     /**
      * Function that allows to en- or disable the editable view.
@@ -26,6 +30,14 @@ const EditableView = {
      */
     Vue.prototype.$resetData = function () {
       window.editableViewBus.$emit('reset')
+    }
+
+    /**
+     * Globally emit to save the data objects.
+     */
+    Vue.prototype.$saveData = function () {
+      Vue.prototype.$saving = true
+      window.editableViewBus.$emit('save')
     }
 
     /**
@@ -94,14 +106,38 @@ const EditableView = {
             instance.$mount()
             root.appendChild(instance.$el)
           }
+        },
+
+        async finalSave () {
+          const data = await convertNewData(this.dataKey, JSON.parse(JSON.stringify(this.data)))
+
+          try {
+            await ApiConnector.update(this.dataKey, data)
+            await ApiConnector.save()
+          } catch (err) {
+            // TODO: Show the error to the user.
+            console.log('Message: ' + err.message)
+          }
+
+          // Reset save state.
+          this.$saving = false
         }
       },
 
       created () {
+        // Catch the event to reset the data.
         window.editableViewBus.$on('reset', async () => {
-          // Only works for elements with use the standard data object description. (e.g. SubpageMixin)
+          // Only works for components with use the standard data object description. (e.g. SubpageMixin)
           if (this.data && this.dataKey) {
             this.data = await loadDataObject(this.dataKey)
+          }
+        })
+
+        // Catch the event to save the data.
+        window.editableViewBus.$on('save', async () => {
+          // Only works for components which have implement a save function.
+          if (this.save) {
+            this.save()
           }
         })
       }

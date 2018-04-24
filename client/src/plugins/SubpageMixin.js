@@ -10,6 +10,16 @@ export default {
     }
   },
 
+  methods: {
+    /**
+     * The basic save function for subpages without any special data properties.
+     * Will be overwritten by those who need to handle such properties.
+     */
+    save () {
+      this.finalSave()
+    }
+  },
+
   async created () {
     this.data = await loadDataObject(this.dataKey)
   }

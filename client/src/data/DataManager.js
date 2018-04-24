@@ -82,7 +82,6 @@ const extendJson = async (json) => {
         json[i] = await extendJson(entry)
       } catch (err) {
         // Fall back: Leave it as it is.
-        json[i] = entry
       }
     }
 
@@ -141,5 +140,54 @@ const loadDataObject = async (key) => {
   return JSON.parse(JSON.stringify(DATA_STORE[key]))
 }
 
+/**
+ * Function that converts back a data object to the original format.
+ * This is requirede, cause the original description has some special properties defined.
+ * The components does use a converted format with image objects as example.
+ * Such properties has to be converted back to the special format.
+ *
+ * @param   key
+ *          The key of the original data store entry.
+ *
+ * @param   data
+ *          The new data object that should be converted back.
+ *
+ * @param   original
+ *          The original data object as reference.
+ *          Is optional and null per default.
+ *          By using the given the key, it will be loaded on first call.
+ */
+const convertNewData = async (key, data, original = null) => {
+  // Load the original json object as reference.
+  if (original === null) {
+    original = require('/' + getEntry(key).path)
+  }
+
+  for (let i in data) {
+    const entry = data[i]
+
+    if (typeof entry === 'object') {
+      try {
+        data[i] = await convertNewData(key, entry, original)
+      } catch (err) {
+        // Fall back: Leave it as it is.
+      }
+    } else if (original[i]) {
+      if (typeof entry === 'string') {
+        // Check if the property any special thing.
+        if (entry.substring(0, 3) === 'Url' || entry.substring(0, 5) === 'Label' ||
+          entry.substring(0, 9) === 'Component' || entry.substring(0, 5) === 'Route') {
+          // Currently changes will be ignored and the original onces will be used instead of the converted ones.
+          data[i] = original[i]
+        }
+
+        // Nothing to do for normal stuff.
+      }
+    }
+  }
+
+  return data
+}
+
 // Define what should be exported.
-export {loadDataObject, DataStoreEntries}
+export {loadDataObject, convertNewData, DataStoreEntries}

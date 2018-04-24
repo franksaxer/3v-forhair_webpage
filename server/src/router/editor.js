@@ -25,7 +25,7 @@ editorRouter.prefix('/api/editor')
  * 500 -> error during writing the dataset
  * 200 -> everything went fine
  */
-editorRouter.put('/updateConfig', async ctx => {
+editorRouter.post('/updateConfig', async ctx => {
   const dataKey = ctx.request.body.dataKey
   const dataObject = ctx.request.body.dataObject
 
@@ -80,7 +80,6 @@ editorRouter.put('/updateConfig', async ctx => {
 })
 
 editorRouter.put('/uploadFile', async ctx => {
-  console.log('Upload')
   const mediaPath = ctx.request.body.fields.mediaPath
   const mediaFile = ctx.request.body.files.mediaFile
 
@@ -138,7 +137,8 @@ editorRouter.put('/save', async ctx => {
   logger.info('Build client new.')
   
   try {
-    const stdo = exec('npm run build', {cwd: __dirname + '/../../../client'})
+    const stdo = exec('npm run build', {cwd: __dirname + '/../../../client', stdio: [0,1,2]})
+    console.log('Build done!')
     ctx.status = 200 
   }
 

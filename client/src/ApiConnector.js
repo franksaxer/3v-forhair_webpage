@@ -1,22 +1,24 @@
 import Vue from 'vue'
 
+// Globally store the session key for further calls.
+let sessionKey = null
+
 const login = async function (password) {
-  const data = {password: password}
+  const data = {
+    password: password
+  }
 
   try {
     return await Vue.http.post('https://localhost:8081/api/authentication/login', data).then(response => {
-      if (response.status === 200) {
-        return response.body
-      } else if (response.status === 401) {
-        throw new Error('Wrong password')
+      sessionKey = response.body
+    }, error => {
+      if (error.status === 401 || error.status === 403) {
+        throw new Error(error.bodyText)
       } else {
-        console.log('Error while connect to server. Response: ' + response.status + ' - ' + response.body)
+        console.log('Error while connect to server with error. ')
+        console.log(JSON.stringify(error))
         throw new Error('Something went wrong while try to connect the server.')
       }
-    }, error => {
-      console.log('Error while connect to server. Response: ')
-      console.log(JSON.stringify(error))
-      throw new Error(error.bodyText)
     })
   } catch (err) {
     console.log(err)
@@ -25,8 +27,10 @@ const login = async function (password) {
   }
 }
 
-const logout = async function (sessionKey) {
-  const data = {sessionKey: sessionKey}
+const logout = async function () {
+  const data = {
+    sessionKey: sessionKey
+  }
 
   try {
     await Vue.http.post('https://localhost:8081/api/authentication/logout', data).then(response => {
@@ -41,16 +45,15 @@ const logout = async function (sessionKey) {
   }
 }
 
-const uploadFile = async function (path, file) {
-  console.log('upload')
+const uploadFile = async (path, file) => {
   const data = new FormData()
+  data.append('sessionKey', sessionKey)
   data.append('mediaPath', path)
   data.append('mediaFile', file)
 
   try {
     await Vue.http.put('https://localhost:8081/api/editor/uploadFile', data).then(response => {
     }, error => {
-      console.log('huhu')
       throw new Error(error.bodyText)
     })
   } catch (err) {
@@ -60,13 +63,49 @@ const uploadFile = async function (path, file) {
   }
 }
 
+const updateConfig = async (key, config) => {
+  console.log('update')
+
+  const data = {
+    sessionKey: sessionKey,
+    dataKey: key,
+    dataObject: config
+  }
+
+  try {
+    await Vue.http.post('https://localhost:8081/api/editor/updateConfig', data).then(response => {
+      console.log('alles gut')
+      // Nothing to do.
+    }, error => {
+      console.log('nicht gut')
+      throw new Error(error.bodyText)
+    })
+  } catch (err) {
+    console.log('gar nicht gut')
+    console.log(err)
+    // Just forward the error.
+    throw err
+  }
+}
+
 const save = async function () {
   console.log('save')
+
+  const data = {
+    sessionKey: sessionKey
+  }
+
   try {
-    await Vue.http.put('https://localhost:8081/api/editor/save').then(response => {
-      // Nothin to do.
+    await Vue.http.put('https://localhost:8081/api/editor/save', data).then(response => {
+      console.log('saved')
     }, error => {
-      throw new Error(error.bodyText)
+      if (error.status === 401) {
+        throw new Error('Wrong password')
+      } else {
+        console.log('Error while connect to server with error. ')
+        console.log(JSON.stringify(error))
+        throw new Error('Something went wrong while try to connect the server.')
+      }
     })
   } catch (err) {
     console.log(err)
@@ -79,5 +118,6 @@ export default {
   login: login,
   logout: logout,
   upload: uploadFile,
+  update: updateConfig,
   save: save
 }

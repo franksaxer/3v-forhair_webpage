@@ -24,7 +24,7 @@ const checkSession = async function (ctx, next) {
 
     if (ctx.request.body.sessionKey) {
       sessionKey = ctx.request.body.sessionKey    
-    } else if (ctx.body.fields.sessionKey) {
+    } else if ( ctx.body && ctx.body.fields && ctx.body.fields.sessionKey) {
       sessionKey = ctx.request.body.fields.sessionKey    
     } else {
       ctx.status = 401

@@ -29,8 +29,8 @@
         <div  id="admin-buttons"
               v-if="$editable">
 
-          <button :class="['button', 'is-primary']"
-                  @click="">
+          <button :class="['button', 'is-primary', {'is-loading': $saving}]"
+                  @click="$saveData">
 
             {{ labels.AUTH_BTN_SAVE | translate }}
           </button>
@@ -71,42 +71,40 @@
     <language-selector></language-selector>
 
     <!-- login modal -->
-    <div v-if="authenticationModalOpen"
-         class="modal-background">
-    </div>
+    <div :class="['modal', {'is-active': authenticationModalOpen}]">
+      <div class="modal-background"/>
 
-    <div class="modal-card"
-         v-if="authenticationModalOpen">
+      <div class="modal-card"
+           v-if="authenticationModalOpen">
 
-      <header class="modal-card-head">
-        <p class="modal-card-title">
-          {{ labels.AUTH_BTN_LOGIN | translate }}
-        </p>
-      </header>
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+            {{ labels.AUTH_BTN_LOGIN | translate }}
+          </p>
+        </header>
 
-      <section class="modal-card-body">
-        <p>{{ labels.AUTH_MSG_DESCRIPTION | translate }}</p>
+        <section class="modal-card-body">
+          <p>{{ labels.AUTH_MSG_DESCRIPTION | translate }}</p>
 
-        <input class="input"
-               type="password"
-               :placeholder="labels.AUTH_INPUT_PH_PWD | translate"
-               v-model.trim="password"
-               @keydown.enter="login">
+          <input class="input"
+                 type="password"
+                 :placeholder="labels.AUTH_INPUT_PH_PWD | translate"
+                 v-model.trim="password"
+                 @keydown.enter="login">
 
-        <p v-if="authErrorMessage"
-           class="error-message">
+          <p v-if="authErrorMessage"
+             class="error-message">
+          {{ authErrorMessage }}</p>
+        </section>
 
-          {{ authErrorMessage }}
-        </p>
-      </section>
+        <footer class="modal-card-foot">
+          <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                  @click="login">
 
-      <footer class="modal-card-foot">
-        <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                @click="login">
-
-          {{ labels.AUTH_BTN_LOGIN | translate }}
-        </button>
-      </footer>
+            {{ labels.AUTH_BTN_LOGIN | translate }}
+          </button>
+        </footer>
+      </div>
     </div>
   </div>
 </template>
@@ -137,7 +135,6 @@
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
-        sessionKey: null, // The session key when authorized.
         // The data objects
         contactData: {
           telefon: {},
@@ -159,11 +156,12 @@
         this.authIsLoading = true // Show something is happening. Especially in case of false password.
 
         try {
-          this.sessionKey = await ApiConnector.login(this.password) // Authenticate to the server.
-          // Authentication successful.
+          await ApiConnector.login(this.password) // Authenticate to the server.
+          this.$setEditable()
           this.authenticationModalOpen = false // Close modal.
         } catch (err) {
           // Authentication failed.
+          console.log('fehler: ' + JSON.stringify(err.message))
           this.authErrorMessage = err.message
         }
 
@@ -174,9 +172,8 @@
         this.authIsLoading = true // Show something is happening.
 
         try {
-          await ApiConnector.logout(this.sessionKey) // Clear the session on the server.
-          // Logout successful.
-          this.sessionKey = null
+          await ApiConnector.logout() // Clear the session on the server.
+          this.$setEditable(false)
         } catch (err) {
           console.log(err.message)
         }
@@ -195,23 +192,7 @@
       }
     },
 
-    watch: {
-      sessionKey: function (key) {
-        if (key) {
-          // Logout automatically, if the user close the window.
-          // By this the user will be requested if the page rly should be closed.
-          window.onbeforeunload = this.logout
-
-          // Enable the editable view.
-          this.$setEditable(true)
-        } else {
-          // Disable the editable view.
-          this.$setEditable(false)
-        }
-      }
-    },
-
-    created: async function () {
+    async created () {
       // Load lata here.
       this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
       this.subpages = await loadDataObject(DataStoreEntries.mainMenu.key)
