@@ -1,32 +1,49 @@
 <template>
   <div class="subpage">
-    <h1>{{ data.headline }}</h1>
+    <h1>{{ labels.SUBPAGE_PRODUCTS_HEADER | translate }}</h1>
+
     <div class="content-box">
       <tabs animation="slide"
             :only-fade="false"
             v-if="data.produkteAllgemein || data.produkteFürIhn">
+
         <tab-pane class="is-primary"
-        :label="$labelStore.translate(labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL)">
+                  :label="$labelStore.translate(labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL)">
+
             <div class="produkte">
-              <div class="produkt" v-for="produkt in data.produkteAllgemein">
-                  <img class="image" :src="produkt.bild">
-                  <p class="unterschrift">{{produkt.name}}</p>
+              <div  class="produkt"
+                    v-for="produkt in data.produkteAllgemein">
+
+                  <img  class="image"
+                        :src="produkt.bild">
+
+                  <p  class="unterschrift"
+                      @click="editText(produkt, 'name')" v-editable>{{ produkt.name }}</p>
               </div>
             </div>
         </tab-pane>
+
         <tab-pane class="is-primary"
                   :label="$labelStore.translate(labels.SUPPAGE_PRODUCTS_PRODUCTS_HIM)">
+
           <div class="produkteIhn">
             <div class="headlineImage">
-              <h5>{{data.produkteFürIhn.subheadline}}</h5>
-              <img class="imageProdukteIhn" :src="data.produkteFürIhn.bild">
-            </div>
-            <div v-for="produkt in data.produkteFürIhn.produkte">
-              <h6>{{produkt.headline}}</h6>
-              <ul>
-                <li v-for="produktItem in produkt.produkte">{{produktItem}}</li>
-              </ul>
+              <h5 @click="editText(data.produkteFürIhn, 'subheadline')" v-editable>
+                {{ data.produkteFürIhn.subheadline }}
+              </h5>
 
+              <img  class="imageProdukteIhn"
+                    :src="data.produkteFürIhn.bild">
+            </div>
+
+            <div v-for="produkt in data.produkteFürIhn.produkte">
+              <h6 @click="editText(produkt, 'headline')" v-editable>
+                {{ produkt.headline }}
+              </h6>
+
+              <ul @click="editText(produkt, 'produkte')" v-editable>
+                <li v-for="item in stringToList(produkt.produkte)">{{ item }}</li>
+              </ul>
             </div>
           </div>
         </tab-pane>

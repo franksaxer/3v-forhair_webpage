@@ -86,6 +86,9 @@ export default {
   // Impressum
   [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],
 
+  // Products.
+  [keys.SUBPAGE_PRODUCTS_HEADER]: ['Produkte', 'Products'],
+
   // Promotion
   [keys.SUBPAGE_PROMOTION_HEADER]: ['Angebote', 'Promotion'],
 
