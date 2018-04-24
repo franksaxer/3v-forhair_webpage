@@ -1,9 +1,4 @@
 {
-  "generalConfig": {
-    "key": "d2e2a5580481bf00e253a0cc5a4b080c",
-    "path": "json/GeneralConfig.json"
-  },
-
   "greeter": {
     "key": "f8baee1460d37baacdbb12784ec19d31",
     "path": "json/content/Greeter.json"
@@ -17,11 +12,6 @@
   "mainMenu": {
     "key": "5e3732f3a271b76aec1e6ab277cfc830",
     "path": "json/MainMenu.json"
-  },
-
-  "welcome": {
-    "key": "c0b137fe2d792459f26ff763cce44574a5b5ab03",
-    "path":"json/Welcome.json"
   },
 
   "costs": {

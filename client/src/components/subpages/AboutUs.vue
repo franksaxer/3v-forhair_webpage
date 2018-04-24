@@ -105,6 +105,8 @@
         font-style: italic;
       }
 
+      width: 100%;
+
       .bild {
         @function calcWidth($reference) {
           @return calc(#{$reference} * 0.8);
