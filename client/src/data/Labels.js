@@ -20,6 +20,8 @@ export default {
   [keys.AUTH_INPUT_PH_PWD]: ['Passwort', 'password'],
   [keys.AUTH_BTN_LOGIN]: ['Anmelden', 'Login'],
   [keys.AUTH_BTN_LOGOUT]: ['Abmelden', 'Logout'],
+  [keys.AUTH_BTN_SAVE]: ['Speichern', 'Save'],
+  [keys.AUTH_BTN_RESET]: ['Zurücksetzen', 'Reset'],
 
   // Edit
   [keys.EDIT_IMG_BTN_DRAG]: ['Bild bewegen', 'Move image'],

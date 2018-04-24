@@ -26,13 +26,27 @@
                      :typeDelay="200"/>
         </div>
 
-        <button id="logout-button"
-                :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                v-if="adminViewEnabled"
-                @click="logout">
+        <div  id="admin-buttons"
+              v-if="$editable">
 
-          {{ labels.AUTH_BTN_LOGOUT | translate }}
-        </button>
+          <button :class="['button', 'is-primary']"
+                  @click="">
+
+            {{ labels.AUTH_BTN_SAVE | translate }}
+          </button>
+
+          <button :class="['button', 'is-primary']"
+                  @click="$resetData">
+
+            {{ labels.AUTH_BTN_RESET | translate }}
+          </button>
+
+          <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+                  @click="logout">
+
+            {{ labels.AUTH_BTN_LOGOUT | translate }}
+          </button>
+        </div>
       </header>
 
       <main class="content">
@@ -176,11 +190,6 @@
     },
 
     computed: {
-      adminViewEnabled: function () {
-        if (this.sessionKey) return true
-        else return false
-      },
-
       logoInLowerPosition: function () {
         return this.$route.name === RouteNames.GREETER
       }
@@ -297,12 +306,15 @@
         }
       }
 
-      #logout-button {
+      #admin-buttons {
         position: absolute;
         $margin: calc(0.15 * #{$header-height});
         top: $margin;
         right: $margin;
-        height: calc(#{$header-height} - 2 * #{$margin});
+
+        button {
+          height: calc(#{$header-height} - 2 * #{$margin});
+        }
       }
     }
 

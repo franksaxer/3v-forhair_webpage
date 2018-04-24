@@ -137,8 +137,8 @@ const loadDataObject = async (key) => {
     DATA_STORE[key] = json
   }
 
-  // Return the key object.
-  return DATA_STORE[key]
+  // Return the key object as deep copy.
+  return JSON.parse(JSON.stringify(DATA_STORE[key]))
 }
 
 // Define what should be exported.

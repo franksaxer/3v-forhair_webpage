@@ -1,6 +1,9 @@
 // Import the edit window component.
 import EditWindow from './EditWindow'
 
+// Import the data manager function.
+import { loadDataObject } from '../data/DataManager'
+
 // The plugin itself.
 const EditableView = {
   install: function (Vue, options) {
@@ -16,6 +19,13 @@ const EditableView = {
     Vue.prototype.$setEditable = function (enable = true) {
       Vue.prototype.$editable = enable
       window.editableViewBus.$emit('setEditable', enable)
+    }
+
+    /**
+     * Globally emit the reset of the data objects.
+     */
+    Vue.prototype.$resetData = function () {
+      window.editableViewBus.$emit('reset')
     }
 
     /**
@@ -85,6 +95,15 @@ const EditableView = {
             root.appendChild(instance.$el)
           }
         }
+      },
+
+      created () {
+        window.editableViewBus.$on('reset', async () => {
+          // Only works for elements with use the standard data object description. (e.g. SubpageMixin)
+          if (this.data && this.dataKey) {
+            this.data = await loadDataObject(this.dataKey)
+          }
+        })
       }
     })
   }
