@@ -13,7 +13,7 @@
         </div>
 
         <div class="stylistInfo">
-          <h3 @click="editText(stylist, 'name')">
+          <h3 @click="editText(stylist, 'name')" v-editable>
             {{ stylist.name }}
           </h3>
 

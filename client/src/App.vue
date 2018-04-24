@@ -35,7 +35,7 @@
         </button>
       </header>
 
-      <main class="">
+      <main class="content">
         <main-menu :space="!logoInLowerPosition"/>
         <router-view></router-view>
       </main>
@@ -212,8 +212,6 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
-
-      this.$setEditable()
     }
   }
 </script>
@@ -367,12 +365,5 @@
   button {
     // The secondary color of Bulma does not rly work together.
     color: white!important;
-  }
-
-
-  .editable {
-    p, span, li, table, h1, h2, h3, h4, h5, h6 {
-      cursor: pointer!important;
-    }
   }
 </style>

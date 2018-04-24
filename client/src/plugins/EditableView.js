@@ -39,6 +39,12 @@ const EditableView = {
       }
     })
 
+    Vue.directive('editable', {
+      bind (el) {
+        el.className += ' editable-element'
+      }
+    })
+
     Vue.mixin({
       methods: {
         stringToList (text) {

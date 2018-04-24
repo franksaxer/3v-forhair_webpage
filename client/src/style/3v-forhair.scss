@@ -125,3 +125,9 @@ p {
     }
   }
 }
+
+.editable {
+  .editable-element {
+    cursor: pointer!important;
+  }
+}
