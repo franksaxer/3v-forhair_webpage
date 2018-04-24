@@ -1,7 +1,5 @@
 <template>
   <div class="subpage">
-    <vue-particles class="particles" color="#dedede" :linesDistance="300" :particlesNumber="40"/>
-
     <div class="image">
       <img src="../../assets/subpages/greeter/frank.jpg">
     </div>
@@ -42,16 +40,6 @@
   @import "../../style/subpages";
 
   .subpage {
-
-    .particles{
-      position: absolute;
-      top: 0;
-      left:0;
-      height: 100%;
-      width: 100%;
-    }
-
-
     display: flex;
     flex-direction: row;
     align-items: center;
