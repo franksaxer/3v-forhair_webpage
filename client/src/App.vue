@@ -1,5 +1,6 @@
 <template>
   <div  id="app"
+        :class="{'editable': $editable}"
         :style="[{'background-image': 'url(' + $route.meta.background +')'}]" >
 
     <!-- general layout with header, main and footer -->
@@ -211,6 +212,8 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
+
+      this.$setEditable()
     }
   }
 </script>
@@ -364,5 +367,12 @@
   button {
     // The secondary color of Bulma does not rly work together.
     color: white!important;
+  }
+
+
+  .editable {
+    p, span, li, table, h1, h2, h3, h4, h5, h6 {
+      cursor: pointer!important;
+    }
   }
 </style>
