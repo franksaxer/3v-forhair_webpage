@@ -66,6 +66,10 @@
       margin-bottom: 20px;
       background-color: rgba(27, 63, 27,.4);
 
+      p,ul{
+        color: white;
+      }
+
       @include media("<desktop") {
         flex-direction: column;
         align-items: center;

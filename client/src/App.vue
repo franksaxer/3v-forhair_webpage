@@ -55,12 +55,12 @@
       </main>
 
       <footer>
-        <div>
+        <div v-if="contactData">
           <i class="fa fa-phone"></i>
           <span @click="editText(contactData.telefon, 'festnetz')" v-editable>{{ contactData.telefon.festnetz }}</span>
         </div>
 
-        <div>
+        <div v-if="contactData">
           <i class="fa fa-envelope"></i>
           <span @click="editText(contactData.mail, 'mail')" v-editable>{{ contactData.mail.mail }}</span>
         </div>
@@ -135,11 +135,7 @@
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
-        // The data objects
-        contactData: {
-          telefon: {},
-          mail: {}
-        }
+        contactData: null
       }
     },
 
@@ -195,7 +191,6 @@
     async created () {
       // Load lata here.
       this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
-      this.subpages = await loadDataObject(DataStoreEntries.mainMenu.key)
 
       // Check if the admin view is requested.
       if (window.location.pathname === UrlEnum.admin) {
