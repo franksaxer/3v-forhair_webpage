@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <vue-particles class="particles" color="#dedede" linesDistance="300" particlesNumber="40">
+    <vue-particles class="particles" color="#dedede" :linesDistance="300" :particlesNumber="40">
     </vue-particles>
     <div class="image">
       <img src="../../assets/subpages/greeter/frank.jpg">
