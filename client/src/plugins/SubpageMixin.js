@@ -1,5 +1,6 @@
-// Import the data manager and the data store entries enumeration.
-import { loadDataObject } from '../data/DataManager'
+// Import from the data manager and api connector.
+import { loadDataObject, convertNewData } from '../data/DataManager'
+import ApiConnector from '../ApiConnector'
 
 // The mixin for subpage components.
 export default {
@@ -15,8 +16,18 @@ export default {
      * The basic save function for subpages without any special data properties.
      * Will be overwritten by those who need to handle such properties.
      */
-    save () {
-      this.finalSave()
+    async save () {
+      const data = await convertNewData(this.dataKey, JSON.parse(JSON.stringify(this.data)))
+
+      try {
+        await ApiConnector.update(this.dataKey, data)
+      } catch (err) {
+        // TODO: Show the error to the user.
+        console.log('Message: ' + err.message)
+      }
+
+      // Call to build the client on backend.
+      this.finalBuild()
     }
   },
 

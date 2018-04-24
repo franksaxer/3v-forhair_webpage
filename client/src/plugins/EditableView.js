@@ -2,7 +2,7 @@
 import EditWindow from './EditWindow'
 
 // Import from the data manager and api connector.
-import { loadDataObject, convertNewData } from '../data/DataManager'
+import { loadDataObject } from '../data/DataManager'
 import ApiConnector from '../ApiConnector'
 
 // The plugin itself.
@@ -108,11 +108,9 @@ const EditableView = {
           }
         },
 
-        async finalSave () {
-          const data = await convertNewData(this.dataKey, JSON.parse(JSON.stringify(this.data)))
-
+        async finalBuild () {
+          // Call the backend to rebuild the client sources.
           try {
-            await ApiConnector.update(this.dataKey, data)
             await ApiConnector.save()
           } catch (err) {
             // TODO: Show the error to the user.
