@@ -2,7 +2,7 @@
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_RECENSION_HEADER | translate }}</h1>
 
-    <div  v-for="rezension in data.rezensionen"
+    <div  v-for="(rezension, index) in data.rezensionen"
           class="renzension">
 
       <h2 @click="editText(rezension, 'headline')" v-editable>
@@ -16,6 +16,11 @@
 
       <p class="offer"
           @click="editText(rezension, 'offer')" v-editable>{{ rezension.offer }}</p>
+
+      <button class="delete"
+              aria-label="close"
+              @click="removeElement(data.rezensionen, index)"
+              v-if="$editable" />
     </div>
 
     <p class="linkText">
@@ -75,6 +80,7 @@
     }
 
     .renzension{
+      position: relative;
       margin-bottom: 40px;
       text-shadow: decentShadow(black);
 
@@ -85,6 +91,10 @@
 
       .offer {
         font-style: italic;
+      }
+
+      .delete {
+        background-color: red!important;
       }
     }
 

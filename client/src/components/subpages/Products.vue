@@ -12,13 +12,18 @@
 
             <div class="produkte">
               <div  class="produkt"
-                    v-for="produkt in data.produkteAllgemein">
+                    v-for="(produkt, index) in data.produkteAllgemein">
 
                   <img  class="image"
                         :src="produkt.bild">
 
                   <p  class="unterschrift"
                       @click="editText(produkt, 'name')" v-editable>{{ produkt.name }}</p>
+
+                  <button class="delete"
+                          aria-label="close"
+                          @click="removeElement(data.produkteAllgemein, index)"
+                          v-if="$editable" />
               </div>
             </div>
         </tab-pane>
@@ -109,10 +114,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+
         .produkt {
-          margin: 2%;
+          position: relative;
           display: flex;
           flex-direction: column;
+          margin: 2%;
 
           @include media('<desktop') {
             width: 46%;
@@ -125,12 +132,12 @@
             max-width: 160px;
             max-font-size: 150px;
           }
+
           .unterschrift {
             padding-top: 10px;
             text-align: center;
           }
         }
-
       }
     }
   }

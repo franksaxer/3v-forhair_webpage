@@ -2,7 +2,7 @@
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_PROMOTION_HEADER | translate }}</h1>
 
-    <div  v-for="aktion in data.aktionen"
+    <div  v-for="(aktion, index) in data.aktionen"
           class="content-box"
           v-if="data.aktionen">
 
@@ -33,6 +33,11 @@
           </ul>
         </div>
       </div>
+
+      <button class="delete"
+              aria-label="close"
+              @click="removeElement(data.aktionen, index)"
+              v-if="$editable" />
     </div>
   </div>
 </template>
@@ -61,6 +66,7 @@
 
   .subpage{
     .content-box{
+      position: relative;
       display: flex;
       flex-direction: row;
       margin-bottom: 20px;

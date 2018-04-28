@@ -90,8 +90,9 @@
       flex-wrap: wrap;
 
       .stylist {
-        margin: 10px 2%;
+        position: relative;
         display: flex;
+        margin: 10px 2%;
         width: 46%;
         padding-bottom: 20px;
 
@@ -121,12 +122,6 @@
             display: flex;
             justify-content: center;
             padding-bottom: 20px;
-          }
-
-          .delete {
-            position: absolute;
-            top: 0;
-            right:0;
           }
         }
 
