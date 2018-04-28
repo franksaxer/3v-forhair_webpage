@@ -24,8 +24,10 @@
               {{ stylistInfo }}
             </li>
           </ul>
-          <p @click="editText(stylist,'urlaub')" v-editable
-             v-if="$editable || stylist.urlaub" class="urlaub">Im Urlaub: {{ stylist.urlaub }}</p>
+
+          <p @click="editText(stylist, 'urlaub')"
+             v-if="$editable || stylist.urlaub"
+             class="urlaub" v-editable>Im Urlaub: {{ stylist.urlaub }}</p>
 
           <p  class="wartezeit" @click="editText(stylist, 'wartezeit')" v-editable>{{ stylist.wartezeit }}</p>
 
@@ -36,6 +38,11 @@
             </li>
           </ul>
         </div>
+
+        <button class="delete"
+                aria-label="close"
+                @click="removeElement(data.stylisten, index)"
+                v-if="$editable" />
       </div>
     </div>
   </div>
@@ -82,7 +89,7 @@
       flex-direction: row;
       flex-wrap: wrap;
 
-      .stylist{
+      .stylist {
         margin: 10px 2%;
         display: flex;
         width: 46%;
@@ -115,8 +122,15 @@
             justify-content: center;
             padding-bottom: 20px;
           }
+
+          .delete {
+            position: absolute;
+            top: 0;
+            right:0;
+          }
         }
-        .urlaub{
+
+        .urlaub {
           font-weight: bold;
           color:rgb(204,51,51);
           text-align: center;
@@ -131,10 +145,6 @@
           margin-bottom: 20px;
         }
       }
-
     }
   }
-
-
-
 </style>

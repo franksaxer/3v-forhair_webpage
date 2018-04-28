@@ -108,6 +108,20 @@ const EditableView = {
           }
         },
 
+        removeElement (object, prop) {
+          if (Vue.prototype.$editable) {
+            if (object[prop]) {
+              if (Array.isArray(object)) {
+                // Arrays require indexing.
+                object.splice(prop, 1)
+              } else {
+                // Simply delete the property.
+                delete object[prop]
+              }
+            }
+          }
+        },
+
         async finalBuild () {
           // Call the backend to rebuild the client sources.
           try {
