@@ -103,5 +103,6 @@ export default {
     [langs.DE]: 'Dich noch schöner zu machen ist unser Ziel!',
     [langs.EN]: 'Make you even more pretty is our goal!'
   },
-  [keys.SUBPAGE_STAFF_HOURS]: ['Arbeitszeit', 'Working Hours']
+  [keys.SUBPAGE_STAFF_HOURS]: ['Arbeitszeit', 'Working Hours'],
+  [keys.SUBPAGE_STAFF_PH_SEARCH]: ['Kategorie', 'category']
 }

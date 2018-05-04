@@ -10,7 +10,9 @@
       <div  v-for="kategorie in data.kategorien"
             class="kategorie content-box">
 
-        <h4 @click="editText(kategorie, 'bezeichnung')" v-editable>
+        <h4 class="bezeichnung"
+            @click="handleBezeichnung(kategorie)" v-editable>
+
           <em>{{ kategorie.bezeichnung }}</em>
         </h4>
         <ul class="beschreibungListe"
@@ -56,6 +58,7 @@
   import Subpage from '../../plugins/SubpageMixin'
   import { DataStoreEntries } from '../../data/DataManager'
   import { Carousel, Slide } from 'vue-carousel'
+  import * as RouteNames from '../../enums/RouteNames'
 
   export default {
     name: 'aboutus',
@@ -70,6 +73,17 @@
     data () {
       return {
         dataKey: DataStoreEntries.ueberUns.key
+      }
+    },
+
+    methods: {
+      handleBezeichnung (kategorie) {
+        if (this.$editable) {
+          this.editText(kategorie, 'bezeichnung')
+        } else {
+          this.$staffFilter.setStaffFilter(kategorie.bezeichnung)
+          this.$router.push({ name: RouteNames.STAFF })
+        }
       }
     }
   }
@@ -91,6 +105,12 @@
 
         @include media('>=desktop') {
           width: 29%;
+        }
+
+        .bezeichnung {
+          &:hover {
+            cursor: pointer; // Show that a action is available.
+          }
         }
 
         .beschreibungListe {

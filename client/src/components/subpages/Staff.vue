@@ -3,10 +3,23 @@
     <h1>{{ labels.SUBPAGE_STAFF_HEADER | translate }}</h1>
     <h2>{{ labels.SUBPAGE_STAFF_SUBHEADER | translate }}</h2>
 
+    <div class="field search">
+      <p class="control has-icons-right">
+        <input  v-model="filter"
+                class="input"
+                type="text"
+                :placeholder="labels.SUBPAGE_STAFF_PH_SEARCH | translate">
+
+        <span class="icon is-small is-right">
+          <i class="fa fa-search"></i>
+        </span>
+      </p>
+    </div>
+
     <div class="stylist-list">
       <div  v-for="(stylist, index) in data.stylisten"
             class="stylist content-box"
-            v-if="data">
+            v-if="data && $staffFilter.checkStaff(stylist)">
 
         <div class="stylist-image">
           <img :src="stylist.bild">
@@ -52,7 +65,7 @@
 <script>
   import Subpage from '../../plugins/SubpageMixin'
   import { DataStoreEntries } from '../../data/DataManager'
-  import * as routeNames from '../../enums/RouteNames'
+  import * as RouteNames from '../../enums/RouteNames'
 
   export default {
     name: 'staff',
@@ -62,8 +75,20 @@
     data () {
       return {
         dataKey: DataStoreEntries.stylisten.key,
-        routes: routeNames
+        routes: RouteNames,
+        filter: ''
       }
+    },
+
+    watch: {
+      filter (value) {
+        this.$staffFilter.setStaffFilter(value)
+      }
+    },
+
+    created () {
+      // Set internal filter data model.
+      this.filter = this.$staffFilter.kategorie
     }
   }
 </script>
@@ -73,15 +98,19 @@
   @import '../../style/subpages';
 
   .subpage{
-
     $baseColor: white;
     color: $baseColor;
 
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
 
     .title, .subtitle {
         color:$baseColor;
+    }
+
+    .search {
+      margin-left: auto;
+      margin-right: 2%;
     }
 
     .stylist-list {
