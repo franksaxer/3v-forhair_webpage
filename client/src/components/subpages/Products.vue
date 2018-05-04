@@ -1,4 +1,4 @@
-<template>
+ont<template>
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_PRODUCTS_HEADER | translate }}</h1>
 
@@ -13,6 +13,12 @@
             <div class="produkte">
               <div  class="produkt"
                     v-for="(produkt, index) in data.produkteAllgemein">
+
+                  <button class="info"
+                          @click="openInfoModal(produkt)">
+
+                    <i class="fa fa-info"/>
+                  </button>
 
                   <img  class="image"
                         :src="produkt.bild">
@@ -54,6 +60,22 @@
         </tab-pane>
       </tabs>
     </div>
+
+    <!-- Modal to show information for a selected product. -->
+    <div :class="['modal', {'is-active': infoOpen}]">
+      <div  class="modal-background"
+            @click="infoOpen = false"/>
+
+      <div class="modal-content">
+        <section class="box">
+          <button class="delete"
+                  aria-label="close"
+                  @click="infoOpen = false" />
+
+          <p @click="editText(infoProdukt, 'info')" >{{ infoProdukt.info }}</p>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,7 +96,16 @@
 
     data () {
       return {
-        dataKey: DataStoreEntries.produkte.key
+        dataKey: DataStoreEntries.produkte.key,
+        infoOpen: false, // Not shown per default.
+        infoProdukt: {} // Will be defined on open.
+      }
+    },
+
+    methods: {
+      openInfoModal (produkt) {
+        this.infoProdukt = produkt
+        this.infoOpen = true
       }
     }
   }
@@ -120,13 +151,32 @@
           display: flex;
           flex-direction: column;
           margin: 2%;
+          width: 29%;
+          align-items: center;
 
           @include media('<desktop') {
             width: 46%;
           }
 
-          width: 29%;
-          align-items: center;
+          .info {
+            $color: black;
+            $square: 20px;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $square;
+            height: $square;
+            font-size: calc(0.6 * #{$square});
+            border: 1px solid $color;
+            border-radius: $square;
+            color: $color!important;
+            background-color: transparent;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
 
           .image {
             max-width: 160px;
