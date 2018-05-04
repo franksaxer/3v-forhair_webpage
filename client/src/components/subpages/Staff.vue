@@ -3,8 +3,8 @@
     <h1>{{ labels.SUBPAGE_STAFF_HEADER | translate }}</h1>
     <h2>{{ labels.SUBPAGE_STAFF_SUBHEADER | translate }}</h2>
 
-    <div class="field search">
-      <p class="control has-icons-right">
+    <div class="field has-addons search">
+      <div class="control has-icons-right">
         <input  v-model="filter"
                 class="input"
                 type="text"
@@ -13,7 +13,15 @@
         <span class="icon is-small is-right">
           <i class="fa fa-search"></i>
         </span>
-      </p>
+      </div>
+      <div class="control">
+        <a  class="button"
+            @click="filter = ''">
+
+          <i  class="fa fa-close"
+              area-hidden="true"/>
+        </a>
+      </div>
     </div>
 
     <div class="stylist-list">
