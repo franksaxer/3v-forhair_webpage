@@ -212,8 +212,6 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
-
-      this.$setEditable()
     }
   }
 </script>

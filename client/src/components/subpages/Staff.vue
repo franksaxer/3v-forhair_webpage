@@ -38,7 +38,13 @@
             {{ stylist.name }}
           </h3>
 
-            <router-link :to="{ name: routes.ABOUT_US }"><h6 @click="editText(stylist, 'kategorie')" v-editable><em>{{ stylist.kategorie }}</em></h6></router-link>
+            <router-link :to="{ name: routes.ABOUT_US }">
+              <span class="tag is-rounded"
+                    click="editText(stylist, 'kategorie')" v-editable>
+
+                    {{ stylist.kategorie }}
+              </span>
+            </router-link>
 
           <ul @click="editText(stylist, 'info')" v-editable>
             <li v-for="stylistInfo in stringToList(stylist.info)">
@@ -117,8 +123,7 @@
     }
 
     .search {
-      margin-left: auto;
-      margin-right: 2%;
+      margin: 30px 2% 10px auto;
     }
 
     .stylist-list {
@@ -133,8 +138,8 @@
         width: 46%;
         padding-bottom: 20px;
 
-        h6{
-          text-decoration: underline;
+        .tag {
+          margin-top: 10px;
         }
 
         @include media("<desktop") {

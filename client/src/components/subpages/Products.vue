@@ -1,64 +1,83 @@
-ont<template>
+<template>
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_PRODUCTS_HEADER | translate }}</h1>
 
     <div class="content-box">
-      <tabs animation="slide"
-            :only-fade="false"
-            v-if="data.produkteAllgemein || data.produkteFürIhn">
+     	<div class="tabs is-centered">
+				<ul>
+          <li :class="{'is-active': activeTab === tabs.general}">
+						<a @click="switchTab(tabs.general)">
+							<span class="icon is-small">
+                <i class="fa fa-archive"
+                   aria-hidden="true"/>
+              </span>
+							<span>
+                {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL | translate }}
+              </span>
+						</a>
+					</li>
 
-        <tab-pane class="is-primary"
-                  :label="$labelStore.translate(labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL)">
+          <li :class="{'is-active': activeTab === tabs.male}">
+						<a @click="switchTab(tabs.male)">
+							<span class="icon is-small">
+                <i class="fa fa-male"
+                   aria-hidden="true"/>
+              </span>
+							<span>
+                {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL | translate }}
+              </span>
+						</a>
+					</li>
+        </ul>
+      </div>
 
-            <div class="produkte">
-              <div  class="produkt"
-                    v-for="(produkt, index) in data.produkteAllgemein">
+      <div  class="produkte"
+            v-if="activeTab === tabs.general && data.produkteAllgemein">
 
-                  <button class="info"
-                          @click="openInfoModal(produkt)">
+        <div  class="produkt"
+              v-for="(produkt, index) in data.produkteAllgemein">
 
-                    <i class="fa fa-info"/>
-                  </button>
+            <button class="info"
+                    @click="openInfoModal(produkt)">
 
-                  <img  class="image"
-                        :src="produkt.bild">
+              <i class="fa fa-info"/>
+            </button>
 
-                  <p  class="unterschrift"
-                      @click="editText(produkt, 'name')" v-editable>{{ produkt.name }}</p>
+            <img  class="image"
+                  :src="produkt.bild">
 
-                  <button class="delete"
-                          aria-label="close"
-                          @click="removeElement(data.produkteAllgemein, index)"
-                          v-if="$editable" />
-              </div>
-            </div>
-        </tab-pane>
+            <p  class="unterschrift"
+                @click="editText(produkt, 'name')" v-editable>{{ produkt.name }}</p>
 
-        <tab-pane class="is-primary"
-                  :label="$labelStore.translate(labels.SUPPAGE_PRODUCTS_PRODUCTS_HIM)">
+            <button class="delete"
+                    aria-label="close"
+                    @click="removeElement(data.produkteAllgemein, index)"
+                    v-if="$editable" />
+        </div>
+      </div>
 
-          <div class="produkteIhn">
-            <div class="headlineImage">
-              <h5 @click="editText(data.produkteFürIhn, 'subheadline')" v-editable>
-                {{ data.produkteFürIhn.subheadline }}
-              </h5>
+      <div  class="produkteIhn"
+            v-if="activeTab === tabs.male && data.produkteAllgemein">
 
-              <img  class="imageProdukteIhn"
-                    :src="data.produkteFürIhn.bild">
-            </div>
+        <h5 @click="editText(data.produkteFürIhn, 'subheadline')" v-editable>
+          {{ data.produkteFürIhn.subheadline }}
+        </h5>
 
-            <div v-for="produkt in data.produkteFürIhn.produkte">
-              <h6 @click="editText(produkt, 'headline')" v-editable>
-                {{ produkt.headline }}
-              </h6>
+        <img  class="imageProdukteIhn"
+              :src="data.produkteFürIhn.bild">
 
-              <ul @click="editText(produkt, 'produkte')" v-editable>
-                <li v-for="item in stringToList(produkt.produkte)">{{ item }}</li>
-              </ul>
-            </div>
-          </div>
-        </tab-pane>
-      </tabs>
+        <div class="category"
+                  v-for="produkt in data.produkteFürIhn.produkte">
+
+          <h6 @click="editText(produkt, 'headline')" v-editable>
+            {{ produkt.headline }}
+          </h6>
+
+          <ul @click="editText(produkt, 'produkte')" v-editable>
+            <li v-for="item in stringToList(produkt.produkte)">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- Modal to show information for a selected product. -->
@@ -82,15 +101,14 @@ ont<template>
 <script>
   import Subpage from '../../plugins/SubpageMixin'
   import { DataStoreEntries } from '../../data/DataManager'
-  import { Tabs, TabPane } from 'vue-bulma-tabs'
+
+  const TABS = {
+    general: '7beb4b54e97d1f92d9bf2e5e7e21d33a',
+    male: '962453969e3902726b0383031df65031'
+  }
 
   export default {
     name: 'produkte',
-
-    components: {
-      Tabs,
-      TabPane
-    },
 
     mixins: [Subpage],
 
@@ -98,7 +116,9 @@ ont<template>
       return {
         dataKey: DataStoreEntries.produkte.key,
         infoOpen: false, // Not shown per default.
-        infoProdukt: {} // Will be defined on open.
+        infoProdukt: {}, // Will be defined on open.
+        tabs: TABS,
+        activeTab: TABS.general // The currently selected tab pane.
       }
     },
 
@@ -106,6 +126,10 @@ ont<template>
       openInfoModal (produkt) {
         this.infoProdukt = produkt
         this.infoOpen = true
+      },
+
+      switchTab (tab) {
+        this.activeTab = tab
       }
     }
   }
@@ -117,28 +141,7 @@ ont<template>
 
   .subpage{
     .content-box {
-      width: 90%;
-      background-color: white;
-
-      .produkteIhn{
-
-        ul{
-            margin-bottom: 15px;
-        }
-
-        .headlineImage{
-
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-
-          .imageProdukteIhn{
-            margin-top: 30px;
-            margin-bottom: 30px;
-          }
-        }
-
-      }
+      width: 100%;
 
       .produkte {
         display: flex;
@@ -151,6 +154,7 @@ ont<template>
           display: flex;
           flex-direction: column;
           margin: 2%;
+          margin-bottom: 20px;
           width: 29%;
           align-items: center;
 
@@ -187,6 +191,25 @@ ont<template>
             padding-top: 10px;
             text-align: center;
           }
+        }
+      }
+
+      .produkteIhn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .category {
+          width: 50%;
+        }
+
+        ul{
+          margin-bottom: 15px;
         }
       }
     }
