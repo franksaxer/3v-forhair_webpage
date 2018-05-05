@@ -32,7 +32,7 @@
   {
     "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
     "label": "Label:MENU_ENTRY_COSTS",
-    "icon": "fa-btc",
+    "icon": "fa-euro",
     "route": "Route:COSTS"
   },
   {

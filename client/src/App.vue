@@ -32,19 +32,34 @@
           <button :class="['button', 'is-primary', {'is-loading': $saving}]"
                   @click="$saveData">
 
-            {{ labels.AUTH_BTN_SAVE | translate }}
+            <span class="icon">
+              <i class="fa fa-save"></i>
+            </span>
+            <span>
+              {{ labels.AUTH_BTN_SAVE | translate }}
+            </span>
           </button>
 
           <button :class="['button', 'is-primary']"
                   @click="$resetData">
 
-            {{ labels.AUTH_BTN_RESET | translate }}
+            <span class="icon">
+              <i class="fa fa-undo"></i>
+            </span>
+            <span>
+              {{ labels.AUTH_BTN_RESET | translate }}
+            </span>
           </button>
 
           <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
                   @click="logout">
 
-            {{ labels.AUTH_BTN_LOGOUT | translate }}
+            <span class="icon">
+              <i class="fa fa-sign-out"></i>
+            </span>
+            <span>
+              {{ labels.AUTH_BTN_LOGOUT | translate }}
+            </span>
           </button>
         </div>
       </header>
@@ -197,6 +212,8 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
+
+      this.$setEditable()
     }
   }
 </script>
