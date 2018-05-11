@@ -7,7 +7,7 @@
     <section id="layout">
       <header>
         <div id="label-with-icon">
-          <vue-typer text='for'
+          <vue-typer text='for hair'
                      :repeat="0"
                      :pre-type-delay="1000"
                      :typeDelay="200"/>
@@ -20,7 +20,7 @@
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
 
-          <vue-typer text='hair'
+          <vue-typer text='[fɔːr][heər]'
                      :repeat="0"
                      :pre-type-delay="2200"
                      :typeDelay="200"/>
