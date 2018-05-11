@@ -2,10 +2,6 @@
   <div class="subpage">
     <h1>{{ labels.SUBPAGE_CONTACT_HEADER | translate }}</h1>
 
-    <h2 @click="editText(data, 'subheadline')" v-editable>
-      {{ data.subheadline }}
-    </h2>
-
     <div class="info content-box"
          v-if="data.telefon">
 
@@ -54,6 +50,9 @@
         <h1 @click="editText(data, 'emailHeadline')" v-editable>
           {{ data.emailHeadline }}
         </h1>
+        <h3 @click="editText(data, 'subheadline')" v-editable>
+          {{ data.subheadline }}
+        </h3>
 
         <h3 @click="editText(data, 'emailSubheadline')" v-editable>
           {{ data.emailSubheadline }}
@@ -63,18 +62,24 @@
       <div class="form">
         <form @submit.prevent="validateBeforeSubmit">
           <div class="field">
-            <div class="control">
+            <div class="control has-icons-left">
               <input  class="input"
                       type="text"
                       :placeholder="labels.SUBPAGE_CONTACT_PH_NAME | translate">
+              <span class="icon is-left">
+              <span><i class="fa fa-users"></i></span>
+            </span>
             </div>
           </div>
 
           <div class="field">
-            <div >
+            <div class=" control has-icons-left">
               <input  class="input"
                       type="email"
                       :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MAIL)">
+              <span class="icon is-left">
+              <span><i class="fa fa-envelope"></i></span>
+            </span>
             </div>
           </div>
 
@@ -91,9 +96,12 @@
           </div>
 
           <div class="field">
-            <div class="control">
-              <textarea class="textarea"
+            <div class="control has-icons-left">
+              <textarea class="input" style="height: 120px"
                       :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MESSAGE)"/>
+              <span class="icon is-left">
+              <span><i class="fa fa-comments"></i></span>
+            </span>
             </div>
           </div>
 
@@ -188,6 +196,7 @@
           h1, h3{
             color:black!important;
             text-shadow: 0 0 0 white;
+            font-weight: bold;
           }
         }
 
