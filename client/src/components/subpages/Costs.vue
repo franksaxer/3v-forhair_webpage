@@ -49,15 +49,13 @@
         <hr>
 
         <template v-for="table in data.she.tabellen">
-          <table class="table is-striped is-fullwidth">
+          <table class="table is-fullwidth">
             <thead>
-              <tr>
                 <th></th>
                 <th v-for="head in table.header"
                     @click="editText(table, 'header')" v-editable>
                   {{ head }}
                 </th>
-              </tr>
             </thead>
 
             <tbody>
@@ -81,15 +79,13 @@
         <hr>
 
         <template v-for="table in data.he.tabellen">
-          <table class="table is-striped is-fullwidth">
+          <table class="table is-fullwidth">
             <thead>
-              <tr>
                 <th></th>
                 <th v-for="head in table.header"
                     @click="editText(table.header)" v-editable>
                   {{ head }}
                 </th>
-              </tr>
             </thead>
 
             <tbody>
@@ -159,17 +155,16 @@
           </h6>
 
           <table  v-for="subtable in table.subtabelle"
-                  class="table is-striped is-fullwidth">
+                  class="table is-fullwidth">
 
             <thead>
-              <tr>
+
                 <th v-if="subtable.header.length != 0"></th>
                 <th v-for="head in subtable.header"
                     v-if="subtable.header.length != 0"
                     @click="editText(subtable, 'header')" v-editable>
                     {{ head }}
                 </th>
-              </tr>
             </thead>
 
             <tbody>
@@ -244,6 +239,12 @@
   .subpage{
     h1 {
       margin-bottom: 30px;
+    }
+
+    h3, h5, h6 {
+      text-shadow: none;
+      color: rgb(139,69,19);
+      font-weight: bold;
     }
 
     .content-box {

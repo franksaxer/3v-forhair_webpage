@@ -5,9 +5,9 @@
     </div>
 
     <div class="content-box">
-      <h4 @click="editText(data, 'header')" v-editable>
+      <h3 class="greeterHeadline" @click="editText(data, 'header')" v-editable>
         {{ data.header }}
-      </h4>
+      </h3>
 
       <p @click="editText(data, 'content')" v-editable>{{ data.content }}</p>
     </div>
@@ -56,6 +56,11 @@
     // Arrange text and image above and under the logo.
     @include media('<desktop') {
       flex-direction: column;
+    }
+
+    .greeterHeadline{
+      color: black;
+      text-shadow: none;
     }
 
     $width: 40%; // Use the same width so the mirror line is in the middle.
@@ -115,8 +120,9 @@
         max-height: calc(#{$segmentHeight} - #{$space-mobile} + 30px);
       }
 
-      h4 {
+      h3 {
         font-weight: bold;
+        margin-bottom: 10px;
       }
     }
 

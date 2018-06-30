@@ -31,7 +31,13 @@ $primary-invert: $color-invert;
 $link: lighten($primary, 10%);
 
 // Table
-$table-background-color: rgba(white, 0.9);
+
+$table-background-color: rgba(black, .8);
+$table-head-cell-color: $white!important;
+
+$table-color: $white;
+$table-cell-heading-color: $white!important;
+$table-row-hover-background-color:rgba(green, .8)!important;
 
 // Modal
 $modal-z: calc(#{$menu-index} + 1);

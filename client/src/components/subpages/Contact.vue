@@ -166,6 +166,11 @@
           width: 46%;
           padding: 40px;
 
+
+          p, span, a {
+            font-size: 20px
+          }
+
           @include media('<desktop') {
             width: 97%;
           }

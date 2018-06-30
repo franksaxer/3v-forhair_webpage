@@ -3,28 +3,27 @@
     <h1>{{ labels.SUBPAGE_STAFF_HEADER | translate }}</h1>
     <h2>{{ labels.SUBPAGE_STAFF_SUBHEADER | translate }}</h2>
 
-    <div class="field has-addons search">
-      <div class="control has-icons-right">
-        <input  v-model="filter"
-                class="input"
-                type="text"
-                :placeholder="labels.SUBPAGE_STAFF_PH_SEARCH | translate">
+    <div class="stylist-list">
+      <div class="field has-addons search">
+        <div class="control has-icons-right">
+          <input  v-model="filter"
+                  class="input"
+                  type="text"
+                  :placeholder="labels.SUBPAGE_STAFF_PH_SEARCH | translate">
 
-        <span class="icon is-small is-right">
+          <span class="icon is-small is-right">
           <i class="fa fa-search"></i>
         </span>
-      </div>
-      <div class="control">
-        <a  class="button"
-            @click="filter = ''">
+        </div>
+        <div class="control">
+          <a  class="button"
+              @click="filter = ''">
 
-          <i  class="fa fa-close"
-              area-hidden="true"/>
-        </a>
+            <i  class="fa fa-close"
+                area-hidden="true"/>
+          </a>
+        </div>
       </div>
-    </div>
-
-    <div class="stylist-list">
       <div  v-for="(stylist, index) in data.stylisten"
             class="stylist content-box"
             v-if="data && $staffFilter.checkStaff(stylist)">
@@ -128,15 +127,21 @@
 
     .stylist-list {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
 
       .stylist {
         position: relative;
         display: flex;
         margin: 10px 2%;
-        width: 46%;
+        width: 96%;
         padding-bottom: 20px;
+
+        h3, h4, h6 {
+          font-weight: bold;
+          color: black;
+          text-shadow: none;
+        }
 
         .tag {
           margin-top: 10px;
@@ -145,17 +150,21 @@
         @include media("<desktop") {
           flex-direction: column;
           align-items: center;
-          width: 100%;
+          width: 90%;
 
-          h3,  h4, h6 {
+          h3, h4, h6 {
             text-align: center;
           }
+        }
+
+        .stylistInfo{
+          padding: 10px;
         }
 
         .stylist-image {
           @include media(">=desktop") {
             width: 30%;
-            padding-right: 10px;
+            padding-right: 20px;
           }
 
           @include media("<desktop") {

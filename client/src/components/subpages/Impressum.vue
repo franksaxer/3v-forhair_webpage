@@ -55,6 +55,7 @@
         color: white;
         font-weight: bold;
         text-shadow: intenseShadow(black);
+        font-size: 20px;
       }
 
       .left, .right {

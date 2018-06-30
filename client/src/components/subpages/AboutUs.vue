@@ -28,7 +28,7 @@
 
     <div class="salon">
       <h1>{{ labels.SUBPAGE_ABOUT_US_SALON_HEADER | translate }}</h1>
-      <carousel :perPage="1">
+      <carousel :perPage="1" :navigationEnabled="true">
         <slide  v-for="(bild,index) in data.salonBilder"
                 :key="index"
                 v-if="data">
@@ -126,6 +126,12 @@
       }
 
       width: 100%;
+
+      .VueCarousel-navigation-button{
+        height: 400px;
+        width: auto;
+      }
+
 
       .bild {
         @function calcWidth($reference) {

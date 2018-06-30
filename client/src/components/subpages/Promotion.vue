@@ -76,6 +76,11 @@
         color: white;
       }
 
+      h3, h5 {
+        text-shadow: none;
+        font-weight: bold;
+      }
+
       @include media("<desktop") {
         flex-direction: column;
         align-items: center;

@@ -47,10 +47,16 @@
     margin-bottom: 30px;
   }
 
-  h1, h2, h3, h4, h5, h6{
+  h4 {
+    color: black;
+    font-weight: bold;
+  }
+
+
+  h1, h2, h3, h5, h6{
     color:white;
     line-height: 1;
-    text-shadow: intenseShadow(black);
+    text-shadow: decentShadow(black);
     margin-bottom: 3px;
   }
 

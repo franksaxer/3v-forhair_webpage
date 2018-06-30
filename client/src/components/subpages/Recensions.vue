@@ -31,7 +31,7 @@
     </p>
 
     <vue-goodshare-facebook
-      page_url="https://www.facebook.com/pg/3v-for-hair-229943350464141/reviews/"
+      page_url="https://www.facebook.com/3v-for-hair-229943350464141"
       title_social="Facebook"
       has_counter
       has_icon/>

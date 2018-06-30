@@ -20,7 +20,7 @@
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
 
-          <vue-typer text='[fɔːr][heər]'
+          <vue-typer text='  [fɔːr][heər]'
                      :repeat="0"
                      :pre-type-delay="2200"
                      :typeDelay="200"/>
@@ -343,8 +343,7 @@
 
       height: $footer-height;
       background-color: $primary-invert;
-      color: white;
-      text-shadow: decentShadow(black);
+      color: black;
       white-space: pre; // To force white spaces will not be cut.
       overflow: hidden; // Force the height, else the cover page will not work.
 

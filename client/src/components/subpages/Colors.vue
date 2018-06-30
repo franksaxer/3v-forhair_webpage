@@ -40,10 +40,10 @@
       <div  v-for="möglichkeit in data.möglichkeiten"
             class="content-box">
 
-        <h5 @click="editText(möglichkeit, 'title')" v-editable>
+        <h4 @click="editText(möglichkeit, 'title')" v-editable>
           <i class="fa fa-angle-right"></i>
           {{ möglichkeit.title }}
-        </h5>
+        </h4>
 
         <p @click="editText(möglichkeit, 'content')" v-editable>{{ möglichkeit.content }}</p>
       </div>
@@ -58,10 +58,10 @@
       <div  v-for="wirkprinzipien in data.wirkprinzipien"
               class="content-box">
 
-        <h5 @click="editText(wirkprinzipien, 'title')" v-editable>
+        <h4 @click="editText(wirkprinzipien, 'title')" v-editable>
           <i class="fa fa-angle-right"></i>
           {{ wirkprinzipien.title }}
-        </h5>
+        </h4>
 
         <p @click="editText(wirkprinzipien, 'content')" v-editable>{{ wirkprinzipien.content }}</p>
       </div>
@@ -87,9 +87,9 @@
         <div  v-for="produkt in data.olaplex.produkte"
               class="content-box">
 
-          <h5 @click="editText(produkt, 'headline')" v-editable>
+          <h4 @click="editText(produkt, 'headline')" v-editable>
             {{ produkt.headline }}
-          </h5>
+          </h4>
 
           <p @click="editText(produkt, 'description')" v-editable><em>{{ produkt.description }}</em></p>
 

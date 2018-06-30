@@ -6,6 +6,12 @@
     "route": "Route:GREETER"
   },
   {
+    "id": "9cadf7b6511bb0e3cf6406c4ed28619d",
+    "label": "Label:MENU_ENTRY_RECENSION",
+    "icon": "fa-comments",
+    "route": "Route:RECENSION"
+  },
+  {
     "id": "52e445163911cd462abb1fd3eaebcc0c",
     "label": "Label:MENU_ENTRY_ABOUT_US",
     "icon": "fa-align-center",
@@ -16,12 +22,6 @@
     "label": "Label:MENU_ENTRY_STAFF",
     "icon": "fa-users",
     "route": "Route:STAFF"
-  },
-  {
-    "id": "9cadf7b6511bb0e3cf6406c4ed28619d",
-    "label": "Label:MENU_ENTRY_RECENSION",
-    "icon": "fa-comments",
-    "route": "Route:RECENSION"
   },
   {
     "id": "f010f65d545a24da16447751d0890e18",
