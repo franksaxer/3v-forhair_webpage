@@ -243,7 +243,7 @@
 
     h3, h5, h6 {
       text-shadow: none;
-      color: rgb(139,69,19);
+      color: rgb(217, 159, 58);
       font-weight: bold;
     }
 

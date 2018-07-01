@@ -15,7 +15,7 @@
           <img  id="logo"
                 :class="{'lower-position': logoInLowerPosition}"
                 @click='goHome()'
-                src="./assets/icon.png" />
+                src="./assets/icon1.png" />
 
           <span id="logo-spacer"
                 :class="{'upper-position': !logoInLowerPosition}" />
