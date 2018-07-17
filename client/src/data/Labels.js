@@ -62,7 +62,7 @@ export default {
   [keys.SUBPAGE_COLORS_HEADER]: ['AVEDA Haarfarben', 'AVEDA Colors'],
   [keys.SUBPAGE_COLORS_POSSIBILITIES_HEADER]: ['Entdecke die Möglichkeiten', 'Discover the Potential'],
   [keys.SUBPAGE_COLORS_IMPACT_HEADER]: ['Die Wirkungsweise', 'How It Works'],
-  [keys.SUBPAGE_COLORS_OLAPLEX_HEADER]: ['Olaplex'],
+  [keys.SUBPAGE_COLORS_OLAPLEX_HEADER]: ['OLAPLEX'],
 
   // Contact
   [keys.SUBPAGE_CONTACT_HEADER]: ['Kontakt', 'Contact'],

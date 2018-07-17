@@ -24,7 +24,7 @@
                    aria-hidden="true"/>
               </span>
 							<span>
-                {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL | translate }}
+                {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_HIM | translate }}
               </span>
 						</a>
 					</li>
@@ -59,9 +59,9 @@
       <div  class="produkteIhn"
             v-if="activeTab === tabs.male && data.produkteAllgemein">
 
-        <h5 @click="editText(data.produkteFürIhn, 'subheadline')" v-editable>
+        <h3 @click="editText(data.produkteFürIhn, 'subheadline')" v-editable>
           {{ data.produkteFürIhn.subheadline }}
-        </h5>
+        </h3>
 
         <img  class="imageProdukteIhn"
               :src="data.produkteFürIhn.bild">
@@ -69,9 +69,9 @@
         <div class="category"
                   v-for="produkt in data.produkteFürIhn.produkte">
 
-          <h6 @click="editText(produkt, 'headline')" v-editable>
+          <h4 @click="editText(produkt, 'headline')" v-editable>
             {{ produkt.headline }}
-          </h6>
+          </h4>
 
           <ul @click="editText(produkt, 'produkte')" v-editable>
             <li v-for="item in stringToList(produkt.produkte)">{{ item }}</li>
@@ -198,6 +198,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        h4 {
+          color: rgb(217, 159, 58);
+          text-shadow: none;
+          font-weight: bold;
+        }
+
+        h3 {
+          color: black;
+          text-shadow: none;
+          font-weight: bold;
+        }
 
         img {
           margin-top: 30px;

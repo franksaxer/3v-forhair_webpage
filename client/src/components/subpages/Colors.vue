@@ -4,11 +4,11 @@
 
     <div class="subsection">
 
-      <h2 @click="editText(data, 'subheadline')" v-editable>
+      <h2 style="font-weight: bold" @click="editText(data, 'subheadline')" v-editable>
         {{ data.subheadline }}
       </h2>
 
-      <h2 @click="editText(data, 'subheadline2')" v-editable>
+      <h2 style="font-weight: bold" @click="editText(data, 'subheadline2')" v-editable>
         <i class="fa fa-arrow-right"></i>
         {{ data.subheadline2 }}
         <i class="fa fa-arrow-left"></i>
