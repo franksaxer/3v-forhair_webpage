@@ -79,6 +79,11 @@
           <i class="fa fa-envelope"></i>
           <span @click="editText(contactData.mail, 'mail')" v-editable>{{ contactData.mail.mail }}</span>
         </div>
+
+        <div v-if="contactData">
+          <i class="fa fa-comment"></i>
+          <span @click="editText(contactData.telefon, 'mail')" v-editable>{{ contactData.telefon.handy }}</span>
+        </div>
       </footer>
     </section>
 

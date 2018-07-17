@@ -215,7 +215,7 @@
         color: $color-base;
         font-weight: 700;
         font-size: $font;
-        text-shadow: intenseShadow(white);
+        text-shadow: decentShadow(white);
 
         @include media('>=desktop') {
           top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize});
