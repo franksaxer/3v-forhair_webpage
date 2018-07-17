@@ -83,7 +83,7 @@
     </section>
 
     <!-- language sector -->
-    <language-selector></language-selector>
+    <!-- <language-selector></language-selector> -->
 
     <!-- login modal -->
     <div :class="['modal', {'is-active': authenticationModalOpen}]">
