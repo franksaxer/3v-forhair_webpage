@@ -31,6 +31,7 @@ import WallpaperStaff from './assets/wallpapers/background4.jpg'
 
 // The router object itself.
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/aboutus',
