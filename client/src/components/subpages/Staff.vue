@@ -45,7 +45,7 @@
               </span>
             </router-link>
 
-          <ul @click="editText(stylist, 'info')" v-editable>
+          <ul @click="editText(stylist, 'info')" v-editable v-if="stylist.info">
             <li v-for="stylistInfo in stringToList(stylist.info)">
               {{ stylistInfo }}
             </li>

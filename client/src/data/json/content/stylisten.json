@@ -53,6 +53,15 @@
       "urlaub":"",
       "wartezeit":"durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
       "arbeitszeiten": "Mittwoch 10:00- 19:00\nDonnerstag 17:00 - 22:00h\nFreitag 11:00 - 20:00 Uhr\nSamstag 12:00 - 18:00 Uhr"
+    },
+    {
+      "bild":"Url:mitarbeiter/roxanal.jpg",
+      "name":"ROXI",
+      "kategorie":"Auszubildende",
+      "info": "",
+      "urlaub:":"",
+      "wartezeit":"",
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nSamstag 12:00 - 18:00 Uhr"
     }
   ]
 }
