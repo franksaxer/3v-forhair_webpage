@@ -49,7 +49,7 @@
     <div class="aveda-mission"
          v-if="data.contentAvedaMission">
       <h1>{{ labels.SUBPAGE_ABOUT_US_AVEDA_HEADER | translate }}</h1>
-      <p @click="editText(data, 'contentAvedaMission')" v-editable>{{ data.contentAvedaMission }}</p>
+      <p class="justify" style="font-weight: bold" @click="editText(data, 'contentAvedaMission')" v-editable>{{ data.contentAvedaMission }}</p>
     </div>
   </div>
 </template>
