@@ -7,8 +7,8 @@
 
       <div class="kontakt-element">
           <i class="fa fa-phone fa-3x"></i>
-          <span @click="editText(data.telefon, 'handy')" v-editable>{{ data.telefon.handy }}</span>
           <span @click="editText(data.telefon, 'festnetz')" v-editable>{{ data.telefon.festnetz }}</span>
+          <span @click="editText(data.telefon, 'handy')" v-editable>{{ data.telefon.handy }}</span>
       </div>
 
       <div class="kontakt-element">
