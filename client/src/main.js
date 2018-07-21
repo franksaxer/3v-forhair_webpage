@@ -5,6 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VDragged from 'v-dragged'
+import VueAnalytics from 'vue-analytics'
 import DeviceDetector from 'vue-device-detector'
 import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
@@ -27,6 +28,15 @@ Vue.use(VeeValidate)
 Vue.use(DeviceDetector)
 Vue.use(EdiableView)
 Vue.use(StaffFilter)
+
+Vue.use(VueAnalytics, {
+  id: 'UA-122713884-1',
+  checkDuplicatedScript: true,
+  debug: {
+    sendHitTask: process.env.NODE_ENV === 'production' // Disable for development.
+  }
+})
+
 Vue.use(MultilangStore, {
   languageList: langs,
   defaultLanguage: langs.DE,
