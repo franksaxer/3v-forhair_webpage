@@ -1,13 +1,15 @@
 // Import from the data manager and api connector.
 import { loadDataObject, convertNewData } from '../data/DataManager'
 import ApiConnector from '../ApiConnector'
+import * as types from '../enums/ContentTypes'
 
 // The mixin for subpage components.
 export default {
-  data () {
+  data() {
     return {
       dataKey: null, // Have to be replaced by the parent component.
-      data: {} // Placeholder for the content data object.
+      data: {}, // Placeholder for the content data object.
+      contentTypes: types // Used to adjust content.
     }
   },
 
@@ -16,8 +18,11 @@ export default {
      * The basic save function for subpages without any special data properties.
      * Will be overwritten by those who need to handle such properties.
      */
-    async save () {
-      const data = await convertNewData(this.dataKey, JSON.parse(JSON.stringify(this.data)))
+    async save() {
+      const data = await convertNewData(
+        this.dataKey,
+        JSON.parse(JSON.stringify(this.data))
+      )
 
       try {
         await ApiConnector.update(this.dataKey, data)
@@ -31,7 +36,7 @@ export default {
     }
   },
 
-  async created () {
+  async created() {
     this.data = await loadDataObject(this.dataKey)
   }
 }
