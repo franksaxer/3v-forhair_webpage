@@ -212,10 +212,13 @@
       .title {
         position: fixed;
         z-index: $menu-index;
-        color: $color-base;
+        color: white;
+        background-color: $color-base;
         font-weight: 700;
         font-size: $font;
-        text-shadow: decentShadow(white);
+        padding: 5px;
+        border-radius: $border-radius;
+        //text-shadow: decentShadow(white);
 
         @include media('>=desktop') {
           top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize});
