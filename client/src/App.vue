@@ -155,8 +155,15 @@
         password: '', // Stores the password of the input element.
         authIsLoading: false, // Set the login button to loading.
         authErrorMessage: null, // Contains the error message after an invoked login try.
-        contactData: null
+        contactData: null,
+        logoTimeoutExpired: false
       }
+    },
+
+    beforeRouteUpdate: function (to, from, next) {
+      console.log('test')
+      this.slideLogo()
+      next()
     },
 
     components: {
@@ -199,12 +206,28 @@
 
       goHome: function () {
         this.$router.push({name: RouteNames.GREETER})
+      },
+
+      slideLogo: function () {
+        this.logoTimeoutExpired = false
+        setTimeout(() => {
+          this.logoTimeoutExpired = true
+        }, 5000)
       }
+
     },
 
     computed: {
       logoInLowerPosition: function () {
-        return this.$route.name === RouteNames.GREETER
+        return this.$route.name === RouteNames.GREETER && this.logoTimeoutExpired
+      }
+    },
+
+    watch: {
+      $route: function (value) {
+        if (value.name === RouteNames.GREETER) {
+          this.slideLogo()
+        }
       }
     },
 
@@ -217,6 +240,8 @@
         // Open the authentication modal.
         this.authenticationModalOpen = true
       }
+
+      this.slideLogo()
     }
   }
 </script>
