@@ -131,246 +131,248 @@
 
 
 <script>
-  // Import other components
-  import LanguageSelector from './components/LanguageSelector.vue'
-  import AdvertisementBanner from './components/AdvertismentBanner.vue'
-  import MainMenu from './components/MainMenu.vue'
-  import { VueTyper } from 'vue-typer'
+// Import other components
+import LanguageSelector from './components/LanguageSelector.vue'
+import AdvertisementBanner from './components/AdvertismentBanner.vue'
+import MainMenu from './components/MainMenu.vue'
+import { VueTyper } from 'vue-typer'
 
-  // Import manager and utilities components.
-  import {DataStoreEntries, loadDataObject} from './data/DataManager'
-  import ApiConnector from './ApiConnector'
+// Import manager and utilities components.
+import { DataStoreEntries, loadDataObject } from './data/DataManager'
+import ApiConnector from './ApiConnector'
 
-  // Import enumerations.
-  import UrlEnum from './enums/UrlEnum'
-  import * as RouteNames from './enums/RouteNames'
+// Import enumerations.
+import UrlEnum from './enums/UrlEnum'
+import * as RouteNames from './enums/RouteNames'
 
-  export default {
-    name: 'app',
+export default {
+  name: 'app',
 
-    data: function () {
-      return {
-        // Authentication elements
-        authenticationModalOpen: false, // Define if the modal should be shown.
-        password: '', // Stores the password of the input element.
-        authIsLoading: false, // Set the login button to loading.
-        authErrorMessage: null, // Contains the error message after an invoked login try.
-        contactData: null
+  data: function() {
+    return {
+      // Authentication elements
+      authenticationModalOpen: false, // Define if the modal should be shown.
+      password: '', // Stores the password of the input element.
+      authIsLoading: false, // Set the login button to loading.
+      authErrorMessage: null, // Contains the error message after an invoked login try.
+      contactData: null
+    }
+  },
+
+  components: {
+    'language-selector': LanguageSelector,
+    'advertisement-banner': AdvertisementBanner,
+    'main-menu': MainMenu,
+    VueTyper
+  },
+
+  methods: {
+    login: async function() {
+      this.authErrorMessage = null // Reset the message.
+      this.authIsLoading = true // Show something is happening. Especially in case of false password.
+
+      try {
+        await ApiConnector.login(this.password) // Authenticate to the server.
+        this.$setEditable()
+        this.authenticationModalOpen = false // Close modal.
+      } catch (err) {
+        // Authentication failed.
+        console.log('fehler: ' + JSON.stringify(err.message))
+        this.authErrorMessage = err.message
       }
+
+      this.authIsLoading = false // End loading.
     },
 
-    components: {
-      'language-selector': LanguageSelector,
-      'advertisement-banner': AdvertisementBanner,
-      'main-menu': MainMenu,
-      VueTyper
+    logout: async function() {
+      this.authIsLoading = true // Show something is happening.
+
+      try {
+        await ApiConnector.logout() // Clear the session on the server.
+        this.$setEditable(false)
+      } catch (err) {
+        console.log(err.message)
+      }
+
+      this.authIsLoading = false // End loading.
     },
 
-    methods: {
-      login: async function () {
-        this.authErrorMessage = null // Reset the message.
-        this.authIsLoading = true // Show something is happening. Especially in case of false password.
+    goHome: function() {
+      this.$router.push({ name: RouteNames.GREETER })
+    }
+  },
 
-        try {
-          await ApiConnector.login(this.password) // Authenticate to the server.
-          this.$setEditable()
-          this.authenticationModalOpen = false // Close modal.
-        } catch (err) {
-          // Authentication failed.
-          console.log('fehler: ' + JSON.stringify(err.message))
-          this.authErrorMessage = err.message
-        }
+  computed: {
+    logoInLowerPosition: function() {
+      return this.$route.name === RouteNames.GREETER
+    }
+  },
 
-        this.authIsLoading = false  // End loading.
-      },
+  async created() {
+    // Load lata here.
+    this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
 
-      logout: async function () {
-        this.authIsLoading = true // Show something is happening.
-
-        try {
-          await ApiConnector.logout() // Clear the session on the server.
-          this.$setEditable(false)
-        } catch (err) {
-          console.log(err.message)
-        }
-
-        this.authIsLoading = false  // End loading.
-      },
-
-      goHome: function () {
-        this.$router.push({name: RouteNames.GREETER})
-      }
-    },
-
-    computed: {
-      logoInLowerPosition: function () {
-        return this.$route.name === RouteNames.GREETER
-      }
-    },
-
-    async created () {
-      // Load lata here.
-      this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
-
-      // Check if the admin view is requested.
-      if (window.location.pathname === UrlEnum.admin) {
-        // Open the authentication modal.
-        this.authenticationModalOpen = true
-      }
+    // Check if the admin view is requested.
+    if (window.location.pathname === UrlEnum.admin) {
+      // Open the authentication modal.
+      this.authenticationModalOpen = true
     }
   }
+}
 </script>
 
 
 <style lang="scss">
-  // Import 3rd party styles
-  @import '~include-media/dist/include-media';
-  @import '~font-awesome/css/font-awesome.css';
+// Import 3rd party styles
+@import '~include-media/dist/include-media';
+@import '~font-awesome/css/font-awesome.css';
 
-  // Import own styles
-  @import './style/3v-forhair';
+// Import own styles
+@import './style/3v-forhair';
 
+body {
+  margin: 0;
+  overflow: hidden; // For the cover page;
+}
 
-  body {
-    margin: 0;
-    overflow: hidden; // For the cover page;
-  }
+#app {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
 
-  #app{
-    background-position: center center!important;
-    background-repeat:  no-repeat!important;
-    background-size: cover!important;
-  }
+/* The general layout with header, main and footer */
+#layout {
+  height: 100vh;
 
+  $border: solid 2px rgba(0, 0, 0, 0.1);
 
-  /* The general layout with header, main and footer */
-  #layout {
-    height: 100vh;
+  header {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    z-index: 1; // Seems to be necessary, so it is not always to top element.
+    display: flex;
+    flexflow: row;
+    justify-content: center;
+    border-bottom: $border;
+    background-color: $color-invert;
 
-    $border: solid 2px rgba(0,0,0,0.1);
-
-    header {
-      top: 0;
-      left: 0;
-      right: 0;
-      height: $header-height;
-      z-index: 1; // Seems to be necessary, so it is not always to top element.
-      display: flex;
-      flexflow: row;
-      justify-content: center;
-      border-bottom: $border;
-      background-color: $color-invert;
-
-      #label-with-icon {
-        margin-left: 13px; // Else it doesn't seem to fit correctly with the logo image.
-        display: flex;
-        flex-flow: row;
-
-        .vue-typer {
-          padding: 0 5px;
-          color: $primary;
-          font-size: calc(#{$header-height * 0.7});
-          font-weight: 500;
-          font-family: "Times New Roman", Times, serif;
-        }
-
-        #logo {
-          position: fixed;
-          top: 0;
-          left: calc((100vw / 2) - (#{$icon-radius}) / 2);
-          height: $icon-radius;
-          transition: $transition;
-
-          &.lower-position {
-            top: calc((100vh / 2) - (#{$icon-radius} / 2))!important; // use !important to get this work over the id.
-          }
-
-          // Show the user that this is clickable.
-          &:hover {
-            cursor: pointer;
-            transform: scale3d(1.2, 1.2, 1.2);
-          }
-        }
-
-        #logo-spacer {
-          min-width: 0;
-          transition: $transition;
-
-          &.upper-position {
-            min-width: $icon-radius!important; // use !important to get this work over the id.
-          }
-        }
-      }
-
-      #admin-buttons {
-        position: absolute;
-        $margin: calc(0.15 * #{$header-height});
-        top: $margin;
-        right: $margin;
-
-        button {
-          height: calc(#{$header-height} - 2 * #{$margin});
-        }
-      }
-    }
-
-    main {
-      top: $header-height;
-      bottom: $footer-height;
-      left: 0;
-      right: 0;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      height: calc(100vh - #{$header-height} - #{$footer-height}); // For some unkown reasong this is necessary.
-      margin: 0!important; // Overwrite bulmas content class.
-
-      // Differ the height between mobile and desktop.
-      @include media('<desktop') {
-        bottom: 0; // No footer.
-      }
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    #label-with-icon {
+      margin-left: 65px; // Else it doesn't seem to fit correctly with the logo image.
       display: flex;
       flex-flow: row;
-      justify-content: center;
 
-      border-top: $border;
-
-      // Only display, on non mobile devices.
-      @include media('<desktop') {
-        display: none;
+      .vue-typer {
+        padding: 0 5px;
+        color: $primary;
+        font-size: calc(#{$header-height * 0.7});
+        font-weight: 500;
+        font-family: 'Times New Roman', Times, serif;
       }
 
-      height: $footer-height;
-      background-color: $primary-invert;
-      color: black;
-      white-space: pre; // To force white spaces will not be cut.
-      overflow: hidden; // Force the height, else the cover page will not work.
+      #logo {
+        position: fixed;
+        top: 0;
+        left: calc((100vw / 2) - (#{$icon-radius}) / 2);
+        height: $icon-radius;
+        transition: $transition;
 
-      $fontSize: calc(#{$footer-height} * 0.4);
-      font-size: $fontSize!important;
-      line-height: $fontSize; // Else the text has space above.
+        &.lower-position {
+          top: calc(
+            (100vh / 2) - (#{$icon-radius} / 2)
+          ) !important; // use !important to get this work over the id.
+        }
 
-      // All direct childs
-      > * {
-        $top: calc((#{$footer-height} - #{$fontSize}) / 2);
-        margin: $top 10px;
-        padding: 0;
+        // Show the user that this is clickable.
+        &:hover {
+          cursor: pointer;
+          transform: scale3d(1.2, 1.2, 1.2);
+        }
       }
 
-      span {
-        padding-left: 5px; // Else the icon is directly next to the text.
+      #logo-spacer {
+        min-width: 0;
+        transition: $transition;
+
+        &.upper-position {
+          min-width: $icon-radius !important; // use !important to get this work over the id.
+        }
+      }
+    }
+
+    #admin-buttons {
+      position: absolute;
+      $margin: calc(0.15 * #{$header-height});
+      top: $margin;
+      right: $margin;
+
+      button {
+        height: calc(#{$header-height} - 2 * #{$margin});
       }
     }
   }
 
-  button {
-    // The secondary color of Bulma does not rly work together.
-    color: white!important;
+  main {
+    top: $header-height;
+    bottom: $footer-height;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(
+      100vh - #{$header-height} - #{$footer-height}
+    ); // For some unkown reasong this is necessary.
+    margin: 0 !important; // Overwrite bulmas content class.
+
+    // Differ the height between mobile and desktop.
+    @include media('<desktop') {
+      bottom: 0; // No footer.
+    }
   }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+
+    border-top: $border;
+
+    // Only display, on non mobile devices.
+    @include media('<desktop') {
+      display: none;
+    }
+
+    height: $footer-height;
+    background-color: $primary-invert;
+    color: black;
+    white-space: pre; // To force white spaces will not be cut.
+    overflow: hidden; // Force the height, else the cover page will not work.
+
+    $fontSize: calc(#{$footer-height} * 0.4);
+    font-size: $fontSize !important;
+    line-height: $fontSize; // Else the text has space above.
+
+    // All direct childs
+    > * {
+      $top: calc((#{$footer-height} - #{$fontSize}) / 2);
+      margin: $top 10px;
+      padding: 0;
+    }
+
+    span {
+      padding-left: 5px; // Else the icon is directly next to the text.
+    }
+  }
+}
+
+button {
+  // The secondary color of Bulma does not rly work together.
+  color: white !important;
+}
 </style>
