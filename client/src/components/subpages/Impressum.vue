@@ -21,55 +21,62 @@
         </span>
       </div>
     </div>
+    <dataHint/>
   </div>
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
+import Subpage from '../../plugins/SubpageMixin'
+import DataProtectionHint from '../DataProtectionHint.vue'
+import { DataStoreEntries } from '../../data/DataManager'
 
-  export default {
-    name: 'impressum',
+export default {
+  name: 'impressum',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    data () {
-      return {
-        dataKey: DataStoreEntries.impressum.key
-      }
+  components: {
+    dataHint: DataProtectionHint
+  },
+
+  data() {
+    return {
+      dataKey: DataStoreEntries.impressum.key
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '../../style/subpages';
 
-  .subpage{
-    .impressum-box {
-      display: flex;
-      flex-direction: row;
+.subpage {
+  .impressum-box {
+    display: flex;
+    flex-direction: row;
 
-      span {
-        display: block;
-        color: white;
-        font-weight: bold;
-        text-shadow: intenseShadow(black);
-        font-size: 20px;
-      }
+    span {
+      display: block;
+      color: white;
+      font-weight: bold;
+      text-shadow: intenseShadow(black);
+      font-size: 20px;
+    }
 
-      .left, .right {
-        width: 50%;
-        padding: 0 2%;
-      }
+    .left,
+    .right {
+      width: 50%;
+      padding: 0 2%;
+    }
 
-      .left {
-        text-align: right;
-      }
+    .left {
+      text-align: right;
+    }
 
-      .right {
-        text-align: left;
-      }
+    .right {
+      text-align: left;
     }
   }
+}
 </style>

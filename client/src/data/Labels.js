@@ -13,8 +13,10 @@ import * as keys from '../enums/LabelKeys'
 export default {
   // Auth
   [keys.AUTH_MSG_DESCRIPTION]: {
-    [langs.DE]: 'Bitte authentifizieren sie sich als Administrator, um in den Bearbeitunsgmodus zu gelangen.',
-    [langs.EN]: 'Please insert the administrator password, to access the editable view!'
+    [langs.DE]:
+      'Bitte authentifizieren sie sich als Administrator, um in den Bearbeitunsgmodus zu gelangen.',
+    [langs.EN]:
+      'Please insert the administrator password, to access the editable view!'
   },
 
   [keys.AUTH_INPUT_PH_PWD]: ['Passwort', 'password'],
@@ -36,8 +38,10 @@ export default {
     [langs.EN]: 'Start a new line will also be displayed in the original.'
   },
   [keys.EDIT_WINDOW_HINT_ABORT]: {
-    [langs.DE]: 'Alle Aenderungen koennen zurueckgesetzt werden durch Klicken des Schliessbuttons or ausserhalb des Fensters.',
-    [langs.EN]: 'All changes can be reset by click the close button or outsite of the window.'
+    [langs.DE]:
+      'Alle Aenderungen koennen zurueckgesetzt werden durch Klicken des Schliessbuttons or ausserhalb des Fensters.',
+    [langs.EN]:
+      'All changes can be reset by click the close button or outsite of the window.'
   },
 
   // Menu
@@ -60,7 +64,10 @@ export default {
 
   // Colors
   [keys.SUBPAGE_COLORS_HEADER]: ['AVEDA Haarfarben', 'AVEDA Colors'],
-  [keys.SUBPAGE_COLORS_POSSIBILITIES_HEADER]: ['Entdecke die Möglichkeiten', 'Discover the Potential'],
+  [keys.SUBPAGE_COLORS_POSSIBILITIES_HEADER]: [
+    'Entdecke die Möglichkeiten',
+    'Discover the Potential'
+  ],
   [keys.SUBPAGE_COLORS_IMPACT_HEADER]: ['Die Wirkungsweise', 'How It Works'],
   [keys.SUBPAGE_COLORS_OLAPLEX_HEADER]: ['OLAPLEX'],
 
@@ -74,19 +81,32 @@ export default {
   [keys.SUBPAGE_CONTACT_PH_MESSAGE]: ['Nachricht', 'message'],
 
   // Products
-  [keys.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL]: ['Allgemeine Produkte', 'General Products'],
-  [keys.SUPPAGE_PRODUCTS_PRODUCTS_HIM]: ['Produkte für Ihn', 'Products for him'],
+  [keys.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL]: [
+    'Allgemeine Produkte',
+    'General Products'
+  ],
+  [keys.SUPPAGE_PRODUCTS_PRODUCTS_HIM]: [
+    'Produkte für Ihn',
+    'Products for him'
+  ],
 
   // Costs
-  [keys.SUBPAGE_COSTS_HEADER]: ['Preisliste für Haarschnitte und Stylings', 'Prices for Haircuts and Styling'],
+  [keys.SUBPAGE_COSTS_HEADER]: [
+    'Preisliste für Haarschnitte und Stylings',
+    'Prices for Haircuts and Styling'
+  ],
   [keys.SUBPAGE_COSTS_LABEL_SHE]: ['Preise für Sie', 'Prices for her'],
   [keys.SUBPAGE_COSTS_LABEL_HE]: ['Preise für Ihn', 'Prices for him'],
-  [keys.SUBPAGE_COSTS_LABEL_COLORS]: ['Preise für Farbveränderungen', 'Prices for colors'],
+  [keys.SUBPAGE_COSTS_LABEL_COLORS]: [
+    'Preise für Farbveränderungen',
+    'Prices for colors'
+  ],
 
   // Greeter
 
   // Impressum
   [keys.SUBPAGE_IMPRESSUM_HEADER]: ['Impressum'],
+  [keys.SUBPAGE_IMPRESSUM_BTN]: ['Datenschutz'],
 
   // Products.
   [keys.SUBPAGE_PRODUCTS_HEADER]: ['Produkte', 'Products'],
@@ -95,7 +115,10 @@ export default {
   [keys.SUBPAGE_PROMOTION_HEADER]: ['Angebote', 'Promotion'],
 
   // Recension
-  [keys.SUBPAGE_RECENSION_HEADER]: ['Das denken Kunden über uns:', 'What people say about us:'],
+  [keys.SUBPAGE_RECENSION_HEADER]: [
+    'Das denken Kunden über uns:',
+    'What people say about us:'
+  ],
 
   // Staff
   [keys.SUBPAGE_STAFF_HEADER]: ['Unser Team', 'The Team'],

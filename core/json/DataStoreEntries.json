@@ -3,56 +3,52 @@
     "key": "f8baee1460d37baacdbb12784ec19d31",
     "path": "json/content/Greeter.json"
   },
-
   "advertisement": {
     "key": "f3334ac9ef26166dedebd319a18f9cc7",
     "path": "json/AdvertisementConfig.json"
   },
-
   "mainMenu": {
     "key": "5e3732f3a271b76aec1e6ab277cfc830",
     "path": "json/MainMenu.json"
   },
-
   "costs": {
     "key": "1796e5783f994ac176b7ff71c8452b1b",
     "path": "json/content/costs.json"
   },
-
-  "stylisten":{
+  "stylisten": {
     "key": "2b448f34181aa8ccffe2e0c6c8609b0084f7829f",
-    "path":"json/content/stylisten.json"
+    "path": "json/content/stylisten.json"
   },
-
-  "ueberUns":{
+  "ueberUns": {
     "key": "92f812b77d7d206f2984011037765f7a7e364c7c67b78f80437f0cbd22f65036",
-    "path":"json/content/überUns.json"
+    "path": "json/content/überUns.json"
   },
-    
-  "farbe":{
-    "key":"226e03e00857d13c63d7cc6e571d771e7b9c04f162e69eff743666b345314633",
-    "path":"json/content/farbe.json"
+  "farbe": {
+    "key": "226e03e00857d13c63d7cc6e571d771e7b9c04f162e69eff743666b345314633",
+    "path": "json/content/farbe.json"
   },
-    
-  "kontakt":{
-    "key":"c7f588235eb4d781000efad2e6ace6c60b7a63ef",
-    "path":"json/content/kontakt.json"
+  "kontakt": {
+    "key": "c7f588235eb4d781000efad2e6ace6c60b7a63ef",
+    "path": "json/content/kontakt.json"
   },
-
-  "rezensionen":{
-    "key":"59377974b3beba7dd651bc92542c43ff9790a7f2",
-    "path":"json/content/rezensionen.json"
+  "rezensionen": {
+    "key": "59377974b3beba7dd651bc92542c43ff9790a7f2",
+    "path": "json/content/rezensionen.json"
   },
-  "impressum":{
-    "key":"5c3175413bb7ea1b85e79d9cdf0ad47cd6c5f85c",
-    "path":"json/content/impressum.json"
+  "impressum": {
+    "key": "5c3175413bb7ea1b85e79d9cdf0ad47cd6c5f85c",
+    "path": "json/content/impressum.json"
   },
-  "promotion":{
-    "key":"e6f1ae77ee31ecaf57ca86022c4c45638bf5f147",
-    "path":"json/content/aktionen.json"
+  "promotion": {
+    "key": "e6f1ae77ee31ecaf57ca86022c4c45638bf5f147",
+    "path": "json/content/aktionen.json"
   },
-  "produkte":{
-    "key":"60c1b8f5d39c831696a5d4b983ef9dfa929eba88",
-    "path":"json/content/produkte.json"
+  "produkte": {
+    "key": "60c1b8f5d39c831696a5d4b983ef9dfa929eba88",
+    "path": "json/content/produkte.json"
+  },
+  "dataProtect": {
+    "key": "a5e5063c5df477313e7b91c3d644aec2",
+    "path": "json/content/DataProtectionInfo.json"
   }
 }
