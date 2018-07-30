@@ -11,7 +11,7 @@ yarn-error.log*
 # Keys & Certificates
 *.pem
 
-# The admin password
+# The admin and mailer password
 password
 
 # server

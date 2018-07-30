@@ -1,5 +1,5 @@
-// The URL that defines the administration view.
-const ADMIN_VIEW_URL = '/admin'
+/* Import all necessary modules */
+const routeNames = require(__dirname + '/../constants/routeNames.js')
 
 /**
  * Middleware function to rewrite the admin view URL.
@@ -8,9 +8,9 @@ const ADMIN_VIEW_URL = '/admin'
  * @param   next
  *          Function to forward to the next middleware.
  */
-const rewriteUrl = async function (ctx, next) {
+const rewriteUrl = async function(ctx, next) {
   // Check if the requested URL is the admin view.
-  if (ctx.request.url === ADMIN_VIEW_URL) {
+  if (ctx.request.url === routeNames.ADMIN) {
     // Rewrite the URL, so the static content could be delivered.
     // Do not redirect, cause the client should believe to get this URL.
     ctx.request.url = '/'
