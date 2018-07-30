@@ -1,5 +1,6 @@
 /* Load all necessary modules */
 const sessionManager = require(__dirname + '/../SessionManager.js')
+const routeNames = require(__dirname + '/../constants/routeNames.js')
 
 // The URLs to the APIs and the authentication API.
 const API_BASE_URL = '/api'
@@ -12,20 +13,24 @@ const AUTH_API_BASE_URL = '/api/authentication'
  * @param   next
  *          Function to forward to the next middleware.
  */
-const checkSession = async function (ctx, next) {
+const checkSession = async function(ctx, next) {
   // Always check first if the current session is expired.
   await sessionManager.checkSessionExpired()
 
-  // Check if the requested URL is the admin view.
-  if (ctx.request.url.startsWith(API_BASE_URL) && !ctx.request.url.startsWith(AUTH_API_BASE_URL)) {
+  // Check if the requested URL is the editor interface.
+  // Also protect the authentication logout function.
+  if (
+    ctx.request.url.startsWith(routeNames.EDITOR.BASE) ||
+    ctx.request.url.startsWith(routeNames.AUTH.LOGOUT)
+  ) {
     // Get the provided session key.
     // Depending on the request it could be in the data or form object.
     let sessionKey
 
     if (ctx.request.body.sessionKey) {
-      sessionKey = ctx.request.body.sessionKey    
-    } else if ( ctx.body && ctx.body.fields && ctx.body.fields.sessionKey) {
-      sessionKey = ctx.request.body.fields.sessionKey    
+      sessionKey = ctx.request.body.sessionKey
+    } else if (ctx.body.fields.sessionKey) {
+      sessionKey = ctx.request.body.fields.sessionKey
     } else {
       ctx.status = 401
       ctx.body = 'Session key missing!'
@@ -33,12 +38,12 @@ const checkSession = async function (ctx, next) {
     }
 
     // Check if the session key is valid.
-    if (!await sessionManager.checkSessionKey(sessionKey)) {
+    if (!(await sessionManager.checkSessionKey(sessionKey))) {
       ctx.status = 401
       ctx.body = 'Invalid session key!'
       // Do not forward to other middleware.
     }
-    
+
     // Everything is fine.
     await next()
     // Do nothing on the way back.
@@ -48,7 +53,6 @@ const checkSession = async function (ctx, next) {
 
     // Do nothing on the way back.
   }
-
 }
 
 // Define what to export.
