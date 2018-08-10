@@ -135,15 +135,14 @@ export default {
   methods: {
     /**
      * Check if the given holidays are now.
-     * Return a Boolean if the current date is between the 'from' and 'to' date values of the holidays.
+     * Return a Boolean if the current date is before the 'to' date values of the holidays.
      * Don't care about invalid dates or more.
      * Invalid dates (also if 'to' is earlier than 'from') lead to false.
      */
     isNow(holiday) {
       const now = new Date()
-      const from = new Date(holiday.from)
       const to = new Date(holiday.to)
-      return from <= now && now <= to
+      return now <= to
     }
   },
 
