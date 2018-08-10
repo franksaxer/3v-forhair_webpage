@@ -7,7 +7,6 @@ const mail_prop = require(__dirname + '/config/mail_prop.js')
 const logger = require(__dirname + '/logger.js').logger
 
 /* Create Transporter */
-console.log(mail_prop.auth.pass)
 const transporter = nodemailer.createTransport(mail_prop)
 transporter.verify(err => {
   if (err) {

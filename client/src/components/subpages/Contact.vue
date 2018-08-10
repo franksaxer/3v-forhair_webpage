@@ -60,11 +60,12 @@
       </div>
 
       <div class="form">
-        <form @submit.prevent="validateBeforeSubmit">
+        <form>
           <div class="field">
             <div class="control has-icons-left">
               <input  class="input"
                       type="text"
+                      v-model="feedback[requestParameterKeys.mail.name]"
                       :placeholder="labels.SUBPAGE_CONTACT_PH_NAME | translate">
               <span class="icon is-left">
               <span><i class="fa fa-users"></i></span>
@@ -76,6 +77,7 @@
             <div class=" control has-icons-left">
               <input  class="input"
                       type="email"
+                      v-model="feedback[requestParameterKeys.mail.mail]"
                       :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MAIL)">
               <span class="icon is-left">
               <span><i class="fa fa-envelope"></i></span>
@@ -87,28 +89,30 @@
             <div class="control has-icons-left">
               <input  class="input"
                       type="text"
+                      v-model="feedback[requestParameterKeys.mail.phone]"
                       :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_PHONE)">
-
               <span class="icon is-left">
               <span><i class="fa fa-phone"></i></span>
-            </span>
+              </span>
             </div>
           </div>
 
           <div class="field">
             <div class="control has-icons-left">
-              <textarea class="input" style="height: 120px"
-                      :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MESSAGE)"/>
+              <textarea class="input"
+                        style="height: 120px"
+                        v-model="feedback[requestParameterKeys.mail.content]"
+                        :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MESSAGE)"/>
               <span class="icon is-left">
-              <span><i class="fa fa-comments"></i></span>
-            </span>
+                <span><i class="fa fa-comments"></i></span>
+              </span>
             </div>
           </div>
 
           <div class="field">
             <div class="control">
               <button class="button is-primary"
-                      type="submit">
+                      @click="sendFeedback">
 
                 {{ labels.SUBPAGE_CONTACT_BTN_SEND | translate }}
               </button>
@@ -121,104 +125,115 @@
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
+import Subpage from '../../plugins/SubpageMixin'
+import { DataStoreEntries } from '../../data/DataManager'
+import RequestParameterKeys from '../../data/json/core/RequestParamaterKeys.json'
+import ApiConnector from '../../ApiConnector'
 
-  export default {
-    name: 'kontakt',
+export default {
+  name: 'kontakt',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    data () {
-      return {
-        name: '',
-        dataKey: DataStoreEntries.kontakt.key
-      }
-    },
-
-    methods: {
-      validateBeforeSubmit (e) {
-        this.$validator.validateAll()
-        if (!this.errors.any()) {
-          console.log('sendMAIL')
-        }
+  data() {
+    return {
+      name: '',
+      dataKey: DataStoreEntries.kontakt.key,
+      requestParameterKeys: RequestParameterKeys, // required to be available on render.
+      feedback: {
+        [RequestParameterKeys.mail.name]: '',
+        [RequestParameterKeys.mail.mail]: '',
+        [RequestParameterKeys.mail.phone]: '',
+        [RequestParameterKeys.mail.content]: ''
       }
     }
+  },
+
+  methods: {
+    sendFeedback() {
+      // TODO: Validate first.
+      // this.$validator.validateall()
+      //
+      // if (!this.errors.any()) {
+      //
+      // }
+      ApiConnector.sendFeedback(this.feedback)
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '../../style/subpages';
 
-  .subpage{
-    .content-box{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      text-align: center;
+.subpage {
+  .content-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
 
-      &.info {
-        .kontakt-element {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 46%;
-          padding: 40px;
+    &.info {
+      .kontakt-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 46%;
+        padding: 40px;
 
-
-          p, span, a {
-            font-size: 20px
-          }
-
-          @include media('<desktop') {
-            width: 97%;
-          }
-
-          .button{
-            margin: 10px;
-          }
-
-          ul {
-            margin: 0;
-          }
-        }
-      }
-
-      &.form {
-        .headline {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          width: 46%;
-          margin: 10px 2%;
-          padding: 20px;
-
-          @include media('<desktop') {
-            width: 97%;
-          }
-
-          h1, h3{
-            color:black!important;
-            text-shadow: 0 0 0 white;
-            font-weight: bold;
-          }
+        p,
+        span,
+        a {
+          font-size: 20px;
         }
 
-        .form {
-          @include media('<desktop') {
-            width: 90%;
-          }
-          margin: 10px 2%;
-          padding: 20px;
-          display: flex;
-          width: 46%;
-          flex-direction: column;
+        @include media('<desktop') {
+          width: 97%;
+        }
+
+        .button {
+          margin: 10px;
+        }
+
+        ul {
+          margin: 0;
         }
       }
     }
+
+    &.form {
+      .headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 46%;
+        margin: 10px 2%;
+        padding: 20px;
+
+        @include media('<desktop') {
+          width: 97%;
+        }
+
+        h1,
+        h3 {
+          color: black !important;
+          text-shadow: 0 0 0 white;
+          font-weight: bold;
+        }
+      }
+
+      .form {
+        @include media('<desktop') {
+          width: 90%;
+        }
+        margin: 10px 2%;
+        padding: 20px;
+        display: flex;
+        width: 46%;
+        flex-direction: column;
+      }
+    }
   }
-
-
-
+}
 </style>
