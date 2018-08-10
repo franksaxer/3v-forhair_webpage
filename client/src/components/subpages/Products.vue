@@ -11,9 +11,9 @@
                 <i class="fa fa-archive"
                    aria-hidden="true"/>
               </span>
-							<span>
+							<h2>
                 {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_GENERAL | translate }}
-              </span>
+              </h2>
 						</a>
 					</li>
 
@@ -23,9 +23,9 @@
                 <i class="fa fa-male"
                    aria-hidden="true"/>
               </span>
-							<span>
+							<h2>
                 {{ labels.SUPPAGE_PRODUCTS_PRODUCTS_HIM | translate }}
-              </span>
+              </h2>
 						</a>
 					</li>
         </ul>
@@ -99,131 +99,144 @@
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
+import Subpage from '../../plugins/SubpageMixin'
+import { DataStoreEntries } from '../../data/DataManager'
 
-  const TABS = {
-    general: '7beb4b54e97d1f92d9bf2e5e7e21d33a',
-    male: '962453969e3902726b0383031df65031'
-  }
+const TABS = {
+  general: '7beb4b54e97d1f92d9bf2e5e7e21d33a',
+  male: '962453969e3902726b0383031df65031'
+}
 
-  export default {
-    name: 'produkte',
+export default {
+  name: 'produkte',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    data () {
-      return {
-        dataKey: DataStoreEntries.produkte.key,
-        infoOpen: false, // Not shown per default.
-        infoProdukt: {}, // Will be defined on open.
-        tabs: TABS,
-        activeTab: TABS.general // The currently selected tab pane.
-      }
+  data() {
+    return {
+      dataKey: DataStoreEntries.produkte.key,
+      infoOpen: false, // Not shown per default.
+      infoProdukt: {}, // Will be defined on open.
+      tabs: TABS,
+      activeTab: TABS.general // The currently selected tab pane.
+    }
+  },
+
+  methods: {
+    openInfoModal(produkt) {
+      this.infoProdukt = produkt
+      this.infoOpen = true
     },
 
-    methods: {
-      openInfoModal (produkt) {
-        this.infoProdukt = produkt
-        this.infoOpen = true
-      },
-
-      switchTab (tab) {
-        this.activeTab = tab
-      }
+    switchTab(tab) {
+      this.activeTab = tab
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '../../style/subpages';
 
-  .subpage{
-    .content-box {
-      width: 100%;
+.subpage {
+  .content-box {
+    width: 100%;
 
-      .produkte {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .produkt {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          margin: 2%;
-          margin-bottom: 20px;
-          width: 29%;
-          align-items: center;
-
-          @include media('<desktop') {
-            width: 46%;
-          }
-
-          .info {
-            $color: black;
-            $square: 20px;
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: $square;
-            height: $square;
-            font-size: calc(0.6 * #{$square});
-            border: 1px solid $color;
-            border-radius: $square;
-            color: $color!important;
-            background-color: transparent;
-
-            &:hover {
-              cursor: pointer;
-            }
-          }
-
-          .image {
-            max-width: 160px;
-            max-font-size: 150px;
-          }
-
-          .unterschrift {
-            padding-top: 10px;
-            text-align: center;
-          }
-        }
+    .tabs {
+      i {
+        font-size: 1.2em;
       }
 
-      .produkteIhn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        h4 {
-          color: rgb(217, 159, 58);
+      .is-active {
+        h2 {
+          color: $primary;
           text-shadow: none;
-          font-weight: bold;
-        }
-
-        h3 {
-          color: black;
-          text-shadow: none;
-          font-weight: bold;
-        }
-
-        img {
-          margin-top: 30px;
-          margin-bottom: 30px;
-        }
-
-        .category {
-          width: 50%;
-        }
-
-        ul{
-          margin-bottom: 15px;
         }
       }
     }
+
+    .produkte {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .produkt {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+        margin-bottom: 20px;
+        width: 29%;
+        align-items: center;
+
+        @include media('<desktop') {
+          width: 46%;
+        }
+
+        .info {
+          $color: black;
+          $square: 20px;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: $square;
+          height: $square;
+          font-size: calc(0.6 * #{$square});
+          border: 1px solid $color;
+          border-radius: $square;
+          color: $color !important;
+          background-color: transparent;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .image {
+          max-width: 160px;
+          max-font-size: 150px;
+        }
+
+        .unterschrift {
+          padding-top: 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    .produkteIhn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h4 {
+        color: rgb(217, 159, 58);
+        text-shadow: none;
+        font-weight: bold;
+      }
+
+      h3 {
+        color: black;
+        text-shadow: none;
+        font-weight: bold;
+      }
+
+      img {
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      .category {
+        width: 50%;
+      }
+
+      ul {
+        margin-bottom: 15px;
+      }
+    }
   }
+}
 </style>

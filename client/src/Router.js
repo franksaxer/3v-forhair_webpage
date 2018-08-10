@@ -24,7 +24,7 @@ import WallpaperContact from './assets/wallpapers/background11.jpg'
 import WallpaperCosts from './assets/wallpapers/background2.jpg'
 import WallpaperGreeter from './assets/wallpapers/background6.jpg'
 import WallpaperImpressum from './assets/wallpapers/background10.jpg'
-import WallpaperProducts from './assets/wallpapers/background5.jpg'
+import WallpaperProducts from './assets/wallpapers/background15.jpg'
 import WallpaperPromotion from './assets/wallpapers/background3.jpg'
 import WallpaperRecension from './assets/wallpapers/background12.jpg'
 import WallpaperStaff from './assets/wallpapers/background4.jpg'
@@ -115,7 +115,7 @@ export default new VueRouter({
     }
   ],
 
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     // Scroll to top on switch page.
     return { x: 0, y: 0 }
   }

@@ -173,6 +173,10 @@ export default {
     margin: 30px 2% 10px auto;
   }
 
+  .content-box {
+    border-color: $primary;
+  }
+
   .stylist-list {
     display: flex;
     flex-direction: column;

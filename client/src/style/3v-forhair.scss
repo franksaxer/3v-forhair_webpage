@@ -14,7 +14,7 @@ $overlay-index: calc(#{$layout-element-layer} + 1);
 $menu-index: calc(#{$overlay-index} + 1);
 
 /* Transistions */
-$transition: all .5s;
+$transition: all 0.5s;
 
 /* Other */
 $border-radius: 10px;
@@ -31,13 +31,10 @@ $primary-invert: $color-invert;
 $link: lighten($primary, 10%);
 
 // Table
-
-$table-background-color: rgba(black, .8);
-$table-head-cell-color: $white!important;
-
+$table-background-color: rgba(black, 0.8);
+$table-head-cell-color: $white !important;
 $table-color: $white;
-$table-cell-heading-color: $white!important;
-$table-row-hover-background-color:rgba(green, .8)!important;
+$table-row-hover-background-color: green !important;
 
 // Modal
 $modal-z: calc(#{$menu-index} + 1);
@@ -49,19 +46,18 @@ $modal-card-foot-radius: $border-radius;
 // Import Bulma classes afterwards.
 @import '../../node_modules/bulma/bulma';
 
-
-body{
-  @include media('<desktop'){
+body {
+  @include media('<desktop') {
     font-size: 35px;
   }
-  @include media('>=desktop'){
+  @include media('>=desktop') {
     font-size: 15px;
   }
 }
 
 hr {
   display: block;
-  color:white;
+  color: white;
 }
 
 p {
@@ -71,9 +67,9 @@ p {
 /* Classes */
 .ghost-button {
   // Use important, cause it is also used for overwriting.
-  border: 0!important;
-  padding: 0!important;
-  background-color: transparent!important;
+  border: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
 }
 
 @mixin scroll {
@@ -96,16 +92,17 @@ p {
 }
 
 @function decentShadow($color) {
-  @return 0 0 1px $color, 0 0 1px $color, 0 0 1px $color, 0 0 1px $color
+  @return 0 0 1px $color, 0 0 1px $color, 0 0 1px $color, 0 0 1px $color;
 }
 
 @function intenseShadow($color) {
-  @return 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color
+  @return 0 0 2px $color, 0 0 2px $color, 0 0 2px $color, 0 0 2px $color,
+    0 0 2px $color;
 }
 
-
 .modal {
-  .modal-card-head, .modal-card-foot {
+  .modal-card-head,
+  .modal-card-foot {
     text-align: center;
   }
 
@@ -126,7 +123,7 @@ p {
       margin-bottom: 20px; // Between this text and the input element.
 
       &.error-message {
-        color: red!important;
+        color: red !important;
       }
     }
   }
@@ -134,6 +131,6 @@ p {
 
 .editable {
   .editable-element {
-    cursor: pointer!important;
+    cursor: pointer !important;
   }
 }

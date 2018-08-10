@@ -7,37 +7,37 @@
 				<ul>
           <li :class="{'is-active': activeTab === tabs.female}">
 						<a @click="switchTab(tabs.female)">
-							<span class="icon is-small">
+							<span class="icon">
                 <i class="fa fa-female"
                    aria-hidden="true"/>
               </span>
-							<span>
+							<h2>
                 {{ labels.SUBPAGE_COSTS_LABEL_SHE | translate }}
-              </span>
+              </h2>
 						</a>
 					</li>
 
           <li :class="{'is-active': activeTab === tabs.male}">
 						<a @click="switchTab(tabs.male)">
-							<span class="icon is-small">
+							<span class="icon">
                 <i class="fa fa-male"
                    aria-hidden="true"/>
               </span>
-							<span>
+							<h2>
                 {{ labels.SUBPAGE_COSTS_LABEL_HE | translate }}
-              </span>
+              </h2>
 						</a>
 					</li>
 
           <li :class="{'is-active': activeTab === tabs.colors}">
 						<a @click="switchTab(tabs.colors)">
-							<span class="icon is-small">
+							<span class="icon">
                 <i class="fa fa-paint-brush"
                    aria-hidden="true"/>
               </span>
-							<span>
+							<h2>
                 {{ labels.SUBPAGE_COSTS_LABEL_COLORS | translate }}
-              </span>
+              </h2>
 						</a>
 					</li>
         </ul>
@@ -194,105 +194,121 @@
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
-  import * as RouteNames from '../../enums/RouteNames'
-  import { Carousel, Slide } from 'vue-carousel'
+import Subpage from '../../plugins/SubpageMixin'
+import { DataStoreEntries } from '../../data/DataManager'
+import * as RouteNames from '../../enums/RouteNames'
+import { Carousel, Slide } from 'vue-carousel'
 
-  const TABS = {
-    female: 'e60de54531c9b122ccfa19eca3af8f2b',
-    male: '962453969e3902726b0383031df65031',
-    colors: '7fcb1f9a47b22bda6eec8ca02584aaa5'
-  }
+const TABS = {
+  female: 'e60de54531c9b122ccfa19eca3af8f2b',
+  male: '962453969e3902726b0383031df65031',
+  colors: '7fcb1f9a47b22bda6eec8ca02584aaa5'
+}
 
-  export default {
-    name: 'costs',
+export default {
+  name: 'costs',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    components: {
-      Carousel,
-      Slide
-    },
+  components: {
+    Carousel,
+    Slide
+  },
 
-    data () {
-      return {
-        dataKey: DataStoreEntries.costs.key,
-        colorRoute: RouteNames.COLORS,
-        tabs: TABS,
-        activeTab: TABS.female // The currently selected tab pane.
-      }
-    },
+  data() {
+    return {
+      dataKey: DataStoreEntries.costs.key,
+      colorRoute: RouteNames.COLORS,
+      tabs: TABS,
+      activeTab: TABS.female // The currently selected tab pane.
+    }
+  },
 
-    methods: {
-      switchTab (tab) {
-        this.activeTab = tab
-      }
+  methods: {
+    switchTab(tab) {
+      this.activeTab = tab
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '../../style/subpages';
 
-  .subpage{
-    h1 {
-      margin-bottom: 30px;
-    }
+.subpage {
+  h1 {
+    margin-bottom: 30px;
+  }
 
-    h3, h5, h6 {
-      text-shadow: none;
-      color: rgb(217, 159, 58);
-      font-weight: bold;
-    }
+  h3,
+  h5,
+  h6 {
+    text-shadow: none;
+    color: rgb(217, 159, 58);
+    font-weight: bold;
+  }
 
-    .content-box {
-      min-width: 100%; // Fixed size, to is does not change for each tab.
+  .content-box {
+    min-width: 100%; // Fixed size, to is does not change for each tab.
 
-      table {
-        margin-top: 10px;
-        overflow: auto;
-        border-radius: 10px;
+    .tabs {
+      i {
+        font-size: 1.2em;
       }
 
-      p {
-        margin-bottom: 10px;
+      .is-active {
+        h2 {
+          color: $primary;
+          text-shadow: none;
+        }
       }
+    }
 
-      .aktionen-list {
-        margin-top: 40px;
+    table {
+      margin-top: 10px;
+      overflow: auto;
+      border-radius: 10px;
+    }
 
-        .aktion {
-          display: flex;
+    p {
+      margin-bottom: 10px;
+    }
 
-          @include media("<desktop"){
-            flex-direction: column;
+    .aktionen-list {
+      margin-top: 40px;
+
+      .aktion {
+        display: flex;
+
+        @include media('<desktop') {
+          flex-direction: column;
+        }
+
+        img {
+          margin: auto;
+          width: 80%;
+          margin-right: 20px;
+
+          @include media('<desktop') {
+            margin-bottom: 20px;
           }
+        }
 
-          img {
-            margin: auto;
-            width: 80%;
-            margin-right: 20px;
+        .aktion-description {
+          margin: auto;
 
-            @include media("<desktop"){
-              margin-bottom: 20px;
-            }
-          }
+          @include media('<desktop') {
+            text-align: justify;
 
-          .aktion-description {
-            margin: auto;
-
-            @include media('<desktop') {
-              text-align: justify;
-
-              h5, h6 {
-                text-align: center;
-              }
+            h5,
+            h6 {
+              text-align: center;
             }
           }
         }
       }
     }
   }
+}
 </style>
