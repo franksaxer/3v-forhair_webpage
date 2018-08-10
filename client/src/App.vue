@@ -155,7 +155,8 @@ export default {
       password: '', // Stores the password of the input element.
       authIsLoading: false, // Set the login button to loading.
       authErrorMessage: null, // Contains the error message after an invoked login try.
-      contactData: null
+      contactData: null,
+      logoInLowerPosition: false
     }
   },
 
@@ -199,17 +200,35 @@ export default {
 
     goHome: function() {
       this.$router.push({ name: RouteNames.GREETER })
+    },
+
+    shiftLogo: function() {
+      setTimeout(() => {
+        this.logoInLowerPosition = true
+      }, 5000)
     }
   },
 
-  computed: {
-    logoInLowerPosition: function() {
-      return this.$route.name === RouteNames.GREETER
+  watch: {
+    $route() {
+      if (this.$route.name === RouteNames.GREETER) {
+        this.shiftLogo()
+      } else {
+        this.logoInLowerPosition = false
+      }
     }
   },
+
+  /* computed: { */
+  /*   logoInLowerPosition: function() { */
+  /*     return this.$route.name === RouteNames.GREETER */
+  /*   } */
+  /* }, */
 
   async created() {
-    // Load lata here.
+    this.shiftLogo()
+
+    // Load data here.
     this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
 
     // Check if the admin view is requested.
