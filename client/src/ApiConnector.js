@@ -90,14 +90,13 @@ const updateConfig = async (key, config) => {
 
   try {
     await Vue.http
-      .post('https://localhost:8081/api/editor/updateConfig', data)
+      .put('https://localhost:8081/api/editor/updateConfig', data)
       .then(
         response => {
           console.log('alles gut')
           // Nothing to do.
         },
         error => {
-          console.log('nicht gut')
           throw new Error(error.bodyText)
         }
       )

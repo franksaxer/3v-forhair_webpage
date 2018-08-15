@@ -140,6 +140,7 @@ const EditableView = {
 
           // Reset save state.
           this.$saving = false
+          alert('Save done!')
         }
       },
 
