@@ -127,7 +127,11 @@ editorRouter.put(routeNames.EDITOR.SAVE, async ctx => {
   logger.info('Build client new.')
 
   try {
-    const stdo = exec('npm run build', { cwd: __dirname + '/../../../client' })
+    exec('npm run build', { cwd: __dirname + '/../../../client' })
+    exec(
+      'git add src/data/json/ src/assets/ && git commit -m "Update content by admin." && git push',
+      { cwd: __dirname + '/../../../client' }
+    )
     ctx.status = 200
   } catch (e) {
     logger.error(e)
