@@ -10,7 +10,7 @@ const login = async function(password) {
 
   try {
     return await Vue.http
-      .post('https://localhost:8081/api/authentication/login', data)
+      .post(process.env.API_URL + '/api/authentication/login', data)
       .then(
         response => {
           sessionKey = response.body
@@ -41,7 +41,7 @@ const logout = async function() {
 
   try {
     await Vue.http
-      .post('https://localhost:8081/api/authentication/logout', data)
+      .post(process.env.API_URL + '/api/authentication/logout', data)
       .then(
         response => {
           // Nothing to do.
@@ -65,7 +65,7 @@ const uploadFile = async (path, file) => {
 
   try {
     await Vue.http
-      .put('https://localhost:8081/api/editor/uploadFile', data)
+      .put(process.env.API_URL + '/api/editor/uploadFile', data)
       .then(
         response => {},
         error => {
@@ -90,7 +90,7 @@ const updateConfig = async (key, config) => {
 
   try {
     await Vue.http
-      .put('https://localhost:8081/api/editor/updateConfig', data)
+      .put(process.env.API_URL + '/api/editor/updateConfig', data)
       .then(
         response => {
           console.log('alles gut')
@@ -116,7 +116,7 @@ const save = async function() {
   }
 
   try {
-    await Vue.http.put('https://localhost:8081/api/editor/save', data).then(
+    await Vue.http.put(process.env.API_URL + '/api/editor/save', data).then(
       response => {
         console.log('saved')
       },
@@ -141,7 +141,7 @@ const save = async function() {
 
 const sendFeedback = async function(payload) {
   try {
-    await Vue.http.post('https://localhost:8081/api/mail', payload).then(
+    await Vue.http.post(process.env.API_URL + '/api/mail', payload).then(
       response => {
         console.log('Feedback send successfully.')
         console.log(response)
