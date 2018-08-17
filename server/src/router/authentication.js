@@ -79,9 +79,9 @@ async function checkPassword(password) {
   try {
     // Read the stored password first.
     const hash = await readStoredPassword()
-
+    const hashWithOutLineBreak = hash.replace('\n','')
     // Compare both passwords.
-    return bcrypt.compareSync(password, hash)
+    return bcrypt.compareSync(password, hashWithOutLineBreak)
   } catch (err) {
     // Log the error and forward the error.
     logger.logger.error(
