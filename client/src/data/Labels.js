@@ -33,15 +33,21 @@ export default {
   // Edit Window
   [keys.EDIT_WINDOW_TITLE]: ['Bearbeiten', 'Edit'],
   [keys.EDIT_WINDOW_BTN_OK]: ['OK'],
-  [keys.EDIT_WINDOW_HINT_MULTILINE]: {
-    [langs.DE]: 'Das Eroeffnen einer Zeile erscheint ebenfalls im Orginal.',
-    [langs.EN]: 'Start a new line will also be displayed in the original.'
-  },
   [keys.EDIT_WINDOW_HINT_ABORT]: {
     [langs.DE]:
       'Alle Aenderungen koennen zurueckgesetzt werden durch Klicken des Schliessbuttons or ausserhalb des Fensters.',
     [langs.EN]:
       'All changes can be reset by click the close button or outsite of the window.'
+  },
+  [keys.EDIT_WINDOW_HINT_MULTILINE]: {
+    [langs.DE]: 'Das Eroeffnen einer Zeile erscheint ebenfalls im Orginal.',
+    [langs.EN]: 'Start a new line will also be displayed in the original.'
+  },
+  [keys.EDIT_WINDOW_HINT_LIST]: {
+    [langs.DE]:
+      'Listen werden als eine Zeile dargestellt. Dabei werden/koennen die einzelnen Eintraege mittels eines Semikolions getrennt werden.',
+    [langs.EN]:
+      'List are shown as a single line. The entries are/can be separated by a semicolion.'
   },
 
   // Menu
