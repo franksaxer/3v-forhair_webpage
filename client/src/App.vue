@@ -204,13 +204,16 @@ export default {
 
     shiftLogo: function() {
       setTimeout(() => {
-        this.logoInLowerPosition = true
+        if (this.$route.name === RouteNames.GREETER) {
+          this.logoInLowerPosition = true
+        }
       }, 5000)
     }
   },
 
   watch: {
     $route() {
+      console.log(this.$route.name === RouteNames.GREETER)
       if (this.$route.name === RouteNames.GREETER) {
         this.shiftLogo()
       } else {
