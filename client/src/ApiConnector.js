@@ -9,14 +9,45 @@ const validateSession = async function() {
   // TODO: Verify session by backend for obsolete sessions.
   console.log('Check session for key: ' + sessionKey)
 
+  // Variable to set if the session has been verified.
+  let valid = false
+
   if (sessionKey) {
-    return true
-  } else {
-    // Force the user to login again.
+    const data = {
+      sessionKey: sessionKey
+    }
+
+    try {
+      await Vue.http
+        .post(process.env.API_URL + '/api/authentication/check', data)
+        .then(
+          response => {
+            // eslint-disable-next-line no-unneeded-ternary
+            valid = response.bodyText === 'true' ? true : false
+            console.log(valid)
+          },
+          error => {
+            console.log(
+              'Validating the session key was not successful due to an error!'
+            )
+            console.log(error.bodyText)
+          }
+        )
+    } catch (err) {
+      console.log(
+        'Validating the session key was not possible on trying to connect to the server.'
+      )
+      console.log(err)
+    }
+  }
+
+  // Force the user to login again.
+  if (!valid) {
     delete window.localStorage[sessionLocalPropertyName]
     window.editableViewBus.$emit('login')
-    return false
   }
+
+  return valid
 }
 
 const login = async function(password) {
@@ -79,8 +110,6 @@ const logout = async function() {
       )
   } catch (err) {
     console.log(err)
-    // Just forward the error.
-    throw err
   }
 }
 
