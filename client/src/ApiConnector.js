@@ -1,7 +1,23 @@
 import Vue from 'vue'
 
 // Globally store the session key for further calls.
-let sessionKey = null
+// Try to load a locally cached session key.
+const sessionLocalPropertyName = 'sessionKey' // To grant unified access.
+let sessionKey = window.localStorage[sessionLocalPropertyName]
+
+const validateSession = async function() {
+  // TODO: Verify session by backend for obsolete sessions.
+  console.log('Check session for key: ' + sessionKey)
+
+  if (sessionKey) {
+    return true
+  } else {
+    // Force the user to login again.
+    delete window.localStorage[sessionLocalPropertyName]
+    window.editableViewBus.$emit('login')
+    return false
+  }
+}
 
 const login = async function(password) {
   const data = {
@@ -13,7 +29,11 @@ const login = async function(password) {
       .post(process.env.API_URL + '/api/authentication/login', data)
       .then(
         response => {
+          // Store session key and update local cache.
           sessionKey = response.body
+          window.localStorage[sessionLocalPropertyName] = JSON.parse(
+            JSON.stringify(sessionKey)
+          )
         },
         error => {
           if (error.status === 401 || error.status === 403) {
@@ -35,6 +55,11 @@ const login = async function(password) {
 }
 
 const logout = async function() {
+  // Make sure to have a running session.
+  if (!(await validateSession())) {
+    return
+  }
+
   const data = {
     sessionKey: sessionKey
   }
@@ -44,7 +69,9 @@ const logout = async function() {
       .post(process.env.API_URL + '/api/authentication/logout', data)
       .then(
         response => {
-          // Nothing to do.
+          // Clear stored/cached session key.
+          sessionKey = null
+          delete window.localStorage[sessionLocalPropertyName]
         },
         error => {
           throw new Error(error.bodyText)
@@ -58,6 +85,11 @@ const logout = async function() {
 }
 
 const uploadFile = async (path, file) => {
+  // Make sure to have a running session.
+  if (!(await validateSession())) {
+    return
+  }
+
   const data = new FormData()
   data.append('sessionKey', sessionKey)
   data.append('mediaPath', path)
@@ -80,6 +112,11 @@ const uploadFile = async (path, file) => {
 }
 
 const updateConfig = async (key, config) => {
+  // Make sure to have a running session.
+  if (!(await validateSession())) {
+    return
+  }
+
   const data = {
     sessionKey: sessionKey,
     dataKey: key,
@@ -116,6 +153,11 @@ const updateConfig = async (key, config) => {
 }
 
 const build = async function() {
+  // Make sure to have a running session.
+  if (!(await validateSession())) {
+    return
+  }
+
   const data = {
     sessionKey: sessionKey
   }
@@ -164,6 +206,7 @@ const sendFeedback = async function(payload) {
 }
 
 export default {
+  validateSession: validateSession,
   login: login,
   logout: logout,
   upload: uploadFile,

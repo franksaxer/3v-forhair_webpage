@@ -242,10 +242,17 @@ export default {
     // Load data here.
     this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
 
-    // Check if the admin view is requested.
-    if (window.location.pathname === UrlEnum.admin) {
+    // Open authentication modal when requested.
+    window.editableViewBus.$on('login', () => {
       // Open the authentication modal.
       this.authenticationModalOpen = true
+    })
+
+    // Check if the admin view is requested.
+    if (window.location.pathname === UrlEnum.admin) {
+      // Cause a session check from the cache which will force a login event
+      // if no valid session could been restored.
+      ApiConnector.validateSession()
     }
   }
 }
