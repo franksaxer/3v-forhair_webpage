@@ -24,6 +24,7 @@ export default {
   [keys.AUTH_BTN_LOGOUT]: ['Abmelden', 'Logout'],
   [keys.AUTH_BTN_SAVE]: ['Speichern', 'Save'],
   [keys.AUTH_BTN_RESET]: ['Zurücksetzen', 'Reset'],
+  [keys.AUTH_BTN_BUILD]: ['Bauen', 'Build'],
 
   // Edit
   [keys.EDIT_IMG_BTN_DRAG]: ['Bild bewegen', 'Move image'],

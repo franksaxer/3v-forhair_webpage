@@ -29,7 +29,7 @@
         <div  id="admin-buttons"
               v-if="$editable">
 
-          <button :class="['button', 'is-primary', {'is-loading': $saving}]"
+          <button class="button is-primary"
                   @click="$saveData">
 
             <span class="icon">
@@ -40,7 +40,18 @@
             </span>
           </button>
 
-          <button :class="['button', 'is-primary']"
+          <button class="button is-primary"
+                  @click="$build">
+
+            <span class="icon">
+              <i class="fa fa-cogs"></i>
+            </span>
+            <span>
+              {{ labels.AUTH_BTN_BUILD | translate }}
+            </span>
+          </button>
+
+          <button class="button is-primary"
                   @click="$resetData">
 
             <span class="icon">

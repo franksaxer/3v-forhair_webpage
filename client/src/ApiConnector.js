@@ -80,8 +80,6 @@ const uploadFile = async (path, file) => {
 }
 
 const updateConfig = async (key, config) => {
-  console.log('update')
-
   const data = {
     sessionKey: sessionKey,
     dataKey: key,
@@ -93,24 +91,31 @@ const updateConfig = async (key, config) => {
       .put(process.env.API_URL + '/api/editor/updateConfig', data)
       .then(
         response => {
-          console.log('alles gut')
+          console.log('Data for key ' + key + ' has been successfully updated.')
           // Nothing to do.
         },
         error => {
+          console.log(
+            'Data for key ' +
+              key +
+              ' was not sucessfully updated due to an error by the backend.'
+          )
           throw new Error(error.bodyText)
         }
       )
   } catch (err) {
-    console.log('gar nicht gut')
+    console.log(
+      'Data for key ' +
+        key +
+        ' was not sucesfully updated due to an error while connecting the backend.'
+    )
     console.log(err)
     // Just forward the error.
     throw err
   }
 }
 
-const save = async function() {
-  console.log('save')
-
+const build = async function() {
   const data = {
     sessionKey: sessionKey
   }
@@ -163,6 +168,6 @@ export default {
   logout: logout,
   upload: uploadFile,
   update: updateConfig,
-  save: save,
+  build: build,
   sendFeedback: sendFeedback
 }

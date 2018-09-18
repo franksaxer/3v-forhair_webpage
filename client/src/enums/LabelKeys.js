@@ -15,6 +15,7 @@ export const AUTH_BTN_LOGIN = 'e59b07884d62d64e5d7d1c175c52b13d'
 export const AUTH_BTN_LOGOUT = '66aac14226219aeb08fe718c82568bc6'
 export const AUTH_BTN_SAVE = '6d92d4b7eb749df73d461ccde03187f0'
 export const AUTH_BTN_RESET = 'd65cf22ba292a8f10c1cf9fa1d635a53'
+export const AUTH_BTN_BUILD = '4885077790980c28bd7b243018235f0f'
 
 export const EDIT_IMG_BTN_DRAG = '170d7c54c99f5891c65e8d2157e0f2fa'
 export const EDIT_IMG_BTN_BORDER = 'b07e228e6324cb93d4e6ef99a439dc7e'
