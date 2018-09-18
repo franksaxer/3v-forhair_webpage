@@ -128,10 +128,15 @@ editorRouter.put(routeNames.EDITOR.SAVE, async ctx => {
 
   try {
     exec('npm run build', { cwd: __dirname + '/../../../client' })
-    exec(
-      'git add src/data/json/ src/assets/ && git commit -m "Update content by admin." && git push',
-      { cwd: __dirname + '/../../../client' }
-    )
+
+    // Commit if in production mode.
+    if (process.env.NODE_ENV === 'production') {
+      exec(
+        'git add src/data/json/ src/assets/ && git commit -m "Update content by admin." && git push',
+        { cwd: __dirname + '/../../../client' }
+      )
+    }
+
     ctx.status = 200
   } catch (e) {
     logger.error(e)
