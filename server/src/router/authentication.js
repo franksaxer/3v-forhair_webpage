@@ -18,6 +18,7 @@ const authRouter = new router()
 authRouter.prefix(routeNames.AUTH.BASE)
 
 /* Define the methods */
+
 /**
  * The login method for administrators.
  * Connection has to be secure -> 400
@@ -56,6 +57,18 @@ authRouter.post(routeNames.AUTH.LOGIN, async ctx => {
 })
 
 /**
+ * The function to check if a session key is still valid.
+ * Response is in the body as Boolean.
+ */
+authRouter.post(routeNames.AUTH.CHECK, async ctx => {
+  const sessionKey = await ctx.request.body.sessionKey
+
+  // Check if the provided session key is still active.
+  ctx.body = await sessionManager.checkSessionKey(sessionKey)
+  ctx.status = 200
+})
+
+/**
  * The logout method to clear the session.
  * The provided session key has to be valid -> 401
  * An invalid session key force a delay.
@@ -79,7 +92,7 @@ async function checkPassword(password) {
   try {
     // Read the stored password first.
     const hash = await readStoredPassword()
-    const hashWithOutLineBreak = hash.replace('\n','')
+    const hashWithOutLineBreak = hash.replace('\n', '')
     // Compare both passwords.
     return bcrypt.compareSync(password, hashWithOutLineBreak)
   } catch (err) {

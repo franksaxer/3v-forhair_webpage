@@ -3,6 +3,7 @@ module.exports = Object.freeze({
   AUTH: {
     BASE: '/api/authentication',
     LOGIN: '/login',
+    CHECK: '/check',
     LOGOUT: '/logout'
   },
   EDITOR: {
