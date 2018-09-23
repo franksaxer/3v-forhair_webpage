@@ -14,9 +14,6 @@ const EditableView = {
     // Global variable to mark if the page is editable or not.
     Vue.prototype.$editable = false
 
-    // Global variable to mark if the save process is working.
-    Vue.prototype.$saving = false
-
     /**
      * Function that allows to en- or disable the editable view.
      */
@@ -36,8 +33,24 @@ const EditableView = {
      * Globally emit to save the data objects.
      */
     Vue.prototype.$saveData = function() {
-      Vue.prototype.$saving = true
+      console.log('Emit event save')
       window.editableViewBus.$emit('save')
+    }
+
+    /**
+     * Build the whole page new.
+     */
+    Vue.prototype.$build = async function() {
+      // Call the backend to rebuild the client sources.
+      try {
+        await ApiConnector.build()
+      } catch (err) {
+        // TODO: Show the error to the user.
+        console.log('Message: ' + err.message)
+      }
+
+      // Show message to be done.
+      alert('Build done!')
     }
 
     /**
@@ -127,20 +140,6 @@ const EditableView = {
               }
             }
           }
-        },
-
-        async finalBuild() {
-          // Call the backend to rebuild the client sources.
-          try {
-            await ApiConnector.save()
-          } catch (err) {
-            // TODO: Show the error to the user.
-            console.log('Message: ' + err.message)
-          }
-
-          // Reset save state.
-          this.$saving = false
-          alert('Save done!')
         }
       },
 
@@ -155,6 +154,7 @@ const EditableView = {
 
         // Catch the event to save the data.
         window.editableViewBus.$on('save', async () => {
+          console.log('Received save event on ' + this.dataKey)
           // Only works for components which have implement a save function.
           if (this.save) {
             this.save()

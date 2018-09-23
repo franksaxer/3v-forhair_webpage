@@ -47,7 +47,7 @@
 <script>
 import * as labels from '../enums/LabelKeys'
 import * as types from '../enums/ContentTypes'
-const ArraySeparator = ','
+const ArraySeparator = ';'
 
 export default {
   props: {
@@ -79,7 +79,11 @@ export default {
     return {
       internalContent: '', // Internal state of the property, set on created.
       backup: '', // Will be set after creation.
-      hints: [labels.EDIT_WINDOW_HINT_ABORT, labels.EDIT_WINDOW_HINT_MULTILINE],
+      hints: [
+        labels.EDIT_WINDOW_HINT_ABORT,
+        labels.EDIT_WINDOW_HINT_MULTILINE,
+        labels.EDIT_WINDOW_HINT_LIST
+      ],
       contentTypes: types // To validate during render.
     }
   },

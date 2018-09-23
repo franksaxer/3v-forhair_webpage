@@ -21,13 +21,37 @@
         </span>
       </div>
     </div>
-    <dataHint/>
+    
+    <button class="button is-primary"
+            @click="modalOpen=true">
+
+      {{ labels.SUBPAGE_IMPRESSUM_BTN | translate }}
+    </button>
+
+    <div :class="['modal', { 'is-active' : modalOpen }]">
+      <div class="modal-background"></div>
+
+      <div class="modal-content content-box"
+           v-if="data.dataProtection">
+
+        <h2 v-if="data.dataProtection.header"
+            @click="editText(data.dataProtection, 'header')" v-editable>
+            {{ data.dataProtection.header }}
+        </h2>
+
+        <p v-if="data.dataProtection.content"
+           @click="editText(data.dataProtection, 'content')" v-editable>{{ data.dataProtection.content }}</p>
+      </div>
+
+      <button class="modal-close is-large"
+              aria-label="close"
+              @click="modalOpen=false"></button>
+    </div>
   </div>
 </template>
 
 <script>
 import Subpage from '../../plugins/SubpageMixin'
-import DataProtectionHint from '../DataProtectionHint.vue'
 import { DataStoreEntries } from '../../data/DataManager'
 
 export default {
@@ -35,13 +59,10 @@ export default {
 
   mixins: [Subpage],
 
-  components: {
-    dataHint: DataProtectionHint
-  },
-
   data() {
     return {
-      dataKey: DataStoreEntries.impressum.key
+      dataKey: DataStoreEntries.impressum.key,
+      modalOpen: false // Open the modal or close it. Closed by default.
     }
   }
 }
@@ -76,6 +97,20 @@ export default {
 
     .right {
       text-align: left;
+    }
+  }
+
+  button {
+    margin: 20px;
+  }
+
+  .content-box {
+    text-align: justify;
+    width: 90%;
+
+    // Don't overreach a width (looks ugly on large displays).
+    @media all and (min-width: 1300px) {
+      max-width: 1100px !important;
     }
   }
 }

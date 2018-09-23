@@ -37,13 +37,11 @@
             {{ stylist.name }}
           </h3>
 
-            <router-link :to="{ name: routes.ABOUT_US }">
-              <span class="tag is-rounded"
-                    click="editText(stylist, 'kategorie')" v-editable>
+          <span :class="['tag', 'is-rounded', { 'clickable': !$editable }]"
+                @click="clickStylistCategorie(stylist)" v-editable>
 
-                    {{ stylist.kategorie }}
-              </span>
-            </router-link>
+                {{ stylist.kategorie }}
+          </span>
 
           <ul @click="editText(stylist, 'info')" v-editable v-if="stylist.info">
             <li v-for="stylistInfo in stringToList(stylist.info)">
@@ -96,7 +94,6 @@ export default {
   data() {
     return {
       dataKey: DataStoreEntries.stylisten.key,
-      routes: RouteNames,
       filter: ''
     }
   },
@@ -143,6 +140,22 @@ export default {
       const now = new Date()
       const to = new Date(holiday.to)
       return now <= to
+    },
+
+    /**
+     * Handle a click on stylists categorie information field.
+     * Jump the subpage with the descriptions of the categorie in normal mode.
+     * Allow editing when being the admin.
+     */
+    clickStylistCategorie(stylist) {
+      console.log('click')
+      if (this.$editable) {
+        console.log('edit')
+        this.editText(stylist, 'kategorie')
+      } else {
+        console.log('route')
+        this.$router.push({ name: RouteNames.ABOUT_US })
+      }
     }
   },
 
@@ -215,6 +228,12 @@ export default {
 
       .stylistInfo {
         padding: 10px;
+
+        .clickable {
+          &:hover {
+            cursor: pointer !important;
+          }
+        }
       }
 
       .stylist-image {

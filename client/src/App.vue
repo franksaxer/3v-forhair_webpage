@@ -29,7 +29,7 @@
         <div  id="admin-buttons"
               v-if="$editable">
 
-          <button :class="['button', 'is-primary', {'is-loading': $saving}]"
+          <button class="button is-primary"
                   @click="$saveData">
 
             <span class="icon">
@@ -40,7 +40,18 @@
             </span>
           </button>
 
-          <button :class="['button', 'is-primary']"
+          <button class="button is-primary"
+                  @click="$build">
+
+            <span class="icon">
+              <i class="fa fa-cogs"></i>
+            </span>
+            <span>
+              {{ labels.AUTH_BTN_BUILD | translate }}
+            </span>
+          </button>
+
+          <button class="button is-primary"
                   @click="$resetData">
 
             <span class="icon">
@@ -204,13 +215,16 @@ export default {
 
     shiftLogo: function() {
       setTimeout(() => {
-        this.logoInLowerPosition = true
+        if (this.$route.name === RouteNames.GREETER) {
+          this.logoInLowerPosition = true
+        }
       }, 5000)
     }
   },
 
   watch: {
     $route() {
+      console.log(this.$route.name === RouteNames.GREETER)
       if (this.$route.name === RouteNames.GREETER) {
         this.shiftLogo()
       } else {
@@ -231,10 +245,20 @@ export default {
     // Load data here.
     this.contactData = await loadDataObject(DataStoreEntries.kontakt.key)
 
-    // Check if the admin view is requested.
-    if (window.location.pathname === UrlEnum.admin) {
+    // Open authentication modal when requested.
+    window.editableViewBus.$on('login', () => {
       // Open the authentication modal.
       this.authenticationModalOpen = true
+    })
+
+    // Check if the admin view is requested.
+    if (window.location.pathname === UrlEnum.admin) {
+      // Cause a session check from the cache which will force a login event
+      // if no valid session could been restored.
+      const valid = await ApiConnector.validateSession()
+
+      // Enable the view if old session key retrieved.
+      this.$setEditable(valid)
     }
   }
 }
