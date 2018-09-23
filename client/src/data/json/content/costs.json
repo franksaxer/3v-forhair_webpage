@@ -1,226 +1,388 @@
 {
   "he": {
-    "headline":"Preise für Haarschnitte und Stylings",
-    "subheadline":"Für Ihn inkl. Aroma-Kopfmassage oder Handmassage",
-    "tabellen":[
+    "headline": "Preise für Haarschnitte und Stylings",
+    "subheadline": "Für Ihn inkl. Aroma-Kopfmassage oder Handmassage",
+    "tabellen": [
       {
-        "header":["Top Stylist","Master Stylist","Senior Stylist"],
-        "rows":[
-          ["Schnitt mit Styling","32,50 € - 37,50 €","37,50 € - 47,50 €","42,50  € - 55,- €"],
-          ["Barbier Service","45 € - 55 €","-","-"],
-          ["Bart schneiden","ab 10,- €","-","ab 15,- €"],
-          ["Kontur ausbessern","10,- € - 15,- €","15,- € - 20,- €","22,50 € - 30,- €"],
-          ["Styling","15,- €","20,- €","25,- €"]
+        "header": [
+          "Top Stylist",
+          "Master Stylist",
+          "Senior Stylist"
+        ],
+        "rows": [
+          [
+            "Schnitt mit Styling",
+            "35,- € - 37,50 €",
+            "40,- € - 47,50 €",
+            "45,- € - 55,- €"
+          ],
+          [
+            "Barbier Service",
+            "45 € - 55 €",
+            "-",
+            "60,- € - 70,- €"
+          ],
+          [
+            "Bart schneiden",
+            "ab 10,- €",
+            "-",
+            "ab 15,- €"
+          ],
+          [
+            "Kontur ausbessern",
+            "10,- € - 15,- €",
+            "15,- € - 20,- €",
+            "22,50 € - 30,- €"
+          ],
+          [
+            "Styling",
+            "15,- €",
+            "20,- €",
+            "25,- €"
+          ]
         ]
       }
     ],
-
-    "hintergrund":"Url:background1.jpg",
+    "hintergrund": "Url:background1.jpg",
     "content": "Deinen Typ zu unterstreichen, das ist unser Ziel!\nEntspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.\nIndividualität und Wohlbefinden stehen hierbei an erster Stelle.",
-    "angebote":[
+    "angebote": [
       {
-        "bild":"Url:aktionen/menAktion5.png",
-        "headline":"Pure Energy for men",
-        "dauer":"Dauer ca. 15 min. 15,- €",
-        "beschreibung":"Kopf-Nacken-Treatment\nUnser speziell auf Männer abgestimmtes und einzigartiges Wellness-Treatment.\nEntfliehe dem Stress des Alltags und tanke wieder neue Energie.\nEine Druckpunkt-Massage verspricht reine Entspannung und löst Energieblockaden, während Du neue Kraft aus einem Pool belebender und würziger Aromen schöpfst (inkl. Tiefenreinigung und Conditioner)."
+        "bild": "Url:aktionen/menAktion5.png",
+        "headline": "Pure Energy for men",
+        "dauer": "Dauer ca. 15 min. 15,- €",
+        "beschreibung": "Kopf-Nacken-Treatment\nUnser speziell auf Männer abgestimmtes und einzigartiges Wellness-Treatment.\nEntfliehe dem Stress des Alltags und tanke wieder neue Energie.\nEine Druckpunkt-Massage verspricht reine Entspannung und löst Energieblockaden, während Du neue Kraft aus einem Pool belebender und würziger Aromen schöpfst (inkl. Tiefenreinigung und Conditioner)."
       },
       {
-        "bild":"Url:aktionen/menAktion4.jpg",
-        "headline":"Hand Care (Maniküre)",
-        "dauer":"Dauer ca. 30 min. 25,- €",
-        "beschreibung":"Gepflegte Hände sind oft ein Stiefkind vor allem bei Männer, doch das muss nicht sein!\nUnser Hand Care Service wurde von uns entwickelt damit Du immer vorzeigbare und gepflegte Hände hast. Es setzt sich zusammen aus: Fingernägel, Formen, Feilen, Handpeeling, Handmassage, Polieren"
+        "bild": "Url:aktionen/menAktion4.jpg",
+        "headline": "Hand Care (Maniküre)",
+        "dauer": "Dauer ca. 30 min. 25,- €",
+        "beschreibung": "Gepflegte Hände sind oft ein Stiefkind vor allem bei Männer, doch das muss nicht sein!\nUnser Hand Care Service wurde von uns entwickelt damit Du immer vorzeigbare und gepflegte Hände hast. Es setzt sich zusammen aus: Fingernägel, Formen, Feilen, Handpeeling, Handmassage, Polieren"
       },
       {
-        "bild":"Url:aktionen/menAktion6.jpg",
-        "headline":"Blending (gegen erste graue Haare)",
-        "dauer":"Dauer ca. 15 min. ab 25,- €",
-        "beschreibung":"Bleibe deiner Haarfarbe Treu!\nMit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich\nhält 3-5 Wochen\nVerblasst nahezu ohne Ansatzbildung\nIndividuelle Farbgebung und Intensität"
+        "bild": "Url:aktionen/menAktion6.jpg",
+        "headline": "Blending (gegen erste graue Haare)",
+        "dauer": "Dauer ca. 15 min. ab 25,- €",
+        "beschreibung": "Bleibe deiner Haarfarbe Treu!\nMit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich\nhält 3-5 Wochen\nVerblasst nahezu ohne Ansatzbildung\nIndividuelle Farbgebung und Intensität"
       },
       {
-        "bild":"http://via.placeholder.com/350x150",
-        "headline":"Farbreflexe",
-        "dauer":"Dauer ab. 30 min.- ab 15,- €",
-        "beschreibung":"Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen\nlässt sich Dein Style zusätzlich unterstreichen! Sonnenreflexe, mehr Tiefe oder Fläche\nNatürliche bis dramatische Effekte\nVerblassend bis Dauerhaft"
+        "bild": "http://via.placeholder.com/350x150",
+        "headline": "Farbreflexe",
+        "dauer": "Dauer ab. 30 min.- ab 15,- €",
+        "beschreibung": "Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen\nlässt sich Dein Style zusätzlich unterstreichen! Sonnenreflexe, mehr Tiefe oder Fläche\nNatürliche bis dramatische Effekte\nVerblassend bis Dauerhaft"
       },
       {
-        "bild":"Url:aktionen/menAktion2.png",
-        "headline":"Full Spectrum",
-        "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
-        "beschreibung":"oxidative Haarfarbe mit einer Farbrezeptur aus bis zu 96% natürlichen Inhaltsstoffen (aus Pflanzen und erdölfreien Mineralstoffen), eine patentierte Technologie auf Grünteebasis; Die Gesundheit des Haares wird durch Sonnenblumen- Rhizinus und Jojobaöl verbessert und geschützt.\nErfreuen Sie sich an einer frischen Farbpalette von natürlichen Blondtönen bis zu kräftigen Rot- und intensiven Brauntönen.\nDeckt graue Haare zu 100% ab."
+        "bild": "Url:aktionen/menAktion2.png",
+        "headline": "Full Spectrum",
+        "dauer": "Ansätze ab 42,50 €\nNeu ab 55,- €",
+        "beschreibung": "oxidative Haarfarbe mit einer Farbrezeptur aus bis zu 96% natürlichen Inhaltsstoffen (aus Pflanzen und erdölfreien Mineralstoffen), eine patentierte Technologie auf Grünteebasis; Die Gesundheit des Haares wird durch Sonnenblumen- Rhizinus und Jojobaöl verbessert und geschützt.\nErfreuen Sie sich an einer frischen Farbpalette von natürlichen Blondtönen bis zu kräftigen Rot- und intensiven Brauntönen.\nDeckt graue Haare zu 100% ab."
       },
       {
-        "bild":"Url:aktionen/menAktion1.jpg",
-        "headline":"Deposit Only",
-        "dauer":"Ansätze ab 42,50 €\nNeu ab 55,-€",
-        "beschreibung":"oxidative Intensivtönung mit einer Rezeptur aus 99% natürlichen Inhaltsstoffen; für tiefe Farbtöne, die bis zu acht Wochen halten.\nDie Rezeptur verbessert den Zustand von geschädigtem Haar und verleiht ihm Glanz.\nFärbt ergrautes Haar sehr natürlich an, ohne es komplett abzudecken; keine Aufhellung möglich."
+        "bild": "Url:aktionen/menAktion1.jpg",
+        "headline": "Deposit Only",
+        "dauer": "Ansätze ab 42,50 €\nNeu ab 55,- €",
+        "beschreibung": "oxidative Intensivtönung mit einer Rezeptur aus 99% natürlichen Inhaltsstoffen; für tiefe Farbtöne, die bis zu acht Wochen halten.\nDie Rezeptur verbessert den Zustand von geschädigtem Haar und verleiht ihm Glanz.\nFärbt ergrautes Haar sehr natürlich an, ohne es komplett abzudecken; keine Aufhellung möglich."
       }
     ]
   },
-
   "she": {
-    "headline":"Preise für Haarschnitte und Stylings",
-    "subheadline":"Für Sie inkl. Aroma-Kopfmassage oder Handmassage, auf Wunsch auch Finisching Touch Make Up",
-    "tabellen":[
+    "headline": "Preise für Haarschnitte und Stylings",
+    "subheadline": "Für Sie inkl. Aroma-Kopfmassage oder Handmassage, auf Wunsch auch Finisching Touch Make Up",
+    "tabellen": [
       {
-        "header":["Top Stylist","Master Stylist","Senior Stylist"],
-        "rows":[
-          ["Schnitt ohne Styling","35,-€ - 40,-€","40 ,-€ - 45,- €","45 ,-€ - 50,- €"],
-          ["Schnitt mit Styling","45,-€ - 60,-€","50 ,-€ - 65,- €","60 ,-€ - 75,- €"],
-          ["Styling","25,-€ - 35,-€","30 ,-€ - 40,- €","35 ,-€ - 45,- €"],
-          ["Hochstecken/Flechtfrisuren","je nach Aufwand","je nach Aufwand", "-"]
-        ]
-      },
-      {
-        "header":["bis Kinnlang","bis Schulterlang","über Schulterlänge","extra Lang"],
-        "rows":[
-          ["Conditioner","6,- €","7,- €","8,- €","9,- €"],
-          ["Treatment","8,- €","10,- €","12,- €","14,- €"],
-          ["Pigmentpflege","12,- €","14,- €","16,- €","18,- €"],
-          ["Botanical Therapy","12,- €","14,- €","18,- €","20,- €"]
-        ]
-      },
-      {
-        "header":["ohne Massage","mit Massage"],
-        "rows":[
-          ["Kopfhaut Spezial Behandlung","12,- €","22,50,- €"]
-        ]
-      }
-    ],
-    "angebote":[
-      {
-        "bild":"x",
-        "headline":"Meet the Expert „Styling“",
-        "dauer":"Dauer ca. 30 - 60 min. 30,- € - 50,- €",
-        "Beschreibung":"Du hast Probleme weil Deine Haare nicht so wollen wie Du?\n Buche doch einfach ein „Meet the Expert“ Termin und lerne in einfachen Schritten Dein Haar wie ein Profi zu Stylen."
-      }
-    ],
-
-    "hinweis":"Aufgrund der individuellen Gegebenheiten bitten wir Dich um Verständnis, dass wir nicht bei allen unserer Leistungen eine Zeitangabe machen können. Wir bitten Dich aber, dass Du Dir wie auch wir genügend Zeit nimmst, um Deinen Termin wahrzunehmen. Zudem bitten wir Dich aus Höflichkeit dem nachfolgendem Kunden gegenüber pünktlich zu sein. Wir behalten uns das Recht vor, wiederholt nicht wahrgenommene Termine, oder wiederholt weniger als 24 Stunden im Voraus abgesagte Termine in Rechnung zu stellen! Danke"
-
-  },
-
-  "colors": {
-    "subheadline":"Alle Preise verstehen sich inklusive Beratung durch einen Coloristen Deiner Wahl. Alle Farbveränderungen werden von unseren speziell geschulten Coloristen oder unseren Assistenten aufgetragen! Zudem erhälst Du in der EWZ. eine im Preis mit inbegriffene Handmassage zur Entspannung. Solltest Du wünschen, dass die Haarfarbe vom Master of Color selbst aufgetragen wird, kommt es zu einem 20%igem Preisaufschlag!",
-    "link": "Wollen sie mehr über unsere Farben erfahren?",
-    "tabellen":[
-      {
-        "tHeadline":"Haarfarbe",
-        "tSubHeadline":"Full Spectrum / Full Spectrum Deep / Deposit Only",
-        "subtabelle":[
-          {
-            "header":[
-            "3-4 Wochen","5-8 Wochen", "über 8 Wochen"
+        "header": [
+          "Top Stylist",
+          "Master Stylist",
+          "Senior Stylist"
+        ],
+        "rows": [
+          [
+            "Schnitt ohne Styling",
+            "35,- € - 40,- €",
+            "40,- € - 45,- €",
+            "45,- € - 50,- €"
           ],
-            "rows":[
-              ["Ansatzfarbe",	"42,50€ - 45,- €","47,50€ - 50,- €","52,50€ - 65,-€"]
+          [
+            "Schnitt mit Styling",
+            "47,50 € - 60,- €",
+            "52,50 € - 65,- €",
+            "62,50 € - 75,- €"
+          ],
+          [
+            "Styling",
+            "25,- € - 35,- €",
+            "30,- € - 40,- €",
+            "35,- € - 45,- €"
+          ],
+          [
+            "Hochstecken/Flechtfrisuren",
+            "je nach Aufwand",
+            "je nach Aufwand",
+            "-"
+          ]
+        ]
+      },
+      {
+        "header": [
+          "bis Kinnlang",
+          "bis Schulterlang",
+          "über Schulterlänge",
+          "extra Lang"
+        ],
+        "rows": [
+          [
+            "Conditioner",
+            "6,- €",
+            "7,- €",
+            "8,- €",
+            "9,- €"
+          ],
+          [
+            "Treatment",
+            "8,- €",
+            "10,- €",
+            "12,- €",
+            "14,- €"
+          ],
+          [
+            "Pigmentpflege",
+            "12,- €",
+            "14,- €",
+            "16,- €",
+            "18,- €"
+          ],
+          [
+            "Botanical Therapy",
+            "12,- €",
+            "14,- €",
+            "18,- €",
+            "20,- €"
+          ]
+        ]
+      },
+      {
+        "header": [
+          "ohne Massage",
+          "mit Massage"
+        ],
+        "rows": [
+          [
+            "Kopfhaut Spezial Behandlung",
+            "12,- €",
+            "22,50,- €"
+          ]
+        ]
+      }
+    ],
+    "angebote": [
+      {
+        "bild": "x",
+        "headline": "Meet the Expert „Styling“",
+        "dauer": "Dauer ca. 30 - 60 min. 30,- € - 50,- €",
+        "Beschreibung": "Du hast Probleme weil Deine Haare nicht so wollen wie Du?\n Buche doch einfach ein „Meet the Expert“ Termin und lerne in einfachen Schritten Dein Haar wie ein Profi zu Stylen."
+      }
+    ],
+    "hinweis": "Aufgrund der individuellen Gegebenheiten bitten wir Dich um Verständnis, dass wir nicht bei allen unserer Leistungen eine Zeitangabe machen können. Wir bitten Dich aber, dass Du Dir wie auch wir genügend Zeit nimmst, um Deinen Termin wahrzunehmen. Zudem bitten wir Dich aus Höflichkeit dem nachfolgendem Kunden gegenüber pünktlich zu sein. Wir behalten uns das Recht vor, wiederholt nicht wahrgenommene Termine, oder wiederholt weniger als 24 Stunden im Voraus abgesagte Termine in Rechnung zu stellen! Danke"
+  },
+  "colors": {
+    "subheadline": "Alle Preise verstehen sich inklusive Beratung durch einen Coloristen Deiner Wahl. Alle Farbveränderungen werden von unseren speziell geschulten Coloristen oder unseren Assistenten aufgetragen! Zudem erhälst Du in der EWZ. eine im Preis mit inbegriffene Handmassage zur Entspannung. Solltest Du wünschen, dass die Haarfarbe vom Master of Color selbst aufgetragen wird, kommt es zu einem 20%igem Preisaufschlag!",
+    "link": "Wollen sie mehr über unsere Farben erfahren?",
+    "tabellen": [
+      {
+        "tHeadline": "Haarfarbe",
+        "tSubHeadline": "Full Spectrum / Full Spectrum Deep / Deposit Only",
+        "subtabelle": [
+          {
+            "header": [
+              "bis 4 Wochen",
+              "bis 8 Wochen",
+              "über 8 Wochen"
+            ],
+            "rows": [
+              [
+                "Ansatzfarbe",
+                "45,- €",
+                "50,- €",
+                "60,- €"
+              ]
             ]
           },
           {
-            "header":[
-              "bis Kinn","bis Schulter", "über Schulter"
+            "header": [
+              "bis Kinn",
+              "bis Schulter",
+              "über Schulter"
             ],
-            "rows":[
-              ["Neufärbung"	,"60,- € - 65,- €","70,- € - 80,-€","80,- € - 100,- €"],
-              ["kreative Farbtechnik","55, - € -70,- €","70,- € - 85,-€","85,-€ - 115,- €"]
+            "rows": [
+              [
+                "Neufärbung",
+                "60,- € - 65,- €",
+                "70,- € - 80,- €",
+                "80,- € - 100,- €"
+              ],
+              [
+                "kreative Farbtechnik",
+                "55,- € - 70,- €",
+                "70,- € - 85,- €",
+                "85,- € - 115,- €"
+              ]
             ]
           }
         ]
       },
       {
-        "tHeadline":"Pflanzenhaarfarbe (von Sante)",
-        "tSubHeadline":"(nicht von Aveda)",
-        "subtabelle":[
+        "tHeadline": "Pflanzenhaarfarbe (von Sante)",
+        "tSubHeadline": "(nicht von Aveda)",
+        "subtabelle": [
           {
-            "header":[
-              "3-4 Wochen","5-8 Wochen", "über 8 Wochen"
-            ],
-            "rows":[
-              ["Ansatzfarbe","35,- € - 37,50 €","40,- € - 42,50 €","45,- € - 50,- €"]
+            "header": [],
+            "rows": [
+              [
+                "Ansatzfarbe",
+                "45,- €"
+              ]
             ]
           },
           {
-            "header":[
-              "bis Kinn","bis Schulter", "über Schulter"
+            "header": [
+              "bis Kinn",
+              "bis Schulter",
+              "über Schulter"
             ],
-            "rows":[
-              ["Neufärbung","50,- € - 57,50 €","60,-€ - 65,-€","67,50 - 95,- €"],
-              ["Glossing / Toner Deposit Only Glanzbehandlung / Nuancierbehandlung","30,- € - 40,- €","40,- € - 50,- €","55,- € - 75,- €"],
-              ["Physikalische Haartönung,(von Davines) bis zu 98% pflanzlich (8-10 Haarwäschen)","20,- €,- 25,- €","25,- €,-,35,- €","40,- €,- 55,- €"]
-            ]
-          }
-
-        ]
-      },
-      {
-        "tHeadline":"Haarfaarbe plus",
-        "tSubHeadline":"Full Spectrum / Full Spectrum Deep/ Deposit Only / Lifting Creme",
-        "subtabelle":[
-          {
-            "header":[
-
-            ],
-            "rows":[
-              ["+ Scheitel Strähnen (Folie)"	,"15,- € - 25,- €"],
-              ["+ Oberkopf Strähnen (Folie)","30,- € - 45,- €"],
-              ["+ ganzer Kopf Strähnen (Folie)","50,- € - 65,- €"]
-            ]
-          }
-        ]
-
-      },
-      {
-        "tHeadline":"Foliensträhnen",
-        "tSubHeadline":" ",
-        "subtabelle":[
-          {
-            "header":[
-              " ","Master of Color"
-            ],
-            "rows":[
-              ["Effektsträhne(n)","5,- € pro Strähne","6,- € pro Strähne"],
-              ["Scheitelsträhnen 5 - 15 Folien","45,- € - 55. - €","55,- € - 60, - €"],
-              ["Oberkopf 25 - 45 Folien", "60,- € - 75,- €","65,- € - 85,- €"],
-              ["ganzer Kopf 45 - 75 Folien","80,- € - 110,- €"	,"90,- € - 130,- €"]
-
+            "rows": [
+              [
+                "Neufärbung",
+                "55,- € - 57,50 €",
+                "60,- € - 65,- €",
+                "67,50 €- 95,- €"
+              ],
+              [
+                "Glossing / Toner Deposit Only Glanzbehandlung / Nuancierbehandlung",
+                "30,- € - 40,- €",
+                "40,- € - 50,- €",
+                "55,- € - 75,- €"
+              ],
+              [
+                "Physikalische Haartönung,(von Davines) bis zu 98% pflanzlich (8-10 Haarwäschen)",
+                "20,- €,- 25,- €",
+                "25,- €,-,35,- €",
+                "40,- €,- 55,- €"
+              ]
             ]
           }
         ]
-
       },
       {
-        "tHeadline":"Lifting Creme / Enlightner",
-        "tSubHeadline":"(Hellerfärber / Blondierung)",
-        "subtabelle":[
+        "tHeadline": "Haarfaarbe plus",
+        "tSubHeadline": "Full Spectrum / Full Spectrum Deep/ Deposit Only / Lifting Creme",
+        "subtabelle": [
           {
-            "header":[
-              "3-4 Wochen","5-8 Wochen", "über 8 Wochen"
+            "header": [],
+            "rows": [
+              [
+                "Scheitel Strähnen (Folie)",
+                "15,- € - 25,- € "
+              ],
+              [
+                "Oberkopf Strähnen (Folie)",
+                "30,- € - 45,- €"
+              ],
+              [
+                "Ganzer Kopf Strähnen (Folie)",
+                "50,- € - 65,- €"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "tHeadline": "Foliensträhnen",
+        "tSubHeadline": " ",
+        "subtabelle": [
+          {
+            "header": [
+              " ",
+              "Master of Color"
             ],
-            "rows":[
-              ["Ansatz","45,- € - 50,- €","50,- € - 55,- €","55,- € - 70,- €"]
+            "rows": [
+              [
+                "Effektsträhne(n)",
+                "5,- € pro Strähne",
+                "6,- € pro Strähne"
+              ],
+              [
+                "Scheitelsträhnen",
+                "ab 55,- €",
+                "ab 60,- €"
+              ],
+              [
+                "Oberkopf",
+                "ab 75,- €",
+                "ab 85,- €"
+              ],
+              [
+                "Ganzer Kopf",
+                "ab 90,- €",
+                "ab 110,- €"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "tHeadline": "Lifting Creme / Enlightner",
+        "tSubHeadline": "(Hellerfärber / Blondierung)",
+        "subtabelle": [
+          {
+            "header": [
+              "ab 4 Wochen",
+              "ab 8 Wochen",
+              "über 8 Wochen"
+            ],
+            "rows": [
+              [
+                "Ansatz",
+                "45,- € - 50,- €",
+                "50,- € - 55,- €",
+                "55,- € - 70,- €"
+              ]
             ]
           },
           {
-            "header":[
-              "bis Kinn","bis Schulter", "über Schulter"
+            "header": [
+              "bis Kinn",
+              "bis Schulter",
+              "über Schulter"
             ],
-            "rows":[
-              ["Komplett","65,- € - 75,- €","75,- € - 90,- €","90,- € - 110,- €"]
+            "rows": [
+              [
+                "Komplett",
+                "65,- € - 75,- €",
+                "75,- € - 90,- €",
+                "90,- € - 110,- €"
+              ]
             ]
           }
         ]
       },
       {
-        "tHeadline":"Rückpigmentierung",
-        "tSubHeadline":"(notwendig wenn heller gefärbtes Haar, mehr als 3 Töne dunkler gefärbt werden soll)",
-        "subtabelle":[
+        "tHeadline": "Rückpigmentierung",
+        "tSubHeadline": "(notwendig wenn heller gefärbtes Haar, mehr als 3 Töne dunkler gefärbt werden soll)",
+        "subtabelle": [
           {
-            "header":[
-
-            ],
-            "rows":[
-              ["kurzes Haar","5,- € -,10,- €"],
-              ["halb langes Haar","15,- € -,20,- €"],
-              ["langes Haar","25,- € -,30,- €"]
+            "header": [],
+            "rows": [
+              [
+                "kurzes Haar",
+                "5,- € - 10,- €"
+              ],
+              [
+                "halb langes Haar",
+                "15,- € - 20,- €"
+              ],
+              [
+                "langes Haar",
+                "25,- € - 30,- €"
+              ]
             ]
           }
         ]

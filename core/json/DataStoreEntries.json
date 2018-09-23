@@ -46,9 +46,5 @@
   "produkte": {
     "key": "60c1b8f5d39c831696a5d4b983ef9dfa929eba88",
     "path": "json/content/produkte.json"
-  },
-  "dataProtect": {
-    "key": "a5e5063c5df477313e7b91c3d644aec2",
-    "path": "json/content/DataProtectionInfo.json"
   }
 }

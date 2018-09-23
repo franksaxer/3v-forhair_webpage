@@ -3,14 +3,14 @@
     {
       "bild": "Url:mitarbeiter/krystina.jpg",
       "name": "Krystina",
-      "kategorie": "Coloristin",
+      "kategorie": "Top Stylistin / Coloristin",
       "info": "2008 - 2011 Ausbildung zur Frisörin bei 3v for hair, Berlin (Aveda)\n2011 - 2014 Young Coloristin\nSeit 09.2014 Coloristin",
       "urlaub": {
         "from": "2018-08-12",
         "to": "2018-08-15"
       },
       "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nDonnerstag 13:00 - 22:00h\nSamstag 12:00 - 18:00 Uhr"
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00\nDonnerstag 13:00 - 22:00\nSamstag 12:00 - 18:00"
     },
     {
       "bild": "Url:mitarbeiter/janine.jpg",
@@ -22,31 +22,19 @@
         "to": ""
       },
       "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00h\nDonnerstag 10:00 - 19:00h\nSamstag 10:00 - 16:00h"
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 16:00"
     },
     {
-      "bild": "Url:mitarbeiter/vojo.jpg",
-      "name": "Vojo",
-      "kategorie": "Top-Stylist, Barbier",
-      "info": "Seit 2012 Top Stylist 3v for hair, Berlin (Aveda)",
-      "urlaub": {
-        "from": "1.6.2018",
-        "to": "1.7.2018"
-      },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nDonnerstag 13:00 - 22:00h\nSamstag 10:00 - 16:00h"
-    },
-    {
-      "bild": "Url:mitarbeiter/alex.jpg",
-      "name": "Alex",
-      "kategorie": "Top-Stylist / Top-Colorist",
-      "info": "2004 - 2006 Ausbildung zum Frisör bei 3v for hair, Berlin (Aveda)\n2006 - 2008  Young-Stylist bei 3v for hair, Berlin (Aveda)\nSeit 2008 Top-Stylist bei 3v for hair, Berlin (Aveda)",
+      "bild": "Url:mitarbeiter/stina.jpg",
+      "name": "Stina",
+      "kategorie": "Top-Stylistin",
+      "info": "seit 2018 3v for hair Berlin (Aveda)",
       "urlaub": {
         "from": "",
         "to": ""
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00h\nDonnerstag 10:00 - 19:00h\nSamstag 12:00 - 18:00h"
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 1-2 Tage",
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 18:00"
     },
     {
       "bild": "Url:mitarbeiter/yvette.jpg",
@@ -58,7 +46,7 @@
         "to": ""
       },
       "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00- 19:00h\nDonnerstag 10:00- 19:00h\nSamstag 10:00- 16:00h"
+      "arbeitszeiten": "Dienstag 10:00 - 19:00\nMittwoch, Freitag, Samstag 10:00 - 18:00\nDonnerstag 10:00 - 20:00"
     },
     {
       "bild": "Url:mitarbeiter/frank.jpg",
@@ -70,19 +58,19 @@
         "to": ""
       },
       "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
-      "arbeitszeiten": "Mittwoch 10:00- 19:00\nDonnerstag 17:00 - 22:00h\nFreitag 11:00 - 20:00 Uhr\nSamstag 12:00 - 18:00 Uhr"
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00- 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 18:00"
     },
     {
       "bild": "Url:mitarbeiter/roxanal.jpg",
-      "name": "ROXI",
-      "kategorie": "Auszubildende",
+      "name": "Roxi",
+      "kategorie": "Young Stylist",
       "info": "",
       "urlaub": {
         "from": "",
         "to": ""
       },
       "wartezeit": "",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 11:00 - 20:00h\nSamstag 12:00 - 18:00 Uhr"
+      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nSamstag 10:00 - 16:00"
     }
   ]
 }
