@@ -255,7 +255,10 @@ export default {
     if (window.location.pathname === UrlEnum.admin) {
       // Cause a session check from the cache which will force a login event
       // if no valid session could been restored.
-      ApiConnector.validateSession()
+      const valid = await ApiConnector.validateSession()
+
+      // Enable the view if old session key retrieved.
+      this.$setEditable(valid)
     }
   }
 }

@@ -24,7 +24,7 @@ const validateSession = async function() {
           response => {
             // eslint-disable-next-line no-unneeded-ternary
             valid = response.bodyText === 'true' ? true : false
-            console.log(valid)
+            console.log('Server validation response: ' + valid)
           },
           error => {
             console.log(
@@ -45,6 +45,9 @@ const validateSession = async function() {
   if (!valid) {
     delete window.localStorage[sessionLocalPropertyName]
     window.editableViewBus.$emit('login')
+  } else {
+    // Enable the editable view (if not already).
+    window.editableViewBus.$emit('setEditable', true)
   }
 
   return valid
