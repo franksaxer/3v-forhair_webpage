@@ -17,6 +17,7 @@ const editorRouter = require(__dirname + '/router/editor.js')
 const mailRouter = require(__dirname + '/router/mail.js')
 const authView = require(__dirname + '/middleware/adminView.js')
 const sessionCheck = require(__dirname + '/middleware/sessionCheck.js')
+const catchNotFound = require(__dirname + '/middleware/catchNotFound.js')
 
 /* Initiate Modules */
 // Create the Koa application.
@@ -58,6 +59,9 @@ app.use(authView)
 
 // Check API connections for the session key.
 app.use(sessionCheck)
+
+// Catch resource not found exceptions to redirect.
+app.use(catchNotFound)
 
 // Provide the client content.
 app.use(serve(__dirname + general_prop.clientPath))

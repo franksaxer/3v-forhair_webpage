@@ -93,8 +93,9 @@
 
           <p @click="editText(produkt, 'description')" v-editable><em>{{ produkt.description }}</em></p>
 
-          <ul @click="editText(produkt, 'preise')" v-editable>
-            <li v-for="preis in stringToList(produkt.preise)">
+          <ul v-for="liste, index in produkt.preise"
+              @click="editText(produkt.preise, index)" v-editable>
+            <li v-for="preis in stringToList(liste)">
               {{ preis }}
             </li>
           </ul>
@@ -105,80 +106,85 @@
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
+import Subpage from '../../plugins/SubpageMixin'
+import { DataStoreEntries } from '../../data/DataManager'
 
-  export default {
-    name: 'colors',
+export default {
+  name: 'colors',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    data () {
-      return {
-        dataKey: DataStoreEntries.farbe.key
+  data() {
+    return {
+      dataKey: DataStoreEntries.farbe.key
+    }
+  },
+
+  computed: {
+    videoShape() {
+      const current = window.innerWidth * 0.9 // The window width with a small padding.
+      let width = 800 // Set to the maximum allowed width.
+
+      // Make sure the video fits into the window width.
+      if (current < width) {
+        width = current
       }
-    },
 
-    computed: {
-      videoShape () {
-        const current = window.innerWidth * 0.9 // The window width with a small padding.
-        let width = 800 // Set to the maximum allowed width.
+      // Define the height in relation to the width.
+      const height = width * 0.6
 
-        // Make sure the video fits into the window width.
-        if (current < width) {
-          width = current
-        }
-
-        // Define the height in relation to the width.
-        const height = width * 0.6
-
-        // Build and return the shape object.
-        return {
-          width: width,
-          height: height
-        }
+      // Build and return the shape object.
+      return {
+        width: width,
+        height: height
       }
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '~font-awesome/css/font-awesome.css';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '~font-awesome/css/font-awesome.css';
+@import '../../style/subpages';
 
-  .subpage{
-    .subsection {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-      margin-bottom: 30px;
+.subpage {
+  .subsection {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 30px;
 
-      h2 {
-        margin-top: 0;
-        margin: 30px 0!important;
-      }
-
-      h5 {
-        margin: 0 0 5px;
-      }
-
-      p{
-        padding-left: 10px;
-      }
-
-      .content-box{
-        margin: 10px 2%;
-
-        @include media('>=desktop') {
-          width: 46%;
-        }
-      }
+    h2 {
+      margin-top: 0;
+      margin: 30px 0 !important;
     }
 
-    .youtube-video {
-      margin: 50px auto 20px;
+    h5 {
+      margin: 0 0 5px;
+    }
+
+    p {
+      padding-left: 10px;
+    }
+
+    ul {
+      display: inline-block;
+      float: left;
+      margin-right: 80px;
+    }
+
+    .content-box {
+      margin: 10px 2%;
+
+      @include media('>=desktop') {
+        width: 46%;
+      }
     }
   }
+
+  .youtube-video {
+    margin: 50px auto 20px;
+  }
+}
 </style>
