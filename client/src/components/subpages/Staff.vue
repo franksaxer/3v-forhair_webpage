@@ -237,16 +237,14 @@ export default {
       }
 
       .stylist-image {
-        @include media('>=desktop') {
-          width: 30%;
-          padding-right: 20px;
-        }
+        width: 30%;
+        height: auto;
+        padding-right: 20px;
 
         @include media('<desktop') {
           width: 50%;
           padding-top: 10px;
-          display: flex;
-          justify-content: center;
+          padding-right: 0;
           padding-bottom: 20px;
         }
       }
