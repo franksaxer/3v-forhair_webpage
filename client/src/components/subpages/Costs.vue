@@ -244,7 +244,7 @@ export default {
   h3,
   h5,
   h6 {
-    text-shadow: none;
+    text-shadow: decentShadow(black);
     color: rgb(217, 159, 58);
     font-weight: bold;
   }
