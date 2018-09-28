@@ -1,3 +1,4 @@
+// Import include-media before the header size definition.
 @import '../../node_modules/include-media/dist/include-media';
 
 /* Colors */
@@ -6,10 +7,39 @@ $color-invert: rgba(246, 250, 255, 0.7);
 
 /* Layout Shapes */
 // Attention, that the root em is used.
-$header-height: 2.9rem;
-$footer-height: $header-height;
-$mainMenu-height: $header-height;
-$icon-radius: calc(#{$header-height} * 2);
+
+/**
+ * Define the header height depending on the device type.
+ * It is necessary to define this as a function, to avoid multiple switch cases on all
+  * further occurances.
+  * This function is working with the breakpoints defined by the include-media package, that
+  * are used to the general differing as well.
+ */
+@function header-height() {
+  $headerHeight_desktop: 2rem;
+  $headerHeight_mobile: 3rem;
+
+  // Make sure the breakpoints by include-media package are available.
+  @if map-has-key($breakpoints, 'desktop') {
+    // Make vw units comparable with pixel.
+    $vw-context: (1000 * 0.01) * 1px;
+    $desktopWidth: (map-get($breakpoints, 'desktop') / $vw-context) * 1vw;
+
+    // Differ if working on a desktop or mobile device.
+    @if 100vw >= $desktopWidth {
+      @return $headerHeight_desktop;
+    } @else {
+      @return $headerHeight_mobile;
+    }
+  }
+
+  // Fall-back case.
+  @return $headerHeight_desktop;
+}
+
+$footer-height: header-height();
+$mainMenu-height: header-height();
+$icon-radius: calc(#{header-height()} * 2);
 
 /* Index */
 $layout-element-layer: 10;

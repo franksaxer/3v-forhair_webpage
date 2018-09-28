@@ -315,7 +315,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: $header-height;
+    height: header-height();
     z-index: 1; // Seems to be necessary, so it is not always to top element.
     display: flex;
     flexflow: row;
@@ -331,7 +331,7 @@ body {
       .vue-typer {
         padding: 0 5px;
         color: $primary;
-        font-size: calc(#{$header-height * 0.7});
+        font-size: calc(#{header-height()} * 0.7);
         font-weight: 500;
         font-family: 'Times New Roman', Times, serif;
       }
@@ -368,25 +368,25 @@ body {
 
     #admin-buttons {
       position: absolute;
-      $margin: calc(0.15 * #{$header-height});
+      $margin: calc(0.15 * #{header-height()});
       top: $margin;
       right: $margin;
 
       button {
-        height: calc(#{$header-height} - 2 * #{$margin});
+        height: calc(#{header-height()} - 2 * #{$margin});
       }
     }
   }
 
   main {
-    top: $header-height;
+    top: header-height();
     bottom: $footer-height;
     left: 0;
     right: 0;
     overflow-x: hidden;
     overflow-y: scroll;
     $height: calc(
-      100vh - #{$header-height} - #{$footer-height}
+      100vh - #{header-height()} - #{$footer-height}
     ); // For some unkown reasong this is necessary.
     height: $height;
     margin: 0 !important; // Overwrite bulmas content class.
