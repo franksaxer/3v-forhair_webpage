@@ -6,6 +6,7 @@
     <div class="stylist-list">
       <div class="field has-addons search">
         <div class="control has-icons-right">
+
           <input  v-model="filter"
                   class="input"
                   type="text"
@@ -37,11 +38,13 @@
             {{ stylist.name }}
           </h3>
 
-          <span :class="['tag', 'is-rounded', { 'clickable': !$editable }]"
-                @click="clickStylistCategorie(stylist)" v-editable>
+          <div class="categorie-container">
+            <span :class="['tag', 'is-rounded', { 'clickable': !$editable }]"
+                  @click="clickStylistCategorie(stylist)" v-editable>
 
-                {{ stylist.kategorie }}
-          </span>
+                  {{ stylist.kategorie }}
+            </span>
+          </div>
 
           <ul @click="editText(stylist, 'info')" v-editable v-if="stylist.info">
             <li v-for="stylistInfo in stringToList(stylist.info)">
@@ -63,7 +66,7 @@
 
           <p  class="wartezeit" @click="editText(stylist, 'wartezeit')" v-editable>{{ stylist.wartezeit }}</p>
 
-          <h4>{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
+          <h4 class="working-hours">{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
           <ul @click="editText(stylist, 'arbeitszeiten')" v-editable>
             <li v-for="arbeitszeit in stringToList(stylist.arbeitszeiten)">
               {{ arbeitszeit }}
@@ -171,20 +174,8 @@ export default {
 @import '../../style/subpages';
 
 .subpage {
-  $baseColor: white;
-  color: $baseColor;
-
   flex-direction: column;
   justify-content: top;
-
-  .title,
-  .subtitle {
-    color: $baseColor;
-  }
-
-  .search {
-    margin: 30px 2% 10px auto;
-  }
 
   .content-box {
     border-color: $primary;
@@ -193,14 +184,38 @@ export default {
   .stylist-list {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    margin-top: 20px;
+    $width: 90%;
+
+    .search {
+      // margin: 30px 0 10px auto;
+      margin-right: calc(
+        (100% - #{$width}) / 2
+      ); // Be aligned with the stylist containers.
+      margin-left: auto; // Shift to the right.
+
+      @include media('<desktop') {
+        width: $width; // Be as width as the stylist container.
+      }
+    }
 
     .stylist {
       position: relative;
       display: flex;
-      margin: 10px 2%;
-      width: 96%;
+      margin: 10px auto;
+      width: $width;
       padding-bottom: 20px;
+
+      @include media('<desktop') {
+        flex-direction: column;
+        align-items: center;
+
+        h3,
+        h4,
+        h6 {
+          text-align: center;
+        }
+      }
 
       h3,
       h4,
@@ -214,24 +229,24 @@ export default {
         margin-top: 10px;
       }
 
-      @include media('<desktop') {
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-
-        h3,
-        h4,
-        h6 {
-          text-align: center;
-        }
-      }
-
       .stylistInfo {
         padding: 10px;
 
         .clickable {
           &:hover {
             cursor: pointer !important;
+          }
+        }
+
+        .working-hours {
+          margin-top: 10px;
+        }
+
+        .categorie-container {
+          @include media('<desktop') {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           }
         }
       }

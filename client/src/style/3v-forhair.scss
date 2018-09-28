@@ -1,11 +1,14 @@
+@import '../../node_modules/include-media/dist/include-media';
+
 /* Colors */
 $color-base: rgb(27, 63, 27);
 $color-invert: rgba(246, 250, 255, 0.7);
 
 /* Layout Shapes */
-$header-height: 50px;
-$footer-height: 50px;
-$mainMenu-height: 35px;
+// Attention, that the root em is used.
+$header-height: 2.9rem;
+$footer-height: $header-height;
+$mainMenu-height: $header-height;
 $icon-radius: calc(#{$header-height} * 2);
 
 /* Index */
@@ -19,13 +22,15 @@ $transition: all 0.5s;
 /* Other */
 $border-radius: 10px;
 
-@import '../../node_modules/include-media/dist/include-media';
 /* Bulma */
 // Import the variables first.
 @import '../../node_modules/bulma/sass/utilities/initial-variables';
 
 // Overwrite Bulma variables.
-// Colors
+// Sizes
+$size-6: 1.1rem;
+
+// Colors:
 $primary: $color-base;
 $primary-invert: $color-invert;
 $link: lighten($primary, 10%);
@@ -45,15 +50,6 @@ $modal-card-foot-radius: $border-radius;
 
 // Import Bulma classes afterwards.
 @import '../../node_modules/bulma/bulma';
-
-body {
-  @include media('<desktop') {
-    font-size: 35px;
-  }
-  @include media('>=desktop') {
-    font-size: 15px;
-  }
-}
 
 hr {
   display: block;

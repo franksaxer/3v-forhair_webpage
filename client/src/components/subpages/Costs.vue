@@ -49,24 +49,27 @@
         <hr>
 
         <template v-for="table in data.she.tabellen">
-          <table class="table is-fullwidth">
-            <thead>
+          <div class="table-container">
+            <table class="table is-fullwidth">
+              <thead>
                 <th></th>
                 <th v-for="head in table.header"
                     @click="editText(table, 'header')" v-editable>
                   {{ head }}
                 </th>
-            </thead>
+              </thead>
 
-            <tbody>
-              <tr v-for="(row, index) in table.rows"
-                  @click="editText(table.rows, index)" v-editable>
-                <td v-for="column in row">
-                  {{ column }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr v-for="(row, index) in table.rows"
+                    @click="editText(table.rows, index)" v-editable>
+
+                  <td v-for="column in row">
+                    {{ column }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <hr>
         </template>
       </div>
@@ -79,24 +82,26 @@
         <hr>
 
         <template v-for="table in data.he.tabellen">
-          <table class="table is-fullwidth">
-            <thead>
-                <th></th>
-                <th v-for="head in table.header"
-                    @click="editText(table.header)" v-editable>
-                  {{ head }}
-                </th>
-            </thead>
+          <div class="table-container">
+            <table class="table is-fullwidth">
+              <thead>
+                  <th></th>
+                  <th v-for="head in table.header"
+                      @click="editText(table.header)" v-editable>
+                    {{ head }}
+                  </th>
+              </thead>
 
-            <tbody>
-              <tr v-for="(row, index) in table.rows"
-                  @click="editText(table.rows, index)" v-editable>
-                <td v-for="column in row">
-                  {{ column }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr v-for="(row, index) in table.rows"
+                    @click="editText(table.rows, index)" v-editable>
+                  <td v-for="column in row">
+                    {{ column }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <hr>
         </template>
 
@@ -154,38 +159,40 @@
             <em>{{ table.tSubHeadline }}</em>
           </h6>
 
-          <table  v-for="subtable in table.subtabelle"
-                  class="table is-fullwidth">
+          <div class="table-container">
+            <table  v-for="subtable in table.subtabelle"
+                    class="table is-fullwidth">
 
-            <thead>
+              <thead>
 
-                <th v-if="subtable.header.length != 0"></th>
-                <th v-for="head in subtable.header"
-                    v-if="subtable.header.length != 0"
-                    @click="editText(subtable, 'header')" v-editable>
-                    {{ head }}
-                </th>
-            </thead>
+                  <th v-if="subtable.header.length != 0"></th>
+                  <th v-for="head in subtable.header"
+                      v-if="subtable.header.length != 0"
+                      @click="editText(subtable, 'header')" v-editable>
+                      {{ head }}
+                  </th>
+              </thead>
 
-            <tbody>
-              <tr v-for="(row, index) in subtable.rows"
-                  @click="editText(subtable.rows, index)" v-editable>
+              <tbody>
+                <tr v-for="(row, index) in subtable.rows"
+                    @click="editText(subtable.rows, index)" v-editable>
 
-                <td v-for="column in row"
-                    width="50px"
-                    v-if="index == 0">
+                  <td v-for="column in row"
+                      width="50px"
+                      v-if="index == 0">
 
-                  {{ column }}
-                </td>
+                    {{ column }}
+                  </td>
 
-                <td v-for="column in row"
-                    v-if="index != 0">
+                  <td v-for="column in row"
+                      v-if="index != 0">
 
-                  {{ column }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    {{ column }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <hr>
         </div>
       </div>
@@ -244,7 +251,7 @@ export default {
   h3,
   h5,
   h6 {
-    text-shadow: none;
+    text-shadow: decentShadow(black);
     color: rgb(217, 159, 58);
     font-weight: bold;
   }
@@ -254,7 +261,7 @@ export default {
 
     .tabs {
       i {
-        font-size: 1.2em;
+        font-size: 1.2rem;
       }
 
       .is-active {
@@ -265,10 +272,11 @@ export default {
       }
     }
 
-    table {
-      margin-top: 10px;
-      overflow: auto;
+    .table-container {
       border-radius: 10px;
+      overflow: auto;
+      margin-top: 10px;
+      width: 100%;
     }
 
     p {

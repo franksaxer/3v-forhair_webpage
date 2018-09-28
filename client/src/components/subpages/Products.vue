@@ -145,7 +145,7 @@ export default {
 
     .tabs {
       i {
-        font-size: 1.2em;
+        font-size: 1.1rem;
       }
 
       .is-active {
@@ -177,7 +177,7 @@ export default {
 
         .info {
           $color: black;
-          $square: 20px;
+          $square: 1.3rem;
 
           position: absolute;
           top: 0;
@@ -196,8 +196,7 @@ export default {
         }
 
         .image {
-          max-width: 160px;
-          max-font-size: 150px;
+          width: 70%;
         }
 
         .unterschrift {
@@ -231,6 +230,10 @@ export default {
 
       .category {
         width: 50%;
+
+        @include media('<desktop') {
+          width: 100%;
+        }
       }
 
       ul {
