@@ -43,7 +43,6 @@
         ]
       }
     ],
-    "hintergrund": "Url:background1.jpg",
     "content": "Deinen Typ zu unterstreichen, das ist unser Ziel!\nEntspanne Dich bei einer Aroma-Kopfmassage, bevor Du mit uns zusammen Dein neues Ich gestaltest.\nIndividualität und Wohlbefinden stehen hierbei an erster Stelle.",
     "angebote": [
       {
@@ -65,7 +64,7 @@
         "beschreibung": "Bleibe deiner Haarfarbe Treu!\nMit unserem Blending Treatment kannst Du Erste graue Haare in wenigen Minuten in deine natürliche Haarfarbe einblenden. Minimaler aufwand, maximales Ergebnis!Wirkt ganz natürlich\nhält 3-5 Wochen\nVerblasst nahezu ohne Ansatzbildung\nIndividuelle Farbgebung und Intensität"
       },
       {
-        "bild": "http://via.placeholder.com/350x150",
+        "bild": "Url:aktionen/menAktion3.jpg",
         "headline": "Farbreflexe",
         "dauer": "Dauer ab. 30 min.- ab 15,- €",
         "beschreibung": "Ob Surferstyle oder einfach nur etwas Struktur, mit natürlichen bis sichtbaren Farbreflexen\nlässt sich Dein Style zusätzlich unterstreichen! Sonnenreflexe, mehr Tiefe oder Fläche\nNatürliche bis dramatische Effekte\nVerblassend bis Dauerhaft"
@@ -175,10 +174,10 @@
     ],
     "angebote": [
       {
-        "bild": "x",
+        "bild": "Url:aktionen/womenAktion1.jpg",
         "headline": "Meet the Expert „Styling“",
         "dauer": "Dauer ca. 30 - 60 min. 30,- € - 50,- €",
-        "Beschreibung": "Du hast Probleme weil Deine Haare nicht so wollen wie Du?\n Buche doch einfach ein „Meet the Expert“ Termin und lerne in einfachen Schritten Dein Haar wie ein Profi zu Stylen."
+        "beschreibung": "Du hast Probleme weil Deine Haare nicht so wollen wie Du?\n Buche doch einfach ein „Meet the Expert“ Termin und lerne in einfachen Schritten Dein Haar wie ein Profi zu Stylen."
       }
     ],
     "hinweis": "Aufgrund der individuellen Gegebenheiten bitten wir Dich um Verständnis, dass wir nicht bei allen unserer Leistungen eine Zeitangabe machen können. Wir bitten Dich aber, dass Du Dir wie auch wir genügend Zeit nimmst, um Deinen Termin wahrzunehmen. Zudem bitten wir Dich aus Höflichkeit dem nachfolgendem Kunden gegenüber pünktlich zu sein. Wir behalten uns das Recht vor, wiederholt nicht wahrgenommene Termine, oder wiederholt weniger als 24 Stunden im Voraus abgesagte Termine in Rechnung zu stellen! Danke"

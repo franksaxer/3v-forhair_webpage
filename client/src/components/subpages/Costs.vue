@@ -72,12 +72,48 @@
           </div>
           <hr>
         </template>
+
+        <h3>Hinweis</h3>
+        <p @click="editText(data.she, 'hinweis')" v-editable>{{ data.she.hinweis }}</p>
+
+        <hr>
+
+        <div class="aktionen-list">
+          <carousel :perPage="1"
+                    :navigationEnabled="true">
+
+            <slide  v-for="(aktion,index) in data.she.angebote"
+                    :key="index">
+
+              <div class="aktion">
+                <div class="image-container"
+                     :style="[{'background-image': 'url(' + aktion.bild + ')'}]"/>
+
+                <div class="aktion-description">
+                  <h5 @click="editText(aktion, 'headline')" v-editable>
+                    {{ aktion.headline }}
+                  </h5>
+
+                  <h6 @click="editText(aktion, 'dauer')" v-editable>
+                    <em>{{ aktion.dauer }}</em>
+                  </h6>
+
+                  <ul @click="editText(aktion, 'beschreibung')" v-editable>
+                    <li v-for="be in stringToList(aktion.beschreibung)">
+                      {{ be }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </slide>
+          </carousel>
+        </div>
       </div>
 
       <div class="tab-pane"
            v-if="activeTab === tabs.male && data.he">
 
-        <p @click="editText(data.she, 'subheadline')" v-editable>{{ data.he.subheadline}}</p>
+        <p @click="editText(data.he, 'subheadline')" v-editable>{{ data.he.subheadline}}</p>
 
         <hr>
 
@@ -118,7 +154,9 @@
                     :key="index">
 
               <div class="aktion">
-                <img :src="aktion.bild">
+                <div class="image-container"
+                     :style="[{'background-image': 'url(' + aktion.bild + ')'}]"/>
+
                 <div class="aktion-description">
                   <h5 @click="editText(aktion, 'headline')" v-editable>
                     {{ aktion.headline }}
@@ -293,13 +331,18 @@ export default {
           flex-direction: column;
         }
 
-        img {
-          margin: auto;
-          width: 80%;
-          margin-right: 20px;
+        .image-container {
+          min-width: 40%; // Get a stable shape.
+          height: 300px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          border-radius: 1.5rem;
+          margin-right: 15px;
 
           @include media('<desktop') {
             margin-bottom: 20px;
+            height: 50vw;
           }
         }
 

@@ -1,81 +1,89 @@
 {
-  "produkteAllgemein":[
+  "produkteAllgemein": [
     {
-      "name":"Invati (gegen vorzeitigen Haarverlust)",
-      "bild":"Url:produkte/produkt1.jpg",
+      "name": "Invati (gegen vorzeitigen Haarverlust)",
+      "bild": "Url:produkte/produkt1.jpg",
       "info": "Dies ist eine beispielhafte beschreibung.\nMan kann auch mehrere Zeilen nuzten.\n\nHier noch mehr Informationen..."
     },
     {
-      "name":"Damage Remedy (Aufbauserie)",
-      "bild":"Url:produkte/produkt2.jpg",
-      "info": ""
+      "name": "Damage Remedy (Aufbauserie)",
+      "bild": "Url:produkte/produkt2.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Dry Remedy (Feuchtigkeitsserie)",
-      "bild":"Url:produkte/produkt3.jpg",
-      "info": ""
+      "name": "Dry Remedy (Feuchtigkeitsserie)",
+      "bild": "Url:produkte/produkt3.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Color Conserve (Farbpfelegeserie)",
-      "bild":"Url:produkte/produkt4.jpg",
-      "info": ""
+      "name": "Color Conserve (Farbpfelegeserie)",
+      "bild": "Url:produkte/produkt4.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Smooth Infusion (Glättungsserie",
-      "bild":"Url:produkte/produkt5.jpg",
-      "info": ""
+      "name": "Smooth Infusion (Glättungsserie",
+      "bild": "Url:produkte/produkt5.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Be Curly (Lockenserie)",
-      "bild":"Url:produkte/produkt6.jpg",
-      "info": ""
+      "name": "Be Curly (Lockenserie)",
+      "bild": "Url:produkte/produkt6.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Pure Abundance (Volumenserie)",
-      "bild":"Url:produkte/produkt7.jpg",
-      "info": ""
+      "name": "Pure Abundance (Volumenserie)",
+      "bild": "Url:produkte/produkt7.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     },
     {
-      "name":"Pramasan (Kopfhautserie bei Kopfhautirritationen/Schuppern)",
-      "bild":"Url:produkte/produkt8.jpg",
-      "info": ""
-    },    {
-      "name":"Color Enhancing Shampoo / Conditioner (Serie zum Farberhalt / Auffrischung)",
-      "bild":"Url:produkte/produkt9.jpg",
-      "info": ""
-    },    {
-      "name":"Shampure (Basispflege)",
-      "bild":"Url:produkte/produkt10.jpg",
-      "info": ""
-    },    {
-      "name":"Rosemary Mint (Erfrischend / Belebend)",
-      "bild":"Url:produkte/produkt11.jpg",
-      "info": ""
-    },    {
-      "name":"Brilliant Pflege (Lockenserie für fettige Kopfhaut & trockene Längen und Spitzen)",
-      "bild":"Url:produkte/produkt12.jpg",
-      "info": ""
-    },    {
-      "name":"Brilliant Styling",
-      "bild":"Url:produkte/produkt13.jpg",
-      "info": ""
-    },    {
-      "name":"Styling & Finish",
-      "bild":"Url:produkte/produkt14.jpg",
-      "info": ""
-    },    {
-      "name":"Light Elements (für feines Haar)",
-      "bild":"Url:produkte/produkt15.jpg",
-      "info": ""
-    },    {
-      "name":"Invati Men (gegen vorzeitigen Haarverlust)",
-      "bild":"Url:produkte/produkt16.jpg",
-      "info": ""
+      "name": "Pramasan (Kopfhautserie bei Kopfhautirritationen/Schuppern)",
+      "bild": "Url:produkte/produkt8.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Color Enhancing Shampoo / Conditioner (Serie zum Farberhalt / Auffrischung)",
+      "bild": "Url:produkte/produkt9.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Shampure (Basispflege)",
+      "bild": "Url:produkte/produkt10.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Rosemary Mint (Erfrischend / Belebend)",
+      "bild": "Url:produkte/produkt11.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Brilliant Pflege (Lockenserie für fettige Kopfhaut & trockene Längen und Spitzen)",
+      "bild": "Url:produkte/produkt12.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Brilliant Styling",
+      "bild": "Url:produkte/produkt13.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Styling & Finish",
+      "bild": "Url:produkte/produkt14.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Light Elements (für feines Haar)",
+      "bild": "Url:produkte/produkt15.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
+    },
+    {
+      "name": "Invati Men (gegen vorzeitigen Haarverlust)",
+      "bild": "Url:produkte/produkt16.jpg",
+      "info": "Es tut uns leid, aber leider stehen derzeit keine weiteren Informationen für dieses Produkt zur Verfügung."
     }
   ],
   "produkteFürIhn": {
     "subheadline": "Unsere Produkte für Dich und Deine Bedürfnisse",
-    "bild":"Url:produkte/produkteIhn.jpg",
+    "bild": "Url:produkte/produkteIhn.jpg",
     "produkte": [
       {
         "headline": "Haare",

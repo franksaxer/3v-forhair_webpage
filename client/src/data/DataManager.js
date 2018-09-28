@@ -16,7 +16,7 @@ const DATA_STORE = {}
  * @return true - if it exist
  *              - else
  */
-const checkEntry = (key) => {
+const checkEntry = key => {
   // Go other all entries in the JSON object and compare the key.
   let entry
 
@@ -43,7 +43,7 @@ const checkEntry = (key) => {
  *          The associated entry in the stored.
  *          Can be NULL if the key does not exist.
  */
-const getEntry = (key) => {
+const getEntry = key => {
   // Do not use the checkEntry() function cause it would lead to a double for-loop.
 
   // Iterate over all entries till find the correct one.
@@ -73,7 +73,7 @@ const getEntry = (key) => {
  * @return  {Object} extended json
  *          The extended version of the given JSON object.
  */
-const extendJson = async (json) => {
+const extendJson = async json => {
   for (let i in json) {
     const entry = json[i]
 
@@ -82,6 +82,7 @@ const extendJson = async (json) => {
         json[i] = await extendJson(entry)
       } catch (err) {
         // Fall back: Leave it as it is.
+        console.log(err)
       }
     }
 
@@ -117,7 +118,7 @@ const extendJson = async (json) => {
  *
  * @return  The required key object.
  */
-const loadDataObject = async (key) => {
+const loadDataObject = async key => {
   // Check if it is a valid key of the store object.
   if (!checkEntry(key)) {
     return null
@@ -175,8 +176,12 @@ const convertNewData = async (key, data, original = null) => {
     } else if (original[i]) {
       if (typeof entry === 'string') {
         // Check if the property any special thing.
-        if (entry.substring(0, 3) === 'Url' || entry.substring(0, 5) === 'Label' ||
-          entry.substring(0, 9) === 'Component' || entry.substring(0, 5) === 'Route') {
+        if (
+          entry.substring(0, 3) === 'Url' ||
+          entry.substring(0, 5) === 'Label' ||
+          entry.substring(0, 9) === 'Component' ||
+          entry.substring(0, 5) === 'Route'
+        ) {
           // Currently changes will be ignored and the original onces will be used instead of the converted ones.
           data[i] = original[i]
         }
@@ -190,4 +195,4 @@ const convertNewData = async (key, data, original = null) => {
 }
 
 // Define what should be exported.
-export {loadDataObject, convertNewData, DataStoreEntries}
+export { loadDataObject, convertNewData, DataStoreEntries }

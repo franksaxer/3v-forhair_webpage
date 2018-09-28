@@ -39,68 +39,76 @@
 </template>
 
 <script>
-  import Subpage from '../../plugins/SubpageMixin'
-  import { DataStoreEntries } from '../../data/DataManager'
-  import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue'
+import Subpage from '../../plugins/SubpageMixin'
+import { DataStoreEntries } from '../../data/DataManager'
+import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue'
 
-  export default {
-    name: 'rezensionen',
+export default {
+  name: 'rezensionen',
 
-    mixins: [Subpage],
+  mixins: [Subpage],
 
-    components: {
-      VueGoodshareFacebook
-    },
+  components: {
+    VueGoodshareFacebook
+  },
 
-    data () {
-      return {
-        dataKey: DataStoreEntries.rezensionen.key
-      }
+  data() {
+    return {
+      dataKey: DataStoreEntries.rezensionen.key
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~include-media/dist/include-media';
-  @import '../../style/3v-forhair';
-  @import '../../style/subpages';
+@import '~include-media/dist/include-media';
+@import '../../style/3v-forhair';
+@import '../../style/subpages';
 
-  .subpage{
-    text-align: center;
-    font-weight: bold;
-    color: white  ;
+.subpage {
+  text-align: center;
+  font-weight: bold;
+  color: white;
 
-    h1 {
-      margin-bottom: 40px;
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .renzension {
+    position: relative;
+    margin-bottom: 40px;
+    text-shadow: decentShadow(black);
+
+    .content {
+      color: rgb(250, 250, 210);
+      margin-bottom: 5px;
     }
 
-    h2 {
-      margin-bottom: 20px;
+    .offer {
       font-style: italic;
     }
 
-    .renzension{
-      position: relative;
-      margin-bottom: 40px;
-      text-shadow: decentShadow(black);
-
-      .content {
-        color: rgb(250, 250, 210)  ;
-        margin-bottom: 5px;
-      }
-
-      .offer {
-        font-style: italic;
-      }
-
-      .delete {
-        background-color: red!important;
-      }
-    }
-
-    .linkText{
-      margin-top: 40px;
-      text-shadow: decentShadow(black);
+    .delete {
+      background-color: red !important;
     }
   }
+
+  .linkText {
+    margin-top: 40px;
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-shadow: decentShadow(white);
+      }
+    }
+    // text-shadow: decentShadow(white);
+  }
+}
 </style>
