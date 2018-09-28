@@ -279,6 +279,12 @@ export default {
 
     // Set root font-size for the usage of 'rem'.
     document.documentElement.style.fontSize = this.fontSize
+
+    /*
+      This is not the real root element, but some browsers suck on reading the root em.
+      It helps to make to look a bit better, even if not correct.
+    */
+    document.body.style.fontSize = this.fontSize
   }
 }
 </script>
