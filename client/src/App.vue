@@ -242,16 +242,14 @@ export default {
 
       // Set size relative to device type and screen size.
       if (this.$isDesktop()) {
-        fontSize = screen.availHeight / 70
+        fontSize = window.screen.height / 80
       } else {
-        fontSize = screen.availHeight / 90
+        fontSize = window.screen.height / 20
       }
 
       // Make sure stay between a range.
       const minSize = 9
-      const maxSize = 25
       fontSize = fontSize < minSize ? minSize : fontSize
-      fontSize = fontSize > maxSize ? maxSize : fontSize
 
       return fontSize + 'px'
     }
@@ -280,7 +278,7 @@ export default {
     }
 
     // Set root font-size for the usage of 'rem'.
-    document.body.style.fontSize = this.fontSize
+    document.documentElement.style.fontSize = this.fontSize
   }
 }
 </script>
