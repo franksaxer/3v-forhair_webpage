@@ -63,6 +63,11 @@
     margin-bottom: 3px;
   }
 
+  h1,
+  h2 {
+    text-shadow: intenseShadow($black);
+  }
+
   .content-box {
     background-color: $color-invert;
     border-radius: $border-radius;

@@ -101,7 +101,7 @@ export default {
       if (this.$isDesktop()) {
         const rect = this.$refs.entryList[index].getBoundingClientRect() // The HTML boundaries of the entry.
         const title = this.$labelStore.translate(this.entries[index].label) // The title for this entry.
-        const left = rect.left - title.length / 2 * 8 // Take the left border and shift it in relation to the title length.
+        const left = rect.left - title.length / 2 * 12 // Take the left border and shift it in relation to the title length.
         return 'left: ' + left + 'px;'
       }
     }

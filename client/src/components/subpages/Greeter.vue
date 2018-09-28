@@ -44,6 +44,7 @@ export default {
   flex-direction: row;
   align-items: center;
   padding-top: 0 !important; // Makes calculations easier.
+  padding-bottom: 0 !important;
   max-height: 100%; // Have a cover page.
   overlow: hidden;
 
@@ -66,7 +67,7 @@ export default {
   $width: 40%; // Use the same width so the mirror line is in the middle.
   $narrowHeight: calc((100vh - #{header-height()} - #{$footer-height}) * 0.7);
   $space-desktop: $icon-radius; // Leave enough space around the logo.
-  $space-mobile: calc(#{$icon-radius} * 0.66);
+  $space-mobile: calc(#{$icon-radius} * 0.75);
   $border-radius: 10px;
   $segmentHeight: calc((100vh / 2) - #{header-height()});
 
@@ -93,7 +94,8 @@ export default {
       }
 
       @include media('<desktop') {
-        $height: calc((#{$segmentHeight} - #{$icon-radius}) * 0.9);
+        $height: calc((#{$segmentHeight} - #{$icon-radius}
+        - #{$space-mobile});
         max-height: $height;
         margin-top: calc(#{$segmentHeight} - #{$height} - #{$space-mobile});
       }
