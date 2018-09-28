@@ -144,7 +144,6 @@
 <script>
 // Import other components
 import LanguageSelector from './components/LanguageSelector.vue'
-import AdvertisementBanner from './components/AdvertismentBanner.vue'
 import MainMenu from './components/MainMenu.vue'
 import { VueTyper } from 'vue-typer'
 
@@ -173,7 +172,6 @@ export default {
 
   components: {
     'language-selector': LanguageSelector,
-    'advertisement-banner': AdvertisementBanner,
     'main-menu': MainMenu,
     VueTyper
   },
@@ -233,11 +231,31 @@ export default {
     }
   },
 
-  /* computed: { */
-  /*   logoInLowerPosition: function() { */
-  /*     return this.$route.name === RouteNames.GREETER */
-  /*   } */
-  /* }, */
+  computed: {
+    /**
+     * Define the font size based on the available screen height.
+     * This is the anchor for much other sizes, cause they refer to it with 'em'.
+     * Differ between desktop and mobile devices.
+     */
+    fontSize() {
+      let fontSize
+
+      // Set size relative to device type and screen size.
+      if (this.$isDesktop()) {
+        fontSize = screen.availHeight / 70
+      } else {
+        fontSize = screen.availHeight / 90
+      }
+
+      // Make sure stay between a range.
+      const minSize = 9
+      const maxSize = 25
+      fontSize = fontSize < minSize ? minSize : fontSize
+      fontSize = fontSize > maxSize ? maxSize : fontSize
+
+      return fontSize + 'px'
+    }
+  },
 
   async created() {
     this.shiftLogo()
@@ -260,6 +278,9 @@ export default {
       // Enable the view if old session key retrieved.
       this.$setEditable(valid)
     }
+
+    // Set root font-size for the usage of 'rem'.
+    document.body.style.fontSize = this.fontSize
   }
 }
 </script>
@@ -364,14 +385,16 @@ body {
     right: 0;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: calc(
+    $height: calc(
       100vh - #{$header-height} - #{$footer-height}
     ); // For some unkown reasong this is necessary.
+    height: $height;
     margin: 0 !important; // Overwrite bulmas content class.
 
     // Differ the height between mobile and desktop.
     @include media('<desktop') {
       bottom: 0; // No footer.
+      height: calc(#{$height} + #{$footer-height});
     }
   }
 

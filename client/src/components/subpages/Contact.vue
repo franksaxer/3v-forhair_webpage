@@ -50,13 +50,13 @@
         <h1 @click="editText(data, 'emailHeadline')" v-editable>
           {{ data.emailHeadline }}
         </h1>
-        <h3 @click="editText(data, 'subheadline')" v-editable>
+        <h4 @click="editText(data, 'subheadline')" v-editable>
           {{ data.subheadline }}
-        </h3>
+        </h4>
 
-        <h3 @click="editText(data, 'emailSubheadline')" v-editable>
+        <h4 @click="editText(data, 'emailSubheadline')" v-editable>
           {{ data.emailSubheadline }}
-        </h3>
+        </h4>
       </div>
 
       <div class="form">
@@ -185,7 +185,7 @@ export default {
         p,
         span,
         a {
-          font-size: 20px;
+          font-size: 1.2rem;
         }
 
         @include media('<desktop') {
@@ -208,30 +208,38 @@ export default {
         flex-direction: column;
         justify-content: center;
         width: 46%;
-        margin: 10px 2%;
-        padding: 20px;
+        margin: 20px 2%;
 
         @include media('<desktop') {
           width: 97%;
         }
 
         h1,
-        h3 {
+        h4 {
           color: black !important;
           text-shadow: 0 0 0 white;
           font-weight: bold;
+          margin: 1rem 0;
         }
       }
 
       .form {
-        @include media('<desktop') {
-          width: 90%;
-        }
         margin: 10px 2%;
-        padding: 20px;
         display: flex;
         width: 46%;
         flex-direction: column;
+        justify-content: center;
+
+        @include media('<desktop') {
+          width: 100%;
+        }
+
+        .control {
+          // For some reason margin auto does not work to center.
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
       }
     }
   }

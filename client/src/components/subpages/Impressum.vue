@@ -73,6 +73,10 @@ export default {
 @import '../../style/subpages';
 
 .subpage {
+  // Make the page wider.
+  padding-left: 0;
+  padding-right: 0;
+
   .impressum-box {
     display: flex;
     flex-direction: row;
@@ -80,9 +84,12 @@ export default {
     span {
       display: block;
       color: white;
-      font-weight: bold;
       text-shadow: intenseShadow(black);
-      font-size: 20px;
+      font-size: 1.5em;
+
+      @include media('<desktop') {
+        font-size: 1.3em;
+      }
     }
 
     .left,
