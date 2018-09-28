@@ -34,7 +34,7 @@ $color-invert: rgba(246, 250, 255, 0.7);
   }
 
   // Fall-back case.
-  @return $headerHeight_desktop;
+  @return $headerHeight_mobile;
 }
 
 $footer-height: header-height();

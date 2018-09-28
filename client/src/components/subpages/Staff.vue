@@ -188,7 +188,6 @@ export default {
     $width: 90%;
 
     .search {
-      // margin: 30px 0 10px auto;
       margin-right: calc(
         (100% - #{$width}) / 2
       ); // Be aligned with the stylist containers.
@@ -196,6 +195,20 @@ export default {
 
       @include media('<desktop') {
         width: $width; // Be as width as the stylist container.
+      }
+
+      .control {
+        @include media('<desktop') {
+          &.has-icons-right {
+            min-width: 100%; // Be as width as the stylist entries.
+          }
+
+          .button {
+            // Cause of the unpredictable width, the combination with the previous element makes it
+            // impossible to get the full width.
+            display: none;
+          }
+        }
       }
     }
 
@@ -209,6 +222,7 @@ export default {
       @include media('<desktop') {
         flex-direction: column;
         align-items: center;
+        padding-top: 50px;
 
         h3,
         h4,
@@ -225,8 +239,13 @@ export default {
         text-shadow: none;
       }
 
-      .tag {
-        margin-top: 10px;
+      .categorie-container {
+        max-width: 80vw;
+        margin-top: 30px;
+
+        .tag {
+          font-size: 0.9rem;
+        }
       }
 
       .stylistInfo {
@@ -258,9 +277,12 @@ export default {
 
         @include media('<desktop') {
           width: 50%;
-          padding-top: 10px;
           padding-right: 0;
           padding-bottom: 20px;
+        }
+
+        img {
+          width: 100%;
         }
       }
 

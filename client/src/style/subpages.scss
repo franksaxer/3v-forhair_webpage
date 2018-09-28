@@ -15,7 +15,7 @@
   @include scroll;
 
   @include media('>=desktop') {
-    padding-top: 90px; // Gap to the main menu.
+    padding-top: 100px; // Gap to the main menu.
 
     // Don't overreach a width (looks ugly on large displays).
     @media all and (min-width: 1300px) {
