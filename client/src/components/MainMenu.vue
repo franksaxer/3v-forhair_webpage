@@ -167,7 +167,7 @@ export default {
     #menu-list {
       // Use fixed position, so it is "relative" to the header and so to the overdrawing icon.
       position: fixed;
-      top: $header-height;
+      top: header-height();
       left: 0;
       display: flex;
       z-index: $menu-index; // To be over the overlay (mobile).
@@ -180,7 +180,7 @@ export default {
 
       @include media('<desktop') {
         flex-direction: column;
-        max-height: calc(100vh - #{$header-height} - 10px);
+        max-height: calc(100vh - #{header-height()} - 10px);
         overflow-y: auto;
       }
 
@@ -232,7 +232,9 @@ export default {
       //text-shadow: decentShadow(white);
 
       @include media('>=desktop') {
-        top: calc(#{$header-height} + #{$zoomedMarginTop} * 2 + #{$zoomedSize});
+        top: calc(
+          #{header-height()} + #{$zoomedMarginTop} * 2 + #{$zoomedSize}
+        );
       }
 
       @include media('<desktop') {
@@ -247,7 +249,7 @@ export default {
 
     #menu-overlay {
       position: fixed;
-      top: $header-height;
+      top: header-height();
       right: 0;
       bottom: 0;
       left: 0;
@@ -269,8 +271,8 @@ export default {
 }
 
 @include media('<desktop') {
-  $height: calc(#{$header-height} / 1.5);
-  $marginLeft: calc((#{$header-height} - #{$height}) / 2);
+  $height: calc(#{header-height()} / 1.5);
+  $marginLeft: calc((#{header-height()} - #{$height}) / 2);
   @include main-menu($height, 0.6, 5px, $marginLeft);
 }
 </style>

@@ -64,11 +64,11 @@ export default {
   }
 
   $width: 40%; // Use the same width so the mirror line is in the middle.
-  $narrowHeight: calc((100vh - #{$header-height} - #{$footer-height}) * 0.7);
+  $narrowHeight: calc((100vh - #{header-height()} - #{$footer-height}) * 0.7);
   $space-desktop: $icon-radius; // Leave enough space around the logo.
   $space-mobile: calc(#{$icon-radius} * 0.66);
   $border-radius: 10px;
-  $segmentHeight: calc((100vh / 2) - #{$header-height});
+  $segmentHeight: calc((100vh / 2) - #{header-height()});
 
   .image {
     @include media('>=desktop') {

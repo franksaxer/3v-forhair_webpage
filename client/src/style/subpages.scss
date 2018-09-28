@@ -15,7 +15,7 @@
   @include scroll;
 
   @include media('>=desktop') {
-    padding-top: 90px;
+    padding-top: 90px; // Gap to the main menu.
 
     // Don't overreach a width (looks ugly on large displays).
     @media all and (min-width: 1300px) {
@@ -24,7 +24,7 @@
   }
 
   @include media('<desktop') {
-    padding: 60px 5% 5%;
+    padding: calc(#{header-height()} + 15px) 5% 5%; // The logo above is double size of the header itself.
   }
 
   img {

@@ -72,7 +72,7 @@ export default {
   }
 
   @include media('<desktop') {
-    // TODO: Does not work... $margin: calc((#{$header-height} - #{$size-normal}) / 2);
+    // TODO: Does not work... $margin: calc((#{header-height()} - #{$size-normal}) / 2);
     $margin: 6px;
     right: $margin;
     top: $margin;
