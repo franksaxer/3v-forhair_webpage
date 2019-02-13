@@ -9,7 +9,7 @@
         "from": "2018-08-12",
         "to": "2018-08-15"
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 1 - 2 Wochen",
       "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 18:00"
     },
     {
@@ -21,7 +21,7 @@
         "from": "",
         "to": ""
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Tage",
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 2 - 3 Wochen ",
       "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 16:00"
     },
     {
@@ -33,7 +33,7 @@
         "from": "",
         "to": ""
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 1-2 Tage",
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 1 Woche",
       "arbeitszeiten": "Dienstag 10:00 - 19:00\nMittwoch 10:00 - 18:00\nDonnerstag 11:00 - 19:00\nFreitag 10:00 - 18:00\nSamstag 10:00-16:00"
     },
     {
@@ -59,18 +59,6 @@
       },
       "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
       "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00- 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 18:00"
-    },
-    {
-      "bild": "Url:mitarbeiter/roxanal.jpg",
-      "name": "Roxi",
-      "kategorie": "Young Stylist",
-      "info": "",
-      "urlaub": {
-        "from": "",
-        "to": ""
-      },
-      "wartezeit": "",
-      "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00 - 19:00\nSamstag 10:00 - 16:00"
     }
   ]
 }
