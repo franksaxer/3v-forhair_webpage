@@ -146,7 +146,7 @@
 // Import other components
 import LanguageSelector from './components/LanguageSelector.vue'
 import MainMenu from './components/MainMenu.vue'
-import AdvertisementBanner from './components/AdvertisementBanner.vue'
+import AdvertisementBanner from './components/AdvertisementBanner'
 import { VueTyper } from 'vue-typer'
 
 // Import manager and utilities components.
