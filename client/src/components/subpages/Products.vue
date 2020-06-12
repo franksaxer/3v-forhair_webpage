@@ -3,8 +3,8 @@
     <h1>{{ labels.SUBPAGE_PRODUCTS_HEADER | translate }}</h1>
 
     <div class="content-box">
-        <p class="promotion_text">{{data.promationText}}</p>
-        <a class="promotion_text"target="_blank" :href="data.promationLinkUrl">{{data.promationLinkText}}</a>
+        <p class="promotion_text" v-editable @click="editText(data, 'promationText')">{{data.promationText}}</p>
+        <a class="promotion_text" v-editable @click="editText(data, 'promationLinkText')" target="_blank" :href="data.promationLinkUrl">{{data.promationLinkText}}</a>
     </div>
   </div>
 </template>
