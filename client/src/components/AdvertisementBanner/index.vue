@@ -18,19 +18,25 @@ import CommerceButton from './CommerceButton.vue'
 import Message from './Message.vue'
 
 const LOCAL_STORAGE_KEY = 'showAdvertisementBanner'
+const DELAY_OF_ADVERTISMENT_BANNER = 2000
 
 export default {
   name: 'advertisement-banner',
+
   components: { Banner, CommerceButton, Message },
   data: function() {
     return {
-      showBanner: true
+      showBanner: false
     }
   },
   created: function() {
     const showBannerCache = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (showBannerCache !== null) {
       this.showBanner = JSON.parse(showBannerCache) // localStroage can't save pure Boolean
+    }
+    if (this.showBanner || showBannerCache == null) {
+      // eslint-disable-next-line no-return-assign
+      setTimeout(() => this.showBanner = true, DELAY_OF_ADVERTISMENT_BANNER)
     }
   },
   methods: {
