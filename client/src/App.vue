@@ -142,6 +142,7 @@
         </footer>
       </div>
     </div>
+    <advertisement-banner />
   </div>
 </template>
 
@@ -150,6 +151,7 @@
 // Import other components
 import LanguageSelector from './components/LanguageSelector.vue'
 import MainMenu from './components/MainMenu.vue'
+import AdvertisementBanner from './components/AdvertisementBanner'
 import { VueTyper } from 'vue-typer'
 
 // Import manager and utilities components.
@@ -178,6 +180,7 @@ export default {
   components: {
     'language-selector': LanguageSelector,
     'main-menu': MainMenu,
+    AdvertisementBanner,
     VueTyper
   },
 
