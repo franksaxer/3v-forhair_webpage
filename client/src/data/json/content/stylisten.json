@@ -33,7 +33,7 @@
         "from": "2019-01-01",
         "to": "2019-02-05"
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3 - 4 Wochen",
       "arbeitszeiten": "Dienstag 10:00 - 19:00\nMittwoch, Freitag, Samstag 10:00 - 18:00\nDonnerstag 10:00 - 20:00"
     },
     {
@@ -45,7 +45,7 @@
         "from": "",
         "to": ""
       },
-      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3-4 Wochen",
+      "wartezeit": "durchschnittliche Wartezeit auf einen Termin 3 - 4 Wochen",
       "arbeitszeiten": "Dienstag, Mittwoch, Freitag 10:00- 19:00\nDonnerstag 11:00 - 20:00\nSamstag 10:00 - 18:00"
     }
   ]

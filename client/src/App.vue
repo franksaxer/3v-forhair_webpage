@@ -95,6 +95,11 @@
           <i class="fa fa-comment"></i>
           <span @click="editText(contactData.telefon, 'mail')" v-editable>{{ contactData.telefon.handy }}</span>
         </div>
+
+        <div>
+          <i class="fa fa-calendar"></i>
+          <a target="_blank" href="https://online-booking.salonbiz.com/olb/AvedaOnline?incURL=https%3a%2f%2fwww%2eterminbuch%2ede%2f3v%2dforhair" >Termin Online buchen!</a>
+        </div>
       </footer>
     </section>
 
