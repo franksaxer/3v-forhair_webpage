@@ -6,7 +6,6 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VDragged from 'v-dragged'
 import VueAnalytics from 'vue-analytics'
-import DeviceDetector from 'vue-device-detector'
 import EdiableView from './plugins/EditableView'
 import StaffFilter from './plugins/StaffFilter'
 
@@ -18,7 +17,6 @@ Vue.use(VueResource)
 Vue.use(VDragged)
 Vue.use(VueYoutube)
 Vue.use(VeeValidate)
-Vue.use(DeviceDetector)
 Vue.use(EdiableView)
 Vue.use(StaffFilter)
 

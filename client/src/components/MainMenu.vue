@@ -16,7 +16,7 @@
     </button>
 
     <div  id="menu-list"
-          v-if="$isDesktop() || menuOpen">
+          v-if="isDesktop || menuOpen">
 
       <a v-for="entry, index in entries"
          :class="['menu-entry', {'middle-entry': isMiddleEntry(index)}]"
@@ -33,14 +33,14 @@
         <span
           class="title"
           :style="getTitleStyle(index)"
-          v-if="($isMobile() && menuOpen) || entry.id === hoverId"
+          v-if="(!isDesktop && menuOpen) || entry.id === hoverId"
         >
           {{ entry.label | capitalize }}
         </span>
       </a>
     </div>
     <div  id="menu-overlay"
-          v-if="$isMobile() && menuOpen"
+          v-if="!isDesktop && menuOpen"
           @click="menuOpen = false"/>
   </div>
 </template>
@@ -59,7 +59,13 @@ export default {
     return {
       entries: {}, // Have to be loaded asynchronous.
       hoverId: null,
-      menuOpen: this.$isDesktop() // Default for desktop
+      menuOpen: this.isDesktop // Default for desktop
+    }
+  },
+
+  computed: {
+    isDesktop() {
+      return window.innerWidth >= 1024
     }
   },
 
@@ -87,12 +93,10 @@ export default {
     showTitle(entry, index) {
       const rect = this.$refs.entryList[index].getBoundingClientRect()
 
-      if (this.$isDesktop()) {
+      if (this.isDesktop) {
         const offset = entry.label.length / 2 * 9.4
         this.titleStyle = { left: rect.right - rect.width / 2 - offset + 'px' }
-      }
-
-      if (this.$isMobile()) {
+      } else {
         const offset = rect.top + 'px'
         this.titleStyle = { top: offset }
       }
