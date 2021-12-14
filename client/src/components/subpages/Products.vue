@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_PRODUCTS_HEADER | translate }}</h1>
+    <h1>Produkte</h1>
 
     <div class="content-box">
         <p class="promotion_text" v-editable @click="editText(data, 'promationText')">{{data.promationText}}</p>

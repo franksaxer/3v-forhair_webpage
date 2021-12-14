@@ -30,10 +30,12 @@
             area-hidden="true">
         </i>
 
-        <span class="title"
-              :style="getTitleStyle(index)"
-              v-if="($isMobile() && menuOpen) || entry.id === hoverId">
-          {{ entry.label | translate | capitalize }}
+        <span
+          class="title"
+          :style="getTitleStyle(index)"
+          v-if="($isMobile() && menuOpen) || entry.id === hoverId"
+        >
+          {{ entry.label | capitalize }}
         </span>
       </a>
     </div>
@@ -83,11 +85,10 @@ export default {
     },
 
     showTitle(entry, index) {
-      const titleLabel = entry.label
       const rect = this.$refs.entryList[index].getBoundingClientRect()
 
       if (this.$isDesktop()) {
-        const offset = this.$labelStore.translate(titleLabel).length / 2 * 9.4
+        const offset = entry.label.length / 2 * 9.4
         this.titleStyle = { left: rect.right - rect.width / 2 - offset + 'px' }
       }
 
@@ -100,7 +101,7 @@ export default {
     getTitleStyle(index) {
       if (this.$isDesktop()) {
         const rect = this.$refs.entryList[index].getBoundingClientRect() // The HTML boundaries of the entry.
-        const title = this.$labelStore.translate(this.entries[index].label) // The title for this entry.
+        const title = this.entries[index].label
         const left = rect.left - title.length / 2 * 12 // Take the left border and shift it in relation to the title length.
         return 'left: ' + left + 'px;'
       }

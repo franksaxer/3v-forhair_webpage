@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_RECENSION_HEADER | translate }}</h1>
+    <h1>Das denken Kunden über uns:</h1>
 
     <div  v-for="(rezension, index) in data.rezensionen"
           class="renzension">

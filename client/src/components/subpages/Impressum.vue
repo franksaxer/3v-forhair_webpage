@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_IMPRESSUM_HEADER | translate }}</h1>
+    <h1>Impressum</h1>
 
     <div class="impressum-box">
       <div class="left"
@@ -22,10 +22,11 @@
       </div>
     </div>
     
-    <button class="button is-primary"
-            @click="modalOpen=true">
-
-      {{ labels.SUBPAGE_IMPRESSUM_BTN | translate }}
+    <button
+      class="button is-primary"
+      @click="modalOpen=true"
+    >
+      Datenschutz
     </button>
 
     <div :class="['modal', { 'is-active' : modalOpen }]">

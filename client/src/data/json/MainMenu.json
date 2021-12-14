@@ -1,61 +1,61 @@
 [
   {
     "id": "7fa08dbb1f49ecd4e3b5a06634317c78",
-    "label": "Label:MENU_ENTRY_GREETER",
+    "label": "Willkommen",
     "icon": "fa-home",
     "route": "Route:GREETER"
   },
   {
     "id": "9cadf7b6511bb0e3cf6406c4ed28619d",
-    "label": "Label:MENU_ENTRY_RECENSION",
+    "label": "Rezensionen",
     "icon": "fa-comments",
     "route": "Route:RECENSION"
   },
   {
     "id": "52e445163911cd462abb1fd3eaebcc0c",
-    "label": "Label:MENU_ENTRY_ABOUT_US",
+    "label": "Über Uns",
     "icon": "fa-align-center",
     "route": "Route:ABOUT_US"
   },
   {
     "id": "ec9ead152c6ab6077c609f537ca790ea",
-    "label": "Label:MENU_ENTRY_STAFF",
+    "label": "Stylisten",
     "icon": "fa-users",
     "route": "Route:STAFF"
   },
   {
     "id": "f010f65d545a24da16447751d0890e18",
-    "label": "Label:MENU_ENTRY_COLORS",
+    "label": "Farben",
     "icon": "fa-paint-brush",
     "route": "Route:COLORS"
   },
   {
     "id": "e87b8c707ea4ddff70e11a7b6343f2e4",
-    "label": "Label:MENU_ENTRY_COSTS",
+    "label": "Preise",
     "icon": "fa-euro",
     "route": "Route:COSTS"
   },
   {
     "id": "76a0fcbddb98d64d80c62412336ff908",
-    "label": "Label:MENU_ENTRY_PRODUCTS",
+    "label": "Produkte",
     "icon": "fa-cubes",
     "route": "Route:PRODUCTS"
   },
   {
     "id": "3a4ab85d4406c6ac0ee669ee149d306a",
-    "label": "Label:MENU_ENTRY_PROMOTION",
+    "label": "Angebote",
     "icon": "fa-credit-card",
     "route": "Route:PROMOTION"
   },
   {
     "id": "5f13c6e5162297087f4d03af1169ae38",
-    "label": "Label:MENU_ENTRY_CONTACT",
+    "label": "Kontakt",
     "icon": "fa-address-book",
     "route": "Route:CONTACT"
   },
   {
     "id": "d9d55700f7e93245537a69dce51b22de",
-    "label": "Label:MENU_ENTRY_IMPRESSUM",
+    "label": "Impressum",
     "icon": "fa-gavel",
     "route": "Route:IMPRESSUM"
   }

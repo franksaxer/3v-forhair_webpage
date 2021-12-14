@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_CONTACT_HEADER | translate }}</h1>
+    <h1>Kontakt</h1>
 
     <div class="info content-box"
          v-if="data.telefon">
@@ -24,10 +24,12 @@
         <i class="fa fa-location-arrow fa-3x"></i>
         <p @click="editText(data.adresse, 'anschrift')" v-editable>{{ data.adresse.anschrift }}</p>
 
-        <a  target="_blank" href="https://www.google.de/maps/dir/52.5335437,13.3441854/3v+for+hair,+Rankestra%C3%9Fe+24,+10789+Berlin/@52.5187527,13.3264526,14z/data=!3m1!4b1!4m16!1m6!3m5!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2s3v+for+hair!8m2!3d52.5017623!4d13.3332985!4m8!1m1!4e1!1m5!1m1!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2m2!1d13.3332985!2d52.5017623"
-            class="button is-outlined is-primary">
-
-          {{ labels.SUBPAGE_CONTACT_BTN_MAP | translate }}
+        <a
+          class="button is-outlined is-primary"
+          target="_blank"
+          href="https://www.google.de/maps/dir/52.5335437,13.3441854/3v+for+hair,+Rankestra%C3%9Fe+24,+10789+Berlin/@52.5187527,13.3264526,14z/data=!3m1!4b1!4m16!1m6!3m5!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2s3v+for+hair!8m2!3d52.5017623!4d13.3332985!4m8!1m1!4e1!1m5!1m1!1s0x47a850f8c68c9039:0x2768ef6840eb28e8!2m2!1d13.3332985!2d52.5017623"
+        >
+          Karte
         </a>
 
         <ul @click="editText(data.adresse, 'hinweise')" v-editable>
@@ -66,7 +68,7 @@
               <input  class="input"
                       type="text"
                       v-model="feedback[requestParameterKeys.mail.name]"
-                      :placeholder="labels.SUBPAGE_CONTACT_PH_NAME | translate">
+                      placeholder="Name">
               <span class="icon is-left">
               <span><i class="fa fa-users"></i></span>
             </span>
@@ -78,7 +80,7 @@
               <input  class="input"
                       type="email"
                       v-model="feedback[requestParameterKeys.mail.mail]"
-                      :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MAIL)">
+                      placeholder="E-Mail">
               <span class="icon is-left">
               <span><i class="fa fa-envelope"></i></span>
             </span>
@@ -90,7 +92,7 @@
               <input  class="input"
                       type="text"
                       v-model="feedback[requestParameterKeys.mail.phone]"
-                      :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_PHONE)">
+                      placeholder="Telefonnummer">
               <span class="icon is-left">
               <span><i class="fa fa-phone"></i></span>
               </span>
@@ -102,7 +104,7 @@
               <textarea class="input"
                         style="height: 120px"
                         v-model="feedback[requestParameterKeys.mail.content]"
-                        :placeholder="$labelStore.translate(labels.SUBPAGE_CONTACT_PH_MESSAGE)"/>
+                        placeholder="Nachricht"/>
               <span class="icon is-left">
                 <span><i class="fa fa-comments"></i></span>
               </span>
@@ -111,10 +113,8 @@
 
           <div class="field">
             <div class="control">
-              <button class="button is-primary"
-                      @click="sendFeedback">
-
-                {{ labels.SUBPAGE_CONTACT_BTN_SEND | translate }}
+              <button class="button is-primary" @click="sendFeedback">
+                Abschicken
               </button>
             </div>
           </div>

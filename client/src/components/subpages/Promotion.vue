@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_PROMOTION_HEADER | translate }}</h1>
+    <h1>Angebote</h1>
 
     <div  v-for="(aktion, index) in data.aktionen"
           class="content-box"

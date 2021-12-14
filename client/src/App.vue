@@ -35,9 +35,7 @@
             <span class="icon">
               <i class="fa fa-save"></i>
             </span>
-            <span>
-              {{ labels.AUTH_BTN_SAVE | translate }}
-            </span>
+            <span>Speichern</span>
           </button>
 
           <button class="button is-primary"
@@ -46,9 +44,7 @@
             <span class="icon">
               <i class="fa fa-cogs"></i>
             </span>
-            <span>
-              {{ labels.AUTH_BTN_BUILD | translate }}
-            </span>
+            <span>Bauen</span>
           </button>
 
           <button class="button is-primary"
@@ -57,9 +53,7 @@
             <span class="icon">
               <i class="fa fa-undo"></i>
             </span>
-            <span>
-              {{ labels.AUTH_BTN_RESET | translate }}
-            </span>
+            <span>Zurücksetzen</span>
           </button>
 
           <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
@@ -68,9 +62,7 @@
             <span class="icon">
               <i class="fa fa-sign-out"></i>
             </span>
-            <span>
-              {{ labels.AUTH_BTN_LOGOUT | translate }}
-            </span>
+            <span>Abmelden</span>
           </button>
         </div>
       </header>
@@ -103,9 +95,6 @@
       </footer>
     </section>
 
-    <!-- language sector -->
-    <!-- <language-selector></language-selector> -->
-
     <!-- login modal -->
     <div :class="['modal', {'is-active': authenticationModalOpen}]">
       <div class="modal-background"/>
@@ -114,17 +103,15 @@
            v-if="authenticationModalOpen">
 
         <header class="modal-card-head">
-          <p class="modal-card-title">
-            {{ labels.AUTH_BTN_LOGIN | translate }}
-          </p>
+          <p class="modal-card-title">Anmelden</p>
         </header>
 
         <section class="modal-card-body">
-          <p>{{ labels.AUTH_MSG_DESCRIPTION | translate }}</p>
+          <p>Bitte authentifizieren sie sich als Administrator, um in den Bearbeitunsgmodus zu gelangen.</p>
 
           <input class="input"
                  type="password"
-                 :placeholder="labels.AUTH_INPUT_PH_PWD | translate"
+                 placeholder="Passwort"
                  v-model.trim="password"
                  @keydown.enter="login">
 
@@ -134,10 +121,11 @@
         </section>
 
         <footer class="modal-card-foot">
-          <button :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
-                  @click="login">
-
-            {{ labels.AUTH_BTN_LOGIN | translate }}
+          <button
+            :class="['button', 'is-primary', {'is-loading': authIsLoading}]"
+            click="login"
+          >
+            Anmelden
           </button>
         </footer>
       </div>
@@ -148,8 +136,6 @@
 
 
 <script>
-// Import other components
-import LanguageSelector from './components/LanguageSelector.vue'
 import MainMenu from './components/MainMenu.vue'
 import AdvertisementBanner from './components/AdvertisementBanner'
 import { VueTyper } from 'vue-typer'
@@ -178,7 +164,6 @@ export default {
   },
 
   components: {
-    'language-selector': LanguageSelector,
     'main-menu': MainMenu,
     AdvertisementBanner,
     VueTyper

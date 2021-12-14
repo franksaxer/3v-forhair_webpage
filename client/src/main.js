@@ -7,17 +7,10 @@ import VueResource from 'vue-resource'
 import VDragged from 'v-dragged'
 import VueAnalytics from 'vue-analytics'
 import DeviceDetector from 'vue-device-detector'
-import MultilangStore from 'vue-multilang-store'
 import EdiableView from './plugins/EditableView'
 import StaffFilter from './plugins/StaffFilter'
 
-// Import the router configuration
 import router from './Router.js'
-
-// Import the language stuff.
-import * as langs from './enums/Languages'
-import * as keys from './enums/LabelKeys'
-import labels from './data/Labels'
 
 // Register the plugins.
 Vue.use(VueRouter)
@@ -35,13 +28,6 @@ Vue.use(VueAnalytics, {
   debug: {
     sendHitTask: process.env.NODE_ENV === 'production' // Disable for development.
   }
-})
-
-Vue.use(MultilangStore, {
-  languageList: langs,
-  defaultLanguage: langs.DE,
-  labels: labels,
-  labelKeys: keys
 })
 
 // Import global components

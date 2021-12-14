@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_COLORS_HEADER | translate }}</h1>
+    <h1>AVEDA Haarfarben</h1>
 
     <div class="subsection">
 
@@ -33,7 +33,7 @@
 
     <hr>
 
-    <h1>{{ labels.SUBPAGE_COLORS_POSSIBILITIES_HEADER | translate }}</h1>
+    <h1>Entdecke die Möglichkeiten</h1>
     <div class="subsection"
           v-if="data.möglichkeiten">
 
@@ -51,7 +51,7 @@
 
     <hr>
 
-    <h1>{{ labels.SUBPAGE_COLORS_IMPACT_HEADER | translate }}</h1>
+    <h1>Die Wirkungsweise</h1>
     <div  class="subsection"
           v-if="data.wirkprinzipien">
 
@@ -70,7 +70,7 @@
     <hr>
 
     <template v-if="data.olaplex">
-      <h1>{{ labels.SUBPAGE_COLORS_OLAPLEX_HEADER | translate }}</h1>
+      <h1>OLAPLEX</h1>
       <h2 @click="editText(data.olaplex, 'headline')" v-editable>
         {{ data.olaplex.headline }}
       </h2>

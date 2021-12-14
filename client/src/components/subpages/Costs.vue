@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_COSTS_HEADER | translate }}</h1>
+    <h1>Preisliste für Haarschnitte und Stylings</h1>
 
     <div class="content-box">
      	<div class="tabs is-centered">
@@ -11,9 +11,7 @@
                 <i class="fa fa-female"
                    aria-hidden="true"/>
               </span>
-							<h2>
-                {{ labels.SUBPAGE_COSTS_LABEL_SHE | translate }}
-              </h2>
+							<h2>Preise für Sie</h2>
 						</a>
 					</li>
 
@@ -23,9 +21,7 @@
                 <i class="fa fa-male"
                    aria-hidden="true"/>
               </span>
-							<h2>
-                {{ labels.SUBPAGE_COSTS_LABEL_HE | translate }}
-              </h2>
+							<h2>Preise für Ihn</h2>
 						</a>
 					</li>
 
@@ -35,9 +31,7 @@
                 <i class="fa fa-paint-brush"
                    aria-hidden="true"/>
               </span>
-							<h2>
-                {{ labels.SUBPAGE_COSTS_LABEL_COLORS | translate }}
-              </h2>
+							<h2>Preise für Farbveränderungen</h2>
 						</a>
 					</li>
         </ul>

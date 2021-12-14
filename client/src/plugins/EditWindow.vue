@@ -7,19 +7,18 @@
 
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">
-          {{ labels.EDIT_WINDOW_TITLE | translate }}
-        </p>
-
-        <button class="delete"
-                aria-label="close"
-                @click="abort"/>
+        <p class="modal-card-title">Bearbeiten</p>
+        <button
+          class="delete"
+          aria-label="close"
+          @click="abort"
+        />
       </header>
 
       <section class="modal-card-body">
         <ul>
           <li v-for="hint in hints">
-            {{ hint | translate }}
+            {{ hint }}
           </li>
         </ul>
 
@@ -34,10 +33,11 @@
       </section>
 
       <footer class="modal-card-foot">
-        <button class="button is-primary"
-                @click="finish">
-
-          {{ labels.EDIT_WINDOW_BTN_OK | translate }}
+        <button
+          class="button is-primary"
+          @click="finish"
+        >
+          OK
         </button>
       </footer>
     </div>
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import * as labels from '../enums/LabelKeys'
 import * as types from '../enums/ContentTypes'
 const ArraySeparator = ';'
 
@@ -80,9 +79,9 @@ export default {
       internalContent: '', // Internal state of the property, set on created.
       backup: '', // Will be set after creation.
       hints: [
-        labels.EDIT_WINDOW_HINT_ABORT,
-        labels.EDIT_WINDOW_HINT_MULTILINE,
-        labels.EDIT_WINDOW_HINT_LIST
+        'Alle Aenderungen koennen zurueckgesetzt werden durch Klicken des Schliessbuttons or ausserhalb des Fensters.',
+        'Das Eroeffnen einer Zeile erscheint ebenfalls im Orginal.',
+        'Listen werden als eine Zeile dargestellt. Dabei werden/können die einzelnen Einträge mittels eines Semikolions getrennt werden.'
       ],
       contentTypes: types // To validate during render.
     }

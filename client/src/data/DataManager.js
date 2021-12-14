@@ -1,5 +1,4 @@
 import DataStoreEntries from './json/core/DataStoreEntries.json' // The entries that can be loaded.
-import * as LabelKeys from '../enums/LabelKeys' // Label keys to replace references.
 import * as RouteNames from '../enums/RouteNames' // Route names to replace references.
 
 /**
@@ -91,9 +90,6 @@ const extendJson = async json => {
       if (entry.substring(0, 3) === 'Url') {
         // Load the source by the relative URL.
         json[i] = require('../assets/' + entry.substring(4))
-      } else if (entry.substring(0, 5) === 'Label') {
-        // Replace with the label key.
-        json[i] = LabelKeys[entry.substring(6)]
       } else if (entry.substring(0, 9) === 'Component') {
         // Replace with Vue component object.
         json[i] = require('../components/' + entry.substring(10) + '.vue')

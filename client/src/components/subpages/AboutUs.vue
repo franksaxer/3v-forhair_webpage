@@ -1,6 +1,6 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_ABOUT_US_HEADER | translate }}</h1>
+    <h1>Über Uns</h1>
 
     <div class="kategorie-list">
       <h2 @click="editText(data, 'subheadline')" v-editable>
@@ -27,7 +27,7 @@
     <hr>
 
     <div class="salon">
-      <h1>{{ labels.SUBPAGE_ABOUT_US_SALON_HEADER | translate }}</h1>
+      <h1>Unser Salon</h1>
       <carousel :perPage="1" :navigationEnabled="true">
         <slide  v-for="(bild,index) in data.salonBilder"
                 :key="index"
@@ -48,9 +48,16 @@
 
     <div class="aveda-mission"
          v-if="data.contentAvedaMission">
-        <h1>{{ labels.SUBPAGE_ABOUT_US_AVEDA_HEADER | translate }}</h1>
+        <h1>Aveda Mission</h1>
       <div class="content-box">
-        <p class="justify" style="font-weight: bold" @click="editText(data, 'contentAvedaMission')" v-editable>{{ data.contentAvedaMission }}</p>
+        <p
+          class="justify"
+          style="font-weight: bold"
+          @click="editText(data, 'contentAvedaMission')"
+          v-editable
+        >
+          {{ data.contentAvedaMission }}
+        </p>
       </div>
     </div>
   </div>

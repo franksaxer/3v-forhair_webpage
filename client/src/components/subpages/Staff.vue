@@ -1,7 +1,7 @@
 <template>
   <div class="subpage">
-    <h1>{{ labels.SUBPAGE_STAFF_HEADER | translate }}</h1>
-    <h2>{{ labels.SUBPAGE_STAFF_SUBHEADER | translate }}</h2>
+    <h1>Unser Team</h1>
+    <h2>Dich noch schöner zu machen ist unser Ziel!</h2>
 
     <div class="stylist-list">
       <div class="field has-addons search">
@@ -10,7 +10,7 @@
           <input  v-model="filter"
                   class="input"
                   type="text"
-                  :placeholder="labels.SUBPAGE_STAFF_PH_SEARCH | translate">
+                  placeholder="Kategorie">
 
           <span class="icon is-small is-right">
           <i class="fa fa-search"></i>
@@ -66,7 +66,7 @@
 
           <p  class="wartezeit" @click="editText(stylist, 'wartezeit')" v-editable>{{ stylist.wartezeit }}</p>
 
-          <h4 class="working-hours">{{ labels.SUBPAGE_STAFF_HOURS | translate }}</h4>
+          <h4 class="working-hours">Arbeitszeit</h4>
           <ul @click="editText(stylist, 'arbeitszeiten')" v-editable>
             <li v-for="arbeitszeit in stringToList(stylist.arbeitszeiten)">
               {{ arbeitszeit }}
