@@ -4,7 +4,6 @@ import Vue from 'vue'
 // Import plugins.
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-import VDragged from 'v-dragged'
 import VueAnalytics from 'vue-analytics'
 import EdiableView from './plugins/EditableView'
 import StaffFilter from './plugins/StaffFilter'
@@ -14,7 +13,6 @@ import router from './Router.js'
 // Register the plugins.
 Vue.use(VueRouter)
 Vue.use(VueResource)
-Vue.use(VDragged)
 Vue.use(VueYoutube)
 Vue.use(VeeValidate)
 Vue.use(EdiableView)
