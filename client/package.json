@@ -15,7 +15,7 @@
     "bulma": "^0.7.1",
     "font-awesome": "^4.7.0",
     "include-media": "^1.4.9",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.6",
     "vee-validate": "^2.0.6",
     "vue": "^2.3.3",
